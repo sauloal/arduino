@@ -1,0 +1,27 @@
+udevadm monitor --udev
+UDEV  [242527.828871] add      /devices/pci0000:00/0000:00:1d.0/usb5/5-2/5-2:1.0/tty/ttyACM0 (tty)
+
+
+lsusb
+Bus 005 Device 020: ID 2341:003f  
+
+
+ls -lsa /dev/ttyACM0
+0 crw-rw----. 1 root dialout 166, 0 Mar  3 13:54 /dev/ttyACM0
+
+
+
+It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started. The Mega is compatible with most shields designed for the Arduino Duemilanove or Diecimila.
+
+Microcontroller ATmega2560
+Operating Voltage 5V
+Input Voltage (recommended) 7-12V
+Input Voltage (limits) 6-20V
+Digital I/O Pins 54 (of which 14 provide PWM output)
+Analog Input Pins 16
+DC Current per I/O Pin 40 mA
+DC Current for 3.3V Pin 50 mA
+Flash Memory 256 KB of which 8 KB used by bootloader
+SRAM 8 KB
+EEPROM 4 KB
+Clock Speed 16 MHz

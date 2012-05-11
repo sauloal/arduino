@@ -1,0 +1,29 @@
+usermod -a -G dialout,uucp,lock saulo
+yum install arduino
+
+udevadm monitor --udev
+/devices/pci0000:00/0000:00:1d.0/usb5/5-2/5-2:1.0/ttyUSB0/tty/ttyUSB0
+
+lsusb
+Bus 005 Device 004: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+
+ls -lsa /dev/ttyUSB0
+crw-rw----. 1 root dialout 188, 0 Mar  2 20:58 /dev/ttyUSB0
+
+
+#http://arduino.cc/playground/Linux/Fedora
+#easy_install --user pyserial
+#http://arduino.cc/playground/Interfacing/Python
+#http://www.gpsbabel.org/os/Linux_Hotplug.html
+#http://www.ftdichip.com/FTDrivers.htm
+
+Features:
+5V supply
+125kHz read frequency
+EM4001 64-bit RFID tag compatible
+9600bps TTL and RS232 output
+Magnetic stripe emulation output
+100mm read range
+SFE Eagle Library has this part!
+
+

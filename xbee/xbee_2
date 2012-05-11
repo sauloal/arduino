@@ -1,0 +1,39 @@
+306114j
+xbp24-aci-001 revf 0013a200 406c9cc5 112210-12:49
+XBee Series 1 device.
+Firmware: 10E6
+>> %V Vcc Voltage (multiply by 0.001173; thus 0x8FE represents 2.70v, AEC is 3.28v)
+%V ERRO
+>> BD baud code (2:4800, 3:9600, 4:19200, 5:38400, 6:57600 )
+R
+3 
+
+>> CE Coordinator Enable. Set/Read the coordinator setting. (0:end device, 1:coord)
+CE 0
+>> CH Addressing: The channel of the module
+CH C
+>> DB Received Signal Strength [in dB] of last good packet, 0[best]..5E (see RC)
+DB 0
+>> DH Addressing: destination address for wireless communication (hi word)
+DH 0
+>> DL Addressing: destination address for wireless communication (lo word)
+DL 0
+>> ID Addressing: The network ID (my default 3332)
+ID 3332
+>> MY 16-bit address of the spefic module
+MY 0
+>> ND Discover all other nodes (takes NT*100 ms).  MY/SH/SL/DB/NI/?/?/?/?/?
+
+
+>> NI Addressing: Node ID
+>> NT Node discovery timeout, how long to look for others (for ND and DN commands)
+NT 19
+>> RO Serial packetizing timeout
+RO 3
+>> SH Addressing: Serial number of module (high word)
+SH 13A200
+>> SL Addressing: Serial number of module (low word) 
+SL 406C9CC5
+>> VL Firmware version verbose
+VL ERROR
+

@@ -1,0 +1,687 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0047)http://sheepdogguides.com/arduino/art3rfid1.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1</title>
+
+<meta name="keywords" content="arduino, RFID, innovations ID-20, sparkfun, rdm630, iteadstudio, microcontroller, tutorial, help, instructions, source code, Boyd, Sheepdog Software">
+<meta name="description" content="Connecting an Innovations ID-20 RFID reader to an Arduino, or the ID-12">
+<meta name="rating" content="general">
+
+<link rel="stylesheet" href="http://sheepdogguides.com/arduino/Y08oct11tkb.css">
+<!-- "link" above replaced the <style> sode in art3rfid1.htm, 11 Oct 2008, my second (first complex) external css.
+Thanks to encouragement from Phil Anscombe, and
+help from w3.org tutorial pages-->
+
+<link type="text/css" rel="stylesheet" href="data:text/css,"><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+
+<body>
+
+<a href="http://www.sheepdogsoftware.co.uk/index.htm">HOME </a>
+- - - - - - - - - <a href="http://www.arunet.co.uk/tkboyd/prgmr1.htm">Other material for programmers</a>
+- - - - - - - - - <a href="http://sheepdogguides.com/arduino/artut.htm">Arduino Help: Main Page</a>
+<!--&#8195;&#8195;-->
+<br>
+<!--art3rfid1 given Delicious / taken out n Stumble link frm start-->
+<img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/delicious.small.gif" height="10" width="10" alt="-d-">
+<a href="http://delicious.com/save" onclick="window.open(&#39;http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=&#39;+encodeURIComponent(location.href)+&#39;&amp;title=&#39;+encodeURIComponent(document.title), &#39;delicious&#39;,&#39;toolbar=no,width=550,height=550&#39;); return false;">Bookmark&nbsp;this&nbsp;on&nbsp;Delicious</a>
+<!-- end delicious.com code-->
+<!--tut Stumble: 12 Feb 10-->
+  <a href="http://www.stumbleupon.com/submit?url=http://sheepdogguides.com/arduino/art3rfid1.htm" target="_blank">Recommend&nbsp;to&nbsp;StumbleUpon</a>
+
+<center><h1>Reading RFID tags with an Arduino</h1></center>
+
+<p>This page is browser friendly, by the way. Make your browser's window less wide than your whole screen and you will find the narrower columns much easier to read.</p>
+
+<hr>
+
+<!--Image of wrist strap also used at arunet/ec/ec1ems.htm-->
+
+<p>The page is in two parts. At the top, there's a very basic program, showing you the RFID reader at work. At the bottom, that program is slightly modified, to create <a href="http://sheepdogguides.com/arduino/art3rfid1.htm#gotoBot">something to open a door</a> when either of two specific RFID devices are brought near the reader.</p>
+
+<p>Before we get down to work, how's this for a neat way to carry an RFID tag with you everyday? The central photo shows the tag. It is a small glass capsule. Sparkfun sell them in this form for about $5. My watch strap just happens to have a little cavity, just the perfect size, on its underside. I'm still looking for the "perfect" glue to hold it in place. Hot-melt glue wasn't the answer.</p>
+
+<center>
+<img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/RFIDb6605.jpg" width="90%" alt="RFID tag in wrist watch strap" border="0">
+<br><br>
+
+<p>Tags in the form of buttons ($4) (thin, 1.6cm across, no holes) or credit cards ($2) are available also.</p>
+</center>
+
+<hr>
+
+<p>In this page I will show you the basics of connecting an Innovations ID-20 RFID reader, available from Sparkfun.com, to an Arduino. ($35, (+p&amp;p, 12/11)While the essay was written while working with an ID-20, I don't believe that users of the ID-12 would do anything different. (The ID-12 is less expensive, $30, (+p&amp;p, 12/11) but doesn't read over such a long range... In hindsight, I don't thing the extra range of the ID-20 makes any difference to me, in my application. I have the ID-20 behind a pane of glass, and "wipe" my RFID tag across the glass. I don't think the ID-12 would have trouble. I have to bring my tag within about 8cm of the reader anyway, so being closer isn't a problem. See below for an even less expensive option.)</p>
+
+<!-- Start eXTReMe Non Public Tracker Code V3/5
+Versions part of aws1wire1.htm only since 24 Feb 2010
+==
+Below here: New code from xtrkr, 23Feb2010...
+modified 24 Feb 2010: / taken out-->
+<script type="text/javascript"><!--
+EXref="";top.document.referrer?EXref=top.document.referrer:EXref=document.referrer;//-->
+</script><script type="text/javascript"><!--
+EXs=screen;EXw=EXs.width;navigator.appName!="Netscape"?
+EXb=EXs.colorDepth:EXb=EXs.pixelDepth;
+navigator.javaEnabled()==1?EXjv="y":EXjv="n";
+EXd=document;EXw?"":EXw="na";EXb?"":EXb="na";
+location.protocol=="https:"?EXprot="https":EXprot="http";
+EXref?EXref=EXref:EXref=EXd.referrer;EXsrc="src";
+EXd.write("<img "+EXsrc+"="+EXprot+"://nht-2.extreme-dm.com",
+"/n2.g?login=xtrkws&amp;url="+escape(document.URL)+"&amp;pv=&amp;",
+"jv="+EXjv+"&amp;j=y&amp;srw="+EXw+"&amp;srb="+EXb+"&amp;",
+"l="+escape(EXref)+" height=1 width=1>");//-->
+</script><img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/n2.g" height="1" width="1"><noscript>&lt;div id="nneXTReMe"&gt;&lt;img height="1" width="1" alt=""
+src="http://nht-2.extreme-dm.com/n2.g?login=xtrkws&amp;amp;url=nojs&amp;amp;j=n&amp;amp;jv=n&amp;amp;pv="&gt;
+&lt;/div&gt;</noscript>
+<!-- End eXTReMe Non Public Tracker Code -->
+
+<p>If you take my advice, if you buy the Sparkfun product, you will also buy the breakout board Sparkfun offers for the ID-20 (or ID-12). Part SEN-08423, 95 cents. And the 2mm socket strip (2x PRT-08272, $1 ea). The pin numbers used below are the pins as numbered on that.</p>
+
+<p>After I'd built one instance of my RFID access control solution, I encountered a different source for a reader... $11 (+p&amp;p, Dec 11)... to go at the heart of it, <a href="http://iteadstudio.com/store/" target="_blank">ITeadStudio.com</a>. The link will take you to their storefront. Use the menu at the left to drill down to their RFID section. You want the "125Khz RFID module RDM6300 - UART"... note the "UART" part. (I actually used the older RDM630, but the site says the 6300 works the same way, only better(!)).</p>
+
+<p>The ITeadStudio module is less expensive, but also less well packaged. The illustrations on the websites are fair. It is also less sensitive... The tag that the ID-20 read at 8cm has to be within 2cm... still no problem for my wants.</p>
+
+<p><b>The software presented here works fine with either reader</b>, without tweaks. I've bought 125mHz tags from Sparkfun, from ITeadStudio, and from an eBay source... all work fine with either reader. ITeadStudio has some nice 28mm "key fob" tags, and they don't emblazon their logo across their product.</p>
+
+<p>Speaking of eBay... in addition to the tags I <i>did</i> receive... I saw some tags on eBay at a "too good to be true" price... and it was. Despite sending $3.98 by PayPal (Aug 11) to xiao2huan for something very like item 150632480332 (Dec 11), and a civil exchange of emails, no tags ever arrived, not the first shipment, not promised replacement. Have you ever tried to "work with" eBay when there's a problem? For a start, I can no longer call up the item description to see how the seller was listed. (Seller names and PayPal accounts are often different, sometimes for good reasons.) There is a price for everything. I often get good deals via eBay... but it is not unknown to be out of pocket. The "price" for the other times.</p>
+
+<!-- art3rfid1 given adsense skyscraper 20 Feb 11
+There were 230 channels left at that time.-->
+
+<!-- begin Google adsense -->
+<div style="float:right; margin-left:24px;margin-bottom:20px; margin-top:10px; text-align:center">
+<!-- Start Google Adsense Wide Skyscraper -->
+<script type="text/javascript"><!--
+google_ad_client = "pub-5707789324079656";
+google_ad_width = 160;
+google_ad_height = 600;
+google_ad_format = "160x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<!-- End Google Adsense -->
+
+<p>
+
+</p><p>These are the only connections you need to make....</p>
+
+<ul>
+	<li>Pins 1 and 7: Arduino's ground, i.e. 0v
+	</li><li>Pin 11: Arduino's V<sub>CC</sub>, 5v. If you have a 3.3v Arduino, things are beyond my ken.
+	</li><li>Pin 2: Connect to 5v for now. But make it easy to move that to one of the Arduino's digital i/o pins, so you can do the "fancy" version later. (To be explained in an edition of this page to be created someday in the future!)
+	</li><li>Pin 9: Connect to Arduino's digital i/o pin "2".
+	</li></ul>
+
+<p>That's about it! In the data sheet you will read that pin 10 is an output which, properly connected (at least a resistor... probably transistor plus resistor) can drive an LED, which will light when the reader "sees" an RFID device. Not necessary to what follows, but I mention it, just in case your needs are different.</p>
+
+<p>At this point, you can continue reading, and cover some background information which I think you might welcome, or you can "<a href="http://sheepdogguides.com/arduino/art3rfid1.htm#gotoLock">skip to the end</a>", to go straight to the RFID-controlled door lock material.
+
+</p><p>Here are the essentials from that, in diagram form...</p>
+
+<img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/rfidcB6778.png" alt="-" border="2" width="80%">
+
+<p>The arrangements for pins 1 and 7 are done that way to accommodate the particular proto-board I use, which has only a single connecting point outside the footprint of the Sparkfun breakout board.</p>
+
+<p>While with the simple software I am using at the moment, there is no need to be able to change the state of pin 2, and it should be kept at 5v, that pin is an input to the reader, and by having two long wires, one from pin 2, one from pin 11, to your source of 5v, you will be able to use the pin 2 input later, if you decide you want to use the feature it controls.</p>
+
+<p>Pin 9 from the RFID reader is where the reader outputs (TTL, inverted) what it reads from RFID devices... when the reader is configured for its ASCII mode, which it will be, if you've connected it as above.</p>
+
+<p>Leave the other pins connected to nothing. Don't worry about floating inputs.</p>
+
+<p>You will have to check the datasheet if you have an ID-2. They are similar devices... but there may be some minor but significant differences to accommodate. I don't believe that anything I've said here about working with the ID-20 doesn't apply equally to working with the slightly less expensive, slightly less sensitive ID-12.</p>
+
+<p>Put the following into your Arduino, switch over to the serial monitor, bring an RFID device (of the proper type) near the reader, and you should see something like.....</p>
+
+<pre>2 48 48 51 54 53 70 56 65 50 55 67 52 13 10 3
+</pre>
+
+<p>Move the RFID device away, bring it back again, and the line should be repeated. Move the RFID device away, bring a new one near, and a different (but similar) line should appear, perhaps...</p>
+
+<pre>2 52 50 48 48 52 52 55 55 51 53 52 52 13 10 3
+</pre>
+
+<p>The strings always begin with a 2 and end with a 3. You can add code to check that these are seen, as a check that the unit wasn't outputting rubbish, or that you misread what it sent.</p>
+
+<p>It is possible to bring the RFID device back again too quickly after moving it away. If you think your reader is "missing" presented devices, be just a little deliberate in your "move it away"/ "move it back" process. The reader stops reading after it reads a device once until it detects no device present. It then "re-arms" itself. Having said all of that, it should be able to do, say, three reads in five seconds.</p>
+
+<p>The next 10 bytes will be the ASCII for the RFID device's unique code.</p>
+
+<p>The next two are a checksum, which you can ignore for now, or treat as part of the unique code from the RFID device. <!--explain later... the 5 hex bytes xor's-->
+(The code presented here doesn't actually <i>do</i> anything except tell you the number carried by the RFID device. When we extend it to make an electronic lock which opens when the first device above was brought near the reader, we will add code which deals with what the following pseudocode implies:</p>
+
+<pre>if (device seen had
+   48 48 51 54 53 70 56 65 50 55 67
+      in it) (then) OpenDoor
+</pre>
+
+<p>As the RFID device with that code is one that I own, the lock wouldn't be much use to you... you would have to change the number to the number inside an RFID device <i>you</i> own!</p>
+
+<p>Going back to our analysis of what the RFID reader outputs when a device has been read...</p>
+
+<p>After the "stuff" already described: Always a 13 and a 10, the codes for "CR" (carriage return) and "LF" (line feed).</p>
+
+<p>And lastly: the number "3", as already mentioned.</p>
+
+<br>
+<br>
+<hr>
+
+<p>The code to make that happen....</p>
+
+<pre class="tkbCodeArdu">//RFIDsimple1
+//ver 20 Feb 11, tweaked in webpage, 27 Jun 2011
+//started 20 Feb 11
+
+//For http://sheepdogguides.com/arduino/art3rfid1.htm
+
+//Much of this derives from serial interfacing advice at
+//  http://sheepdogguides.com/arduino/art4SeSimpFrmIDE.htm
+//and
+//  http://sheepdogguides.com/dt4t.htm
+
+#include &lt;NewSoftSerial.h&gt;
+//Yes, NEWSoftSerial... I don't think SoftwareSerial has the
+//critical "available()" function, does it?
+
+const int SerInToArdu=2; //Defines pin data passes
+    //to Arduino over from RFID reader
+const int SerOutFrmArdu=3; //Not used, but
+    //"fills" a parameter in the set up of
+    //mySerialPort
+
+NewSoftSerial mySerialPort(SerInToArdu,SerOutFrmArdu);
+//  Creates serial port for RFID reader to be attached to.
+//  Using pins 0 and 1 is problematic, as they are also
+//     connecting the development PC to the Arduino for
+//     programming, and for the output sent to the serial
+//     monitor.
+
+void setup()
+{
+Serial.begin(9600);//For access to serial monitor channel
+Serial.println("Bring an RFID tag near the reader...");
+mySerialPort.begin(9600);
+
+};
+
+void loop()
+{
+int incomingByte=0;//create and initialize a local variable
+
+//The "then" part of the following will only execute
+//  after the RFID reader has sent something to the Arduino
+if (mySerialPort.available() &gt; 0) {
+		// read the incoming byte from the serial buffer
+		incomingByte = mySerialPort.read();
+		// show what was received
+		Serial.print(incomingByte, DEC);
+                Serial.print(' ');
+                if (incomingByte==3) Serial.println();
+     };
+}
+</pre>
+
+<p>That's the heart of reading RFID tags with the Innovations modules from Sparkfun and others! Not too hard to follow, I hope? If you need help with the concepts associated with reading a stream of serial data from something outside the Arduino, <a href="http://sheepdogguides.com/arduino/art4SeSimpFrmIDE.htm" target="_blank">my tutorial about how to send information to your Arduino from a PC</a>might be useful... but that might merely distract at this point. The above should Just Work.</p>
+
+<a name="gotoLock"></a>
+<br>
+<h3>RFID Door Lock, run by Arduino</h3>
+
+<p>The simple demo above can be extended to make an access controller based on the Sparkfun ID-20, which interfaces easily to the Arduino easily.</p>
+
+<p>You'll need some way to unlock whatever you are controlling access to. An <a href="http://www.arunet.co.uk/tkboyd/ec/ec1ems.htm" target="_blank">electromechanical strikeplate</a> may well be part of the answer.</p>
+
+<p>On the software front, the program above is fine for determining the number supplied by a given RFID tag, and it is a start on a program that, for instance, opens a door when a particular tag is presented.</p>
+
+<br>
+<hr>
+
+<p>First let's look at how we deal with the fact that your program and the reader operate "asynchronously". At the moment that the reader picks up the presence of a tag, and sends the number to your program, your program may be "away", doing other things.</p>
+
+<p>Happily, the Arduino employs buffers, and the NewSoftSerial library has an "available()" function. Also, every string from the reader begins with a "2", and ends with a "3". They allow you to confirm that you are reading one string of bytes from the reader, not the second half of one, and the first half of a subsequent string.</p>
+
+<br>
+<hr>
+
+<h4>Checksums and such...</h4>
+
+<p>(You can <a href="http://sheepdogguides.com/arduino/art3rfid1.htm#gotoBot">skip over this section</a>, if you are in a hurry, and don't care about some minor details.)</p>
+
+<p>If you provide your system with an LED to flash with a message, you can get it to report to you when it reads something that can't be right.</p>
+
+<p>What do I mean by that?</p>
+
+<p>In the simplest case, I would merely check the 12 bytes between the "2" and the "13 10 3", and if they matched what one of the authorizing RFID tags would present, I'd open the door.</p>
+
+<p>The fancier program would add a check to see if the program is seeing possible numbers. How, in the simple case, do we detect a misread?</p>
+
+<p>How, in principle, do we detect a misread in a fancy case? Like this...</p>
+
+<p>The first ten bytes returned after the "2" are, strictly speaking, the number embedded in the tag. The next two bytes, if all is working properly, will always be the same for a given preceding ten bytes... but WHAT those numbers should be follows a rule. They are a "<a href="http://en.wikipedia.org/wiki/Checksum" target="_blank">checksum</a>". (The link will take you to the Wikipedia article, which you don't <i>need</i> to read.)</p>
+
+<p>Forget the RFID reader, etc, for a moment. I'll give you a very simple example of a checksum.</p>
+
+<p>Suppose that you had to build something which would merely send a single digit from "A" to "B" every thirty seconds, but it won't always be the SAME digit. And further suppose that you are concerned that because of the way you are sending it, the data may become garbled... it might happen that a "5" sent from "A" might be received as, say, "7" at "B".</p>
+
+<p>A very simple checksum could be done as follows.</p>
+
+<p>Every thirty seconds you would, as before, send a digit. But then, in addition, you would also send a second digit, a checksum. If you sent a 1, the checksum digit would be a 9. If you sent an 8, you'd send 2 as the checksum. Etc...</p>
+
+<pre>Data  Checksum
+ 1      9
+ 2      8
+ 3      7
+ 4      6
+ 5      5
+ 6      4
+ 7      3
+ 8      2
+ 9      1
+</pre>
+
+<p>At the receiving end, you compare the digit received and the checksum received, and if they don't add up to 10, you know that one or the other became corrupted in transmission.</p>
+
+<p>The RFID tags read by the Innovations readers do something which is virtually the same, just a bit more "clever"....</p>
+
+<p>We have to take a little digression into number systems.</p>
+
+<p>In the program at the top of the page, the data from the RFID tag is read and displayed as, for instance,....</p>
+
+<pre>2 48 48 51 54 53 70 56 65 50 55 67 52 13 10 3
+</pre>
+
+<p>Discard the "wrappings"... the "2" at the start, the "10 13 3" at the end.</p>
+
+<p>Now go through and "translate", using the ASCII code. That turns what we had above into....</p>
+
+<pre>48 48 51 54 53 70 56 65 50 55 67 52
+ 0  0  3  6  5  F  8  A  2  7  C  4
+</pre>
+
+<p>(You can use an online <a href="http://www.asciitable.com/" target="_blank">ASCII code table</a>, but all you really need to know for this is....</p>
+
+<pre>Decimal Stands for
+  48       0
+  49       1
+  50       2
+  51       3
+  52       4....
+and
+  65       A
+  66       B
+  67       C....
+</pre>
+
+<p>Take the translated bytes, and write them out in pairs....</p>
+
+<pre>00
+36
+5F
+8A
+27
+C4
+</pre>
+
+<p>If you treat these as <a href="http://en.wikipedia.org/wiki/Hexadecimal" target="_blank">hex numbers</a>, and XOR the first 5, the result should match the last number, &amp;C7. (The "&amp;" prefix tells you that I mean a hex number by the "C7".)</p>
+
+<p>Hmmm... I apologize to those of you who by now have a headache. On the other hand, many readers <i>won't</i> have a headache... it isn't as hard as it may seem if you haven't met this sort of thing before. I will try to present some code for you one day. If any other Arduino user would like to <a href="http://www.arunet.co.uk/tkboyd/ctact.htm" target="_blank">send me</a> a subroutine to return a boolean to tell us if the first 10 bytes and the 2 checksum bytes cross-check, I'd be grateful... not least for your ideas of the simplest, most beginner- friendly- without- being- too- inefficient way of holding the data from the reader! (If you would like your website promoted when I incorporate your work here, don't hesitate to send me the URL to include.)</p>
+
+<br>
+<hr>
+<p>I hope the above answered some questions for you? Don't hesitate to write and tell me what your main remaining questions are... or use the excellent <a href="http://arduino.cc/forum/" target="_blank">Arduino forum</a> to get answers... they are probably already in the forum archives, if you don't want to wait for your question to be re-answered....</p>
+
+<a name="gotoBot"></a><!--target of TWO "skip over"s.-->
+<br><br>
+
+<hr>
+<h3>RFID moderated access control system</h3>
+
+<p>I now have my front door opening when I present an RFID tag to a reader in a window by my front door. The RFID tag "lives" in a crevice in the strap of my wristwatch.</p>
+
+<p>First the code. It is derives from the program above, with (really!) just a little added. There are comments in the code to help you follow what is going on.</p>
+
+<pre><span style="color: #7E7E7E;">//RFIDcrude1</span>
+<span style="color: #7E7E7E;">//ver&nbsp;22b&nbsp;Feb&nbsp;11</span>
+<span style="color: #7E7E7E;">//Derived&nbsp;from&nbsp;RFIDsimple1</span>
+<span style="color: #7E7E7E;">//started&nbsp;22&nbsp;mar&nbsp;11</span>
+
+<span style="color: #7E7E7E;">//For&nbsp;http://sheepdogguides.com/arduino/art3rfid1.htm</span>
+
+<span style="color: #7E7E7E;">//Much&nbsp;of&nbsp;this&nbsp;derives&nbsp;from&nbsp;serial&nbsp;interfacing&nbsp;advice&nbsp;at</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;http://sheepdogguides.com/arduino/art4SeSimpFrmIDE.htm</span>
+<span style="color: #7E7E7E;">//and</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;http://sheepdogguides.com/dt4t.htm</span>
+
+#include&nbsp;&lt;<span style="color: #CC6600;">NewSoftSerial</span>.h&gt;
+<span style="color: #7E7E7E;">//Yes,&nbsp;NEWSoftSerial...&nbsp;I&nbsp;don't&nbsp;think&nbsp;SoftwareSerial&nbsp;has&nbsp;the</span>
+<span style="color: #7E7E7E;">//critical&nbsp;"available()"&nbsp;function,&nbsp;does&nbsp;it?</span>
+
+const&nbsp;<span style="color: #CC6600;">int</span> LockPin=4;<span style="color: #7E7E7E;">//pin to control electromechanical</span>
+<span style="color: #7E7E7E;">//    strikeplate (EMS) and optional LED.</span>
+<span style="color: #7E7E7E;">//EMS:&nbsp;http://www.arunet.co.uk/tkboyd/ec/ec1ems.htm</span>
+<span style="color: #7E7E7E;">//Change pin used &nbsp;if&nbsp;you&nbsp;wish.</span>
+<span style="color: #7E7E7E;">//DO NOT USE PIN 13 FOR THIS.</span>
+<span style="color: #7E7E7E;">//Consider&nbsp;your&nbsp;lock-driving&nbsp;circuits&nbsp;carefully...</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;is&nbsp;LockPin&nbsp;high,&nbsp;or&nbsp;LockPin&nbsp;low&nbsp;the&nbsp;best&nbsp;state</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;to&nbsp;use&nbsp;for&nbsp;"open&nbsp;door"?&nbsp;You&nbsp;don't&nbsp;want&nbsp;the</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;door&nbsp;opening&nbsp;in&nbsp;various&nbsp;possible&nbsp;fault-states,</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;do&nbsp;you?</span>
+<span style="color: #7E7E7E;">//I think (not well tested) that you only need to change</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;the next line to&nbsp;invert&nbsp;the&nbsp;logic&nbsp;of&nbsp;the&nbsp;locking</span>
+const&nbsp;<span style="color: #CC6600;">byte</span> Locked=<span style="color: #006699;">LOW</span>;
+const&nbsp;<span style="color: #CC6600;">byte</span> Unlocked=!Locked; <span style="color: #7E7E7E;">//"not" locked... i.e. Unlocked will</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;be&nbsp;made&nbsp;LOW,&nbsp;if&nbsp;Locked=HIGH</span>
+
+<span style="color: #CC6600;">char</span> sFrmTag[13] = <span style="color: #006699;">"123456789abc"</span>; <span style="color: #7E7E7E;">//Yes... 13 if you</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;need&nbsp;to&nbsp;store&nbsp;12&nbsp;characters.&nbsp;Initial&nbsp;contents</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;arbitrary.&nbsp;A&nbsp;place&nbsp;to&nbsp;accumulate&nbsp;string&nbsp;returned</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;from&nbsp;reader.</span>
+
+<span style="color: #CC6600;">byte</span> bTmp;
+
+const&nbsp;<span style="color: #CC6600;">int</span> SerInToArdu=2; <span style="color: #7E7E7E;">//Defines pin data passes</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//to Arduino over from RFID reader</span>
+const&nbsp;<span style="color: #CC6600;">int</span> SerOutFrmArdu=3; <span style="color: #7E7E7E;">//Not used, but</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//"fills" a parameter in the set up of</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//mySerialPort</span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="color: #CC6600;">NewSoftSerial</span> mySerialPort(SerInToArdu,SerOutFrmArdu);
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;Creates&nbsp;serial&nbsp;port&nbsp;for&nbsp;RFID&nbsp;reader&nbsp;to&nbsp;be&nbsp;attached&nbsp;to.</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;Using&nbsp;pins&nbsp;0&nbsp;and&nbsp;1&nbsp;is&nbsp;problematic,&nbsp;as&nbsp;they&nbsp;are&nbsp;also</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connecting&nbsp;the&nbsp;development&nbsp;PC&nbsp;to&nbsp;the&nbsp;Arduino&nbsp;for</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;programming,&nbsp;and&nbsp;for&nbsp;the&nbsp;output&nbsp;sent&nbsp;to&nbsp;the&nbsp;serial</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;monitor.</span>
+
+<span style="color: #CC6600;">boolean</span> TagMatch(<span style="color: #CC6600;">char</span> sToMatch[13])
+<span style="color: #7E7E7E;">//This&nbsp;subroutine&nbsp;uses&nbsp;Bad&nbsp;Programming&nbsp;by</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;referring&nbsp;to&nbsp;a&nbsp;global&nbsp;variable</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;within&nbsp;itself&nbsp;(sFrmTag)</span>
+<span style="color: #7E7E7E;">//</span>
+<span style="color: #7E7E7E;">//For&nbsp;some&nbsp;reason,&nbsp;I&nbsp;couldn't&nbsp;get...</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;"if&nbsp;(sFrmTag=="8627A6B73544")..."</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;&nbsp;to&nbsp;work.</span>
+{&nbsp;<span style="color: #CC6600;">boolean</span> boTmp=<span style="color: #CC6600;">true</span>;
+&nbsp;&nbsp;<span style="color: #CC6600;">for</span> (<span style="color: #CC6600;">byte</span> bTmp=1; bTmp &lt; 13; bTmp++)
+&nbsp;&nbsp;&nbsp;&nbsp;{<span style="color: #CC6600;">if</span> (sFrmTag[bTmp]!=sToMatch[bTmp])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{boTmp=<span style="color: #CC6600;">false</span>;};
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;<span style="color: #CC6600;">return</span> boTmp;
+};<span style="color: #7E7E7E;">//end of TagMatch</span>
+
+<span style="color: #CC6600;">void</span> OpenDoor()
+{
+<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">println</span>(<span style="color: #006699;">"Opening door"</span>);
+<span style="color: #CC6600;">digitalWrite</span>(LockPin,Unlocked);
+<span style="color: #CC6600;">delay</span>(3000);
+<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">println</span>(<span style="color: #006699;">"Re-locking door"</span>);
+<span style="color: #CC6600;">digitalWrite</span>(LockPin,Locked);
+
+};
+
+<span style="color: #CC6600;">void</span> <span style="color: #CC6600;"><b>setup</b></span>()
+{
+mySerialPort.<span style="color: #CC6600;">begin</span>(9600);
+<span style="color: #CC6600;">pinMode</span>(LockPin,<span style="color: #006699;">OUTPUT</span>);
+<span style="color: #CC6600;">digitalWrite</span>(LockPin,Locked);
+<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">begin</span>(9600);<span style="color: #7E7E7E;">//For access to serial monitor channel</span>
+<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">println</span>();
+<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">println</span>(<span style="color: #006699;">"Bring an RFID tag near the reader..."</span>);
+};
+
+<span style="color: #CC6600;">void</span> <span style="color: #CC6600;"><b>loop</b></span>()
+{
+<span style="color: #CC6600;">int</span> incomingByte;
+
+<span style="color: #7E7E7E;">//The&nbsp;"then"&nbsp;part&nbsp;of&nbsp;the&nbsp;following&nbsp;will&nbsp;only&nbsp;execute</span>
+<span style="color: #7E7E7E;">//&nbsp;&nbsp;after&nbsp;the&nbsp;RFID&nbsp;reader&nbsp;has&nbsp;sent&nbsp;something&nbsp;to&nbsp;the&nbsp;Arduino</span>
+<span style="color: #CC6600;">if</span> (mySerialPort.<span style="color: #CC6600;">available</span>() &gt; 0) {
+		<span style="color: #7E7E7E;">// read the incoming byte from the serial buffer</span>
+		incomingByte&nbsp;=&nbsp;mySerialPort.<span style="color: #CC6600;">read</span>();
+		<span style="color: #CC6600;">if</span> (incomingByte==2){bTmp=0;}<span style="color: #7E7E7E;">//no ; here</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">else</span> {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">if</span> (bTmp&lt;12) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sFrmTag[bTmp]=incomingByte;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bTmp++;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">print</span>(incomingByte, <span style="color: #006699;">DEC</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">print</span>(<span style="color: #006699;">' '</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//The "Serial.println"s in the following only for</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//debugging, and as a way to find out the key</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//in a new tag. If the tag is misread, you will</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//sometimes get weird results... it would be best</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//to test that incomingByte is 0-9 or A-B before</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//appending it to sFrmTag[], above.</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">if</span> (incomingByte==3) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">println</span>();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">println</span>(sFrmTag);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//Following hardcodes the program</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//to open the door for either of</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//two tags I have...</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//You'll have to change the values</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//sFrmTag needs to match.</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//Note that I have included the</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//checksum as part of the tag's</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">//"number"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">if</span> (TagMatch(<span style="color: #006699;">"8627A6B73544"</span>)||
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TagMatch(<span style="color: #006699;">"0038CA584684"</span>))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{OpenDoor();}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<span style="color: #7E7E7E;">//end of loop()</span>
+}
+</pre>
+
+<br><br>
+<p>.... and here is the circuit I used, "downstream" of the Arduino...</p>
+
+<img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/rfidver2sch.png" alt="Lock driving circuit diagram" border="2" width="90%">
+<!--Revised diagram (June 11). Was rfidB6779.png, which probably is now surplus to requirements.-->
+
+<p>It isn't "perfect", but it was the quickest path to something that <i>works</i>, given the power supplies, etc, I had on hand. Actually, it is probably pretty good, if you substitute a "better" resistor than the BC549 I used... but a BC549 <i>will</i> work! (If any experts could send in advice I could post here about what to look for when trying to get the "right" transistor, I'd be grateful. Email address at bottom. Help for the newbie <i>choosing</i> a transistor would be even better than just the part number of one or two suitable devices. By the way... while asking you, experts, for help... Is my conclusion that the higher-than-5v coming from Vrly cannot, for some reason, "push" its way "up" through the base of the transistor to do Bad Things to the Arduino output? If you could explain all of that in more scientific terms, I'd be interested.)</p>
+
+<p>R1: 300 ohms. R2: 2K2. T1: BC549 (Probably not idea. What I had!)</p>
+
+<p>Working left to right across the diagram...</p>
+
+<p>LED is just to give you a visual indication of what should be happening.</p>
+
+<p>The transistor which came to hand for me was a BC549, an NPN transistor. (I'm no expert on transistors as switches.... but this one works... here... with my other components!)(Want to know more? Try the <a href="http://www.electronics-tutorials.ws/transistor/tran_4.html" target="_blank">Electronics-Tutorials guide to transistors as switches</a>.)</p>
+
+<p>"RLY" is a small relay; D1 is The Important Diode you should always have on coils and DC motors (because they incorporate coils). There's more on <a href="http://www.arunet.co.uk/tkboyd/ec/ec1relay.htm" target="_blank">why you need a "snubber diode"</a> in a separate essay I wrote for you.</p>
+
+<p>"V<sub>RLY</sub> doesn't have to be a battery, of course. And you might be able to tap it to supply the V<sub>UNREG</sub> for your Arduino, but I've had bad experiences in the past with mixing the power supply to a relay with the power supply to a microcontroller... and in any case, my relay needed a slightly high voltage</p>
+
+<p>"ESP" is the electromechanical strikeplate which unlocks the door when that is called for. Note how its circuit is completely separate from everything else, thanks to the isolation the relay provides. The electromechanical strikeplate has a big electromagnet, hence coil, hence collapsing fields... and so I like having the circuit separate. (A reverse biased diode should be put across the electromechanical strikeplate, just like the one across the relay's coil.)</p>
+
+<p>Now... about that capacitor...</p>
+
+<p>I had a problem. By a bit of bad luck, I happened to put "unlock door" signal on D13. The positive thinkers among you out there will call it good luck, because I learned something: When the Arduino powers up, and after a reset, <b>before</b> your code executes, D13 is configured as an output, and briefly pulsed high before coming to rest as a low. (The other digital I/O lines will be configured as inputs while the Arduino is powering up... a much more satisfactory default behavior.)</p>
+
+<p>As a result, every time the Arduino was reset, or there was one of the rare but not unheard of power cuts to my home, when the power came back, my front door unlocked.</p>
+
+<p>Don't use D13 to drive the electromechanical strikeplate that locks your door.</p>
+
+<p>If you don't want a "fascinating" excursion, you may skip down to information on <a href="http://sheepdogguides.com/arduino/art3rfid1.htm#gotoPCBs">PCBs for the Arduino/RFID Access Controller.</a></p>
+
+<p>Before I became aware of the fact that this brief high pulse on D13 is a "feature" of just D13, I set about "solving" the problem by putting a 1000 uF capacitor in the circuit where shown in blue above.</p>
+
+<p>The capacitor will normally be discharged. When the line from the Arduino goes high, the capacitor will start charging. It will take a little time (in human terms... a long time in electronic terms) for the voltage at the base of the transistor to rise high enough for the transistor to "turn on", i.e. allow enough current to flow to make the coil of the relay change over the contacts in the relay.</p>
+
+<p>This is a Good Thing... because the brief "high" pulse from the Arduino's reset won't be long enough to charge the capacitor sufficiently, and the lock won't be opened in response to the brief pulse. But...</p>
+
+<p>This is a Bad Thing... because it will leave the transistor dissipating large amounts of power for too long. My circuit, with the capacitor, worked fine for many weeks. But during a time when I was converting everything from proto-board to PCB, and activating the lock repeatedly, with little "rest" between activations, I burned out the transistor. It was a bad design, and finally "fell over". This is discussed in detail in <a href="http://arduino.cc/forum/index.php/topic,64881.0.html" target="_blank">the helpful discussion on the subject at the Arduino forum</a>. Note how a specific question, with as many details as possible, even details the poster thinks irrelevant, can bring a rapid, helpful response.</p>
+
+<p>Happily, as is often the case, there was a way to get to where I wanted to be, once I stopped asking the wrong question. Once I stopped trying to make the capacitor idea work, and found out that D13's behavior is idiosyncratic, I was able to "go around" my "problem". (I think that moving the capacitor to the other side of the transistor <i>might</i> work... although it might make the relay "chatter" while the voltage was passing through the level at which the coil pulls in the contacts.... But happily, I don't need to explore all of that now, do I. But I do wonder if... (^_^)... )</p>
+
+<a name="gotoPCBs"></a>
+<br><br>
+
+<hr>
+<p>You may or may not want the following. You don't need it. It is the PCB I use with my ModernDevice RBBB Arduino clone... but I'm afraid I'll have to leave you to figure out the off-board connections you'll need. Not "rocket science", but don't feel foolish if you are new to this sort of thing and can't make sense of it. It isn't well done for the use of others, sorry. You don't need to provide sockets for all of the legs of the RBBB... just enough to connect the few signals which need to be connected, including the ground, Vunreg and Vreg lines. Strategically add a few more to provide mechanical stability. The image below shows you what the "traces" side of the single-sided PCB should look like. (The "resistor" and diode (D3) at the lower left are NOT part of what should be on the PCB... they show the electromechanical strikeplate which you are going to drive with the circuit, and an extra snubbing diode.)</p>
+
+<p>If you don't happen to use the RBBB for your Arduino work, fear not... the board would still save you a lot of time.</p>
+
+<p>Connections between my board and Arduino...</p>
+
+<ul>
+<li>Ground
+</li><li>5v: The Arduino's 5v supply is tapped to power the ID-20
+</li><li>D2: Data from the ID-20 is fed to Arduino over D2
+</li><li>D4: The D4 output of the Arduino opens the door
+</li><li>V-unreg... see below.
+</li></ul>
+
+<p>I have a wall-wart producing an unregulated (and somewhat variable!) 8v. That goes first to my board (PCB235), to power the relay coil, etc, and from there is passed on to my RBBB. I have a link on PCB235 which allows me to disconnect the V-unreg feed to the RBBB when I am powering it via my USB programming cable.</p>
+
+<img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/rfidpcb235.png" alt="printed circuit board design for Arduino/ RFID door lock" border="0" width="90%">
+
+<p>You may <a href="http://sheepdogguides.com/arduino/PCB235.brd" target="_blank">download an Eagle CAD file</a> for that board, too, if you wish. If you haven't tried <a href="http://www.cadsoft.de/" target="_blank">the Eagle CAD package</a>, this is a good time to do so! There's an impressive free version for hobbyists. The trial is an honest one... not fatally restricted, and no time limit. Windows, Linux, Mac. N.B. If you want to <i>profit</i> from things done with the Eagle CAD, you have to share... There is a "lite" version for only $49 (6/11).</p>
+
+<br><br>
+
+<hr>
+
+<p>The following will show you how to connect my Arduino-carrying board to the 95 ¢ breakout board <a href="http://www.sparkfun.com/" target="_blank">Sparkfun</a> offers for the Innovations ID-20 (which they also sell, $35 (6/11)). The breakout board is <i><b>well</b> worth buying</i>, and buy two of the 2mm pin sockets at the same time, and use them.</p>
+
+<p>You really don't need the following, but it tells you how to connect from my main board (above) to the RFID module. (The "Blue" connection is also called "Green2" in some places. It connects to the ID-20's "B2", which I didn't use in my design, but I thought I might want that signal someday. There is more discusson of these matters near the top of this page.</p>
+
+<p><b>Nota bene:</b> If you don't use my PCB as a "breakout for the breakout"!, be sure to inter-connect the <i>two</i> pins which need to be carried to the main board via the black wire.</p>
+
+<center>
+<img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/rfidpcb234.png" alt="printed circuit board design RFID reader module" border="0" width="22%">
+</center>
+
+<p>You may <a href="http://sheepdogguides.com/arduino/PCB234.brd" target="_blank">download an Eagle CAD file</a> for that board, too, if you wish. If you haven't tried <a href="http://www.cadsoft.de/" target="_blank">the Eagle CAD package</a>, this is a good time to do so! There's an impressive free version for hobbyists. The trial is an honest one... not fatally restricted, and no time limit. Windows, Linux, Mac. N.B. If you want to <i>profit</i> from things done with the Eagle CAD, you have to share... There is a "lite" version for only $49 (6/11).</p>
+
+<br><br>
+
+<hr>
+
+<!--PLTut footer, ver 23 June 2007 begins here.
+Mostly from SS/plt1aa, but Freefind code replaced to be SG friendly
+
+Include something like....
+<center>Or return to the <a href="pltut.htm">index of Pascal tutorials</a> for another one!</center>
+<br><br>
+
+... just before footer.-->
+
+<br>
+Please note that I have two other sites, and that the following search will not include them. They have their own search buttons.
+<br><br>
+
+My <a href="http://sheepdogguides.com/index.htm">Sheepdog Guides</a> site.
+<br>
+My <a href="http://www.arunet.co.uk/tkboyd/index2.htm">Arunet</a> site.
+<br><br>
+
+
+<!-- Freefind search code imported into art3rfid1
+from SG\tut.htm 27 Feb 2008
+Search engine: 466.. is SG
+Tweaked for validator 3/06-->
+
+<center>
+<table>
+
+<tbody><tr><td>
+
+
+<form action="http://search.freefind.com/find.html" method="GET" target="_top">
+&nbsp;&nbsp;
+<font size="1" face="arial,helvetica">
+<a href="http://search.freefind.com/find.html?id=46682545">
+Search this site</a>
+or
+
+<a href="http://search.freefind.com/find.html?id=46682545&t=w">
+the web</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+powered by <a href="http://www.freefind.com/">FreeFind</a><br>
+<input type="HIDDEN" name="id" size="-1" value="46682545">
+<input type="HIDDEN" name="pid" size="-1" value="r">
+<input type="HIDDEN" name="mode" size="-1" value="ALL">&nbsp;
+<input type="TEXT" name="query" size="20">
+<input type="SUBMIT" value=" Find! "><input type="SUBMIT" name="sitemap" value="Site Map"><br>
+
+&nbsp;
+<input type="radio" name="t" value="s" checked=""> Site search
+<input type="radio" name="t" value="w">Web search
+</font></form></td></tr></tbody></table>
+
+<!--.. and for formless users...-->
+
+<a href="http://search.freefind.com/find.html?id=46682545&m=0&p=0">
+Site Map</a>&nbsp;&nbsp;&nbsp;
+<a href="http://search.freefind.com/find.html?id=46682545&w=0&p=0">
+What's New</a>&nbsp;&nbsp;&nbsp;
+<a href="http://search.freefind.com/find.html?id=46682545">
+<b>Search</b></a>
+</center>
+
+<!-- End Search stuff-->
+
+The search engine merely looks for the words you type, so....
+<br>
+*&nbsp;&nbsp;&nbsp;&nbsp;Spell them properly.
+<br>
+*&nbsp;&nbsp;&nbsp;&nbsp;Don't bother with "How do I get rich?" That will merely return pages with "how", "do", "I"....
+<br><br>
+You can also <a href="http://search.freefind.com/find.html?id=41841368">search this site without using forms.
+</a>
+
+<hr>
+<h5><font color="#663333">Ad from page's editor: Yes.. I do enjoy
+compiling these things for you... hope they are helpful. However..
+this doesn't pay my bills!!! If you find this stuff useful, (and you
+run an MS-DOS or Windows PC) please visit my freeware and shareware
+page, download something, and circulate it for me? Links on your page
+to this page would also be appreciated!</font></h5>
+
+<center>
+<font color="#000000">
+<a href="http://www.arunet.co.uk/tkboyd/offers.htm">Click here
+to visit editor's freeware, shareware page.</a></font></center>
+
+<br><br>
+Want a site hosted, or email? You can also help me if you sign up via this link to <a href="http://www.1and1.com/?k_id=7813424" target="_blank">1&amp;1's services.</a> (I wouldn't recommend them unless I was happy after several years as one of their customers, but yes, they do pay me if you use this link! As do the Google advertisers, about whom I know nothing, of course.)
+<br><br>
+
+<hr>
+
+<center>
+<!-- Start Google Adsense Link Unit (1 per page) No DIV with this-->
+<script type="text/javascript"><!--
+google_ad_client = "pub-5707789324079656";
+google_ad_width = 728;
+google_ad_height = 15;
+google_ad_format = "728x15_0ads_al_s";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<!-- End Google Adsense -->
+</center>
+
+<hr>
+<p>
+    <img src="./RFID reader from Sparkfun or Iteadstudio connected to Arduino- art3rfid1_files/valid-html401.gif" alt="Valid HTML 4.01 Transitional" height="31" width="88">
+
+Page tested for compliance with INDUSTRY (not MS-only) standards, using the free, publicly accessible validator at <a href="http://validator.w3.org/" target="_blank">validator.w3.org</a></p>
+
+<p>CSS behind the page checked, at least once upon a time!, with http://jigsaw.w3.org/css-validator/
+
+<br>
+Why does this page cause a script to run? Because of the Google panels, and the code for the search button. Also, I have some of my pages' traffic monitored for me by eXTReMe tracker. They offer a free tracker. If you want to try one, check out <a href="http://extremetracking.com/?home" target="_blank">their site.</a> Why do I mention the script? Be sure you know all you need to <a href="http://www.arunet.co.uk/tkboyd/spyw.htm" target="_blank">about spyware</a>.
+
+</p><hr>
+<a href="http://www.sheepdogsoftware.co.uk/index.htm">Editor's Main Homepage</a><hr>
+<font color="#000000">
+<a href="http://www.sheepdogsoftware.co.uk/ctact.htm">How to email or write this page's editor, Tom Boyd</a></font>
+<br><br>
+<p align="center">....... P a g e . . . E n d s .....</p>
+
+<div class="ugdv_contextMenu" id="ugdv_myMenu" style="display: none; "><ul id="ugdv_contextMenu"><li id="ugdv_menuItem_google_docs">Open in Google Docs Viewer</li><li id="ugdv_menuItem_new_tab">Open link in new tab</li><li id="ugdv_menuItem_new_window">Open link in new window</li><li id="ugdv_menuItem_new_incognito">Open link in new incognito window</li><li class="ugdv_seperator"></li><li id="ugdv_menuItem_download_file">Download file</li><li id="ugdv_menuItem_copy">Copy link address</li><li id="ugdv_menuItem_editpdf">Edit PDF File on PDFescape.com</li></ul></div><div id="ugdv_jqContextMenu" style="display: none; position: absolute; z-index: 9999; "></div><div style="background-color: rgb(0, 0, 0); position: absolute; opacity: 0.2; z-index: 9998; display: none; "></div><div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

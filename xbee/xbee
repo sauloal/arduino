@@ -1,0 +1,109 @@
+This is the very popular 2.4GHz XBee XBP24-ACI-001 module from Digi (formally Maxstream). 
+
+ls -lsa /dev/ttyUSB0 
+0 crw-rw----. 1 root dialout 188, 0 Mar  2 22:26 /dev/ttyUSB0
+
+udevadm monitor --udev
+UDEV  [186830.580751] add      /devices/pci0000:00/0000:00:1d.0/usb5/5-1/5-1:1.0/ttyUSB0/tty/ttyUSB0 (tty)
+
+lsusb
+Bus 005 Device 010: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+
+ID=year(PAN ID)
+BD=7(115200) BANDWIDTH
+NB=2(ODD)
+
+
+http://arduino.cc/it/Guide/ArduinoXbeeShield
+http://www.digi.com/products/wireless-wired-embedded-solutions/zigbee-rf-modules/point-multipoint-rfmodules/xbee-series1-module#docs
+http://www.libelium.com/squidbee/index.php?title=Uploading_XBee_firmware
+http://avr-uip.googlecode.com/files/xbee-gdxctu.py
+http://arduino.cc/it/Main/ArduinoXbeeShield
+
+
+
+The Pro series have the same pinout and command set of the basic series with an increase output power of 60mW! 
+These modules take the 802.15.4 stack (the basis for Zigbee) and wrap it into a simple to use serial command set. 
+These modules allow a very reliable and simple communication between microcontrollers, computers, systems, 
+really anything with a serial port! Point to point and multi-point networks are supported.
+
+
+Features:
+3.3V @ 215mA
+250kbps Max data rate
+60mW output (+18dBm)
+1 mile (1500m) range
+Built-in antenna
+Fully FCC certified
+6 10-bit ADC input pins
+8 digital IO pins
+128-bit encryption
+Local or over-air configuration
+AT or API command set
+
+
+
+
+
+Performance: XBee
+Power output:: 1mW (+0 dBm) North American & International version
+Indoor/Urban range: Up to 100 ft (30 m)
+Outdoor/RF line-of-sight range: Up to 300 ft (90 m)
+RF data rate: 250 Kbps
+Interface data rate: Up to 115.2 Kbps
+Operating frequency: 2.4 GHz
+Receiver sensitivity: -92 dBm
+Performance: XBee-PRO
+Power output:
+63 mW (+18 dBm) North American version 
+10 mW (+10 dBm) International version
+Indoor/Urban range: Up to 300 ft (90 m)
+Outdoor/RF line-of-sight range: Up to 1 mile (1.6 km) RF LOS 
+RF data rate: 250 Kbps
+Interface data rate: Up to 115.2 Kbps
+Operating frequency: 2.4 GHz
+Receiver sensitivity: -100 dBm (all variants)
+Networking
+Spread Spectrum type: DSSS (Direct Sequence Spread Spectrum)
+Networking topology: Point-to-point, point-to-multipoint, & peer-to-peer
+Error handling: Retries & acknowledgements
+Filtration options: PAN ID, Channel, and 64-bit addresses
+Channel capacity:
+XBee: 16 Channels
+XBee-PRO: 12 Channels
+Addressing: 65,000 network addresses available for each channel
+Power
+Supply voltage: 
+XBee: 2.8 - 3.4 VDC
+XBee-PRO: 2.8 - 3.4 VDC
+XBee Footprint Recommendation: 3.0 - 3.4 VDC
+Transmit current:
+XBee: 45 mA (@ 3.3 V) boost mode 35 mA (@ 3.3 V) normal mode
+XBee-PRO: 215 mA (@ 3.3 V)
+Receive current:
+XBee: 50 mA (@ 3.3 V)
+XBee-PRO: 55 mA (@ 3.3 V)
+Power-down sleep current:
+XBee: <10 µA at 25° C
+XBee-PRO: <10 µA at 25° C
+
+
+General
+Frequency band: 2.4000 - 2.4835 GHz
+Interface options: 3V CMOS UART
+Physical Properties
+Size: 
+XBee: 0.960 in x 1.087 in (2.438 cm x 2.761 cm)
+XBee-PRO: 0.960 in x 1.297 in (2.438 cm x 3.294 cm)
+Weight: 0.10 oz (3g)
+Antenna options: U.FL, Reverse Polarity SMA (RPSMA), chip antenna or wired whip antenna
+Operating temperature: -40° C to 85° C (industrial)
+Certifications
+FCC: Yes
+IC: Yes
+Europe/ETSI: Yes
+Australia/Ctick: Yes
+RoHS: Compliant
+
+
+

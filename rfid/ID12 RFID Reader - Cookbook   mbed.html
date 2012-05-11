@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://mbed.org/cookbook/ID12-RFID-Reader -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./ID12 RFID Reader - Cookbook   mbed_files/cb=gapi.loaded0" async=""></script><script type="text/javascript" async="true" src="./ID12 RFID Reader - Cookbook   mbed_files/plusone.js" gapi_processed="true"></script><link rel="stylesheet" type="text/css" href="./ID12 RFID Reader - Cookbook   mbed_files/widget079.css" media="all">
+        <title>
+ID12 RFID Reader - 	Cookbook 
+ | mbed</title>
+        <link href="./ID12 RFID Reader - Cookbook   mbed_files/style.css" rel="stylesheet" type="text/css" media="screen,projection,print"><link href="./ID12 RFID Reader - Cookbook   mbed_files/code.css" rel="stylesheet" type="text/css" media="screen,projection,print"><link href="./ID12 RFID Reader - Cookbook   mbed_files/apidocs.css" rel="stylesheet" type="text/css" media="screen,projection,print"><link href="./ID12 RFID Reader - Cookbook   mbed_files/jquery.autocomplete.css" rel="stylesheet" type="text/css" media="screen,projection,print"><link href="./ID12 RFID Reader - Cookbook   mbed_files/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="screen,projection,print">
+        <link href="./ID12 RFID Reader - Cookbook   mbed_files/print.css" rel="stylesheet" type="text/css" media="print">
+        
+        <script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/jquery.js" charset="utf-8"></script><link type="text/css" rel="stylesheet" href="data:text/css,"><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/date.js" charset="utf-8"></script><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/watermark.js" charset="utf-8"></script><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/mbedcom.js" charset="utf-8"></script><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/jquery.ajaxQueue.js" charset="utf-8"></script><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/jquery-ui-1.7.2.custom.min.js" charset="utf-8"></script><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/jquery.autocomplete.js" charset="utf-8"></script><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/jquery.cycle.all.latest.js" charset="utf-8"></script><script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/json2.js" charset="utf-8"></script>
+        
+
+        
+        
+
+    <script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/core000.js"></script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+    <body class="mainbody"><div style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000; " id="_atssh"><iframe id="_atssh74" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; left: 0px; top: 0px; " src="./ID12 RFID Reader - Cookbook   mbed_files/sh078.html"></iframe></div> 
+    
+
+        
+        <div class="accountlinks noprint">
+          
+                <span>  
+                        
+                    <img alt="chip" src="./ID12 RFID Reader - Cookbook   mbed_files/chip.png" class="icon">  <b> <a href="http://mbed.org/handbook/Order">Get an mbed!</a> </b> &nbsp;
+                    <img alt="chip" src="./ID12 RFID Reader - Cookbook   mbed_files/email.png" class="icon">  <b> <a href="http://mbed.org/mailing-list/">Subscribe to the mailing list</a> </b>
+
+                    </span>
+                    &nbsp;
+                    &nbsp;
+                    <span class="highlight">  
+                    <img alt="login" src="./ID12 RFID Reader - Cookbook   mbed_files/key_go.png" class="icon">  <b> 
+            
+                    <script type="text/javascript">
+                    if (document.location.pathname == "/tour/compiler") {
+                        document.write('<a href="}https://mbed.org/account/login/?next=/compiler/">Login or signup</a>');
+                    } else {
+                        document.write('<a href="https://mbed.org/account/login/?next=' + document.location.pathname  + '">Login or signup</a>');
+                    }
+                    </script><a href="https://mbed.org/account/login/?next=/cookbook/ID12-RFID-Reader">Login or signup</a> 
+                    </b>
+                </span>
+          
+        </div>
+        <div class="toplinks noprint">
+            
+                        <a href="http://mbed.org/blog/">Blog</a> |
+                        <a href="http://mbed.org/forum/">Forum</a> |
+                        <a href="http://mbed.org/handbook/">Handbook</a> |
+                        <a href="http://mbed.org/cookbook/">Cookbook</a>  |
+                        <a href="http://mbed.org/code/">Code</a> 
+                      
+                        | <a href="http://mbed.org/democompiler/">Compiler</a>
+                    
+            
+        </div>
+        <div class="logo">
+            <a href="http://mbed.org/"><img src="./ID12 RFID Reader - Cookbook   mbed_files/mbed.gif" alt="mbed"></a>
+        </div>
+        <div class="menubar">
+            
+            <div class="breadcrumbs">
+                
+    <a href="http://mbed.org/cookbook/">Cookbook</a> » <a href="./ID12 RFID Reader - Cookbook   mbed_files/ID12 RFID Reader - Cookbook   mbed.html">ID12 RFID Reader</a>
+
+            </div>
+            <div class="breadcrumbs breadcrumbs-right">
+                
+            <div class="noprint">
+           <a href="http://mbed.org/cookbook/"><img alt="home" class="icon icon-bread" src="./ID12 RFID Reader - Cookbook   mbed_files/house.png"> Wiki home</a> 
+        &nbsp;
+            <a href="http://mbed.org/cookbook/Special:RecentChanges"><img alt="recentchanges" class="icon icon-bread" src="./ID12 RFID Reader - Cookbook   mbed_files/clock.png"> Recent changes</a> 
+        &nbsp;
+            <a href="http://mbed.org/cookbook/Special:Allpages"><img alt="all pages" class="icon icon-bread" src="./ID12 RFID Reader - Cookbook   mbed_files/table_multiple.png"> All Pages</a>
+        &nbsp;
+            <a href="http://mbed.org/cookbook/Special:NewPage"><img alt="new page" class="icon icon-bread" src="./ID12 RFID Reader - Cookbook   mbed_files/page_white_add.png"> New Page</a>
+ 
+    </div>
+
+            </div>
+        
+            <div style="clear: both"></div>
+        </div>
+        <div id="rightnav" class="noprint nomobile">
+        
+
+
+
+
+
+
+  <div id="searchbox">
+     <div class="rightnavhead">Search wikis</div>
+         <div class="rightnavcontent">
+             <form action="http://mbed.org/search/" method="get">
+                <input type="text" name="q" id="id_q" size="21"> <input type="submit" value="Search">
+                <input type="hidden" name="type" id="id_type" value="Wiki">
+           </form>
+
+            <p><b>Search wikis by tag:</b></p>
+ 
+                
+                
+                    <a href="http://mbed.org/search/?q=mbed&type=Wiki"> 
+                        <b class="tag-size-7">mbed</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=Serial&type=Wiki"> 
+                        <b class="tag-size-5">Serial</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=USB&type=Wiki"> 
+                        <b class="tag-size-3">USB</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=tutorial&type=Wiki"> 
+                        <b class="tag-size-3">tutorial</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=SPI&type=Wiki"> 
+                        <b class="tag-size-3">SPI</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=motor&type=Wiki"> 
+                        <b class="tag-size-2">motor</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=SD%20Card&type=Wiki"> 
+                        <b class="tag-size-2">SD Card</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=robot&type=Wiki"> 
+                        <b class="tag-size-2">robot</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=LCD&type=Wiki"> 
+                        <b class="tag-size-2">LCD</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=m3pi&type=Wiki"> 
+                        <b class="tag-size-2">m3pi</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=compiler&type=Wiki"> 
+                        <b class="tag-size-2">compiler</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=education&type=Wiki"> 
+                        <b class="tag-size-2">education</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=QEI&type=Wiki"> 
+                        <b class="tag-size-2">QEI</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=RS%20EDP&type=Wiki"> 
+                        <b class="tag-size-2">RS EDP</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=ethernet&type=Wiki"> 
+                        <b class="tag-size-2">ethernet</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=wiki&type=Wiki"> 
+                        <b class="tag-size-2">wiki</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=I2C&type=Wiki"> 
+                        <b class="tag-size-2">I2C</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=display&type=Wiki"> 
+                        <b class="tag-size-2">display</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=library&type=Wiki"> 
+                        <b class="tag-size-2">library</b></a>,                     
+                
+                    <a href="http://mbed.org/search/?q=RS-EDP&type=Wiki"> 
+                        <b class="tag-size-2">RS-EDP</b></a>                    
+                
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+<div class="rightnavhead">
+<a href="http://mbed.org/cookbook/Special:RecentChanges"><b>Recent changes</b></a>
+</div>
+<div class="rightnavcontent">
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Textbook"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Textbook </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 10 hours, 21 minutes ago, by <span class="authortext"><a href="http://mbed.org/users/robt/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/default_jpg_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/robt/"> Rob Toulson</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/NFCLamp"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> NFCLamp </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 6 days, 18 hours ago, by <span class="authortext"><a href="http://mbed.org/users/simon/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/c51ce410c124a10e0db5e4b97fc2af39_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/simon/"> Simon Ford</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Slingshot"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Slingshot </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                            <img alt="tag" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/tag.png">
+                        
+                            <a href="http://mbed.org/search/?q=electronics&type=">electronics</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=LPC11U24&type=">LPC11U24</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=Slingshot&type=">Slingshot</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=USB&type=">USB</a>
+                        
+                        <br>
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week ago, by <span class="authortext"><a href="http://mbed.org/users/simon/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/c51ce410c124a10e0db5e4b97fc2af39_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/simon/"> Simon Ford</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Course-Notes"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Course Notes </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week, 2 days ago, by <span class="authortext"><a href="http://mbed.org/users/robt/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/default_jpg_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/robt/"> Rob Toulson</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/IC-Sensor-and-Driver-Breakout-Boards"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> IC Sensor and Driver Breakout Boards </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                            <img alt="tag" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/tag.png">
+                        
+                            <a href="http://mbed.org/search/?q=adapter&type=">adapter</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=breadboard&type=">breadboard</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=breakout&type=">breakout</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=driver&type=">driver</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=IC&type=">IC</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=PCB&type=">PCB</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=sensor&type=">sensor</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=SMT&type=">SMT</a>
+                        
+                        <br>
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week, 4 days ago, by <span class="authortext"><a href="http://mbed.org/users/4180_1/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/5481b2f34a74e427a2818014b8e103b0_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/4180_1/"> jim hamblen</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Breadboard"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Breadboard </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                            <img alt="tag" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/tag.png">
+                        
+                            <a href="http://mbed.org/search/?q=breadboard&type=">breadboard</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=Solderless&type=">Solderless</a>
+                        
+                        <br>
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week, 4 days ago, by <span class="authortext"><a href="http://mbed.org/users/4180_1/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/5481b2f34a74e427a2818014b8e103b0_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/4180_1/"> jim hamblen</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Internet-of-things-using-Ethernet"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Internet of things using Ethernet </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week, 4 days ago, by <span class="authortext"><a href="http://mbed.org/users/emilmont/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/26657d5ff9020d2abefe558796b99584_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/emilmont/"> Emilio Monti</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/IOT"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> IOT </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                            <img alt="tag" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/tag.png">
+                        
+                            <a href="http://mbed.org/search/?q=accelerometer&type=">accelerometer</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=Internet&type=">Internet</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=internet%20of%20things&type=">internet of things</a>, 
+                        
+                            <a href="http://mbed.org/search/?q=IOT&type=">IOT</a>
+                        
+                        <br>
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week, 4 days ago, by <span class="authortext"><a href="http://mbed.org/users/dan/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/d9d4f495e875a2e075a1a4a6e1b9770f_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/dan/"> Dan Ros</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Internet-of-Things-Demonstration"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Internet of Things Demonstration </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week, 4 days ago, by <span class="authortext"><a href="http://mbed.org/users/dan/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/d9d4f495e875a2e075a1a4a6e1b9770f_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/dan/"> Dan Ros</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Internet-of-things-using-Wifi"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Internet of things using Wifi </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 1 week, 4 days ago, by <span class="authortext"><a href="http://mbed.org/users/dan/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/d9d4f495e875a2e075a1a4a6e1b9770f_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/dan/"> Dan Ros</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="contentitem">
+
+
+     <div style="margin-right: 0em;">
+            
+
+            
+
+
+                
+
+                
+                        <b>  <a href="http://mbed.org/cookbook/Homepage"><big><img class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/wikipage.png"> Homepage </big></a> </b>
+
+                
+                        
+                
+
+            
+            <div class="itemcontent">
+
+                
+                        
+
+                
+                
+
+                
+                    
+                
+                
+                    
+
+                        
+                            <span class="dateline"> 2 weeks ago, by <span class="authortext"><a href="http://mbed.org/users/4180_1/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/5481b2f34a74e427a2818014b8e103b0_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/4180_1/"> jim hamblen</a> </span></span>
+                        
+
+                    
+                
+
+            </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+        </div>
+        <div id="mbed-content">
+        
+
+        
+    <link href="./ID12 RFID Reader - Cookbook   mbed_files/doxygen.css" rel="stylesheet" type="text/css">
+	 
+    <style type="text/css">
+    .linenumber {display: none;}
+    </style>
+
+        
+	
+    <span style="top: 0px; position: relative; float: right; text-align: right;">
+        From the mbed microcontroller <a href="http://mbed.org/cookbook/">Cookbook</a>.   &nbsp;
+<br>
+</span>
+    <h1 class="rightnavhead"><a href="./ID12 RFID Reader - Cookbook   mbed_files/ID12 RFID Reader - Cookbook   mbed.html">ID12 RFID Reader</a></h1>
+           
+    <div class="wiki-content">
+
+    	<p>An RFID reader module that reads tags and sends the ID as a 9600-8N1 serial stream</p>
+<h2>Hello World!</h2>
+<div class="flashbox fprogram"><h4><a style="font-weight: bold; position: relative;  float: right;" href="http://mbed.org/compiler/?import=http://mbed.org/users/simon/programs/ID12RFID_HelloWorld/libo82" target="compiler">» Import this program</a><a class="ftitle" href="http://mbed.org/users/simon/programs/ID12RFID_HelloWorld/latest/docs/main_8cpp_source.html"><span></span></a><div class="wiki-api-header"><a class="ftitle" href="http://mbed.org/users/simon/programs/ID12RFID_HelloWorld/latest/docs/main_8cpp_source.html"></a><a href="http://mbed.org/users/simon/programs/ID12RFID_HelloWorld/libo82/docs/main_8cpp_source.html">ID12RFID_HelloWorld - main.cpp</a></div></h4><div><div class="wiki-api-snippet"><div class="contents">
+<div class="fragment"><pre class="fragment"><a name="l00001"></a><span class="linenumber">00001 </span><span class="comment">// Hello World for printing RFID tag numbers</span>
+<a name="l00002"></a><span class="linenumber">00002 </span>
+<a name="l00003"></a><span class="linenumber">00003 </span><span class="preprocessor">#include "mbed.h"</span>
+<a name="l00004"></a><span class="linenumber">00004 </span><span class="preprocessor">#include "ID12RFID.h"</span>
+<a name="l00005"></a><span class="linenumber">00005 </span>
+<a name="l00006"></a><span class="linenumber">00006 </span>ID12RFID rfid(p14); <span class="comment">// uart rx</span>
+<a name="l00007"></a><span class="linenumber">00007 </span>
+<a name="l00008"></a><span class="linenumber">00008 </span><span class="keywordtype">int</span> main() {
+<a name="l00009"></a><span class="linenumber">00009 </span>    printf(<span class="stringliteral">"Hello World\n"</span>);
+<a name="l00010"></a><span class="linenumber">00010 </span>    <span class="keywordflow">while</span>(1) {
+<a name="l00011"></a><span class="linenumber">00011 </span>        <span class="keywordflow">if</span>(rfid.readable()) {
+<a name="l00012"></a><span class="linenumber">00012 </span>            printf(<span class="stringliteral">"RFID Tag number : %d\n"</span>, rfid.read());             
+<a name="l00013"></a><span class="linenumber">00013 </span>        }
+<a name="l00014"></a><span class="linenumber">00014 </span>    }
+<a name="l00015"></a><span class="linenumber">00015 </span>}
+</pre></div></div></div></div></div>
+<p><img width="400" alt="ID12 RFID Hello World Schematic" title="ID12 RFID Hello World Schematic" src="./ID12 RFID Reader - Cookbook   mbed_files/rfidschematic.png"> <img width="195" alt="ID12 RFID Hello World breadboard" title="ID12 RFID Hello World breadboard" src="./ID12 RFID Reader - Cookbook   mbed_files/rfidphoto.jpg"></p>
+<h2>Library</h2>
+<p>The mbed library for the ID12 RFID reader, returning the 32-bits of the ID as an int</p>
+<div class="flashbox flibrary"><h4><a style="font-weight: bold; position: relative;  float: right;" href="http://mbed.org/compiler/?import=http://mbed.org/users/simon/libraries/ID12RFID/lic13h&mode=lib" target="compiler">» Import this library into a program</a><a class="ftitle" href="http://mbed.org/users/simon/libraries/ID12RFID/latest/docs/classID12RFID.html"><span></span></a><div class="wiki-api-header"><a class="ftitle" href="http://mbed.org/users/simon/libraries/ID12RFID/latest/docs/classID12RFID.html"></a><a href="http://mbed.org/users/simon/libraries/ID12RFID/lic13h/docs/classID12RFID.html">ID12RFID - ID12RFID Class Reference</a></div></h4><div><div class="wiki-api-snippet"><table class="memberdecls">
+<tbody>
+ <tr>
+  <td colspan="2">
+   <h2>
+    <a name="pub-methods">
+    </a>
+    Public Member Functions
+   </h2>
+  </td>
+ </tr>
+ <tr>
+  <td align="right" class="memItemLeft" valign="top">
+  </td>
+  <td class="memItemRight" valign="bottom">
+   <a class="el" href="http://mbed.org/users/simon/libraries/ID12RFID/lic13h/docs/classID12RFID.html#a472a32b50f868af5e6ce78d77f19dcc5">
+    ID12RFID
+   </a>
+   (PinName rx)
+  </td>
+ </tr>
+ <tr>
+  <td class="mdescLeft">
+  </td>
+  <td class="mdescRight">
+   Create an ID12 RFID interface, connected to the specified Serial rx port.
+   <a href="http://mbed.org/users/simon/libraries/ID12RFID/lic13h/docs/#a472a32b50f868af5e6ce78d77f19dcc5">
+   </a>
+   <br>
+  </td>
+ </tr>
+ <tr>
+  <td align="right" class="memItemLeft" valign="top">
+   int
+  </td>
+  <td class="memItemRight" valign="bottom">
+   <a class="el" href="http://mbed.org/users/simon/libraries/ID12RFID/lic13h/docs/classID12RFID.html#a54635d8d9d55acd3e8426767271e9d7b">
+    readable
+   </a>
+   ()
+  </td>
+ </tr>
+ <tr>
+  <td class="mdescLeft">
+  </td>
+  <td class="mdescRight">
+   Non blocking function to determine if an ID has been received.
+   <a href="http://mbed.org/users/simon/libraries/ID12RFID/lic13h/docs/#a54635d8d9d55acd3e8426767271e9d7b">
+   </a>
+   <br>
+  </td>
+ </tr>
+ <tr>
+  <td align="right" class="memItemLeft" valign="top">
+   int
+  </td>
+  <td class="memItemRight" valign="bottom">
+   <a class="el" href="http://mbed.org/users/simon/libraries/ID12RFID/lic13h/docs/classID12RFID.html#aaab5dab5b969a87f538242e524431637">
+    read
+   </a>
+   ()
+  </td>
+ </tr>
+ <tr>
+  <td class="mdescLeft">
+  </td>
+  <td class="mdescRight">
+   A blocking function that will return a tag ID when available.
+   <a href="http://mbed.org/users/simon/libraries/ID12RFID/lic13h/docs/#aaab5dab5b969a87f538242e524431637">
+   </a>
+   <br>
+  </td>
+ </tr>
+</tbody>
+</table>
+</div></div></div>
+<h2>Reference</h2>
+<ul><li><a class="wiki-externalpage ugdv_link" href="http://docs.google.com/viewer?url=http://www.sparkfun.com/datasheets/Sensors/ID-12-Datasheet.pdf" rel="nofollow" target="_blank">ID12 Datasheet</a>
+</li></ul>
+
+    </div>
+    <br>
+    <br>
+    <hr class="blue">
+    <div class="content-actions noprint">
+        
+        <a href="http://mbed.org/cookbook/ID12-RFID-Reader?action=history"><img alt="calendar" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/calendar.png"> Page history</a>
+    </div>
+<!-- AddThis Button BEGIN -->
+<a class="addthis_button_google_plusone at300b" g:plusone:size="medium" title="Send to Google_plusone" href="http://mbed.org/cookbook/ID12-RFID-Reader#"><div id="___plusone_0" style="height: 20px; width: 90px; display: inline-block; text-indent: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; "><iframe allowtransparency="true" frameborder="0" hspace="0" id="I1_1331109405025" marginheight="0" marginwidth="0" name="I1_1331109405025" scrolling="no" src="./ID12 RFID Reader - Cookbook   mbed_files/fastbutton.html" style="width: 90px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; height: 20px; position: static; left: 0px; top: 0px; visibility: visible; " tabindex="-1" vspace="0" width="100%" title="+1"></iframe></div></a>
+<a style="position: relative; top: 5px;" class="addthis_button_facebook_like at300b" fb:like:layout="button_count" title="Send to Facebook_like" href="http://mbed.org/cookbook/ID12-RFID-Reader#"><iframe style="overflow-x: hidden; overflow-y: hidden; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 90px; height: 25px; " src="./ID12 RFID Reader - Cookbook   mbed_files/like.html"></iframe></a>
+<script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/addthis_widget.js"></script>
+<!-- AddThis Button END -->
+
+
+    
+
+
+<div class="content-info">
+
+    
+        
+            Last modified  23 Nov 2010, by  &nbsp; <b> <span class="authortext"><a href="http://mbed.org/users/simon/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/c51ce410c124a10e0db5e4b97fc2af39_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/simon/"> Simon Ford</a> </span></b> 
+        
+    &nbsp;
+
+         <img alt="tag" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/tag.png">
+    
+    
+        
+    
+        
+            <a href="http://mbed.org/search?q=ID12&type=Wiki">ID12</a>, 
+        
+            <a href="http://mbed.org/search?q=RFID&type=Wiki">RFID</a>, 
+        
+            <a href="http://mbed.org/search?q=Serial&type=Wiki">Serial</a>
+        
+    
+
+    
+        |
+        <b>
+        <a href="http://mbed.org/cookbook/ID12-RFID-Reader#commentform">
+            
+                    
+                        9 comments
+                    
+                
+                    </a>
+                </b>
+        &nbsp;
+                        
+   
+
+   
+           
+ &nbsp;  &nbsp;  <!-- AddThis Button BEGIN -->
+<a class="addthis_button_google_plusone at300b" g:plusone:size="medium" title="Send to Google_plusone" href="http://mbed.org/cookbook/ID12-RFID-Reader#"><div id="___plusone_1" style="height: 20px; width: 90px; display: inline-block; text-indent: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; "><iframe allowtransparency="true" frameborder="0" hspace="0" id="I2_1331109405048" marginheight="0" marginwidth="0" name="I2_1331109405048" scrolling="no" src="./ID12 RFID Reader - Cookbook   mbed_files/fastbutton(1).html" style="width: 90px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; height: 20px; position: static; left: 0px; top: 0px; visibility: visible; " tabindex="-1" vspace="0" width="100%" title="+1"></iframe></div></a>
+<a style="position: relative; top: 5px;" class="addthis_button_facebook_like at300b" fb:like:layout="button_count" title="Send to Facebook_like" href="http://mbed.org/cookbook/ID12-RFID-Reader#"><iframe style="overflow-x: hidden; overflow-y: hidden; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 90px; height: 25px; " src="./ID12 RFID Reader - Cookbook   mbed_files/like.html"></iframe></a>
+<script type="text/javascript" src="./ID12 RFID Reader - Cookbook   mbed_files/addthis_widget.js"></script>
+<!-- AddThis Button END -->
+
+   
+
+</div>
+
+    
+
+
+    
+    <br>
+        
+        
+        <h2>9 comments on ID12 RFID Reader:</h2>
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c12"></a>
+    <a name="comment-12"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/lacosteaef/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/314450613369e0ee72d0da7f6fee773c_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/lacosteaef/"> Jorge Lacoste</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">lacosteaef</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c12">#</a>
+                        
+                            <span class="updated">11 Jun 2010 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p>Hey this looks really awesome, any idea how well it might possibly port over to the ID-20?</p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">Hey this looks really awesome, any idea how well it might possibly port over to the ID-20? </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c13"></a>
+    <a name="comment-13"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+             <a href="http://mbed.org/users/simon/" class="badge-inline" title="mbed staff: This user is an mbed staff member."><img class="badge" src="./ID12 RFID Reader - Cookbook   mbed_files/badge-mbed.png"></a>
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/simon/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/c51ce410c124a10e0db5e4b97fc2af39_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/simon/"> Simon Ford</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">simon</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c13">#</a>
+                        
+                            <span class="updated">11 Jun 2010 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p>Hi Jorge,</p>
+<p>I imagine that would be quite simple, yes. Assuming they are quite similar (you'll have to compare the data sheets to confirm), if you look at the code it is not doing all that much, so i'm confident you could get it working without too much trouble. </p>
+<p>Simon</p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">Hi Jorge,
+
+I imagine that would be quite simple, yes. Assuming they are quite similar (you'll have to compare the data sheets to confirm), if you look at the code it is not doing all that much, so i'm confident you could get it working without too much trouble. 
+
+Simon </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c14"></a>
+    <a name="comment-14"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/lacosteaef/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/314450613369e0ee72d0da7f6fee773c_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/lacosteaef/"> Jorge Lacoste</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">lacosteaef</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c14">#</a>
+                        
+                            <span class="updated">11 Jun 2010 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <div class="flashbox fquote"><h4 class="ftitle"><span class="authortext"><a href="http://mbed.org/users/simon/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/c51ce410c124a10e0db5e4b97fc2af39_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/simon/"> Simon Ford</a> </span> wrote: </h4><p></p><p>Hi Jorge,</p>
+<p>I imagine that would be quite simple, yes. Assuming they are quite similar (you'll have to compare the data sheets to confirm), if you look at the code it is not doing all that much, so i'm confident you could get it working without too much trouble. </p>
+<p>Simon</p>
+<p></p></div><p>I got it working flawlessly, no changes were required. The code and the pin-out are exactly the same. Thanks much. </p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">
+&lt;&lt;quote simon&gt;&gt;
+
+Hi Jorge,
+
+I imagine that would be quite simple, yes. Assuming they are quite similar (you'll have to compare the data sheets to confirm), if you look at the code it is not doing all that much, so i'm confident you could get it working without too much trouble. 
+
+Simon
+
+&lt;&lt;/quote&gt;&gt;
+
+I got it working flawlessly, no changes were required. The code and the pin-out are exactly the same. Thanks much. 
+ </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c776"></a>
+    <a name="comment-776"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/4180_1/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/5481b2f34a74e427a2818014b8e103b0_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/4180_1/"> jim hamblen</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">4180_1</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c776">#</a>
+                        
+                            <span class="updated">02 Feb 2011 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p><img src="./ID12 RFID Reader - Cookbook   mbed_files/id12breakout-01-l_i_ma.jpg" alt="/media/uploads/4180_1/id12breakout-01-l_i_ma.jpg" title="/media/uploads/4180_1/id12breakout-01-l_i_ma.jpg"></p>
+<p><a class="wiki-externalpage" href="http://www.sparkfun.com/products/8423" rel="nofollow">http://www.sparkfun.com/products/8423</a> is a $.95 breakout board for both the ID-12 and ID-20 from Sparkfun. Pins are spaced 2mm and not .1 inch.  They also sell the <a class="wiki-externalpage" href="http://www.sparkfun.com/products/8419" rel="nofollow">ID-12</a> and <a class="wiki-externalpage" href="http://www.sparkfun.com/products/8628" rel="nofollow">ID-20</a>. In the UK <a class="wiki-externalpage" href="http://www.skpang.co.uk/catalog/advanced_search_result.php?keywords=RFID&osCsid=25a9f7ee109dbf5d3fcbf7d9e6d0ce21" rel="nofollow">SKPang</a> also has them.</p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">{{/media/uploads/4180_1/id12breakout-01-l_i_ma.jpg}}
+
+
+
+[[http://www.sparkfun.com/products/8423]] is a $.95 breakout board for both the ID-12 and ID-20 from Sparkfun. Pins are spaced 2mm and not .1 inch.  They also sell the [[http://www.sparkfun.com/products/8419|ID-12]] and [[http://www.sparkfun.com/products/8628|ID-20]]. In the UK [[http://www.skpang.co.uk/catalog/advanced_search_result.php?keywords=RFID&amp;osCsid=25a9f7ee109dbf5d3fcbf7d9e6d0ce21|SKPang]] also has them. </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c1047"></a>
+    <a name="comment-1047"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/ub_sonic_2011/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/default_jpg_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/ub_sonic_2011/"> Pulkit UbSonic</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">ub_sonic_2011</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c1047">#</a>
+                        
+                            <span class="updated">28 Mar 2011 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p>Hi Simon!</p>
+<p>This is a great example, is there something similar for java. Someway to call it and read the input with mbed. Is is something similar to 'Interfacing With Java'? </p>
+<p>Sorry for such novice questions, I know what I want to achieve from the setup but its the how to that is confusing me, very new I just received my mbed last week. </p>
+<p>Thanks in Advance!</p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">Hi Simon!
+
+This is a great example, is there something similar for java. Someway to call it and read the input with mbed. Is is something similar to 'Interfacing With Java'? 
+
+Sorry for such novice questions, I know what I want to achieve from the setup but its the how to that is confusing me, very new I just received my mbed last week. 
+
+Thanks in Advance! </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c1134"></a>
+    <a name="comment-1134"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/ub_sonic_2011/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/default_jpg_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/ub_sonic_2011/"> Pulkit UbSonic</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">ub_sonic_2011</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c1134">#</a>
+                        
+                            <span class="updated">20 Apr 2011 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p>Hello Simon,
+            So I compiled the program in the mbed online compiler and it compiled with success. And I downloaded the bin file into mbed memory. But how do I see the output? Where does the RFID number appear? I am sorry I am still quite new with this and today is the first time I used the compiler here. </p>
+<p>Thanks. </p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">Hello Simon,
+            So I compiled the program in the mbed online compiler and it compiled with success. And I downloaded the bin file into mbed memory. But how do I see the output? Where does the RFID number appear? I am sorry I am still quite new with this and today is the first time I used the compiler here. 
+
+Thanks.  </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c1141"></a>
+    <a name="comment-1141"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/ub_sonic_2011/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/default_jpg_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/ub_sonic_2011/"> Pulkit UbSonic</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">ub_sonic_2011</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c1141">#</a>
+                        
+                            <span class="updated">22 Apr 2011 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p>Hi guys,
+        so I figured out the terminal output issue. I was able to run the code and view the output in putty. But I am getting more issues.. the program runs, prints "Hello World" but when I try to read a 125khz rfid card, it doesn't print anything? I have the ID12 and have connected it exactly as you mention here. In fact me and some of my colleagues have worked on it together... still no read on the cards.. do you know what could be causing something like that? It might be an obvious thing, but I have never worked on RFID before.. </p>
+<p>Thanks guys, I am making slow progress, getting there day by day.. just so much new stuff.. </p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">Hi guys,
+        so I figured out the terminal output issue. I was able to run the code and view the output in putty. But I am getting more issues.. the program runs, prints "Hello World" but when I try to read a 125khz rfid card, it doesn't print anything? I have the ID12 and have connected it exactly as you mention here. In fact me and some of my colleagues have worked on it together... still no read on the cards.. do you know what could be causing something like that? It might be an obvious thing, but I have never worked on RFID before.. 
+
+Thanks guys, I am making slow progress, getting there day by day.. just so much new stuff..  </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c1168"></a>
+    <a name="comment-1168"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/AliBros/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/ec0805f013b5bb2f8231160d0ac06b48_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/AliBros/"> Ali Bros</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">AliBros</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c1168">#</a>
+                        
+                            <span class="updated">03 May 2011 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p>How can I use serial interrupt with this? I believe I need to modify the library and add a interrupt method but can't quite understand how exactly to do it</p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">How can I use serial interrupt with this? I believe I need to modify the library and add a interrupt method but can't quite understand how exactly to do it </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+
+
+<div class="post post-odd">
+    <a name="c1812"></a>
+    <a name="comment-1812"></a>
+
+    <div class="inner">
+        <div class="post-container">
+                <div class="info" style="min-height: 2em">
+                     <span style="float: right;">
+
+
+
+    
+
+</span>
+
+                    <div style="float: left;">
+                        <div class="author"><span class="authortext"><a href="http://mbed.org/users/ceri/"><img alt="user" class="icon" src="./ID12 RFID Reader - Cookbook   mbed_files/77143919d1234297079f075357988f3b_16x16_crop_sharpen_upscale_q85.jpg"></a> <a href="http://mbed.org/users/ceri/"> ceri clatworthy</a> </span>  </div>
+                        <span class="authorusername" style="display: none;">ceri</span>
+                        <a class="permalink" href="http://mbed.org/comments/cr/93/46/#c1812">#</a>
+                        
+                            <span class="updated">26 Sep 2011 </span>
+                        
+                    </div>
+                <div style="clear: left;"></div>
+
+
+                </div>
+                <div class="forum-content">
+                    <div class="comment-messagebody">
+                        
+                           <p>Just found and corrected a 'Bug' in RFID code,</p>
+<p>Previously, the ID Number read back was treated as a decimal number, not a HEX String,
+My fix corrects this.</p>
+<div class="flashbox fcode"><h4 class="ftitle">Code</h4><pre class="wiki-pre">#include "ID12RFID.h"
+
+#include "mbed.h"
+
+ID12RFID::ID12RFID(PinName rx)
+        : _rfid(NC, rx) {
+}
+
+int ID12RFID::readable() {
+    return _rfid.readable();
+}
+
+int ID12RFID::read() {
+    while (_rfid.getc() != 2);
+
+    int v = 0;
+    _rfid.getc(); // drop 1st 2 bytes - we actually only read the lower 32-bits of the code
+    _rfid.getc();
+
+    for (int i=7; i&gt;=0; i--) {
+        char c = _rfid.getc(); // a ascii hex char
+        int part = c - '0';
+
+	// test if 'Alpha'
+
+	if (part &gt; 9) part -= 7;     // Quick &amp; dirty !
+	
+	
+        v |= part &lt;&lt; (i * 4);
+    }
+    
+    for (int i=0; i&lt;5; i++) {
+        _rfid.getc();
+    }
+    
+    return v;
+}
+</pre></div><p>Hope this is of use </p>
+<p><strong>Ceri</strong></p>
+
+                        
+                    </div>
+<div class="comment-wikitext" style="display: none;">Just found and corrected a 'Bug' in RFID code,
+
+Previously, the ID Number read back was treated as a decimal number, not a HEX String,
+My fix corrects this.
+
+&lt;&lt;code&gt;&gt;
+
+#include "ID12RFID.h"
+
+#include "mbed.h"
+
+ID12RFID::ID12RFID(PinName rx)
+        : _rfid(NC, rx) {
+}
+
+int ID12RFID::readable() {
+    return _rfid.readable();
+}
+
+int ID12RFID::read() {
+    while (_rfid.getc() != 2);
+
+    int v = 0;
+    _rfid.getc(); // drop 1st 2 bytes - we actually only read the lower 32-bits of the code
+    _rfid.getc();
+
+    for (int i=7; i&gt;=0; i--) {
+        char c = _rfid.getc(); // a ascii hex char
+        int part = c - '0';
+
+	// test if 'Alpha'
+
+	if (part &gt; 9) part -= 7;     // Quick &amp; dirty !
+	
+	
+        v |= part &lt;&lt; (i * 4);
+    }
+    
+    for (int i=0; i&lt;5; i++) {
+        _rfid.getc();
+    }
+    
+    return v;
+}
+&lt;&lt;/code&gt;&gt;
+
+Hope this is of use 
+
+**Ceri </div>
+
+                
+ 
+              </div>
+        </div>
+    </div>
+</div>
+
+            
+        
+        
+            <p>Please <a href="http://mbed.org/account/login/?next=/cookbook/ID12-RFID-Reader">login</a> to post comments.
+        
+    
+
+
+        </p></div>
+        <div class="footer noprint">
+            <ul>
+            <li>© mbed | </li> 
+            <li><a href="http://mbed.org/blog">blog</a> |</li> 
+            <li><a href="http://mbed.org/order">get an mbed</a> |</li> 
+            <li><a href="http://mbed.org/handbook/About">about mbed</a> |</li> 
+            <li><a href="http://mbed.org/handbook/Jobs">we're hiring!</a> |</li> 
+            <li><a href="http://mbed.org/handbook/Help">support</a> |</li>
+            <li><a href="http://mbed.org/privacy">privacy policy</a> |</li>
+            <li><a href="http://mbed.org/terms">terms and conditions</a> | </li> 
+            <li>Language: <a href="http://mbed.org/setlang?lang=en">en</a> <a href="http://mbed.org/setlang?lang=ja">ja</a> <a href="http://mbed.org/setlang?lang=es">es</a> <a href="http://mbed.org/setlang?lang=de">de</a></li> 
+            </ul>
+            mbed, the fastest way to prototype with ARM based microcontrollers.<br>
+        </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./ID12 RFID Reader - Cookbook   mbed_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try{
+var pageTracker = _gat._getTracker("UA-1447836-8");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+    
+
+<div class="ugdv_contextMenu" id="ugdv_myMenu" style="display: none; "><ul id="ugdv_contextMenu"><li id="ugdv_menuItem_google_docs">Open in Google Docs Viewer</li><li id="ugdv_menuItem_new_tab">Open link in new tab</li><li id="ugdv_menuItem_new_window">Open link in new window</li><li id="ugdv_menuItem_new_incognito">Open link in new incognito window</li><li class="ugdv_seperator"></li><li id="ugdv_menuItem_download_file">Download file</li><li id="ugdv_menuItem_copy">Copy link address</li><li id="ugdv_menuItem_editpdf">Edit PDF File on PDFescape.com</li></ul></div><div id="ugdv_jqContextMenu" style="display: none; position: absolute; z-index: 9999; "></div><div style="background-color: rgb(0, 0, 0); position: absolute; opacity: 0.2; z-index: 9998; display: none; "></div><div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

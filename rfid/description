@@ -1,0 +1,108 @@
+DESCRIPTOR:
+    Start
+
+    GETTING DEVICE DESCRIPTOR
+    Device descriptor: 
+    Descriptor Length:	12
+    Descriptor type:	01
+    USB version:	0200
+    Device class:	00
+    Device Subclass:	00
+    Device Protocol:	00
+    Max.packet size:	08
+    Vendor  ID:	0403
+    Product ID:	6001
+    Revision ID:	0600
+    Mfg.string index:	01
+    Prod.string index:	02
+    Serial number index:	03
+    Number of conf.:	01
+    SUCCESS GETTING DEVICE DESCRIPTOR
+
+    GETTING STRING DESCRIPTOR
+    FTDI
+    SUCCESS GETTING STRING DESCRIPTOR
+
+    GETTING CONFIGURATION DESCRIPTOR
+    Configuration descriptor:
+    Total length:	0020
+    Num.intf:		01
+    Conf.value:	01
+    Conf.string:	00
+    Attr.:		A0
+    Max.pwr:		2D
+    Interface descriptor:
+    Intf.number:	00
+    Alt.:		00
+    Endpoints:		02
+    Class:		FF
+    Subclass:		FF
+    Protocol:		FF
+    Intf.string:	02
+    Endpoint descriptor:
+    Endpoint address:	81
+    Attr.:		02
+    Max.pkt size:	0040
+    Polling interval:	00
+    Endpoint descriptor:
+    Endpoint address:	02
+    Attr.:		02
+    Max.pkt size:	0040
+    Polling interval:	00
+    SUCCESS GETTING CONFIGURATION DESCRIPTOR
+
+
+DESCRIPTOR2:
+    Start
+    Device addressed... Requesting device descriptor.
+    Device descriptor: 
+
+    Descriptor Length:	12
+    USB version:		2.0
+    Class:			00 Use class information in the Interface Descriptor
+    Subclass:		00
+    Protocol:		00
+    Max.packet size:	08
+    Vendor  ID:		0403
+    Product ID:		6001
+    Revision ID:		0600
+    Mfg.string index:	01 Length: 10 Contents: FTDI
+    Prod.string index:	02 Length: 32 Contents: FT232R USB UART
+    Serial number index:	03 Length: 18 Contents: A900UCSN
+    Number of conf.:	01
+
+    Configuration number 0
+    Total configuration length: 32 bytes
+
+    Configuration descriptor:
+    Total length:		0020
+    Number of interfaces:	01
+    Configuration value:	01
+    Configuration string:	00
+    Attributes:		A0 Remote Wakeup
+    Max.power:		2D 90ma
+
+    Interface descriptor:
+    Interface number:	00
+    Alternate setting:	00
+    Endpoints:		02
+    Class:			FF Vendor Specific
+    Subclass:		FF
+    Protocol:		FF
+    Interface string:	02 Length: 32 Contents: FT232R USB UART
+
+    Endpoint descriptor:
+    Endpoint address:	01 Direction: IN
+    Attributes:		02 Transfer type: 
+    Start
+    Max.packet size:	0040
+    Polling interval:	00 0 ms
+
+    Endpoint descriptor:
+    Endpoint address:	02 Direction: OUT
+    Attributes:		02 Transfer type: 
+    Start
+    Max.packet size:	0040
+    Polling interval:	00 0 ms
+
+

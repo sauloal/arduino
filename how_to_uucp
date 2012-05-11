@@ -1,0 +1,3 @@
+#add user to group lock and uucp
+suc 'chown root.lock /var/lock/; chmod g+rw /var/lock/'
+

@@ -1,0 +1,147 @@
+Arduino Communication Example
+Copyright 2011 Christopher De Vries
+
+Serial communication with the Arduino is relatively simple, but it can
+sometimes be difficult to organize input and output around the other tasks you
+want the Arduino to accomplish. I use a fairly simple framework for
+two-way communication, but it relies on executing commands which are not going
+to take a whole lot of time or add any delays to each loop.
+
+The example includes the following files:
+
+README.txt --- This file.
+
+LICENSE.txt --- The license governing distribution and modification of this
+                code.
+
+python-ui.py --- A graphical user interface written in python which uses
+                 Tkinter. Note that this program requires that the pySerial
+                 extension be installed. PySerial can be downloaded at
+                 http://pypi.python.org/pypi/pyserial .
+
+comm_example/comm_example.pde --- The example Arduino sketch. This program
+                 Flashes an LED on for a second and off for a second, then
+                 repeats. During this time it sends a signal over the serial
+                 line indicating how many times the LED has been on, every 10
+                 flashes. It also responds to inquiries about the current
+                 state of the LED and the connection.
+
+Basically every time the Arduino runs through loop I do two things:
+
+1. Monitor and or change any I/O pins that require monitoring or changing.
+2. Check for any input, if a full command is received, execute that command.
+
+The framework assumes command sent and received by the Arduino will be text
+terminated by a newline character. On the Arduino side the setup is fairly
+simple. In the setup() function, serial communication should be initialized. I
+tend to use 9600 bps if speed is not a factor, but it seems to work fine at
+115200 bps as well. Use the following statement:
+
+  Serial.begin(9600);
+
+Next, I define a couple of functions. The first is the routine that reads
+commands into the buffer and executes them when they are complete. This code
+does not vary from program to program:
+
+  void checkInput() {
+    int inbyte;
+    static char incomingBuffer[128];
+    static char bufPosition=0;
+    
+    if(Serial.available()>0) {
+      // Read only one character per call
+      inbyte = Serial.read();
+      if(inbyte==10) {
+        // Newline detected
+        incomingBuffer[bufPosition]='\0'; // NULL terminate the string
+        bufPosition=0; // Prepare for next command
+        
+        // Supply a separate routine for parsing the command. This will
+        // vary depending on the task.
+        parseAndExecuteCommand(String(incomingBuffer));
+      }
+      else {
+        incomingBuffer[bufPosition]=(char)inbyte;
+        bufPosition++;
+        if(bufPosition==128) {
+          Serial.println("ERROR Command Overflow");
+          bufPosition=0;
+        }
+      }
+    }
+  }
+
+The code above reads one character into the buffer each loop (if the character
+is available). If it comes to a newline character it terminates the buffer
+with a NULL character and runs parseAndExecuteCommand(String command). The
+buffer is limited to 128 characters. If too many characters are read into the
+buffer, the Arduino responds with "ERROR Command Overflow".
+
+The parseAndExecuteCommand function will change depending on the commands you
+use. The one in my example responds to two basic commands:
+
+1. If the computer issues CHECK, the Arduino responds with CONNECT, indicating
+that it is ready and the connection is working.
+2. If the computer issues QUERY, the Arduino responds with the state of the
+LED (pin 13, HIGH or LOW). This routine will vary depending on the program.
+
+  void parseAndExecuteCommand(String command) {
+    if(command.equals(String("CHECK"))) {
+      // Check connection, respond with CONNECT
+      Serial.println("CONNECT");
+    }
+    else if(command.equals(String("QUERY"))) {
+      // Query state of the LED
+      if(ledState==LOW) {
+        Serial.println("LOW");
+      }
+      else {
+        Serial.println("HIGH");
+      }
+    }
+    else {
+      // Unrecognized command
+      Serial.println("ERROR Unrecognized Command");
+    }
+  }
+
+The main loop is now simple. For any sketch you load on the Arduino, the
+sequence will look like this:
+
+  void loop() {
+    // Do whatever monitoring and work is necessary each loop below
+    <<Code goes here>>
+
+    // Load and parse any commands
+    checkInput();
+  }
+
+The example included with this README is a program that blinks the LED
+attached to pin 13 on and off every 2 seconds (1 second on, 1 second off). If
+it receives a query it will indicate the state of the LED.
+
+I also include a python based user interface with which to interact with the
+Arduino. The python side is a little more complex as I mix the event driven
+style of a user interface with a threaded approach to I/O. A pair of threads
+are created when the python program connects to the serial port (using
+pySerial). The input thread assembles input from the Arduino until it receives
+a newline and then places information in the input queue which is periodically
+polled (every 100 ms) by the main event loop. The UI can then react to the
+information received by the Arduino. Events in the UI can trigger commands to
+go to the Arduino. These commands are placed in an output queue which the
+output thread grabs and then sends down the serial line. 
+
+In the example, the python user interface has a line at the top with a blank
+where you need to put the name of the serial interface to the arduino. On my
+Mac it is typically /dev/tty.usbmodemfd321, but you can look it up using the
+Arduino IDE. Hit the connect button and in about 2 seconds you should receive
+confirmation that the Arduino is connected. Next, just hit the query button
+and the LED state at that instant should be indicated on the UI.
+
+I hope this example helps you get started with 2-way communication with the
+Arduino.
+
+Note: The example code in this distribution is covered by the Artistic License
+2.0, an open source license. This means you are free to modify and distribute
+this code with some restrictions. Please read the LICENSE.txt file for more
+details.

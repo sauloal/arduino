@@ -1,0 +1,2013 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+<!--
+	var VB_HOMEURL = 'http://forums.trossenrobotics.com';
+	var DYNA_HOMEURL = 'http://forums.trossenrobotics.com/tutorials';
+	var DYNA_PREFIX = 'tutorial'
+-->
+</script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="e_vb_meta_bburl" name="vb_meta_bburl" content="http://forums.trossenrobotics.com" />
+<base href="http://forums.trossenrobotics.com/" /><!--[if IE]></base><![endif]-->
+<meta name="generator" content="vBadvanced, vBulletin 4.1.7" />
+
+	<link rel="Shortcut Icon" href="http://forums.trossenrobotics.com/favicon.ico" type="image/x-icon" />
+
+
+		<meta name="keywords" content="serialdata, getSerial, number, pinNumber, inbyte, serial, break, analog" />
+		<meta name="description" content="Controlling An Arduino Via Serial 
+ 
+This is a in  depth tutorial on how control your arduino micro-controller via serial.  Unlike other tutorials I..." />
+
+
+
+
+
+	<script type="text/javascript" src="http://forums.trossenrobotics.com/clientscript/yui/yuiloader-dom-event/yuiloader-dom-event.js?v=417"></script>
+	<script type="text/javascript" src="http://forums.trossenrobotics.com/clientscript/yui/connection/connection-min.js?v=417"></script>
+
+<script type="text/javascript">
+<!--
+	var SESSIONURL = "s=ee4c4796b87a456385ebcd6f7c12fc54&";
+	var SECURITYTOKEN = "guest";
+	var IMGDIR_MISC = "http://forums.trossenrobotics.com/images/misc";
+	var IMGDIR_BUTTON = "http://forums.trossenrobotics.com/images/buttons";
+	var vb_disable_ajax = parseInt("0", 10);
+	var SIMPLEVERSION = "417";
+	var BBURL = "http://forums.trossenrobotics.com";
+	var LOGGEDIN = 0 > 0 ? true : false;
+	var THIS_SCRIPT = "dyna_showentry";
+	var RELPATH = "tutorials/how-to-diy-128/complete-control-of-an-arduino-via-serial-3300/";
+	var PATHS = {forum : ""}
+// -->
+</script>
+<script type="text/javascript" src="http://forums.trossenrobotics.com/clientscript/vbulletin-core.js?v=417"></script>
+
+
+
+	<link rel="alternate" type="application/rss+xml" title="Trossen Robotics Community RSS Feed" href="http://forums.trossenrobotics.com/external.php?type=RSS2" />
+	
+
+
+
+	<link rel="stylesheet" type="text/css" href="http://forums.trossenrobotics.com/css.php?styleid=17&amp;langid=1&amp;d=1331133524&amp;td=ltr&amp;sheet=bbcode.css,editor.css,popupmenu.css,reset-fonts.css,vbulletin.css,vbulletin-chrome.css,vbulletin-formcontrols.css," />
+
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="http://forums.trossenrobotics.com/css.php?styleid=17&amp;langid=1&amp;d=1331133524&amp;td=ltr&amp;sheet=popupmenu-ie.css,vbulletin-ie.css,vbulletin-chrome-ie.css,vbulletin-formcontrols-ie.css,editor-ie.css" />
+	<![endif]-->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1812945-2']);
+  _gaq.push(['_setDomainName', '.trossenrobotics.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ <link rel="stylesheet" type="text/css" href="http://forums.trossenrobotics.com/css.php?styleid=17&amp;langid=1&amp;d=1331133524&amp;td=ltr&amp;sheet=adv_dyna.css,lightbox.css" />
+
+
+<title>Complete Control Of An Arduino Via Serial - Community Tutorials</title>
+
+
+	<link rel="stylesheet" type="text/css" href="http://forums.trossenrobotics.com/css.php?styleid=17&amp;langid=1&amp;d=1331133524&amp;td=ltr&amp;sheet=toolsmenu.css,showthread.css,postlist.css,postbit.css,editor.css,bbcode.css" />
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://forums.trossenrobotics.com/tutorials/clientscript/vba_dyna_global.js?v=212"></script>
+
+
+	<script type="text/javascript" src="http://forums.trossenrobotics.com/clientscript/vbulletin_lightbox.js?v=417"></script>
+
+
+<link rel="stylesheet" type="text/css" href="http://forums.trossenrobotics.com/css.php?styleid=17&amp;langid=1&amp;d=1331133524&amp;td=ltr&amp;sheet=additional.css" />
+
+
+
+
+</head>
+<body>
+
+<div class="above_body"> <!-- closing tag is in template navbar -->
+<div id="header" class="floatcontainer doc_header">
+	<div><a name="top" href="http://forums.trossenrobotics.com" class="logo-image"><img src="http://forums.trossenrobotics.com/images/misc/tr_logo.png" alt="Trossen Robotics Community - Powered by vBulletin" /></a></div>
+	<div id="toplinks" class="toplinks">
+		
+			<ul class="nouser">
+			
+				<li><a href="http://forums.trossenrobotics.com/register.php?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Register</a></li>
+			
+				<li><a rel="help" href="http://forums.trossenrobotics.com/faq.php?s=ee4c4796b87a456385ebcd6f7c12fc54">Help</a></li>
+				<li>
+			<script type="text/javascript" src="http://forums.trossenrobotics.com/clientscript/vbulletin_md5.js?v=417"></script>
+			<form id="navbar_loginform" action="http://forums.trossenrobotics.com/login.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
+				<fieldset id="logindetails" class="logindetails">
+					<div>
+						<div>
+					<input type="text" class="textbox default-value" name="vb_login_username" id="navbar_username" size="10" accesskey="u" tabindex="101" value="User Name" />
+					<input type="password" class="textbox" tabindex="102" name="vb_login_password" id="navbar_password" size="10" />
+					<input type="text" class="textbox default-value" tabindex="102" name="vb_login_password_hint" id="navbar_password_hint" size="10" value="Password" style="display:none;" />
+					<input type="submit" class="loginbutton" tabindex="104" value="Log in" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" />
+						</div>
+					</div>
+				</fieldset>
+				<div id="remember" class="remember">
+					<label for="cb_cookieuser_navbar"><input type="checkbox" name="cookieuser" value="1" id="cb_cookieuser_navbar" class="cb_cookieuser_navbar" accesskey="c" tabindex="103" /> Remember Me?</label>
+				</div>
+
+				<input type="hidden" name="s" value="ee4c4796b87a456385ebcd6f7c12fc54" />
+				<input type="hidden" name="securitytoken" value="guest" />
+				<input type="hidden" name="do" value="login" />
+				<input type="hidden" name="vb_login_md5password" />
+				<input type="hidden" name="vb_login_md5password_utf" />
+			</form>
+			<script type="text/javascript">
+			YAHOO.util.Dom.setStyle('navbar_password_hint', "display", "inline");
+			YAHOO.util.Dom.setStyle('navbar_password', "display", "none");
+			vB_XHTML_Ready.subscribe(function()
+			{
+			//
+				YAHOO.util.Event.on('navbar_username', "focus", navbar_username_focus);
+				YAHOO.util.Event.on('navbar_username', "blur", navbar_username_blur);
+				YAHOO.util.Event.on('navbar_password_hint', "focus", navbar_password_hint);
+				YAHOO.util.Event.on('navbar_password', "blur", navbar_password);
+			});
+			
+			function navbar_username_focus(e)
+			{
+			//
+				var textbox = YAHOO.util.Event.getTarget(e);
+				if (textbox.value == 'User Name')
+				{
+				//
+					textbox.value='';
+					textbox.style.color='#000000';
+				}
+			}
+
+			function navbar_username_blur(e)
+			{
+			//
+				var textbox = YAHOO.util.Event.getTarget(e);
+				if (textbox.value == '')
+				{
+				//
+					textbox.value='User Name';
+					textbox.style.color='#828282';
+				}
+			}
+			
+			function navbar_password_hint(e)
+			{
+			//
+				var textbox = YAHOO.util.Event.getTarget(e);
+				
+				YAHOO.util.Dom.setStyle('navbar_password_hint', "display", "none");
+				YAHOO.util.Dom.setStyle('navbar_password', "display", "inline");
+				YAHOO.util.Dom.get('navbar_password').focus();
+			}
+
+			function navbar_password(e)
+			{
+			//
+				var textbox = YAHOO.util.Event.getTarget(e);
+				
+				if (textbox.value == '')
+				{
+					YAHOO.util.Dom.setStyle('navbar_password_hint', "display", "inline");
+					YAHOO.util.Dom.setStyle('navbar_password', "display", "none");
+				}
+			}
+			</script>
+				</li>
+				
+			</ul>
+		
+	</div>
+	<div class="ad_global_header">
+		 
+		 
+	</div>
+	<hr />
+</div>
+
+<div id="navbar" class="navbar">
+
+	<ul id="navtabs" class="navtabs floatcontainer">
+		
+	<li>
+	
+		<a class="navtab" href="http://forums.trossenrobotics.com/content.php?s=ee4c4796b87a456385ebcd6f7c12fc54">Home</a>
+	
+	</li>
+
+		
+			<li><a class="navtab" href="http://forums.trossenrobotics.com/forum.php?s=ee4c4796b87a456385ebcd6f7c12fc54">Forum</a></li>
+		
+		
+	<li><a class="navtab" href="http://forums.trossenrobotics.com/gallery/index.php?s=ee4c4796b87a456385ebcd6f7c12fc54">Gallery</a></li>
+ 
+		
+		
+	<li class="selected">
+	<a class="navtab" href="http://forums.trossenrobotics.com/tutorials/index.php?s=ee4c4796b87a456385ebcd6f7c12fc54">Community Tutorials</a>
+
+	
+		<ul class="floatcontainer ">
+
+			
+
+			<li><a href="http://forums.trossenrobotics.com/tutorials/newentry.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;c=128" rel="nofollow">Submit Tutorial</a></li>
+
+			<!-- 
+				<li class="popupmenu" id="vba_whatsnew">
+					<a class="popupctrl" href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/?s=ee4c4796b87a456385ebcd6f7c12fc54">What's New</a>
+					<ul class="popupbody popuphover">
+						<li class="blocksubhead">New Tutorials</li>
+						<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/?s=ee4c4796b87a456385ebcd6f7c12fc54">Since your last visit</a></li>
+						
+							<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/1/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 1 days</a></li>
+						
+							<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/3/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 3 days</a></li>
+						
+							<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/7/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 7 days</a></li>
+						
+							<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/14/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 14 days</a></li>
+						
+							<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/30/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 30 days</a></li>
+						
+							<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/entries/60/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 60 days</a></li>
+						
+						
+							<li class="blocksubhead">New Posts</li>
+							<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/posts/?s=ee4c4796b87a456385ebcd6f7c12fc54">Since your last visit</a></li>
+							
+								<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/posts/1/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 1 days</a></li>
+							
+								<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/posts/3/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 3 days</a></li>
+							
+								<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/posts/7/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 7 days</a></li>
+							
+								<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/posts/14/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 14 days</a></li>
+							
+								<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/posts/30/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 30 days</a></li>
+							
+								<li><a href="http://forums.trossenrobotics.com/tutorials/whatsnew/posts/60/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Last 60 days</a></li>
+							
+						
+					</ul>
+				</li>
+			 -->
+
+			
+			<!-- <li><a href="http://forums.trossenrobotics.com/tutorials/search.php?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">Search</a></li>-->
+
+			
+		</ul>
+	
+
+
+	</li>
+
+		
+		<li><a class="navtab" href="http://forums.trossenrobotics.com/newfaq.php">FAQ/Rules</a></li>
+		
+		
+		<li><a class="navtab" href="http://trossenrobotics.com">Store</a></li>
+		
+
+		
+	</ul>
+
+	
+	<div id="globalsearch" class="globalsearch">
+		<form action="http://forums.trossenrobotics.com/search.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=process" method="post" id="navbar_search" class="navbar_search">
+			
+			<input type="hidden" name="securitytoken" value="guest" />
+			<input type="hidden" name="do" value="process" />
+			<span class="textboxcontainer"><span><input type="text" value="" name="query" class="textbox" tabindex="99"/></span></span>
+			<span class="buttoncontainer"><span><input type="image" class="searchbutton" src="http://forums.trossenrobotics.com/images/buttons/search.png" name="submit" onclick="document.getElementById('navbar_search').submit;" tabindex="100"/></span></span>
+		</form>
+		<ul class="navbar_advanced_search">
+			<li><a href="http://forums.trossenrobotics.com/search.php?s=ee4c4796b87a456385ebcd6f7c12fc54" accesskey="4">Advanced Search</a></li>
+		</ul>
+	</div>
+	
+</div>
+</div><!-- closing div for above_body -->
+
+<div class="body_wrapper">
+<div id="breadcrumb" class="breadcrumb">
+	<ul class="floatcontainer">
+		<li class="navbithome"><a href="index.php?s=ee4c4796b87a456385ebcd6f7c12fc54" accesskey="1"><img src="http://forums.trossenrobotics.com/images/misc/navbit-home.png" alt="Home" /></a></li>
+
+		
+	<li class="navbit"><a href="http://forums.trossenrobotics.com/forum.php">Trossen Robotics Community</a></li>
+
+	<li class="navbit"><a href="http://forums.trossenrobotics.com/tutorials/index.php?s=ee4c4796b87a456385ebcd6f7c12fc54">Community Tutorials</a></li>
+
+	<li class="navbit"><a href="http://forums.trossenrobotics.com/tutorials/how-to-diy-128/?s=ee4c4796b87a456385ebcd6f7c12fc54">How To, DIY</a></li>
+
+		
+	<li class="navbit lastnavbit"><span>Complete Control Of An Arduino Via Serial</span></li>
+
+	</ul>
+	<hr />
+</div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<div id="pagetitle" class="pagetitle">
+	<h1>Tutorial: <span class="threadtitle"><a href="http://forums.trossenrobotics.com/tutorials/how-to-diy-128/complete-control-of-an-arduino-via-serial-3300/?s=ee4c4796b87a456385ebcd6f7c12fc54" title="Reload this Page">Complete Control Of An Arduino Via Serial</a></span></h1>
+	
+</div>
+
+
+
+
+
+<div id="thread_controls" class="thread_controls toolsmenu">
+	<div>
+		<ul id="postlist_popups" class="postlist_popups popupgroup">
+			<li class="popupmenu nohovermenu" id="entrytools">
+				<h6><a href="javascript://" class="popupctrl" rel="nofollow">Tutorial Options</a></h6>
+				<ul class="popupbody popuphover">
+					
+					
+					
+					
+					
+						<li><a href="http://forums.trossenrobotics.com/tutorials/misc.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=printfriendly&amp;e=3300" rel="nofollow">Show Printable Version</a></li>
+					
+					
+				</ul>
+			</li>
+			
+			
+
+
+			
+			
+		</ul>
+	</div>
+</div>
+
+
+<div id="postlist_entry" class="postlist">
+<ol id="posts_entry" class="posts" start="1">
+<li class="postbit postbitim postcontainer" id="entry_main">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+			<span class="postdate old">
+				<span class="date">01-12-2011 <span class="time">01:04 AM</span></span>
+			</span>
+			<span class="nodecontrols">
+				<img alt="" id="subimg_3300" src="http://forums.trossenrobotics.com/images/misc/subscribed.png" title="You are subscribed to this tutorial" style="display: none" />
+				<img alt="" id="favimg_3300" src="http://forums.trossenrobotics.com/tutorials/images/heart.gif" title="Favorite" style="display: none" />
+			</span>
+		</div>
+
+		<div class="userinfo">
+			<div class="contact">
+				
+					<a class="postuseravatarlink" href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54" title="">
+						<img src="http://forums.trossenrobotics.com/customavatars/avatar2643_5.gif" alt="ROBOTMAN's Avatar" />
+					</a>
+				
+				<div class="username_container">
+					
+						<a href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54">ROBOTMAN</a>
+						
+						<img class="inlineimg onlinestatus" src="http://forums.trossenrobotics.com/images/statusicon/user-offline.png" alt="ROBOTMAN is offline" border="0" />
+
+					
+					
+						<span class="usertitle">
+							Multi-Core Processor
+						</span>
+					
+					
+				</div>
+			</div>
+			<div class="userinfo_extra">
+				<dl class="userstats">
+					
+
+					
+						<dt>Category</dt> <dd><a href="http://forums.trossenrobotics.com/tutorials/how-to-diy-128/?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow">How To, DIY</a></dd>
+					
+					
+						<dt>Views</dt> <dd>7,761</dd>
+					
+					
+						
+							<dt>Replies</dt> <dd>3</dd>
+						
+					
+				</dl>
+				
+					<div class="imlinks">
+						<a href="javascript://" onclick="vba_imwindow('icq', '2643', 550, 550); return false;"><img src="http://forums.trossenrobotics.com/images/misc/im_icq.gif" alt="Send a message via ICQ to ROBOTMAN" /></a>    
+						
+							<a href="http://forums.trossenrobotics.com/tutorials/external.php?userids=2643"><img src="http://forums.trossenrobotics.com/tutorials/images/rss.gif" border="0" class="vba_icon" alt="" title="Subscribe to ROBOTMAN's Tutorials Via RSS" /></a>
+						
+					</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="postbody">
+		<div class="postrow">
+
+		<span class="vba_rating" id="entryrating_3300" title="0 votes - 0 average" style="float: right; width: 120px">&nbsp;</span>
+		<h2 class="posttitle icon">
+			
+			Complete Control Of An Arduino Via Serial
+		</h2>
+		<div class="content" id="ebit">
+
+			
+				<div style="padding-bottom: 10px">
+					
+						<dl class="stats">
+							<dt>Difficulty</dt>
+							<dd>Medium</dd>
+						</dl>
+					
+						<dl class="stats">
+							<dt>Estimated Time</dt>
+							<dd>1hr</dd>
+						</dl>
+					
+						<dl class="stats">
+							<dt>Skills Required</dt>
+							<dd>Knowledge Of Arduino Board<br />
+Knowledge Of Arduino Programing   </dd>
+						</dl>
+					
+						<dl class="stats">
+							<dt>Parts Required</dt>
+							<dd>Arduino<br />
+Computer<br />
+<br />
+</dd>
+						</dl>
+					
+						<dl class="stats">
+							<dt>Tools Required</dt>
+							<dd>Jumpers For Testing<br />
+</dd>
+						</dl>
+					
+				</div>
+			
+		
+			<blockquote class="postcontent restore">
+
+				
+			
+				<div style="text-align: left;"><font size="6">Controlling An Arduino Via Serial<br />
+<br />
+</font><font size="6"><font size="2">This is a in  depth tutorial on how control your arduino micro-controller via serial.  Unlike other tutorials I will not use the 'char' variable but  'unassigned long's' to store numbers much larger than 255  &quot;If this dose  not make sense I will explain later&quot;. <br />
+<br />
+This tutorial will focus on the serial control of the digital/analog  ports as well as servos but the concepts will be applicable to anything  you want to control. Also I will go over how to read data from the  digital and analog ports sending it back to the computer. <br />
+<br />
+For this tutorial I will just use the arduino <b>Serial Monitor</b> to  send and receive data but any language that can send and receive serial  data will be interface with the arduino with no modifications to the  code. Examples would be python, C, C++, Processing, an so on...    <br />
+<br />
+Before starting I assume you have an arduino board and have install the  standard programing environment. If not the boards and the programing  environment can be found here. I also assume you are familiar with the  arduino, and the basics of the language so I will skip over the setup.<br />
+<br />
+Also this is my first tutorial so keep that in mind while reading and please post a comment if you notice anything off.   <br />
+<font size="4"><br />
+<font size="2"><br />
+<br />
+</font></font></font></font><br />
+<font size="6"><font size="2"><font size="4"><font size="2"><font size="5">Serial Protocol<br />
+<br />
+</font></font></font></font></font><br />
+<font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">Before we jump into code we need to think about serial Protocol. How do we tell the arduino what we want it to do?<br />
+<br />
+A lot of peoples first thoughts for controlling the arduino is to send a  command in the form of words. For example  &quot;digital pin 4 on&quot;.  This  works OK, but because the arduino isn't human it dose not understand  English; so a command like that takes a lot more code to translate into  an action. Also that is quite a bit of data to send over the serial  port! <br />
+<br />
+The best way I have found to talk to the arduino is not with words but  with numbers. Each number we send will correspond to an action. In this  tutorial we will group the actions into three groups a '1' will change  the state of a pin &quot;analog/digital&quot;, a '2' will read data from a pin  &quot;analog/digital&quot;, and a '3' will control or read from a servo. <br />
+<br />
+By using numbers we can make it easy for the arduino to understand what  we want, but what about the extra variables the arduino needs to carry  out one of the above tasks? How do we tell the arduino to read an analog  pin not a digital one? Actually its simple just have another group  inside of the first; a '1' will read digital, a '2' will read analog.<br />
+Finally we need to get the variables the arduino needs; which in this  case is pin number. All you need to do for that is read a final number  from the serial port!<br />
+<br />
+So for example to &quot;read digital pin 4&quot; we would send '1 1 4'<br />
+To &quot;read analog pin 4&quot; we send '1 2 4'<br />
+<br />
+The full serial protocol for all the tasks I mentioned would look this:<br />
+<br />
+1 = Wright:<br />
+</font></font></font></font></font></font><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">          1 = digital:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;1 for LOW&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;2 for HIGH&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">          2 = analog:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;frequency (0-255)&quot;</font></font></font></font></font></font><br />
+</div></div><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2"> 2 = Read:<br />
+</font></font></font></font></font></font><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">      1 = digital:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">      2 = analog:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">    3 = Servo:<br />
+</font></font></font></font></font></font><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">      1 = read:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">      2 = wright:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot; position&quot;</font></font></font></font></font></font><br />
+</div></div><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2"> <br />
+<br />
+You may be wondering why make a group within a group when you could make  separate groups for analog read and analog wright? Really its my  personal preference once you understand the concepts you can do it any  way you want.                </font></font></font></font></font></font><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2"><br />
+<br />
+It may look complex but I found it to be the best way to do it. Also I don't have any good flow charts for it yet <img src="http://forums.trossenrobotics.com/tutorials/../images/smilies/robot/16x16_robot-very-happy.gif" border="0" alt="" /> . <br />
+<br />
+If you ever want to add a function like motor control or what ever else  is not covered by these categories just add a fourth position and so  on... <br />
+<br />
+Like this.<br />
+<br />
+</font></font></font></font></font></font><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">1 = Wright:<br />
+</font></font></font></font></font></font><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">          1 = digital:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;1 for LOW&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;2 for HIGH&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">          2 = analog:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;frequency (0-255)&quot;</font></font></font></font></font></font><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2"><br />
+<br />
+</font></font></font></font></font></font></div></div><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">2 = Read:</font></font></font></font></font></font><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">1 = digital:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">                    &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">      2 = analog:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">    3 = Servo:<br />
+</font></font></font></font></font></font><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">      1 = read:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">      2 = wright:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot;pin number&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">            &quot; position&quot;</font></font></font></font></font></font><br />
+</div></div><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2"> 4 = Your Function:<br />
+</font></font></font></font></font></font><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">       1 = Your Sub Function:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">             &quot;your variables&quot;</font></font></font></font></font></font><br />
+</div></div><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">       2 = Your Sub Function:</font></font></font></font></font></font><br />
+</div><div style="margin-left:40px"><div style="margin-left:40px"><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2">             &quot;your variables&quot;</font></font></font></font></font></font><br />
+</div></div><font size="6"><font size="2"><font size="4"><font size="2"><font size="5"><font size="2"> <br />
+OK now that you have a general idea of the protocol I will be using lets jump into the code!   </font></font></font></font></font></font><br />
+<br />
+<font size="5">Code</font><br />
+<font size="6"><font size="2"><br />
+Disclaimer: I will not go into great depth about the assigning of arrays  or really any code that dose not pertain to serial &quot;this includes the  servo library&quot;. So of something like this looks foreign <u><b>myservos[pinNumber] = Servo s1;  </b></u>you may need to read up on the arduino documentation found <a href="http://arduino.cc/en/Tutorial/HomePage" target="_blank">here</a>  before preceding. Also some of this code deals with variable scope so  make sure you know the programing basics. However even if you have  limited experience many of the code examples as far as getting the  serial data may be extremely useful. Also at the end there is an  attached file with the complete and working code and the final example  will show the complete program.     <br />
+<br />
+<br />
+<font size="4">Step 1:</font><br />
+<br />
+The first step is to figure out how to receive serial data from the computer. The easiest way to do this is with the <u><b>Serial.read()</b></u> statement. Sending data is accomplished a similar way with the <u><b>Serial.print()  </b></u>or <u><b>Serial.println()</b></u> statements. The first statement simply prints the data you want, and the other dose the same thing but with a <u><b>/r/n  </b></u>newline characters on the end. <br />
+<br />
+So lets try a simple program. <br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:204px;">int serialData = 0;
+
+void setup()
+{
+  Serial.begin(9600);  
+}
+
+void loop()
+{
+  if (Serial.available() &gt; 0)
+  {
+    serialData = Serial.read();
+    Serial.println(serialData);
+  }  
+}</pre>
+</div>I'll skip over the basics like the assigning of the variable, but  whats happening here is the serial is being started at a &quot;9600&quot; data  rate <u><b>Serial.begin(9600);</b></u> <br />
+<br />
+Next we check if there is new data available <b><u> if (Serial.available() &gt; 0) </u></b> <br />
+<br />
+Finally we read the data <u><b>serialData = Serial.read();</b></u> and print it back over the same serial port <u><b>Serial.println(serialData);</b></u>  <br />
+<br />
+If you run this program and open the serial monitor you should have what  ever you type echoed back but in ASCII . There for 1 = 49, 2 = 50 and  so on... An ASCII chart is available <a href="http://www.ascii.cl/" target="_blank">here</a> . <br />
+<br />
+<font size="4">Step 2:<br />
+<br />
+<font size="2">Now time to make things more complicated. As you may have  noticed the arduino only receives 1 piece of data at a time. This works  OK if we are only needed to send numbers between 0-9 but we want to be  able to tell a servo to go to position 180 right? This is where we need  to take multiple numbers one at a time and combine them into one big  number.<br />
+<br />
+This is where some very basic math comes in here is our formula.<br />
+<br />
+<br />
+x = number we want<br />
+n = our current number<br />
+i = number we want to add to the end<br />
+<br />
+ x = n * 10 + i <br />
+<br />
+As you can see this simple attaches the number received to the end of  the number we are making. Now we can append each new number to the end  of what will be come our final number. <br />
+<br />
+Lets translate this into code. The variables used through this tutorial will be:<br />
+<br />
+unassigned long serialdata;  Used to store the chain of numbers<br />
+int inbyte; The number we just received from the serial port<br />
+<br />
+So the formula looks like this to the arduino:<br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:36px;">serialdata = serialdata * 10 + inbyte;</pre>
+</div><font size="4"><font size="2"><br />
+<br />
+This gives us a number we can use to determine which function the user  wants to run 1, 2, or 3. Or we can plug it directly into a varable like <u><b>pinNumber</b></u> or <u><b>servoPose</b></u> . <br />
+<br />
+So lets modify the old program to combine the numbers like this. <br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:228px;">unsigned long serialdata;
+int inbyte;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  inbyte = Serial.read();  
+    if (inbyte &gt; 0)
+    { 
+      serialdata = serialdata * 10 + inbyte;
+      Serial.println(serialdata);
+    }
+}</pre>
+</div>This should output the combined value of numbers you input via  serial. If strange numbers come up things may be being printed in ASCII.  I'm not 100% sure why the arduino sometimes nor am I sure how to fix it  but the variable its self is OK and everything but the Serial.println()  statement will see it correctly.  <br />
+<font size="4"><font size="2"><br />
+You have probably noticed by now that the program just jumbles all the  values you enter into one giant variable? But if it takes three numbers  to read a analog pin '1' '2' '7' wouldn't the function combine that all  in to '127' ? If it did that our program would fail. We need a way to  tell the program when one number begins and the next ends. I like to do  that with the '/' character. Because our program only receives numbers  the '/' character will never be sent so we can use it as a special  character. In this case it will signify the end of a number. <br />
+<br />
+Code to implement this '/' number terminator is below:<br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:372px;">unsigned long serialdata;
+int inbyte;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  getSerial();
+}
+
+long getSerial()
+{
+  serialdata = 0;
+  while (inbyte != '/')
+  {
+    inbyte = Serial.read();  
+    if (inbyte &gt; 0 &amp;&amp; inbyte != '/')
+    { 
+      serialdata = serialdata * 10 + inbyte - '0';
+      Serial.println(serialdata);
+    }
+  }
+  
+  return serialdata;
+  inbyte = 0;
+}</pre>
+</div><font size="4"><font size="2">     <br />
+<br />
+As you can see I  migrated the all the code to a separate function. This will come in  handy later when we are writing the final program. This will print the  current number every time you add a number then clear the data when you  send a '/' . Also it will return the variable <u><b>serialdata</b></u>  so code in the main loop can use it. <br />
+<br />
+Congrats!  The serial data gathering part is over! For beginners and experts alike  the above function can be very useful for getting numbers from the  serial port. If you want to see how the protocol I went over way back at  the beginning works and create the program for controlling the arduino  keep reading.<br />
+<br />
+<font size="4">Step 3:</font> <br />
+<br />
+Now we need  to build the program that requests and handles the serial data. Remember  our end goal is to control the analog/digital ports, servos, and read  the analog/digital ports. So lets begin. <br />
+<br />
+Now we see the serial  protocol way back at the beginning come into full play. I will be using  &quot;switch/case&quot; statements but &quot;if&quot; statements work just as well. Info on  those can be found <a href="http://www.arduino.cc/en/Reference/SwitchCase" target="_blank">here</a> and <a href="http://www.arduino.cc/en/Reference/If" target="_blank">here</a> .  The reason I chose to use a switch/case statement is because it is easier to expand on. <br />
+<br />
+So lets start by adding data to control analog/digital pins. I'll use the program I just made as a base to build the code on. <br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:372px;">unsigned long serialdata;
+int inbyte;
+int digitalState;
+int pinNumber;
+int analogRate;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  getSerial();
+  switch(serialdata)
+  {
+  case 1:
+    {
+      //analog digital write
+      getSerial();
+      switch (serialdata)
+      {
+      case 1:
+        {
+          //analog write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          analogRate = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          analogWrite(pinNumber, analogRate);
+          pinNumber = 0;
+          break;
+        }
+      case 2:
+        {
+          //digital write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          digitalState = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          if (digitalState == 0)
+          {
+            digitalWrite(pinNumber, LOW);
+          }
+          if (digitalState == 1)
+          {
+            digitalWrite(pinNumber, HIGH);
+          }
+          pinNumber = 0;
+          break;
+          
+        }
+     }
+     break; 
+   }
+  }
+}
+
+long getSerial()
+{
+  serialdata = 0;
+  while (inbyte != '/')
+  {
+    inbyte = Serial.read(); 
+    if (inbyte &gt; 0 &amp;&amp; inbyte != '/')
+    {
+     
+      serialdata = serialdata * 10 + inbyte - '0';
+    }
+  }
+  inbyte = 0;
+  return serialdata;
+}</pre>
+</div><font size="4"><font size="2">  <br />
+<br />
+<font size="4">Here is the new code minus new variables:</font><br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:372px;">getSerial();
+  switch(serialdata)
+  {
+  case 1:
+    {
+      //analog digital write
+      getSerial();
+      switch (serialdata)
+      {
+      case 1:
+        {
+          //analog write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          analogRate = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          analogWrite(pinNumber, analogRate);
+          pinNumber = 0;
+          break;
+        }
+      case 2:
+        {
+          //digital write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          digitalState = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          if (digitalState == 0)
+          {
+            digitalWrite(pinNumber, LOW);
+          }
+          if (digitalState == 1)
+          {
+            digitalWrite(pinNumber, HIGH);
+          }
+          pinNumber = 0;
+          break;
+          
+        }
+     }
+     break; 
+   }
+  }</pre>
+</div><font size="4"><font size="2"> <br />
+<br />
+This may look very complex but its function is simple turn analog/digital ports on and off. As you can see every time the <u><b>getSerial();</b></u> command is called the value stored in <u><b>serialdata</b></u>  is updated. That allows us to check if it is a known command or assign  it to a variable depending on what part of the loop we are at. <br />
+<br />
+With this code added sending a command like '1/2/7/1/' will turn pin 7 on HIGH<br />
+Sending '1/2/7/0/' would turn it off<br />
+Sending '1/1/7/255/' would turn pin 7 on at a analog rate of 255 or full power<br />
+And so on...<br />
+<br />
+Each case statement has a <u><b>getSerial();</b></u> statement before it so that when it determines which case the user wants to run the data us up to date.<br />
+The  first two numbers are fed into switch statements each switch branches  of to the correct commands for the numbers received.   <br />
+The third number received is stored in <u><b>pinNumbe</b></u>r  and that is used to initialize the pin and write to the pin. The fourth  number received is the state between 1-2 for digital and 0-255 for  analog.         <br />
+<br />
+That covers the important points of that  function now lets move on to reading values. As I said I will not  really go over the code line by line but instead brush over the  important parts concerning serial. <br />
+<br />
+Now lets add our analog/digital read code.   <br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:372px;">unsigned long serialdata;
+int inbyte;
+int digitalState;
+int pinNumber;
+int analogRate;
+int sensorVal;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  getSerial();
+  switch(serialdata)
+  {
+  case 1:
+    {
+      //analog digital write
+      getSerial();
+      switch (serialdata)
+      {
+      case 1:
+        {
+          //analog write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          analogRate = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          analogWrite(pinNumber, analogRate);
+          pinNumber = 0;
+          break;
+        }
+      case 2:
+        {
+          //digital write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          digitalState = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          if (digitalState == 1)
+          {
+            digitalWrite(pinNumber, LOW);
+          }
+          if (digitalState == 2)
+          {
+            digitalWrite(pinNumber, HIGH);
+          }
+          pinNumber = 0;
+          break;
+         
+        }
+     }
+     break; 
+    }
+    case 2:
+    {
+      getSerial();
+      switch (serialdata)
+      {
+      case 1:
+        {
+          //analog read
+          getSerial();
+          pinNumber = serialdata;
+          pinMode(pinNumber, INPUT);
+          sensorVal = analogRead(pinNumber);
+          Serial.println(sensorVal);
+          sensorVal = 0;
+          pinNumber = 0;
+          break;
+        } 
+      case 2:
+        {
+          //digital read
+          getSerial();
+          pinNumber = serialdata;
+          pinMode(pinNumber, INPUT);
+          sensorVal = digitalRead(pinNumber);
+          Serial.println(sensorVal);
+          sensorVal = 0;
+          pinNumber = 0;
+          break;
+        }
+      }
+      break;
+    }
+  }
+}
+
+long getSerial()
+{
+  serialdata = 0;
+  while (inbyte != '/')
+  {
+    inbyte = Serial.read(); 
+    if (inbyte &gt; 0 &amp;&amp; inbyte != '/')
+    {
+     
+      serialdata = serialdata * 10 + inbyte - '0';
+    }
+  }
+  inbyte = 0;
+  return serialdata;
+}</pre>
+</div><font size="4"><font size="2"><br />
+<font size="4">And here is what was added minus new variables:</font><br />
+<br />
+</font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:372px;">case 2:
+    {
+      getSerial();
+      switch (serialdata)
+      {
+      case 1:
+        {
+          //analog read
+          getSerial();
+          pinNumber = serialdata;
+          pinMode(pinNumber, INPUT);
+          sensorVal = analogRead(pinNumber);
+          Serial.println(sensorVal);
+          sensorVal = 0;
+          pinNumber = 0;
+          break;
+        } 
+      case 2:
+        {
+          //digital read
+          getSerial();
+          pinNumber = serialdata;
+          pinMode(pinNumber, INPUT);
+          sensorVal = digitalRead(pinNumber);
+          Serial.println(sensorVal);
+          sensorVal = 0;
+          pinNumber = 0;
+          break;
+        }
+      }
+      break;
+    }</pre>
+</div>As you can see the same principles used in the first one apply to this. <br />
+First two numbers determine which case we want. <br />
+Third number is stored in <u><b>pinNumber</b></u> and used to determine which pin to read. <br />
+<br />
+However a statement I introduced back at the beginning is added <u><b>Serial.println();</b></u>  this is used to print the sensors value back to the computer via  serial. If you are using serial monitor when running a command like  '2/1/7/' you should get a value.<br />
+<br />
+That sums up the analog/digital read one more step to go!<br />
+<br />
+The  servo code is the most complex in my opinion and I may have done things  poorly/strangely so feel free to leave a comment asking WTF and  recommending a better way to do things.<br />
+<br />
+<div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:372px;">#include &lt;Servo.h&gt;
+
+unsigned long serialdata;
+int inbyte;
+int servoPose;
+int servoPoses[80] = {};
+int attachedServos[80] = {};
+int servoPin;
+int pinNumber;
+int sensorVal;
+int analogRate;
+int digitalState;
+Servo myservo[] = {};
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  getSerial();
+  switch(serialdata)
+  {
+  case 1:
+    {
+      //analog digital write
+      getSerial();
+      switch (serialdata)
+      {
+      case 1:
+        {
+          //analog write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          analogRate = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          analogWrite(pinNumber, analogRate);
+          pinNumber = 0;
+          break;
+        }
+      case 2:
+        {
+          //digital write
+          getSerial();
+          pinNumber = serialdata;
+          getSerial();
+          digitalState = serialdata;
+          pinMode(pinNumber, OUTPUT);
+          if (digitalState == 1)
+          {
+            digitalWrite(pinNumber, LOW);
+          }
+          if (digitalState == 2)
+          {
+            digitalWrite(pinNumber, HIGH);
+          }
+          pinNumber = 0;
+          break;
+         
+        }
+     }
+     break; 
+    }
+    case 2:
+    {
+      getSerial();
+      switch (serialdata)
+      {
+      case 1:
+        {
+          //analog read
+          getSerial();
+          pinNumber = serialdata;
+          pinMode(pinNumber, INPUT);
+          sensorVal = analogRead(pinNumber);
+          Serial.println(sensorVal);
+          sensorVal = 0;
+          pinNumber = 0;
+          break;
+        } 
+      case 2:
+        {
+          //digital read
+          getSerial();
+          pinNumber = serialdata;
+          pinMode(pinNumber, INPUT);
+          sensorVal = digitalRead(pinNumber);
+          Serial.println(sensorVal);
+          sensorVal = 0;
+          pinNumber = 0;
+          break;
+        }
+      }
+      break;
+    }
+    case 3:
+    {
+      getSerial();
+      switch (serialdata)
+      {
+        case 1:
+        {
+           //servo read
+           getSerial();
+           servoPin = serialdata;
+           Serial.println(servoPoses[servoPin]);
+           break;
+        }
+        case 2:
+        {
+           //servo write
+           getSerial();
+           servoPin = serialdata;
+           getSerial();
+           servoPose = serialdata;
+           if (attachedServos[servoPin] == 1)
+           {
+             myservo[servoPin].write(servoPose);
+           }
+           if (attachedServos[servoPin] == 0)
+           {
+             Servo s1;
+             myservo[servoPin] = s1;
+             myservo[servoPin].attach(servoPin);
+             myservo[servoPin].write(servoPose);
+             attachedServos[servoPin] = 1;
+           }
+           servoPoses[servoPin] = servoPose;
+           break;
+        }
+        case 3:
+        {
+          //detach
+          getSerial();
+          servoPin = serialdata;
+          if (attachedServos[servoPin] == 1)
+          {
+            myservo[servoPin].detach();
+            attachedServos[servoPin] = 0;  
+          }
+        }
+      }
+    break;
+    }
+  }
+}
+
+long getSerial()
+{
+  serialdata = 0;
+  while (inbyte != '/')
+  {
+    inbyte = Serial.read(); 
+    if (inbyte &gt; 0 &amp;&amp; inbyte != '/')
+    {
+     
+      serialdata = serialdata * 10 + inbyte - '0';
+    }
+  }
+  inbyte = 0;
+  return serialdata;
+}</pre>
+</div><font size="4"><font size="2"><br />
+<font size="4">Here is the added code minus the variables:<br />
+<font size="2"><br />
+<br />
+</font></font></font></font><div class="bbcode_container">
+	<div class="bbcode_description">Code:</div>
+	<pre class="bbcode_code"style="height:372px;"> case 3:
+    {
+      getSerial();
+      switch (serialdata)
+      {
+        case 1:
+        {
+           //servo read
+           getSerial();
+           servoPin = serialdata;
+           Serial.println(servoPoses[servoPin]);
+           break;
+        }
+        case 2:
+        {
+           //servo write
+           getSerial();
+           servoPin = serialdata;
+           getSerial();
+           servoPose = serialdata;
+           if (attachedServos[servoPin] == 1)
+           {
+             myservo[servoPin].write(servoPose);
+           }
+           if (attachedServos[servoPin] == 0)
+           {
+             Servo s1;
+             myservo[servoPin] = s1;
+             myservo[servoPin].attach(servoPin);
+             myservo[servoPin].write(servoPose);
+             attachedServos[servoPin] = 1;
+           }
+           servoPoses[servoPin] = servoPose;
+           break;
+        }
+        case 3:
+        {
+          //detach
+          getSerial();
+          servoPin = serialdata;
+          if (attachedServos[servoPin] == 1)
+          {
+            myservo[servoPin].detach();
+            attachedServos[servoPin] = 0;  
+          }
+        }
+      }
+    break;
+    }</pre>
+</div><font size="4"><font size="2"><br />
+There  it is! Full serial control of analog/digital, servos, and  analog/digital read. You will see in the servo code there is three  cases, that is because there is an attach/write function, detach  function, and a read function that returns the current position of a  servo or a '0' if its not set. <br />
+<br />
+I will go over the variables for the final piece of servo code just because there are so many. <br />
+<br />
+int servoPoses[80] = {}; <br />
+Stores the current position of all the servos<br />
+<br />
+int attachedServos[80] = {};<br />
+If  a servo is attached the value corresponding to the pin number is set to  one; this is important so you don't attach the same servo twice. <br />
+<br />
+Servo myservo[] = {};<br />
+Stores all the servo object in an array so they are easy to access<br />
+<br />
+int servoPin;<br />
+Pin of the servo the user wants<br />
+<br />
+int servoPose;<br />
+Position the user wants the specified servo to go to <br />
+<br />
+That sums up the coding part of this tutorial.<br />
+<br />
+</font></font><br />
+<font size="5">Tips &amp; Tricks<br />
+<br />
+</font><br />
+<font size="4"><font size="2">Finally I would like to go over some key concepts/extra information you may need. <br />
+<br />
+Most  importantly is the serial bus length. The arduino has a serial bus  length of I believe 128bits but for the life of me I could not find it  on google. If you send to many numbers at once and the arduino dose not  read them fast enough it will overflow and any data you pile on it will  be lost! A good method to prevent this is called handshaking where the  arduino asks the computer for data then the computer sends sends it, and  the process repeats... I may go over that in a new tutorial but this  one is getting to long.<br />
+<br />
+You may have noticed that I never really  went over the computer side of the equation besides mentioning the  serial monitor on the arduino IDE. The main reason is there are tons of  program languages and they are all different. Making a example for each  one would be very difficult.<br />
+<br />
+However I will include two programs  in the attached file with the arduino code made in python. On lights up  lights sequentially on pins 1-13 in the &quot;knight rider&quot; style. The other  cycles two servos between 0-180 degrees. To run the programs you will  need pyserial installed. Also make sure you edit s = serial.Serial(<font color="Red">2</font>, 9600, timeout = 2) to reflect your serial port -1 .<br />
+<br />
+Here is a video of the &quot;knight rider&quot; style led display:<br />
+<br />
+</font></font><object width="425" height="350"><param name="movie" value="http://www.youtube.com/v/http://www.youtube.com/watch?v=gZtYLvO5PwU"></param><embed src="http://www.youtube.com/v/http://www.youtube.com/watch?v=gZtYLvO5PwU" type="application/x-shockwave-flash" width="425" height="350"></embed></object><br />
+<font size="4"><font size="2"> <br />
+Thanks for reading!    <br />
+<br />
+ <font color="Red"><font size="4">There is an error with the youtube video<br />
+<br />
+For now the youtube link is:<br />
+<br />
+<a href="http://www.youtube.com/watch?v=gZtYLvO5PwU" target="_blank">http://www.youtube.com/watch?v=gZtYLvO5PwU</a><br />
+<br />
+Sorry!<br />
+</font></font> </font></font><br />
+<br />
+</div>
+
+			</blockquote>
+
+			
+
+			
+
+			
+				<div class="attachments">
+					<fieldset class="postcontent">
+						<legend><img alt="" src="http://forums.trossenrobotics.com/images/misc/paperclip.png" class="inlineimg" /> Attached Files</legend>
+						<ul style="display: inline">
+						<li style="display: inline">
+	
+		<img class="inlineimg" src="http://forums.trossenrobotics.com/images/attach/zip.gif" alt="File Type: zip" border="0" /> <a href="http://forums.trossenrobotics.com/tutorials/attachment.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;attachmentid=292&amp;d=1295727822">code</a> (1.34 KB, 100 views)
+	
+</li> 
+						</ul>
+					</fieldset>
+				</div>
+			
+			
+			
+
+		</div>
+			
+				<blockquote class="signature restore"><div class="signaturecontainer">Dalton Caughell</div></blockquote>
+			
+
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols">
+			<span class="postcontrols">
+				
+			</span>
+
+			<span class="postlinking">
+				
+				
+
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+</ol>
+</div>
+
+
+	<br />
+
+	
+	<div class="navlinks">
+		&laquo; <a href="http://forums.trossenrobotics.com/tutorials/showentry.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;e=3300&amp;goto=previous&amp;catid=128" rel="nofollow">Previous Tutorial</a> | <a href="http://forums.trossenrobotics.com/tutorials/showentry.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;e=3300&amp;goto=next&amp;catid=128" rel="nofollow">Next Tutorial</a> &raquo;
+	</div>
+
+
+
+
+	<div style="float: right">
+		
+	</div>
+	<div class="vba_heading">Replies to Tutorial: Complete Control Of An Arduino Via Serial</div>
+
+	
+
+	<div id="postlist" class="postlist">
+		<ol id="posts" class="posts" start="1">
+			
+<li class="postbit postbitim postcontainer old" id="post_372">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">01-13-2011</span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo">
+			<div class="contact">
+				
+					<a class="postuseravatarlink" href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54" title="ROBOTMAN is offline">
+						
+							<img src="http://forums.trossenrobotics.com/customavatars/avatar2643_5.gif" alt="ROBOTMAN's Avatar" />
+						
+					</a>
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54" title="ROBOTMAN is offline"><strong>ROBOTMAN</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/profile.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/forum.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/search.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=finduser&amp;userid=2643&amp;contenttype=vBForum_Post&amp;showposts=1" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+		<li class="right">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/article.png" alt="" />
+			<a href="list.php/author/2643-ROBOTMAN" rel="nofollow">
+				View Articles
+			</a>
+		</li>
+		
+
+		
+
+		
+					
+		<li class="left">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/photo.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/gallery/browseimages.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=member&amp;imageuser=2643">
+				View Gallery Uploads
+			</a>
+		</li>		
+		
+	 
+	</ul>
+</div>
+
+						<img class="inlineimg onlinestatus" src="http://forums.trossenrobotics.com/images/statusicon/user-offline.png" alt="ROBOTMAN is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Multi-Core Processor
+					</span>
+					
+
+                                        
+					
+						<span class="postbit_reputation" id="repdisplay_372_2643"><img class="repimg" src="http://forums.trossenrobotics.com/images/reputation/reputation_pos.png" alt="ROBOTMAN " /></span>
+					
+					
+						<div class="imlinks">
+							<a href="javascript://" onclick="vba_imwindow('icq', '2643', 550, 550); return false;"><img src="http://forums.trossenrobotics.com/images/misc/im_icq.gif" alt="Send a message via ICQ to ROBOTMAN" /></a>    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Dec 2008</dd>
+						<dt>Location</dt> <dd>Washington</dd>
+						
+						<dt>Posts</dt> <dd>306</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			Re: Advanced Control Of An Arduino Via Serial
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_372">
+				<blockquote class="postcontent restore">
+					Problem fixed
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+
+                        	
+		        
+			
+			<blockquote class="signature restore"><div class="signaturecontainer">Dalton Caughell</div></blockquote>
+			
+
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_372" src="http://forums.trossenrobotics.com/images/misc/progress.gif" alt="" />
+				
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					
+					&nbsp;<a class="report" href="misc.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=report&amp;type=post&amp;epostid=372" rel="nofollow" title="Report Post"><!-- <img src="http://forums.trossenrobotics.com/images/buttons/report-40b.png" alt="Report Post" /> -->&nbsp;</a> &nbsp;
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_376">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">03-10-2011</span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="http://forums.trossenrobotics.com/member.php?5428-noonv&amp;s=ee4c4796b87a456385ebcd6f7c12fc54" title="noonv is offline"><strong>noonv</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/profile.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/member.php?5428-noonv&amp;s=ee4c4796b87a456385ebcd6f7c12fc54">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/forum.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/search.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=finduser&amp;userid=5428&amp;contenttype=vBForum_Post&amp;showposts=1" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+		<li class="right">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/article.png" alt="" />
+			<a href="list.php/author/5428-noonv" rel="nofollow">
+				View Articles
+			</a>
+		</li>
+		
+
+		
+
+		
+					
+		<li class="left">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/photo.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/gallery/browseimages.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=member&amp;imageuser=5428">
+				View Gallery Uploads
+			</a>
+		</li>		
+		
+	 
+	</ul>
+</div>
+
+						<img class="inlineimg onlinestatus" src="http://forums.trossenrobotics.com/images/statusicon/user-offline.png" alt="noonv is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Abacus
+					</span>
+					
+
+                                        
+					
+						<span class="postbit_reputation" id="repdisplay_376_5428"><img class="repimg" src="http://forums.trossenrobotics.com/images/reputation/reputation_pos.png" alt="noonv " /></span>
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Mar 2011</dd>
+						<dt>Location</dt> <dd>Kaliningrad</dd>
+						
+						<dt>Posts</dt> <dd>1</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			Re: Complete Control Of An Arduino Via Serial
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_376">
+				<blockquote class="postcontent restore">
+					What about Firmata protocol?
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+
+                        	
+		        
+			
+
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_376" src="http://forums.trossenrobotics.com/images/misc/progress.gif" alt="" />
+				
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					
+					&nbsp;<a class="report" href="misc.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=report&amp;type=post&amp;epostid=376" rel="nofollow" title="Report Post"><!-- <img src="http://forums.trossenrobotics.com/images/buttons/report-40b.png" alt="Report Post" /> -->&nbsp;</a> &nbsp;
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_378">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">04-17-2011</span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo">
+			<div class="contact">
+				
+					<a class="postuseravatarlink" href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54" title="ROBOTMAN is offline">
+						
+							<img src="http://forums.trossenrobotics.com/customavatars/avatar2643_5.gif" alt="ROBOTMAN's Avatar" />
+						
+					</a>
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54" title="ROBOTMAN is offline"><strong>ROBOTMAN</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/profile.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/member.php?2643-ROBOTMAN&amp;s=ee4c4796b87a456385ebcd6f7c12fc54">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/forum.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/search.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=finduser&amp;userid=2643&amp;contenttype=vBForum_Post&amp;showposts=1" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+		<li class="right">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/article.png" alt="" />
+			<a href="list.php/author/2643-ROBOTMAN" rel="nofollow">
+				View Articles
+			</a>
+		</li>
+		
+
+		
+
+		
+					
+		<li class="left">
+			<img src="http://forums.trossenrobotics.com/images/site_icons/photo.png" alt="" />
+			<a href="http://forums.trossenrobotics.com/gallery/browseimages.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=member&amp;imageuser=2643">
+				View Gallery Uploads
+			</a>
+		</li>		
+		
+	 
+	</ul>
+</div>
+
+						<img class="inlineimg onlinestatus" src="http://forums.trossenrobotics.com/images/statusicon/user-offline.png" alt="ROBOTMAN is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Multi-Core Processor
+					</span>
+					
+
+                                        
+					
+						<span class="postbit_reputation" id="repdisplay_378_2643"><img class="repimg" src="http://forums.trossenrobotics.com/images/reputation/reputation_pos.png" alt="ROBOTMAN " /></span>
+					
+					
+						<div class="imlinks">
+							<a href="javascript://" onclick="vba_imwindow('icq', '2643', 550, 550); return false;"><img src="http://forums.trossenrobotics.com/images/misc/im_icq.gif" alt="Send a message via ICQ to ROBOTMAN" /></a>    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Dec 2008</dd>
+						<dt>Location</dt> <dd>Washington</dd>
+						
+						<dt>Posts</dt> <dd>306</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			Re: Complete Control Of An Arduino Via Serial
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_378">
+				<blockquote class="postcontent restore">
+					Firmata protocol, &quot;which I researched quickly before starting this project&quot; seems to be only for low level control of the arduino. The intent of my project was not low level control &quot;although  it is featured in the main examples&quot; instead when I created the the code my intent was an easy way to call and pass variables to complex &quot;functions&quot; on the arduino. <br />
+<br />
+For example a specific motor drivers requires a specific signal type and style. Using my method all you could wright a complex unique motor control &quot;function&quot; for sending commands and keeping track of speed. All the computer would do is send a few numbers i.e. speed, duration, acceleration then the arduino would do all the complex calculations, pid, and communications. <br />
+<br />
+It may be possible to do the same thing using firmata but with much more unnecessary computer involvement and in the end much slower speeds. <br />
+<br />
+I hope this clarifies why you would choose a method like this over firmata, but I still feel I have done a bad job explaining it.
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+
+                        	
+		        
+			
+			<blockquote class="signature restore"><div class="signaturecontainer">Dalton Caughell</div></blockquote>
+			
+
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_378" src="http://forums.trossenrobotics.com/images/misc/progress.gif" alt="" />
+				
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					
+					&nbsp;<a class="report" href="misc.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=report&amp;type=post&amp;epostid=378" rel="nofollow" title="Report Post"><!-- <img src="http://forums.trossenrobotics.com/images/buttons/report-40b.png" alt="Report Post" /> -->&nbsp;</a> &nbsp;
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+		</ol>
+
+		<div class="separator"></div>
+
+		<div class="postlistfoot">
+			
+		</div>
+	</div>
+
+	
+
+	<div id="below_postlist" class="below_postlist">
+		<a href="http://forums.trossenrobotics.com/tutorials/newreply.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;e=3300" rel="nofollow" class="newcontent_textcontrol" id="newreplylink_bottom">Reply To Tutorial</a>
+
+		<div id="pagination_bottom" class="pagination_bottom">
+			
+		</div>
+		
+		<div class="clear"></div>
+<div class="navpopupmenu popupmenu nohovermenu" id="vba_dyna_navpopup">
+	
+		<span class="shade">Quick Navigation</span>
+		<a href="http://forums.trossenrobotics.com/tutorials/how-to-diy-128/?s=ee4c4796b87a456385ebcd6f7c12fc54" class="popupctrl"><span class="ctrlcontainer">How To, DIY</span></a>
+	
+	<a href="tutorials/how-to-diy-128/complete-control-of-an-arduino-via-serial-3300/#top" class="textcontrol" onclick="document.location.hash='top';return false;">Top</a>
+	<ul class="navpopupbody popupbody popuphover">
+		<li class="optionlabel">Site Areas</li>
+		<li><a href="/index.php">Home</a></li>
+		<li><a href="/browsecategory.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=favorites">My Favorites</a></li>
+		<li><a href="/browsecategory.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=subscriptions">My Subscriptions</a></li>
+		<li><a href="/browsecategory.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=newentries">What's New</a></li>
+		<li><a href="/browsecategory.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=popentries">What's Popular</a></li>
+		<li><a href="/search.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;do=search">Search</a></li>
+		
+			<li class="optionlabel">Categories</li>
+			<li class="d0"><a href="http://forums.trossenrobotics.com/tutorials/how-to-diy-128/?s=ee4c4796b87a456385ebcd6f7c12fc54">How To, DIY</a></li><li class="d0"><a href="http://forums.trossenrobotics.com/tutorials/introduction-129/?s=ee4c4796b87a456385ebcd6f7c12fc54">Introduction</a></li><li class="d0"><a href="http://forums.trossenrobotics.com/tutorials/build-articles-130/?s=ee4c4796b87a456385ebcd6f7c12fc54">Build Articles</a></li><li class="d0"><a href="http://forums.trossenrobotics.com/tutorials/product-feature-demos-131/?s=ee4c4796b87a456385ebcd6f7c12fc54">Product Feature, Demos</a></li><li class="d0"><a href="http://forums.trossenrobotics.com/tutorials/mod-hack-132/?s=ee4c4796b87a456385ebcd6f7c12fc54">Mod, Hack</a></li><li class="d0"><a href="http://forums.trossenrobotics.com/tutorials/published-product-reviews-124/?s=ee4c4796b87a456385ebcd6f7c12fc54">Published Product Reviews</a></li>
+		
+	</ul>
+</div> 
+
+	</div>
+
+
+<br />
+
+
+
+
+
+
+	<script type="text/javascript">
+	<!--
+	vBulletin.register_control("vB_Lightbox_Container", "ebit", 0);
+	//-->
+	</script>
+	
+
+
+
+<!-- Do NOT remove this copyright notice. Doing so is a violation of your license agreement! -->
+<br />
+<div align="center"></div> <!-- vBadvanced 6-9-5-2-7 -->
+<div style="clear: left">
+  
+   
+</div>
+
+<div id="footer" class="floatcontainer footer">
+
+	<form action="forum.php" method="get" id="footer_select" class="footer_select">
+
+			
+		
+		
+		
+	</form>
+
+	<ul id="footer_links" class="footer_links">
+		<li><a href="sendmessage.php?s=ee4c4796b87a456385ebcd6f7c12fc54" rel="nofollow" accesskey="9">Contact Us</a></li>
+		<li><a href="http://forums.trossenrobotics.com">Trossen Robotics Community</a></li>
+		
+		
+		<li><a href="http://forums.trossenrobotics.com/archive/index.php?s=ee4c4796b87a456385ebcd6f7c12fc54"></a></li>
+		
+		
+		
+		<li><a href="tutorials/how-to-diy-128/complete-control-of-an-arduino-via-serial-3300/#top" onclick="document.location.hash='top'; return false;">Top</a></li>
+	</ul>
+	
+	
+	
+	
+	<script type="text/javascript">
+	<!--
+		// Main vBulletin Javascript Initialization
+		vBulletin_init();
+	//-->
+	</script>
+        
+</div>
+</div> <!-- closing div for body_wrapper -->
+
+<div class="below_body">
+<div id="footer_time" class="shade footer_time">All times are GMT -5. The time now is <span class="time">07:02 AM</span>.</div>
+
+<div id="footer_copyright" class="shade footer_copyright">
+	<!-- Do not remove this copyright notice -->
+	Powered by <a href="http://www.vbulletin.com" id="vbulletinlink">vBulletin&reg;</a> Version 4.1.7 <br />Copyright &copy; 2012 vBulletin Solutions, Inc. All rights reserved. 
+	<!-- Do not remove this copyright notice -->	
+</div>
+<div id="footer_morecopyright" class="shade footer_morecopyright">
+	<!-- Do not remove cronimage or your scheduled tasks will cease to function -->
+	<img src="http://forums.trossenrobotics.com/cron.php?s=ee4c4796b87a456385ebcd6f7c12fc54&amp;&amp;rand=119654" alt="" width="1" height="1" border="0" />
+	<!-- Do not remove cronimage or your scheduled tasks will cease to function -->
+	
+</div>
+
+</div>
+</body>
+</html> 
