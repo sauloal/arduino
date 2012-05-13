@@ -1,0 +1,1135 @@
+/* reset default browser styles */
+@import url('styles/reset.css');
+
+/* typography */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  color: #444444;
+}
+
+p {
+ }
+
+a {text-decoration: none;color: #444444;}
+a:visited {text-decoration: none;color: #444444;}
+a:hover {text-decoration: none;color: #444444;}
+
+/*Fixing linked images  */
+a img          { border: 0px; }
+a:hover img    {border: 0px; }
+a:visited img  {border: 0px; }
+
+
+/* Top Nav DIVs */
+/*top right corner logo and spacing divs */
+#logo {
+    position: relative;
+    float: left;
+    
+    width: 95px; 
+    height: 75px;
+}
+
+#logoSpacerTop {
+    position: relative;
+    float: left;
+    
+    width: 10px; 
+    height: 12px;
+}
+
+/* top left navigation bar spacing divs */
+#topNav {
+    position: relative;
+    float: left;
+    width: 725px;
+    height: 75px;
+}
+
+#topNavTopSpacer {
+    position: relative;
+    float: left;
+    width: 725px;
+    height: 18px;
+}
+
+#topNavBuisnessName {
+    position: relative;
+    float: left;
+    width: 144px;
+    height:16px;
+    padding-bottom: 1px;
+}
+
+#topNavLinks {
+    position: relative;
+    float: left;
+    width: 580px;
+    height: 16px;
+    padding-bottom: 2px;
+    text-align: right;
+}
+
+#topNavDividingBar{
+    position: relative;
+    float: left;
+    background: #444444;
+    width: 725px;
+    height: 1px;
+    font-size: 0;
+}
+
+#topNavDividingBarSpacerBottom{
+    position: relative;
+    float: right;
+    width: ;
+    height: 100px;
+}
+
+
+#topNavDividingBarSpacerBottom{
+    position: relative;
+    float: right;
+    width: 100%;
+    height:2px;
+}
+
+/*------END Top Nav Divs ----*/
+
+
+
+strong {
+  font-weight: bold;
+}
+
+.readmore {
+  font-weight: bold;
+}
+
+blockquote {
+  margin: 10px 20px;
+  padding: 0px 8px;
+  border-left: 4px solid #444444;
+}
+  .comment blockquote {
+  }
+
+h1 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 0.3em 0 0.8em 0;
+}
+
+input[type="text"] {
+}
+
+#main {
+  width: 820px;
+  position: relative;
+}
+
+#sidebar h2 {
+  font-size: 1.33em;
+  font-weight: bold;
+  padding: 5px 10px;
+  color: #444444;
+}
+  #sidebar h2 a {
+    color: #444444;
+    background: transparent;
+  }
+  
+/* images styling */
+.aligncenter, div.aligncenter {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft {
+   float: left;
+}
+
+.alignright {
+   float: right;
+}
+
+img.alignnone { margin: 0 1em 1em 0;border: 0px; }
+img.alignright {float:right; margin:0 0 1em 1em;border: 0px; }
+img.alignleft {float:left; margin:0 1em 1em 0;border: 0px; }
+img.aligncenter {display: block; margin-left: auto; margin-right: auto;border: 0px; }
+a img.alignright {float:right; margin:0 0 1em 1em;border: 0px; }
+a img.alignleft {float:left; margin:0 1em 1em 0;border: 0px; }
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto;border: 0px; }
+
+/* typography end */
+
+
+
+
+/* integral layout */
+html, body {
+  height: 100%;
+}
+
+body {
+
+}
+
+#page {
+  width: 820px;
+  
+  margin: 0px auto;
+  padding: 0px 0px;
+  border-top: 0;
+  border-bottom: 0;
+
+}
+
+#container {
+  z-index: -1;
+  zoom: 1; /* ie6 peekaboo hack */
+}
+
+#main {
+  width: 820px;
+  float: left;
+    z-index: -1;
+  position: relative;
+}
+
+
+#header {
+  position: relative;
+  height: 75px;
+  width: 820px;
+  padding: 1px;
+  float: left;
+  
+  
+	}
+
+
+
+
+#footer {
+  position: relative;
+  text-align: center;
+  padding: 1px;
+  width: 820px;
+  float: left;
+  
+  
+}
+
+
+/* main */
+#content {
+  position: relative;
+  float: right;
+  width: 665px;
+  z-index: 1; 
+  }
+
+
+#content .section {
+  
+}
+
+.post, .page, .hentry, .category-mood {
+    
+  }
+  .sticky {
+    background: #f6f6f6;
+  }
+    .post-title, #content h2 {
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+    .entry {
+      padding: 5px 0px;
+      
+      
+    }
+    .postmetadata {
+      padding: 5px 0;
+    }
+      .separator {
+        padding: 0 10px;
+      }
+      .author {
+        font-weight: bold;
+      }
+    #content .post-navigation {
+
+      font-weight: bold;
+      
+    }
+      #content .post-navigation .alignleft {
+        float: left;
+      }
+      #content .post-navigation .alignright {
+        float: right;
+      }
+
+    .not-found {
+      text-align: center;
+
+    }
+
+/* main end */
+
+
+
+
+
+/* search form */
+
+#searchform {
+  
+}
+  #searchform label {
+    display: block;
+    font-size: 0.84em;
+    padding: 5px 10px;
+    color: #444444;
+    margin-bottom: 8px;
+  }
+  #searchform #s {
+    font-family: Arial, sans-serif;
+    width: 90px;
+    *width: 90px;
+    height: 12px;
+    
+  }
+  #searchsubmit, #submit,  {
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    color: #444444;
+    background: #FFFFFF;
+    border: 0;
+    height: 18px;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 2px;
+    padding: 2px 4px\9; /* all ie browser hack */
+    +padding: 2px 0; /* ie6 and ie7 hack */
+    margin: 0;
+  }
+  input[type="submit"], input[type="button"] {
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    color: #444444;
+    background: #FFFFFF;
+    border: 0;
+    height: 22px;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 2px;
+    padding: 2px 4px\9; /* all ie browser hack */
+    +padding: 2px 0; /* ie6 and ie7 hack */
+    margin: 0;
+  }
+
+/* comments */
+
+.comments-template {
+  margin-top: 20px;
+  position: relative;
+}
+
+.comments-template h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#commentform {
+  margin-top: 10px;
+}
+
+.comment {
+  background: #f6f6f6;
+}
+
+.trackback, .pingback {
+  
+}
+
+.nocomments {
+  text-align: center;
+  padding: 0px 0;
+  font-weight: bold;
+}
+
+.bypostauthor {
+}
+
+.commentlist li, #commentform input, #commentform textarea {
+	font: 0.9em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	}
+.commentlist li ul li {
+	font-size: 1em;
+}
+
+.commentlist li {
+	font-weight: bold;
+}
+
+.commentlist li .avatar { 
+	float: right;
+	border: 1px solid #eee;
+	padding: 2px;
+	background: #fff;
+	}
+
+.commentlist cite, .commentlist cite a {
+	font-weight: bold;
+	font-style: normal;
+	font-size: 1.1em;
+	}
+
+.commentlist p {
+	font-weight: normal;
+	line-height: 1.5em;
+	text-transform: none;
+	}
+
+
+.topNavLinkText    {
+                    color: #444444; 
+                    font: 80%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+                    font-weight: bold;
+                   }
+	
+#commentform p {
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	}
+
+.commentmetadata {
+	font-weight: normal;
+	}
+
+h3.comments {
+	padding: 0;
+	
+	}
+
+#commentform input {
+  font-family: Arial, sans-serif;
+	width: 100px;
+	padding: 2px;
+	margin: 5px 5px 1px 0;
+}
+
+#respond {
+ 
+}
+
+#respond:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+
+#commentform #submit {
+  font-weight: bold;
+  width: auto;
+  padding: 3px 8px;
+	margin: 0 0 5px auto;
+	float: right;
+}
+
+#commentform textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+	width: 100%;
+  *width: 99%; /* ie6 and ie7 hack */
+	padding: 2px;
+	}
+
+.alt {
+	margin: 0;
+	padding: 10px;
+	}
+
+.commentlist {
+	padding: 0;
+	text-align: justify;
+	}
+
+.commentlist li {
+	margin: 15px 0 10px;
+	padding: 10px;
+	list-style: none;
+	}
+.commentlist li ul li { 
+	margin-right: -5px;
+	margin-left: 10px;
+}
+
+.commentlist p {
+	margin: 10px 5px 10px 0;
+}
+.children { padding: 0; }
+
+#commentform p {
+	margin: 5px 0;
+	}
+
+.commentmetadata {
+	margin: 0;
+	display: block;
+	}
+
+/* comments end */
+table 
+{
+   border: 1px;
+   margin: 0px; 
+   padding: 0px;
+   cellspacing: 0px; 
+   cellpadding: 0px; 
+}		   
+
+td
+{
+	vertical-align: middle;
+}
+
+  
+.familyName{
+                   color: #444444; 
+				   font: 125%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+}  
+  
+.inobtrusive       {
+                    color: #444444; 
+                    font: 40%/1.4 Arial, Verdana, Helvetica, Sans-Serif;
+                   }
+				   
+.leftNavTitle      {
+                    color: #444444; 
+                    text-align: left; 
+                    font: 90%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+                    font-weight: bold;
+                    line-height: 2em;
+                   }
+				   
+				   
+.leftNavSubTitle   {
+                    color: #444444; 
+                    font: 75%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+                    font-weight: bold;
+                    line-height: 1em;
+                   }
+
+.leftNavNormal     { 
+                    color: #444444; 
+                    font: 60%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+                    font-weight: bold;
+                    text-align: right;
+                    margin-right: 0px; 
+                    line-height: 1em;
+                   }				   
+				   
+  
+.largeText
+{
+           font: 200%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   font-weight: bold;		   
+		   
+}
+
+.headText
+{
+           font: 200%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   font-weight: bold;		   
+}
+
+.headMediumText
+{
+           font: 95%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   font-weight: bold;
+		   line-height: 37px;
+}
+
+
+
+.mediumText
+{
+           font: 95%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   font-weight: bold;
+}
+
+.smallText
+{
+           font: 50%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   font-weight: bold;
+}
+
+.mediumDarkText
+{
+           font: 95%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #444444;
+		   font-weight: bold;
+}
+
+.smallMediumDarkText
+{
+           font: 70%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #444444;
+}
+
+.smallDarkText
+{
+           font: 60%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #444444;
+}
+
+
+.code
+{
+           font: 12px/1.4 Courier New, Courier, Serif; 
+		   color: #444444;
+		   line-height: 16px;
+	
+		   }
+
+.bigCode
+{
+           font: 100%/1.4 Courier New, Courier, Serif; 
+		   color: #444444;
+		   }
+		   
+.idText
+{
+           font: 175%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   font-weight: bold;
+		   line-height: 95px;
+}
+
+.subText
+{ 
+           font: 150%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   font-weight: bold;
+}
+
+.titleText
+{
+           font: 110%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #444444;
+		   font-weight: bold;
+		   
+}
+
+.smallTitleText
+{
+           font: 85%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #444444;
+		   font-weight: bold;
+}
+
+.regularText
+{
+           font: 0.9em/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   line-height: 1.4em;
+		   color: #444444;
+		   
+}
+
+.partsText
+{
+           font: 80%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   font-weight: bold;
+		   color: #444444;
+		   
+}
+
+
+
+/* heading divider */
+
+#CIRC-head {
+    position: relative;
+    float: left;
+    background: #444444;
+    width: 665px;
+    height: 100px;
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-body{
+
+    position: relative;
+    float: left;
+    width: 665px;
+	z-index: -1;
+}
+
+#CIRC-body2{
+    position: relative;
+    float: left;
+    border: 3px solid #444444;
+    width: 665px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+
+
+#CIRC-whatweredoing{
+    position: relative;
+    float: left;
+	width:645px;
+    padding: 7.5px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-comments{
+    position: relative;
+    float: right;
+	width: 630px;
+    padding: 15px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+
+#CIRC-thecircuit{
+    position: relative;
+    float: left;
+	width:645px;
+    
+	padding: 7.5px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-thepartsSideSpacer{
+    position: relative;
+    float: left;
+	width:15px;
+    height: 50px;
+	z-index: -1;
+}
+
+#CIRC-theparts{
+    position: relative;
+    float: left;
+	width:610px;
+    padding: 3px;
+	border: 1.5px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+	
+#CIRC-schematic{
+    position: relative;
+    float: left;
+	width:160px;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	border: 1.5px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}	
+
+#CIRC-resources{
+    position: relative;
+    float: left;
+	width:160px;
+    
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	border: 1.5px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-circuitBox{
+   position: relative;
+    float: left;
+	width:185px;
+    z-index: -1;
+}
+
+#CIRC-circuitPicture{
+    position: relative;
+    float: right;
+	width:445px;
+	z-index: -1;
+}	
+
+#CIRC-thecode{
+    position: relative;
+    float: left;
+	width:645px;
+	padding: 7.5px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-notWorking{
+    position: relative;
+    float: left;
+	width:645px;
+	padding: 7.5px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-nw1{
+    position: relative;
+    float: left;
+	width:185px;
+	padding: 3px;
+	border: 1.5px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-nw2{
+    position: relative;
+    float: left;
+	width:185px;
+	padding: 3px;
+	border: 1.5px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+
+#CIRC-nw3{
+    position: relative;
+    float: left;
+	width:185px;
+	padding: 3px;
+	z-index: -1;
+	border: 1.5px solid #444444;	
+    -moz-border-radius: 15px;	`
+	-webkit-border-radius: 15px;
+}
+
+#CIRC-makingBetter{
+    position: relative;
+    float: left;
+	width:645px;
+	padding: 7.5px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}
+	
+#CIRC-100 {
+    float: left;
+	width: 100px;
+	}	
+	
+#CIRC-150 {
+    float: left;
+	width: 150px;
+	}		
+	
+#CIRC-465 {	
+    float: left;
+	width: 465px;
+	}	
+	
+#CIRC-whitespace {
+position: relative;
+    float: left;
+	width: 665px;
+	height: 10px;
+	}		
+
+#CIRC-whitespacelong {
+    position: relative;
+	float: left;
+	width: 820px;
+	height: 10px;
+	}			
+	
+#CIRC-smallwhitespace {
+position: relative;
+    float: left;
+	height: 10px;
+	}		
+
+/* Left Navigation bar and spacing divs */
+#sidebar {
+    position: relative;
+    float: left;
+    width: 150px;
+    text-align: right;
+	margin-bottom: 20px;
+}
+
+
+
+#leftNavLeftLinkListSpacer {
+    position: relative;
+    float: left;
+    width: 0px;
+    height: 100%;	
+}
+
+#leftNavMain {
+    position: relative;
+    float: left;
+    width: 120px;
+}
+
+#leftNavRightLinkListSpacer {
+    position: relative;
+    float: left;
+    width: 7px;
+    height: 100%;	
+}
+
+#leftNavVerticalLine {
+    position: relative;
+    float: left;
+    background: #444444;
+    margin-bottom: 20px;
+	width: 1px;
+    height: 600px;	
+	z-index: -1;
+}
+
+/* the main window */
+
+#mainWindow {
+    position: relative;
+    float: left;
+
+    width: 665px;
+}
+
+#pageTypeDiv {
+    position: relative;
+    float: left;
+
+    width: 30%;
+    height: 2.75em;
+}
+
+#pageTypeSpacerDiv {
+    position: relative;
+    float: left;
+
+    width: 100%
+    height: 50%;
+}
+
+#pageDescriptionDiv {
+    position: relative;
+    float: left;
+
+    width: 70%;
+    height: 2.75em;
+    text-align: right;
+}
+
+#mainWindowAboveImageSpacer
+{
+    position: relative;
+    float: left;
+
+    width: 100%;
+    height: 0.5em;
+    text-align: center;
+}
+
+#mainWindowImageDiv {
+    position: relative;
+    float: left;
+
+    width: 100%;
+    height: 300px;
+    text-align: center;
+}
+
+#mainWindowBelowImageSpacer
+{
+    position: relative;
+    float: left;
+
+    width: 100%;
+    height: 0.5em;
+    text-align: center;
+}
+
+.projectName	   { 
+                    color: #444444; 
+                    font: 100%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+                    font-weight: bold;
+                    text-align: right;
+                    margin-right: 0px; 
+                    line-height: 1em;
+
+                   }
+
+#menu {
+width: 120px;
+background: #ffffff	;
+z-index: 350;
+line-height: 1em;
+}
+
+#menu ul {
+list-style: none;
+margin: 0;
+padding: 0;
+z-index: 350;
+}
+
+#menu ul ul{
+list-style: none;
+border-style: solid;
+border-width: 1px;
+border-color: #444444;
+background: #ffffff	;
+padding: 5px;
+text-align: left;
+z-index: 350;
+}
+
+
+#menu li {
+position: relative;
+}
+
+#menu ul ul {
+position: absolute;
+z-index: 350;
+top: 0;
+left: 100%;
+width: 175px;
+}
+
+div#menu ul ul,
+div#menu ul li:hover ul
+{
+display: none;}
+
+div#menu ul li:hover ul,
+div#menu ul ul li:hover ul
+{
+display: block;}
+
+.leftNavExtra    { 
+                    color: #444444; 
+                    font: 60%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+                    font-weight: bold;
+                    margin-right: 0px; 
+                    line-height: 1em;
+                   }				   
+				   
+.leftNavSubExtra  {
+                    color: #444444; 
+                    font: 75%/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+                    font-weight: bold;
+                    line-height: 1em;
+                   }				 
+				   
+#PROD-about{
+    position: relative;
+    float: left;
+	width:645px;
+    padding: 7.5px;
+	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}				   
+				
+#PROD-before{
+    position: relative;
+    float: left;
+	width:645px;
+    padding: 7.5px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}				   
+
+#PROD-components{
+    position: relative;
+    float: left;
+	width:645px;
+    padding: 7.5px;
+	border: 3px solid #444444;	
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	z-index: -1;
+}	
+
+#PROD-item{
+    position: relative;
+    float: left;
+	width: 200px;
+    padding: 7.5px;
+	z-index: -1;
+}			   							
+
+
+
+#DIST-head {
+    position: relative;
+    float: left;
+    background: #444444;
+    width: 200px;
+    height: 200px;
+    -moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
+
+.DISTtext
+{
+           font: 14px/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   line-height: 16px;
+}
+
+.DISTbig
+{
+           font: 18px/1.4 Arial, Verdana, Helvetica, Sans-Serif; 
+		   color: #FFFFFF;
+		   line-height: 22px;
+}
