@@ -42,7 +42,7 @@ WISHIELD                             02             07 08 09 10 11 12 13
          [----------------] MOD          STANDART WEB
          [         LED 01 ] GND
          [         LED 02 ] +5
-         [  BACK LIGHT 03 ] VARISTOR +5
+         [  BACK LIGHT 03 ] 05/VARISTOR +5
          [          RS 04 ] 49           12       07
          [          RW 05 ] GND
          [          EN 06 ] 48           11       08
@@ -54,9 +54,11 @@ WISHIELD                             02             07 08 09 10 11 12 13
          [         DB5 12 ] 46           04       10
          [         DB6 13 ] 45           03       11
          [         DB7 14 ] 44           02       12
-         [         PWD 14 ] +5
+         [         PWD 14 ] 06/+5
          [         PWR 16 ] GND
          [----------------]
+         RS  EN  DB4  DB5  DB6  DB7
+         49, 48, 47,  46,  45,  44
 
          [--------------]
          [            3 ] GND
@@ -66,7 +68,7 @@ WISHIELD                             02             07 08 09 10 11 12 13
 
          [--------------]
          [            3 ] GND
-         [ TMP       -> ] LCD 03 (BACK LIGHT) [CONSIDER CHANGING TO PWM]
+         [ TMP       -> ] A0
          [            1 ] +5
          [--------------]
 
@@ -99,7 +101,7 @@ WISHIELD                             02             07 08 09 10 11 12 13
       |  |  |  |  |  |
       |  |  |  |  |  |    ,------------------------------------------------------ PWM 07 -                                  | LIB - WISHIELD
       |  |  |  |  |  |    |  ,--------------------------------------------------- PWM 06 -
-      |  |  |  |  |  |    |  |  ,------------------------------------------------ PWM 05 -
+      |  |  |  |  |  |    |  |  ,------------------------------------------------ PWM 05 - OUTPUT - LCD 3 (BACKLIGHT)
       |  |  |  |  |  |    |  |  |  ,--------------------------------------------- PWM 04 -
       |  |  |  |  |  |    |  |  |  |  ,------------------------------------- INT1 PWM 03 -
       |  |  |  |  |  |    |  |  |  |  |  ,---------------------------------- INT0 PWM 02 - INPUT - PIR BROWN (INPUT)        | LIB - WISHIELD
@@ -223,14 +225,15 @@ short unsigned int lowIn;
 
 // these constants won't change.  But you can change the size of
 // your LCD using them:
-short unsigned int LCDnumRows = 0;
-short unsigned int LCDnumCols = 0;
+//int LCDnumCols = 16;
+//int LCDnumRows = 2;
+
 
 //initialize the library with the numbers of the interface pins
 //LiquidCrystal lcd( 7,  8,  9, 10, 11, 12);
-LiquidCrystal lcd(0, 0, 0, 0, 0, 0);
-boolean lcdNeedInit = true;
-String  lcdText     = ""; 
+//LiquidCrystal lcd(0, 0, 0, 0, 0, 0);
+//LiquidCrystal lcd(12, 11, 7, 8, 9, 10);
+//boolean lcdNeedInit = true;
 
 // LCD 01  02  03  04  05  06  07  08  09  10  11  12  13  14  15  16
 //                 RS  RW  EN                  DB4 DB5 DB6 DB7        
@@ -239,13 +242,14 @@ String  lcdText     = "";
 // STD GRD +5  +5* 12  GRD 11                  05  04  03  02  +5  GRD
 // WEB GRD +5  +5* 07  GRD 08                  09  10  11  12  +5  GRD
 // MOD GRD +5  +5* 49  GRD 48                  47  46  45  44  +5  GRD
-// +5* = can use varistor for brightness
+// +5* = can use varistor/pwm for brightness
 
 
 
 void SerialPrint(String text){
   //Serial.flush();
-  Serial.print(text);
+  //Serial.print(text);
+  Serial.println(text);
 //  char textchar[100]; // Or something long enough to hold the longest file name you will ever use.
 //  text.toCharArray(textchar, sizeof(text));
 //  print textchar;
@@ -258,79 +262,71 @@ void SerialPrintLn(String text){
 numvar func_printargs(void){
   int i=0;
   while ( ++i <= getarg(0) ) {
-    Serial.print(getarg(i));
+    Serial.print((char *) getarg(i));
   }
   return 0;
 }
 
 
-
-
-
-numvar func_lcdprint(void){
-  if ( lcdText != "" ) {
+void LCDprint(short unsigned int cols,
+              short unsigned int rows,
+              short unsigned int num1, 
+              short unsigned int num2, 
+              short unsigned int num3, 
+              short unsigned int num4, 
+              short unsigned int num5, 
+              short unsigned int num6,
+              String text) {
+    LiquidCrystal lcd(num1, num2, num3, num4, num5, num6);
+    SerialPrintLn("LCDINIT COLS "+String(cols)+" ROWS "+String(rows));
+    lcd.begin(cols, rows);
     lcd.clear();
     // set the cursor to column 0, line 1
     // (note: line 1 is the second row, since counting begins with 0):
       
     // print the number of seconds since reset:
       
-    short unsigned int textLenght = (short unsigned int) lcdText.length();
-    SerialPrintLn("LCD " + lcdText + " [LENGTH: " + String(textLenght) + "]");
+    short unsigned int textLenght = (short unsigned int) text.length();
+    SerialPrintLn("LCD " + text + " [LENGTH: " + String(textLenght) + "]");
       
-    if ( textLenght > LCDnumCols ) {
-      for (short unsigned int p = 0; p < LCDnumRows; p++ )
+    if ( textLenght > cols ) {
+      for (short unsigned int p = 0; p < rows; p++ )
       {
         lcd.setCursor(0, p);
-        short unsigned int start  = p     * LCDnumCols;
-        short unsigned int finish = start + LCDnumCols;
+        short unsigned int start  = p     * cols;
+        short unsigned int finish = start + cols;
         //if ( finish > textLenght ) {
         //  finish = textLenght;
         //}
-        String substr = lcdText.substring(start, finish);
+        String substr = text.substring(start, finish);
         lcd.print(substr);
         SerialPrintLn("LCD P " + String(p) + " START " + String(start) + " END " + String(finish) + " SUBSTR " + substr);
       }
     } else {
       lcd.setCursor(0, 0);
-      lcd.print(lcdText);
+      lcd.print(text);
     }
-    lcdText = "";
-  } else {
-    SerialPrintLn("LCD: NOTHING TO PRINT");
-  }
-  return 0;
 }
 
 
-
-numvar func_lcdinit(void) {
-  if (getarg(0) == 8) {
-    short unsigned int cols = getarg(1); 
-    short unsigned int rows = getarg(2); 
-    short unsigned int num1 = getarg(3); 
-    short unsigned int num2 = getarg(4); 
-    short unsigned int num3 = getarg(5); 
-    short unsigned int num4 = getarg(6); 
-    short unsigned int num5 = getarg(7); 
-    short unsigned int num6 = getarg(8); 
-
-    LCDnumCols = cols;
-    LCDnumRows = rows;
-  
-    LiquidCrystal lcd(num1, num2, num3, num4, num5, num6);
-    lcd.begin(LCDnumCols,LCDnumRows);
-    lcd.clear();
-//    lcdNeedInit = false;
-    lcdText     = "Initializing... please wait. " + String(cols) + "x" + String(rows) + " - " + String(num1) + "  " + String(num2) + "  " + String(num3) + "  " + String(num4) + "  " + String(num5) + "  " + String(num6);
-    SerialPrintLn(lcdText);
-    func_lcdprint();
+numvar func_lcdprint(void){
+  if (getarg(0) == 9) {
+    short unsigned int cols = getarg(1);
+    short unsigned int rows = getarg(2);
+    short unsigned int num1 = getarg(3);
+    short unsigned int num2 = getarg(4);
+    short unsigned int num3 = getarg(5);
+    short unsigned int num4 = getarg(6);
+    short unsigned int num5 = getarg(7);
+    short unsigned int num6 = getarg(8);
+    char * textc = (char *) getarg(9);
+    String text  = String(textc);
+    LCDprint(cols, rows, num1, num2, num3, num4, num5, num6, text);
   } else {
-    SerialPrintLn("LCDINIT: NOT ENOUGHT ARGUMENTS");
+    SerialPrintLn("LCD: NOT ENOUGHT ARGUMENTS");
   }
   return 0;
 }
-
 
 
 
@@ -406,13 +402,11 @@ void setup() {
   // Pin 13 has an LED connected on most Arduino boards:
 
   //pirNeedInit = true;
-  lcdNeedInit = true;
+  //lcdNeedInit = true;
   addBitlashFunction("tone",     (bitlash_function) func_tone);
   addBitlashFunction("notone",   (bitlash_function) func_notone);
-//  addBitlashFunction("LCDPrint", (bitlash_function) func_lcdprint);
-  addBitlashFunction("lcdinit",  (bitlash_function) func_lcdinit);
+  addBitlashFunction("lcdprint", (bitlash_function) func_lcdprint);
   addBitlashFunction("printargs",(bitlash_function) func_printargs);
-
 }
 
 
@@ -420,3 +414,17 @@ void loop(void) {
   runBitlash();
 }
 
+
+
+/*
+function toggle13  { pinmode(13,1); d13 = !d13;}
+function readtemp  { pinmode(a0,0); print "temp",a0; }
+function readlight { pinmode(a1,0); print "light",a1; }
+function lcdbacklight { pinmode(a5,1); pinmode(a6,1); a5 = 1; a6 = 200; }
+function lcd { lcdprint(16, 2, 12, 11, 7, 8, 9, 10, arg(1) };
+lcdprint(16, 2, 12, 11, 7, 8, 9, 10, "hello")
+
+#function lcdoff       { lcd.noDisplay() }
+boot
+#function startup {run toggle13,1000; run readtemp,1000; run readlight,1000}
+*/
