@@ -250,14 +250,16 @@ void SerialPrint(String text){
   //Serial.flush();
   //Serial.print(text);
   Serial.println(text);
-//  char textchar[100]; // Or something long enough to hold the longest file name you will ever use.
-//  text.toCharArray(textchar, sizeof(text));
-//  print textchar;
+  //char textchar[100]; // Or something long enough to hold the longest file name you will ever use.
+  //text.toCharArray(textchar, sizeof(text));
+  //print textchar;
 }
 
 void SerialPrintLn(String text){
   SerialPrint(text + "\n");
 }
+
+
 
 numvar func_printargs(void){
   int i=0;
@@ -278,7 +280,8 @@ void LCDprint(short unsigned int cols,
               short unsigned int num6,
               String text) {
     LiquidCrystal lcd(num1, num2, num3, num4, num5, num6);
-    SerialPrintLn("LCDINIT COLS "+String(cols)+" ROWS "+String(rows));
+    SerialPrintLn("LCDINIT COLS  "+String(cols)+" ROWS "+String(rows));
+    SerialPrintLn("LCDINIT PORTS "+String(num1)+" "+String(num2)+" "+String(num3)+" "+String(num4)+" "+String(num5)+" "+String(num6)+" ");
     lcd.begin(cols, rows);
     lcd.clear();
     // set the cursor to column 0, line 1
@@ -420,9 +423,8 @@ void loop(void) {
 function toggle13  { pinmode(13,1); d13 = !d13;}
 function readtemp  { pinmode(a0,0); print "temp",a0; }
 function readlight { pinmode(a1,0); print "light",a1; }
-function lcdbacklight { pinmode(a5,1); pinmode(a6,1); a5 = 1; a6 = 200; }
-function lcd { lcdprint(16, 2, 12, 11, 7, 8, 9, 10, arg(1) };
-lcdprint(16, 2, 12, 11, 7, 8, 9, 10, "hello")
+function lcdbacklight { pinmode(a43,1); pinmode(a42,1); a43 = 1; a42 = 200;  }
+lcdprint(16, 2, 49, 48, 44, 45, 46, 47, "hello world 49 48 44 45 46 47")
 
 #function lcdoff       { lcd.noDisplay() }
 boot
