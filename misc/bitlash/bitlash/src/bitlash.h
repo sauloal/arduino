@@ -488,8 +488,8 @@ void dofunctioncall(byte);
 numvar func_free(void);
 void beep(unumvar, unumvar, unumvar);
 
-const extern prog_char functiondict[] PROGMEM;
-const extern prog_char aliasdict[] PROGMEM;
+extern const prog_char functiondict[] PROGMEM;
+extern const prog_char aliasdict[] PROGMEM;
 
 void stir(byte);
 
@@ -604,7 +604,7 @@ byte is_end(void);
 numvar getarg(numvar);
 void releaseargblock(void);
 void parsearglist(void);
-const extern prog_char reservedwords[];
+extern const prog_char reservedwords[];
 
 
 

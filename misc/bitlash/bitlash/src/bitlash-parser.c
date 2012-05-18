@@ -360,7 +360,7 @@ const prog_uchar reservedwordtypes[] PROGMEM = { s_arg, s_boot, s_else, s_functi
 #endif
 
 // find id in PROGMEM wordlist.  result in symval, return true if found.
-byte findindex(char *id, prog_char *wordlist, byte sorted) {
+byte findindex(char *id, const prog_char *wordlist, byte sorted) {
 	symval = 0;
 	while (pgm_read_byte(wordlist)) {
 		int result = strcmp_P(id, wordlist);
@@ -405,15 +405,15 @@ byte pinnum(char id[]) {
 #define PV_ANALOG 0x80	// high bit flag to distinguish s_dpin from s_apin
 #define PV_MASK 0x7f
 
-prog_char pinnames[] PROGMEM = { 
+const prog_char pinnames[] PROGMEM = { 
 	"tx\0rx\0led\0vin\0"
 };
-prog_uchar pinvalues[] PROGMEM = { 
+const prog_uchar pinvalues[] PROGMEM = { 
 	0, 1, 13, (PV_ANALOG | 1)
 };
 
 byte findpinname(char *alias) {
-	if (!findindex(alias, (prog_char *) pinnames, 0)) return 0;		// sets symval
+	if (!findindex(alias, (const prog_char *) pinnames, 0)) return 0;		// sets symval
 	byte pin = pgm_read_byte(pinvalues + symval);
 	sym = (pin & PV_ANALOG) ? s_apin : s_dpin;
 	symval = pin & PV_MASK;
@@ -572,14 +572,14 @@ void parseid(void) {
 	}
 
 	// reserved word?
-	else if (findindex(idbuf, (prog_char *) reservedwords, 1)) {
+	else if (findindex(idbuf, (const prog_char *) reservedwords, 1)) {
 		sym = pgm_read_byte(reservedwordtypes + symval);	// e.g., s_if or s_while
 	}
 
 	// function?
-	else if (findindex(idbuf, (prog_char *) functiondict, 1)) sym = s_nfunct;
+	else if (findindex(idbuf, (const prog_char *) functiondict, 1)) sym = s_nfunct;
 #ifdef LONG_ALIASES
-	else if (findindex(idbuf, (prog_char *) aliasdict, 0)) sym = s_nfunct;
+	else if (findindex(idbuf, (const prog_char *) aliasdict, 0)) sym = s_nfunct;
 #endif
 
 #ifdef PIN_ALIASES
