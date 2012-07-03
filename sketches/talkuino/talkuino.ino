@@ -12,7 +12,7 @@ void SerialPrintLn(String text){
 
 
 //global
-#define DEBUG       False // print debuf information
+//#define DEBUG       False // print debuf information
 #define ARDUINOID       1 // id for this particular ID
 #define MAXSIZE       128 // max size before flushing
 #define MAXFUNCSIZE  8352 // max size of data to be passed to function
@@ -143,31 +143,35 @@ void returnPortRes(int rndId, int port, int rw, int da, char res []){
     printArrayChar(res, PORTLEN - 1);
   #endif
 
-  int responseLength = 7 + PORTLEN + 1;
+  int responseLength = 7 + PORTLEN + 1 + 2;
   char response[responseLength];
-  int valSize = sizeof(response)/sizeof(char);
-  Serial.println("(" + String(valSize) + ") ");
-  
-  response[0] = char(ARDUINOID + MINVAL);
-  response[1] = char(rndId);
-  response[2] = char(DIRECTOU);
-  response[3] = char(TYPEPORT);
-  response[4] = char(port + MINVAL);
-  response[5] = char(rw);
-  response[6] = char(da);
+  #ifdef DEBUG
+    int valSize = sizeof(response)/sizeof(char);
+    Serial.println("(" + String(valSize) + ") ");
+  #endif    
+
+  response[0] = '<';
+  response[1] = char(ARDUINOID + MINVAL);
+  response[2] = char(rndId);
+  response[3] = char(DIRECTOU);
+  response[4] = char(TYPEPORT);
+  response[5] = char(port + MINVAL);
+  response[6] = char(rw);
+  response[7] = char(da);
   for (int pos = 0; pos < PORTLEN; pos++) {
     #ifdef DEBUG
       Serial.println(" returnPortRes POS " + String(pos) + " " + String(7 + pos) + " VAL " + char(res[pos]) + " MAX " + PORTLEN);
       //Serial.flush();
     #endif  
-    response[7 + pos] = res[pos];
+    response[8 + pos] = res[pos];
   }
   
-  Serial.println(" returnPortRes POS " + String(7 + PORTLEN) + " VAL " + char(ARDUINOID + MINVAL) + " MAX " + String(responseLength));
-  response[7 + PORTLEN] = char(ARDUINOID + MINVAL);
-  response[8 + PORTLEN] = char(0);
+  response[8  + PORTLEN] = char(ARDUINOID + MINVAL);
+  response[9  + PORTLEN] = '>';
+  response[10 + PORTLEN] = char(0); // null terminator
   
   #ifdef DEBUG
+    Serial.println(" returnPortRes POS " + String(7 + PORTLEN) + " VAL " + char(ARDUINOID + MINVAL) + " MAX " + String(responseLength));
     Serial.print("returnPortRes RESPONSE ");
     Serial.print("(" + String(valSize) + ") ");
 
@@ -178,8 +182,18 @@ void returnPortRes(int rndId, int port, int rw, int da, char res []){
     Serial.println("'");
   #endif
   
+
+  //Serial.print("'");
+  //Serial.print(response);
+  //Serial.println("'");
+
+
+  response[0           ] = char(INCOMINGSTART);
+  response[9  + PORTLEN] = char(INCOMINGEND);
+
+  
   Serial.flush();
-  Serial.println(char(INCOMINGSTART) + String(response) + char(INCOMINGEND));
+  Serial.println(response);
   Serial.flush();
 }
 

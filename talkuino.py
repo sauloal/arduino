@@ -3,6 +3,9 @@ import serial
 import sys
 import os
 import time
+import random
+from multiprocessing import Process, Manager, Pool
+
 
 #baud=9600
 #baud=57600
@@ -10,24 +13,39 @@ baud=115200
 tty=None
 
 
-
 for i in range(9):
-	if not tty is None:
-		print "found already"
-		break
+    if not tty is None:
+        print "found already"
+        break
 
-	for type in ['ACM', 'USB']:
-		ttyL = '/dev/tty' + type + str(i)
-		if os.path.lexists(ttyL):
-			print "Serial port " + ttyL + " exists"
-			tty = ttyL
-			break
-		else:
-			print "Serial port " + ttyL + " does not exists"
+    for type in ['ACM', 'USB']:
+        ttyL = '/dev/tty' + type + str(i)
+        if os.path.lexists(ttyL):
+            print "Serial port " + ttyL + " exists"
+            tty = ttyL
+            break
+        else:
+            print "Serial port " + ttyL + " does not exists"
 
 if tty is None:
-	print "NO TTY FOUND"
-	exit(1)
+    print "NO TTY FOUND"
+    exit(1)
+
+if not os.path.lexists(tty):
+    print "Serial port " + tty + " does not exists"
+    exit(1)
+else:
+    print "Serial port " + tty + " exists"
+
+
+try:
+    serR = serial.Serial(tty, baud)
+    print "Serial port " + tty + " open"
+except serial.SerialException:
+    print "Serial port " + tty + " closed"
+    exit(1)
+time.sleep(1)
+
 
 
 
@@ -40,9 +58,10 @@ STX='\x02'
 ETX='\x03'
 TAB='\x09'
 VT ='\x11'
+CR ='\x0D'
 ETB='\x17'
-RS='\x1E'
-US='\x1F'
+RS ='\x1E'
+US ='\x1F'
 
 
 #ARDUINOID         0 # id for this particular ID
@@ -54,7 +73,7 @@ MINVAL        =   33 # !
 MAXVAL        =  126 # ~
 MAXNUMFUNC    =  MAXVAL - MINVAL# max number of registered functions
 PORTLEN       =    2 # number of chars to
-					 # describe port values
+                     # describe port values
 
 INCOMINGSTART = RS  # RS - record separator
 INCOMINGEND   = US  # US - unit separator
@@ -82,142 +101,158 @@ PARTMAXVAL    = '|'  # | maximum number of pieces
 
 
 
-if not os.path.lexists(tty):
-	print "Serial port " + tty + " does not exists"
-	exit(1)
-else:
-	print "Serial port " + tty + " exists"
 
 
 
 
 
-try:
-	serR = serial.Serial(tty, baud)
-	print "Serial port " + tty + " open"
-except serial.SerialException:
-	print "Serial port " + tty + " closed"
-	exit(1)
-time.sleep(1)
 
+
+def serialFunction(args):
+    messagesQ = args[0]
+    responseQ = args[1]
+    try:
+        print "WAITING FOR LINE"
+        try:
+            while True:
+                #print "reading line"
+                if serR.inWaiting() > 0:
+                    line  = serR.readline()
+                    lineP = line.strip()
+                    lineP = lineP.replace(INCOMINGSTART, '')
+                    lineP = lineP.replace(INCOMINGEND  , '')
+                    lineP = lineP.replace(CR           , '')
+                    print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
+                    responseQ.put(lineP)
+                    #parseLine(line)
+                    print "READ\n"
+                    
+                else: # nothing to read
+                    if not messagesQ.empty():
+                        line  = INCOMINGSTART + messagesQ.get() + INCOMINGEND
+                        line  = line[:2] + chr(random.randrange(MINVAL, MAXVAL, 1)) + line[3:]
+                        lineP = line.strip()
+                        lineP = lineP.replace(INCOMINGSTART, '')
+                        lineP = lineP.replace(INCOMINGEND  , '')
+                        lineP = lineP.replace(CR           , '')
+                        print "WRITE '"+line.strip()+"' > '"+lineP.strip()+"'"
+                        serR.write(line)
+                        print "WROTE\n"
+        except KeyboardInterrupt:
+            print "pressed ctrl+c"
+            pass
+    except serial.SerialException:
+        print "Serial port " + tty + " closed"
+        exit(1)
 
 def genVal(val, pos=0):
-	maxVal = MAXVAL - MINVAL
-	print "POS ",pos,"VAL",val,"MAX",maxVal
-	
-	multiplier = val / maxVal
-	remainder  = val - (multiplier * maxVal)
-	res        = chr(MINVAL + multiplier) + chr(MINVAL + remainder)
+    maxVal = MAXVAL - MINVAL
+    print "POS ",pos,"VAL",val,"MAX",maxVal
+    
+    multiplier = val / maxVal
+    remainder  = val - (multiplier * maxVal)
+    res        = chr(MINVAL + multiplier) + chr(MINVAL + remainder)
 
-	return res
+    return res
 
 def splitLine(line):
-	for c in line:
-		print "'" + c + "' (" + str(ord(c)) + ") ",
+    for c in line:
+        print "'" + c + "' (" + str(ord(c)) + ") ",
 
+def parseLine(line):
+    
+    begin   = line.find(INCOMINGSTART, 0)
+    parts   = []
+    print "FIRST",begin,'LINE',line.strip()
+    while begin != -1:
+        print "  BEGIN",begin
+        end = line.find(INCOMINGEND, begin)
+        print "  END",end
+        if end != -1:
+            piece   = line[begin+1:end]
+            begin = line.find(INCOMINGSTART, end)
+            print "    PIECE",piece
+            parts.append(piece)
+
+    print parts
 
 def main():
-	arduinoId    =  1
-	portNum      = 13
-	val          = 330
-	msgId        = 12
-	msgIdVal     = chr(MINVAL + msgId)
-	arduinoIdVal = chr(MINVAL + arduinoId)
-	portNumVal   = chr(MINVAL + portNum)
-	
-	try:
-		valVal       = genVal(val)
-	except ValueError:
-		sys.stderr.write("ERROR. value "+str(val)+" too big. MAX VALUE IS " + str((MAXVAL-MINVAL) * PORTLEN)+"\n")
-		
-		sys.exit(1)
-		
-	print "INCOMING START",INCOMINGSTART
-	print "ARDUINO ID"    ,arduinoId, "VAL", arduinoIdVal
-	print "PORT NUM"      ,portNum  , "VAL", portNumVal
-	print "VAL"           ,val      , "NUM", valVal
-	print "INCOMING END"  ,INCOMINGEND
+    arduinoId    =   1
+    portNum      =  13
+    val          = 330
+    msgId        =  12
+    msgIdVal     = chr(MINVAL + msgId)
+    arduinoIdVal = chr(MINVAL + arduinoId)
+    portNumVal   = chr(MINVAL + portNum)
+    
+    try:
+        valVal       = genVal(val)
+    except ValueError:
+        sys.stderr.write("ERROR. value "+str(val)+" too big. MAX VALUE IS " + str((MAXVAL-MINVAL) * PORTLEN)+"\n")
+        
+        sys.exit(1)
+        
+    print "INCOMING START",INCOMINGSTART
+    print "ARDUINO ID"    ,arduinoId, "VAL", arduinoIdVal
+    print "PORT NUM"      ,portNum  , "VAL", portNumVal
+    print "VAL"           ,val      , "NUM", valVal
+    print "INCOMING END"  ,INCOMINGEND
 
-	message      = arduinoIdVal + msgIdVal + DIRECTIN + TYPEPORT + portNumVal + RWWRITE + DADIGITAL + valVal + arduinoIdVal
-	#              arduino id     msgid      direction  type       port         RW        DA          val      arduinoid
-	print "SENDING MESSAGE",message
-	
-	try:
-		print "WAITING FOR LINE"
-		i = 0
-		while i < 1:
-			#print "reading line ",
-			line  = serR.readline().strip()
-			print "READ '",line,"'"
-			splitLine(line)
-			print ""
-			i    += 1
-	except serial.SerialException:
-		print "Serial port " + tty + " closed"
-		exit(1)
-	
-	
-	print "MESSAGE: '"+message+"'"
-	try:
-		serR.write(INCOMINGSTART + message + INCOMINGEND)
-	except serial.SerialException:
-		print "Serial port " + tty + " closed"
-		exit(1)
-	
-	
-	
-	try:
-		print "WAITING FOR LINE"
-		while True:
-			#print "reading line"
-			line  = serR.readline()
-			line  = line.strip()
-			#line = line.replace(STX, '')
-			#line = line.replace(ETX, '')
-			print "READ '"+line+"'"
-			#splitLine(line)
-			#print ""
-			#print "RFID NUM: " + str(line)
-			#for c in line:
-			#	print "C : " + str(c) + " " + str(ord(c))
-			#print "False"
-	
-	except serial.SerialException:
-		print "Serial port " + tty + " closed"
-		exit(1)
-	
-	#if len(sys.argv) > 1:
-	#	message = " ".join(sys.argv[1:])
-	#	print "MESSAGE " + message
-	#	try:
-	#		serR.write(message)
-	#	except serial.SerialException:
-	#		print "Serial port " + tty + " closed"
-	#		exit(1)
-	#
-	#else:
-	#	print "READING"
-	#	try:
-	#		while True:
-	#			#print "reading line"
-	#			line = serR.readline()
-	#			line = line.rstrip()
-	#			line = line.replace(STX, '')
-	#			line = line.replace(ETX, '')
-	#			print str(line)
-	#			#print "RFID NUM: " + str(line)
-	#			#for c in line:
-	#			#	print "C : " + str(c) + " " + str(ord(c))
-	#		print "False"
-	#
-	#	except serial.SerialException:
-	#		print "Serial port " + tty + " closed"
-	#		exit(1)
-	
-	
-	
-	print "out of the loop"
-	#serW = serial.Serial('/dev/'+tty, baud
-	#serW.write('5')
+    message      = arduinoIdVal + msgIdVal + DIRECTIN + TYPEPORT + portNumVal + RWWRITE + DADIGITAL + valVal + arduinoIdVal
+    #              arduino id     msgid      direction  type       port         RW        DA          val      arduinoid
+    print "SENDING MESSAGE",message
+    
+    try:
+        print "WAITING FOR LINE"
+        i = 0
+        while i < 1:
+            #print "reading line ",
+            line  = serR.readline().strip()
+            print "READ '",line,"'"
+            #splitLine(line)
+            print ""
+            i    += 1
+    except serial.SerialException:
+        print "Serial port " + tty + " closed"
+        exit(1)
+    
+    
+    print "MESSAGE: '"+message+"'"
+    
+    toWrite =   [
+                    message,
+                    message,
+                    message
+                ]
+
+    manager   = Manager()
+    messagesQ = manager.Queue()
+    responseQ = manager.Queue()
+    pool      = Pool(processes=1)                                            # start 4 worker processes
+    result    = pool.apply_async(serialFunction, [[messagesQ, responseQ]]) # evaluate "f(10)" asynchronously   
+        
+    for msg in toWrite:
+        print "passing",msg
+        messagesQ.put(msg)
+        time.sleep(2)
+    
+    print "finished passing"
+    while True:
+        #print "EMPTY",responseQ.empty()
+        if not responseQ.empty():
+            line  = responseQ.get()
+            print "GOT THIS LINE OUTSIDE:",line
+        else:
+            #print "NO NEW OUT",responseQ.qsize()
+            time.sleep(2)
+    
+    print "JOINING"
+    print result.get(timeout=1)           # prints "100" unless your computer is *very* slow
+    print "JOINED"
+    
+    
+    print "out of the loop"
+    #serW = serial.Serial('/dev/'+tty, baud
+    #serW.write('5')
 
 if __name__ == '__main__': main()
