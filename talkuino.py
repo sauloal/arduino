@@ -38,7 +38,11 @@ if tty is None:
 SOH='\x01'
 STX='\x02'
 ETX='\x03'
+TAB='\x09'
+VT ='\x11'
 ETB='\x17'
+RS='\x1E'
+US='\x1F'
 
 
 #ARDUINOID         0 # id for this particular ID
@@ -52,8 +56,8 @@ MAXNUMFUNC    =  MAXVAL - MINVAL# max number of registered functions
 PORTLEN       =    2 # number of chars to
 					 # describe port values
 
-INCOMINGSTART = SOH  # SOH
-INCOMINGEND   = ETB  # ETB
+INCOMINGSTART = RS  # RS - record separator
+INCOMINGEND   = US  # US - unit separator
 
 DIRECTIN      = "("  # ( IN  TO   ARD
 DIRECTOU      = ")"  # ) OUT FROM ARD
@@ -171,8 +175,8 @@ def main():
 			#line = line.replace(STX, '')
 			#line = line.replace(ETX, '')
 			print "READ '"+line+"'"
-			splitLine(line)
-			print ""
+			#splitLine(line)
+			#print ""
 			#print "RFID NUM: " + str(line)
 			#for c in line:
 			#	print "C : " + str(c) + " " + str(ord(c))

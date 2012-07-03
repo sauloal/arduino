@@ -22,8 +22,8 @@ void SerialPrintLn(String text){
 #define MINVAL         33 // !
 #define MAXVAL        126 // ~
 
-#define INCOMINGSTART   1 // SOH
-#define INCOMINGEND    23 // ETB
+#define INCOMINGSTART  30 //  RS (record separator)
+#define INCOMINGEND    31 //  US (unit separator)
 
 #define DIRECTIN       40 // ( IN  TO   ARD
 #define DIRECTOU       41 // ) OUT FROM ARD
@@ -143,8 +143,11 @@ void returnPortRes(int rndId, int port, int rw, int da, char res []){
     printArrayChar(res, PORTLEN - 1);
   #endif
 
-  int responseLength = 7 + PORTLEN;
+  int responseLength = 7 + PORTLEN + 1;
   char response[responseLength];
+  int valSize = sizeof(response)/sizeof(char);
+  Serial.println("(" + String(valSize) + ") ");
+  
   response[0] = char(ARDUINOID + MINVAL);
   response[1] = char(rndId);
   response[2] = char(DIRECTOU);
@@ -154,20 +157,21 @@ void returnPortRes(int rndId, int port, int rw, int da, char res []){
   response[6] = char(da);
   for (int pos = 0; pos < PORTLEN; pos++) {
     #ifdef DEBUG
-      Serial.println(" returnPortRes POS " + String(pos) + " VAL " + char(res[pos]) + " MAX " + PORTLEN);
-      Serial.flush();
+      Serial.println(" returnPortRes POS " + String(pos) + " " + String(7 + pos) + " VAL " + char(res[pos]) + " MAX " + PORTLEN);
+      //Serial.flush();
     #endif  
     response[7 + pos] = res[pos];
   }
+  
+  Serial.println(" returnPortRes POS " + String(7 + PORTLEN) + " VAL " + char(ARDUINOID + MINVAL) + " MAX " + String(responseLength));
   response[7 + PORTLEN] = char(ARDUINOID + MINVAL);
+  response[8 + PORTLEN] = char(0);
   
   #ifdef DEBUG
-    Serial.flush();
-    int valSize = sizeof(response)/sizeof(char);
     Serial.print("returnPortRes RESPONSE ");
     Serial.print("(" + String(valSize) + ") ");
 
-    printArrayChar(response, responseLength);
+    printArrayChar(response, responseLength - 1);
 
     Serial.print("'");
     Serial.print(response);
@@ -175,7 +179,7 @@ void returnPortRes(int rndId, int port, int rw, int da, char res []){
   #endif
   
   Serial.flush();
-  Serial.println(String(char(INCOMINGSTART)) + String(response) + String(char(INCOMINGEND)));
+  Serial.println(char(INCOMINGSTART) + String(response) + char(INCOMINGEND));
   Serial.flush();
 }
 
@@ -258,39 +262,41 @@ void functionParser(int rndId, int part, int funcId, int * val){
 }
 
 
-void printArrayInt(int seq[], int posEnd) {
-  int valSize = sizeof(seq)/sizeof(int);
-  //Serial.println("SIZE "+String(valSize) + " ");
-  
-  for ( int s = 0; s <= posEnd; s++ ) {
-    //Serial.println("S "+String(s) + " ");
-    int  num = seq[s];
-    //Serial.println("N "+String(num)+" ");
-    char val = char(seq[s]);
-    //Serial.println("V "+String(val));
-    Serial.print("'" + String(val) + "'");
-    Serial.print(" ");
+#ifdef DEBUG
+  void printArrayInt(int seq[], int posEnd) {
+    int valSize = sizeof(seq)/sizeof(int);
+    //Serial.println("SIZE "+String(valSize) + " ");
+    
+    for ( int s = 0; s <= posEnd; s++ ) {
+      //Serial.println("S "+String(s) + " ");
+      int  num = seq[s];
+      //Serial.println("N "+String(num)+" ");
+      char val = char(seq[s]);
+      //Serial.println("V "+String(val));
+      Serial.print("'" + String(val) + "'");
+      Serial.print(" ");
+    }
+    Serial.println("");
   }
-  Serial.println("");
-}
-
-
-void printArrayChar(char seq[], int posEnd) {
-  int valSize = sizeof(seq)/sizeof(char);
-  //Serial.println("SIZE "+String(valSize) + " ");
   
-  for ( int s = 0; s <= posEnd; s++ ) {
-    //Serial.println("S "+String(s) + " ");
-    int  num = seq[s];
-    //Serial.println("N "+String(num)+" ");
-    char val = seq[s];
-    //Serial.println("V " +String(val));
-    Serial.print("'" + String(val) + "'");
-    Serial.print(" ");
+  
+  void printArrayChar(char seq[], int posEnd) {
+    int valSize = sizeof(seq)/sizeof(char);
+    //Serial.println("SIZE "+String(valSize) + " ");
+    Serial.println("SIZE "+String(posEnd) + " ");
+    
+    for ( int s = 0; s <= posEnd; s++ ) {
+      Serial.print("S "+String(s) + " ");
+      int  num = seq[s];
+      Serial.print("N "+String(num)+" ");
+      char val = seq[s];
+      Serial.print("V " +String(val));
+      Serial.print(" '" + String(val) + "'");
+      Serial.print(" ");
+    }
+    Serial.println("");
   }
-  Serial.println("");
-}
-
+#endif
 
 
 void parseVal(int seq[], int posBegin, int posEnd) {
