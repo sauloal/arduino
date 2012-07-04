@@ -5,6 +5,7 @@ import os
 import time
 import random
 import pprint
+import multiprocessing
 from multiprocessing import Process, Manager, Pool
 
 
@@ -67,65 +68,37 @@ PARTMAXVAL    = '|'  # | maximum number of pieces
 
 class arduinoconnect(object):
     def __init__(self):
-	tty=None
-
-	for i in range(9):
-	    if not tty is None:
-        	print "found already"
-	        break
-
-	    for type in ['ACM', 'USB']:
-        	ttyL = '/dev/tty' + type + str(i)
-	        if os.path.lexists(ttyL):
-        	    print "Serial port " + ttyL + " exists"
-	            tty = ttyL
-	            break
-        	else:
-	            print "Serial port " + ttyL + " does not exists"
-
-	if tty is None:
-	    print "NO TTY FOUND"
-	    exit(1)
-
-	if not os.path.lexists(tty):
-	    print "Serial port " + tty + " does not exists"
-	    exit(1)
-	else:
-	    print "Serial port " + tty + " exists"
-
-
-        try:
-            serR = serial.Serial(tty, baud)
-            print "Serial port " + tty + " open"
-        except serial.SerialException:
-            print "Serial port " + tty + " closed"
-            exit(1)
-        time.sleep(1)
-            
-        manager   = Manager()
-        messagesQ = manager.Queue()
-        responseQ = manager.Queue()
-        pool      = Pool(processes=1)                                            # start 4 worker processes
-        reader    = pool.apply_async(serialFunction, [[messagesQ, responseQ, serR]]) # read and write serial assync
+        self.manager   = Manager()
+        self.messagesQ = self.manager.Queue()
+        self.responseQ = self.manager.Queue()
+        self.pool      = Pool(processes=1)                                            # start 4 worker processes
+        self.reader    = self.pool.apply_async(serialFunction, [[self.messagesQ, self.responseQ]]) # read and write serial assync
         #reader    = pool.apply_async(serialFunction, [[messagesQ, responseQ]]) # read and write serial assync    
-
-	self.tty       = tty
-	self.serR      = serR
-	self.manager   = manager
-	self.messagesQ = messagesQ
-	self.responseQ = responseQ
-	self.pool      = pool
-	self.reader    = reader
-        print "finished passing"
-	pprint.pprint(self.__dict__)
+        print "finished passing\n\n"
     
     def close(self):
-	self.messagesQ.close()
-	self.responseQ.close()
+        print "closing"
+        self.messagesQ.put(None)
 
         print "JOINING"
-	self.reader.get(timeout=1)
+        try:
+            self.reader.get(timeout=5)
+        except multiprocessing.TimeoutError:
+            print "ERROR CLOSING THREAD. POSSIBLE LOSS OF DATA"
         print "JOINED"
+
+        print "waiting to send all messages"
+        self.messagesQ.join()
+        
+        print "waiting to receive all messages"
+        if self.responseQ.empty():
+            self.responseQ.join()
+        else:
+            print "you are quitting with messages to be read"
+        
+        print "queues empty"
+
+
 
     def getAnswer(self):
         res = []
@@ -184,13 +157,13 @@ class arduinoconnect(object):
 
     def sendMessage(   self,   arduinoid=None, port=None, value=None, cmdType=None, rw=None, da=None ):
         #TODO: skip if any is none
-	message = self.genMessage( arduinoid, port, value, cmdType, rw, da)
+        message = self.genMessage( arduinoid, port, value, cmdType, rw, da)
 
-        print "passing",message
-        print "INCOMING START",INCOMINGSTART
-        print "INCOMING END"  ,INCOMINGEND
+        print "passing",message,"\n\n"
+        #print "INCOMING START",INCOMINGSTART
+        #print "INCOMING END"  ,INCOMINGEND
 
-        self.messagesQ.put(INCOMINGSTART + message , INCOMINGEND)
+        self.messagesQ.put(message)
 
     def genMessage(self, arduinoid, port, value, cmdType, rw, da):
         msgIdVal     = chr( MINVAL + 0         )
@@ -204,48 +177,118 @@ class arduinoconnect(object):
             sys.exit(1)
         
         print "ARDUINO ID"    ,arduinoid, "VAL", arduinoIdVal
-        print "PORT NUM"      ,port     , "VAL", portNumVal
-        print "VAL"           ,value    , "NUM", valVal
+        print "PORT NUM  "    ,port     , "VAL", portNumVal
+        print "VAL       "    ,value    , "NUM", valVal
     
         message  = arduinoIdVal + msgIdVal + DIRECTIN + cmdType + portNumVal + rw + da + valVal + arduinoIdVal
         #          arduino id     msgid      direction  type      port         RW   DA   val      arduinoid
         return message
 
 
-def serialFunction(args):
-    messagesQ = args[0]
-    responseQ = args[1]
-    serR      = args[2]
+def initPort():
+    tty=None
+
+    for i in range(9):
+        if not tty is None:
+            print "found already"
+            break
+
+        for type in ['ACM', 'USB']:
+            ttyL = '/dev/tty' + type + str(i)
+            if os.path.lexists(ttyL):
+                print "Serial port " + ttyL + " exists"
+                tty = ttyL
+                break
+            else:
+                print "Serial port " + ttyL + " does not exists"
+
+    if tty is None:
+        print "NO TTY FOUND"
+        exit(1)
+
+    if not os.path.lexists(tty):
+        print "Serial port " + tty + " does not exists"
+        exit(1)
+    else:
+        print "Serial port " + tty + " exists"
+
+
     try:
-	print "WAITING FOR LINE"
-	try:
-	    while True:
-		#print "reading line"
-		if serR.inWaiting() > 0:
-		    line  = serR.readline()
-		    lineP = line.strip()
-		    lineP = lineP.replace(INCOMINGSTART, '')
-		    lineP = lineP.replace(INCOMINGEND  , '')
-		    lineP = lineP.replace(CR           , '')
-		    print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
-		    responseQ.put(lineP)
-		    #self.parseLine(line)
-		    print "READ\n"
-		    
-		else: # nothing to read
-		    if not messagesQ.empty():
-			line  = INCOMINGSTART + messagesQ.get() + INCOMINGEND
-			line  = line[:2] + chr(random.randrange(MINVAL, MAXVAL, 1)) + line[3:]
-			lineP = line.strip()
-			lineP = lineP.replace(INCOMINGSTART, '')
-			lineP = lineP.replace(INCOMINGEND  , '')
-			lineP = lineP.replace(CR           , '')
-			print "WRITE '"+line.strip()+"' > '"+lineP.strip()+"'"
-			serR.write(line)
-			print "WROTE\n"
-	except KeyboardInterrupt:
-	    print "pressed ctrl+c"
-	    pass
+        serR = serial.Serial(tty, baud)
+        print "Serial port " + tty + " open"
     except serial.SerialException:
-	print "Serial port closed"
-	exit(1)
+        print "Serial port " + tty + " closed"
+        exit(1)
+    
+    while not serR.isOpen() or not serR.inWaiting() or not serR.readable() or not serR.writable():
+        #print "sleeping"
+        time.sleep(.1)
+        
+    return serR
+
+def serialFunction(args):
+    messagesQ    = args[0]
+    responseQ    = args[1]
+    serR         = initPort()
+    continueLoop = True
+    
+    try:
+        print "WAITING FOR LINE"
+        try:
+            while continueLoop:
+                if serR.inWaiting() > 0:
+                    print "reading line", serR.inWaiting()
+                    line  = serR.readline()
+                    #print line
+                    
+                    lineP = line.strip()
+                    lineP = lineP.replace(INCOMINGSTART, '')
+                    lineP = lineP.replace(INCOMINGEND  , '')
+                    lineP = lineP.replace(CR           , '')
+                    print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
+                    responseQ.put(lineP)
+                    #self.parseLine(line)
+                    print "READ\n"
+                
+                elif not messagesQ.empty():
+                    print "has message",messagesQ.qsize()
+                    msgs = []
+                    while messagesQ.qsize() > 0 or not messagesQ.empty():
+                        msg   = messagesQ.get()
+                        print "MSG",msg
+                        
+                        if msg is None:
+                            print "received NONE. quiting"
+                            messagesQ.task_done()
+                            continueLoop = False
+                            break
+                        else:
+                            msg  = msg[:1] + chr(random.randrange(MINVAL, MAXVAL, 1)) + msg[2:] # add random identifier
+                            msg2 = INCOMINGSTART + msg + INCOMINGEND
+                            print "WRITE '"+msg+"' > '" + msg2 + "'"
+                            
+                            if len(msgs) == 0:
+                                msgs.append(msg2)
+                            elif len(msgs[-1]) < MAXSIZE:
+                                msgs[-1] += msg2
+                            else:
+                                msgs.append(msg2)
+                                
+                        messagesQ.task_done()
+                    
+                    for msg in msgs:
+                        serR.write(msg)
+                        print "WROTE",msg,"\n"
+
+                else:
+                    #print "nothing to do"
+                    pass
+        except KeyboardInterrupt:
+            print "pressed ctrl+c"
+            pass
+    except serial.SerialException:
+        print "Serial error. port closed"
+        exit(1)
+    
+    print "Serial port closed"
+    serR.close()

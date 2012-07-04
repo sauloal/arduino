@@ -100,7 +100,7 @@ int parseIntPort( int val[] ){
     printArrayInt(val, PORTLEN - 1);
   #endif
   
-  int res = 0;
+  int res        = 0;
   int multiplier = val[0] - MINVAL;
   int remainder  = val[1] - MINVAL;
   res = (multiplier * maxVar) + remainder;
@@ -119,8 +119,8 @@ void makeIntPort( int value, char res[] ){
   
   int multiplier = value / maxVar;
   int remainder  = value - (multiplier * maxVar);
-  res[0] = char(MINVAL + multiplier);
-  res[1] = char(MINVAL + remainder);
+  res[0]         = char(MINVAL + multiplier);
+  res[1]         = char(MINVAL + remainder);
 
   #ifdef DEBUG
     Serial.print("makeIntPort multiplier " + String(multiplier) + " REMAINDER " + String(remainder) + " RES ");
@@ -451,15 +451,14 @@ void loop(){
   if (Serial.available() > 0) {
     // read the incoming byte:
     char incomingByte = Serial.read();
-    //if ( incomingByte )
 
     #ifdef DEBUG
-    Serial.print("I received: ");
-    Serial.print(incomingByte);
-    Serial.print(" ");
-    Serial.print(incomingByte, DEC);
-    Serial.print(" POS ");
-    Serial.println(currPos, DEC);
+      Serial.print("I received: ");
+      Serial.print(incomingByte);
+      Serial.print(" ");
+      Serial.print(incomingByte, DEC);
+      Serial.print(" POS ");
+      Serial.println(currPos, DEC);
     #endif
 
     if (incomingByte == INCOMINGSTART) {
