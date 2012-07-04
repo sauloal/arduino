@@ -106,7 +106,7 @@ class arduinoconnect(object):
         messagesQ = manager.Queue()
         responseQ = manager.Queue()
         pool      = Pool(processes=1)                                            # start 4 worker processes
-        reader    = pool.apply_async(serialFunction, [[messagesQ, responseQ, serR]]) # read and write serial assync
+        reader    = pool.apply_async(self.serialFunction, [[messagesQ, responseQ, serR]]) # read and write serial assync
         #reader    = pool.apply_async(serialFunction, [[messagesQ, responseQ]]) # read and write serial assync    
 
 	self.tty       = tty
