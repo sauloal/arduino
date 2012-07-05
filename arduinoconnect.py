@@ -6,6 +6,8 @@ import time
 import random
 import pprint
 import multiprocessing
+import traceback
+
 from multiprocessing import Process, Manager, Pool
 
 
@@ -66,6 +68,118 @@ PARTMAXVAL    = '|'  # | maximum number of pieces
 #http://www.gpsbabel.org/os/Linux_Hotplug.html
 
 
+def genVal(val, pos=0):
+    maxVal     = MAXVAL - MINVAL
+    multiplier = val / maxVal
+    remainder  = val - (multiplier * maxVal)
+    res        = chr(MINVAL + multiplier) + chr(MINVAL + remainder)
+    print "POS %4d VAL %s MAX %d MULTIPLIER %d REMAINDER %d RES %d" % (pos, val, maxVal, multiplier, remainder, remainder)
+    return res
+
+def parseVal(val, pos=0):
+    maxVal     = MAXVAL - MINVAL
+    multiplier = ord(val[0]) - MINVAL
+    remainder  = ord(val[1]) - MINVAL
+    res        =(  multiplier * maxVal ) + remainder
+    return res
+
+class arduinomessage(object):
+    def __init__(self, arduinoid, port, value, cmdType, rw, da, msgIdVal=None):
+        if msgIdVal is None:
+            msgIdVal     = chr(random.randrange(MINVAL, MAXVAL, 1))
+
+        arduinoIdVal = chr( MINVAL + arduinoid )
+        portNumVal   = chr( MINVAL + port      )
+    
+        try:
+            valVal       = genVal(value)
+        except ValueError:
+            sys.stderr.write("ERROR. value "+str(value)+" too big. MAX VALUE IS " + str((MAXVAL-MINVAL) * PORTLEN)+"\n")
+            sys.exit(1)
+        
+        print "ARDUINO ID %4d VAL %s" % ( arduinoid, arduinoIdVal)
+        print "PORT NUM   %4d VAL %s" % ( port     , portNumVal  )
+        print "VAL        %4d NUM %s" % ( value    , valVal      )
+    
+        self.arduinoid    = arduinoid
+        self.arduinoIdVal = arduinoIdVal
+        self.port         = port
+        self.portNumVal   = portNumVal
+        self.value        = value
+        self.valVal       = valVal
+        self.cmdType      = cmdType
+        self.rw           = rw
+        self.da           = da
+        self.msgIdVal     = msgIdVal
+
+    @classmethod
+    def fromString(cls, response):
+        print "LOADING FROM RESPONSE %s (%d)" % (response, len(response))
+        arduinoIdVal = response[0]
+        arduinoId    = ord(arduinoIdVal) - MINVAL
+        msgId        = response[1]
+        msgIdVal     = ord(msgId) - MINVAL
+        direction    = response[2]
+        cmdType      = response[3]
+        portNumVal   = response[4]
+        portNum      = ord(portNumVal) - MINVAL
+        rw           = response[5]
+        da           = response[6]
+        valVal       = response[7:9]
+        val          = parseVal(valVal)
+        
+        print "ARDUINO ID %d (%s) MSGID %d (%s) DIRECTION %s CMD TYPE %s PORT NUM VAL %d (%s) RW %s DA %s VAL %d (%s)" % \
+        (arduinoId, arduinoIdVal, msgIdVal, msgId, direction, cmdType, portNum, portNumVal, rw, da, val, valVal)
+        #print "ARDUINO ID %d (%s) MSGID %d (%s) DIRECTION %s CMD TYPE %s PORT NUM VAL %d (%s) RW %s DA %s VAL %d (%s)" % \
+                          #(arduinoIdVal, arduinoId, msgIdVal, msgId, direction, cmdType, portNum, portNumVal, rw, da, valVal, val)
+        return cls(arduinoId, portNum, val, cmdType, rw, da, msgIdVal=msgId)
+
+    def __str__(self):
+        #          arduino id          msgid           direction  type           port              RW        DA        val           arduinoid
+        message  = self.arduinoIdVal + self.msgIdVal + DIRECTIN + self.cmdType + self.portNumVal + self.rw + self.da + self.valVal + self.arduinoIdVal
+        return message
+
+    def getMessage(self):
+        return str(self)
+
+    def __repr__(self): return str(self)
+    
+    def __cmp__(self, obj2):
+        try:
+            #print "COMPARING "
+            #print "  ARDUINOID %s vs %s" % (self.arduinoid, obj2.arduinoid)
+            #print "  PORT      %d vs %d" % (self.port     , obj2.port     )
+            #print "  CMD TYPE  %s vs %s" % (self.cmdType  , obj2.cmdType  )
+            #print "  RW        %s vs %s" % (self.rw       , obj2.rw       )
+            #print "  DA        %s vs %s" % (self.da       , obj2.da       )
+            #print "  MSG ID    %s vs %s" % (self.msgIdVal , obj2.msgIdVal )
+            
+            if  self.arduinoid == obj2.arduinoid and \
+                self.port      == obj2.port      and \
+                self.cmdType   == obj2.cmdType   and \
+                self.rw        == obj2.rw        and \
+                self.da        == obj2.da        and \
+                self.msgIdVal  == obj2.msgIdVal:
+                #print "all equal"
+                return 0
+            else:
+                #print "some unequal"
+                return -1
+        except:
+            print "error"
+            #traceback.print_exception()
+            traceback.print_exc()
+            traceback.print_stack()
+            return 1
+        
+    
+    def __eq__(self, obj2):
+        if self.__cmp__(obj2) == 0:
+            return True
+        else:
+            return False
+
+
 class arduinoconnect(object):
     def __init__(self):
         self.manager   = Manager()
@@ -73,6 +187,7 @@ class arduinoconnect(object):
         self.responseQ = self.manager.Queue()
         self.pool      = Pool(processes=1)                                            # start 4 worker processes
         self.reader    = self.pool.apply_async(serialFunction, [[self.messagesQ, self.responseQ]]) # read and write serial assync
+        self.responses = {}
         #reader    = pool.apply_async(serialFunction, [[messagesQ, responseQ]]) # read and write serial assync    
         print "finished passing\n\n"
     
@@ -100,29 +215,30 @@ class arduinoconnect(object):
 
 
 
-    def getAnswer(self):
-        res = []
-        if not self.responseQ.empty():
-           while not self.responseQ.empty():
-               line  = self.responseQ.get()
-               res.append(line)
-               print "GOT THIS LINE OUTSIDE:",line       
+    def getAnswer(self, query):
+        print "getting query {%s}" % query
+        if self.hasAnswer(query):
+            print "  already here"
+            return self.responses.pop(str(query))
         else:
-           pass
-           #print "NO NEW OUT",self.responseQ.qsize()
-           #time.sleep(2)
-        return res        
-            
-    def genVal(self, val, pos=0):
-        maxVal = MAXVAL - MINVAL
-        print "POS ",pos,"VAL",val,"MAX",maxVal
-        
-        multiplier = val / maxVal
-        remainder  = val - (multiplier * maxVal)
-        res        = chr(MINVAL + multiplier) + chr(MINVAL + remainder)
+            print "  not here"
+            return None
     
-        return res
-    
+    def hasAnswer(self, query):
+        if not self.responseQ.empty():
+            print "response not empty"
+            while not self.responseQ.empty():
+                print "  getting response"
+                q,a  = self.responseQ.get()
+                print "    {%s} > {%s}" % (q, a)
+                self.responses[str(q)] = a
+                self.responseQ.task_done()
+        else:
+            print "response empty"
+            pass
+
+        return self.responses.has_key(str(query))
+
     def splitLine(self, line):
         for c in line:
             print "'" + c + "' (" + str(ord(c)) + ") ",
@@ -144,46 +260,41 @@ class arduinoconnect(object):
         print parts
         
     def writeDigitalPort(self, arduinoid=None, port=None, value=None): 
-        self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWWRITE, da=DADIGITAL )
+        return self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWWRITE, da=DADIGITAL )
 
     def writeAnalogPort(self,  arduinoid=None, port=None, value=None): 
-        self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWWRITE, da=DAANALOG  )
+        return self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWWRITE, da=DAANALOG  )
 
     def ReadDigitalPort(self,  arduinoid=None, port=None, value=None):
-        self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWREAD, da=DADIGITAL )
+        return self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWREAD, da=DADIGITAL )
 
     def ReadAnalogPort(self,   arduinoid=None, port=None, value=None):     
-        self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWREAD, da=DAANALOG  )
+        return self.sendMessage( arduinoid=arduinoid, port=port, value=value, cmdType=TYPEPORT, rw=RWREAD, da=DAANALOG  )
 
     def sendMessage(   self,   arduinoid=None, port=None, value=None, cmdType=None, rw=None, da=None ):
         #TODO: skip if any is none
-        message = self.genMessage( arduinoid, port, value, cmdType, rw, da)
+        message = arduinomessage( arduinoid, port, value, cmdType, rw, da )
 
-        print "passing",message,"\n\n"
+        print "passing",str(message),"\n\n"
         #print "INCOMING START",INCOMINGSTART
         #print "INCOMING END"  ,INCOMINGEND
 
         self.messagesQ.put(message)
-
-    def genMessage(self, arduinoid, port, value, cmdType, rw, da):
-        msgIdVal     = chr( MINVAL + 0         )
-        arduinoIdVal = chr( MINVAL + arduinoid )
-        portNumVal   = chr( MINVAL + port      )
-    
-        try:
-            valVal       = self.genVal(value)
-        except ValueError:
-            sys.stderr.write("ERROR. value "+str(value)+" too big. MAX VALUE IS " + str((MAXVAL-MINVAL) * PORTLEN)+"\n")
-            sys.exit(1)
-        
-        print "ARDUINO ID"    ,arduinoid, "VAL", arduinoIdVal
-        print "PORT NUM  "    ,port     , "VAL", portNumVal
-        print "VAL       "    ,value    , "NUM", valVal
-    
-        message  = arduinoIdVal + msgIdVal + DIRECTIN + cmdType + portNumVal + rw + da + valVal + arduinoIdVal
-        #          arduino id     msgid      direction  type      port         RW   DA   val      arduinoid
         return message
 
+
+def checkdb(response, queriesDb, queueObj):
+    if response in queriesDb:
+        #print "RESPONSE FOUND"
+        query     = queriesDb[queriesDb.index(response)]
+        queriesDb.remove(query)
+        queueObj.put([query, response])
+    else:
+        print "RESPONSE TO NO QUERY"
+
+def gendb(msgSent, queriesDb):
+    #print "  GENDB",str(msgSent)
+    queriesDb.append(msgSent)
 
 def initPort():
     tty=None
@@ -227,58 +338,76 @@ def initPort():
     return serR
 
 def serialFunction(args):
-    messagesQ    = args[0]
-    responseQ    = args[1]
-    serR         = initPort()
-    continueLoop = True
+    messagesQ      = args[0]
+    responseQ      = args[1]
+    serR           = initPort()
+    continueLoop   = True
+    msgandresponse = []
     
     try:
         print "WAITING FOR LINE"
         try:
             while continueLoop:
                 if serR.inWaiting() > 0:
-                    print "reading line", serR.inWaiting()
-                    line  = serR.readline()
-                    #print line
-                    
-                    lineP = line.strip()
-                    lineP = lineP.replace(INCOMINGSTART, '')
-                    lineP = lineP.replace(INCOMINGEND  , '')
-                    lineP = lineP.replace(CR           , '')
-                    print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
-                    responseQ.put(lineP)
-                    #self.parseLine(line)
-                    print "READ\n"
+                    while serR.inWaiting() > 0:
+                        print "reading line. size", serR.inWaiting()
+                        line  = serR.readline()
+                        lineP = line.strip()
+                        #print line
+                        
+                        if lineP[0] == INCOMINGSTART and lineP[-1] == INCOMINGEND:
+                            
+                            lineP = lineP.replace(INCOMINGSTART, '')
+                            lineP = lineP.replace(INCOMINGEND  , '')
+                            lineP = lineP.replace(CR           , '')
+                            print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
+                            response = arduinomessage.fromString(lineP)
+                            checkdb(response, msgandresponse, responseQ)
+                            #responseQ.put(lineP)
+                            #self.parseLine(line)
+                            #print "READ\n"
+                        else:
+                            print "READ INVALID LINE",line
+                elif not continueLoop:
+                    break
                 
-                elif not messagesQ.empty():
-                    print "has message",messagesQ.qsize()
-                    msgs = []
+                elif not messagesQ.empty() and continueLoop:
+                    print "has %d messages" % messagesQ.qsize()
+                    msgs    = []
+                    hasNone = False
+                    
                     while messagesQ.qsize() > 0 or not messagesQ.empty():
                         msg   = messagesQ.get()
                         print "MSG",msg
                         
-                        if msg is None:
-                            print "received NONE. quiting"
-                            messagesQ.task_done()
-                            continueLoop = False
-                            break
-                        else:
-                            msg  = msg[:1] + chr(random.randrange(MINVAL, MAXVAL, 1)) + msg[2:] # add random identifier
-                            msg2 = INCOMINGSTART + msg + INCOMINGEND
-                            print "WRITE '"+msg+"' > '" + msg2 + "'"
+                        if msg is not None:
+                            msg2 = INCOMINGSTART + str(msg) + INCOMINGEND
+                            print "WRITE '" + str(msg) + "' > '" + msg2 + "'"
+                            gendb(msg, msgandresponse)
                             
                             if len(msgs) == 0:
                                 msgs.append(msg2)
-                            elif len(msgs[-1]) < MAXSIZE:
+                            elif (len(msgs[-1]) + len(msg2)) <= MAXSIZE:
                                 msgs[-1] += msg2
                             else:
                                 msgs.append(msg2)
-                                
+                        else:
+                            print "MESSAGE IS NONE"
+                            hasNone = True
+
                         messagesQ.task_done()
                     
                     for msg in msgs:
                         serR.write(msg)
                         print "WROTE",msg,"\n"
+                    
+                    if len(msgs) == 0:
+                        print "NOTHING TO WRITE"
+                        
+                    if hasNone:
+                        print "received NONE. quiting"
+                        #messagesQ.task_done()
+                        continueLoop = False
 
                 else:
                     #print "nothing to do"
@@ -288,7 +417,13 @@ def serialFunction(args):
             pass
     except serial.SerialException:
         print "Serial error. port closed"
+        traceback.print_exc()
+        traceback.print_stack()
         exit(1)
+    except:
+        print "error"
+        traceback.print_exc()
+        traceback.print_stack()
     
     print "Serial port closed"
     serR.close()
