@@ -13,18 +13,18 @@ def main():
 
     if True:
         message1 = arduino.writeDigitalPort(arduinoid=arduinoId, port=portNum, value=val)
-        print "SENDING MESSAGE 1",message1
+        #print "SENDING MESSAGE 1",message1
         
         message2 = arduino.writeAnalogPort( arduinoid=arduinoId, port=portNum, value=val)
-        print "SENDING MESSAGE 2",message2
+        #print "SENDING MESSAGE 2",message2
         
         message3 = arduino.ReadDigitalPort( arduinoid=arduinoId, port=portNum, value=val)
-        print "SENDING MESSAGE 3",message3
+        #print "SENDING MESSAGE 3",message3
         
         message4 = arduino.ReadAnalogPort(  arduinoid=arduinoId, port=portNum, value=val)
-        print "SENDING MESSAGE 4",message4
+        #print "SENDING MESSAGE 4",message4
         
-        time.sleep(5)
+        time.sleep(10)
         
         ans1 = arduino.getAnswer(message1)
         print "ANSWER 1:",ans1.value

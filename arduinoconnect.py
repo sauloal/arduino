@@ -13,8 +13,9 @@ from multiprocessing import Process, Manager, Pool
 
 #baud=9600
 #baud=57600
-baud=115200
-
+baud             = 115200
+waitbetweenloops = .02
+debug            = False
 
 SOH='\x01'
 STX='\x02'
@@ -73,7 +74,7 @@ def genVal(val, pos=0):
     multiplier = val / maxVal
     remainder  = val - (multiplier * maxVal)
     res        = chr(MINVAL + multiplier) + chr(MINVAL + remainder)
-    print "POS %4d VAL %s MAX %d MULTIPLIER %d REMAINDER %d RES %d" % (pos, val, maxVal, multiplier, remainder, remainder)
+    if debug: print "POS %4d VAL %s MAX %d MULTIPLIER %d REMAINDER %d RES %d" % (pos, val, maxVal, multiplier, remainder, remainder)
     return res
 
 def parseVal(val, pos=0):
@@ -97,9 +98,9 @@ class arduinomessage(object):
             sys.stderr.write("ERROR. value "+str(value)+" too big. MAX VALUE IS " + str((MAXVAL-MINVAL) * PORTLEN)+"\n")
             sys.exit(1)
         
-        print "ARDUINO ID %4d VAL %s" % ( arduinoid, arduinoIdVal)
-        print "PORT NUM   %4d VAL %s" % ( port     , portNumVal  )
-        print "VAL        %4d NUM %s" % ( value    , valVal      )
+        if debug: print "ARDUINO ID %4d VAL %s"     % ( arduinoid, arduinoIdVal)
+        if debug: print "PORT NUM   %4d VAL %s"     % ( port     , portNumVal  )
+        if debug: print "VAL        %4d NUM %s\n\n" % ( value    , valVal      )
     
         self.arduinoid    = arduinoid
         self.arduinoIdVal = arduinoIdVal
@@ -114,7 +115,7 @@ class arduinomessage(object):
 
     @classmethod
     def fromString(cls, response):
-        print "LOADING FROM RESPONSE %s (%d)" % (response, len(response))
+        if debug: print "LOADING FROM RESPONSE %s (%d)" % (response, len(response))
         arduinoIdVal = response[0]
         arduinoId    = ord(arduinoIdVal) - MINVAL
         msgId        = response[1]
@@ -128,7 +129,7 @@ class arduinomessage(object):
         valVal       = response[7:9]
         val          = parseVal(valVal)
         
-        print "ARDUINO ID %d (%s) MSGID %d (%s) DIRECTION %s CMD TYPE %s PORT NUM VAL %d (%s) RW %s DA %s VAL %d (%s)" % \
+        if debug: print "ARDUINO ID %d (%s) MSGID %d (%s) DIRECTION %s CMD TYPE %s PORT NUM VAL %d (%s) RW %s DA %s VAL %d (%s)" % \
         (arduinoId, arduinoIdVal, msgIdVal, msgId, direction, cmdType, portNum, portNumVal, rw, da, val, valVal)
         #print "ARDUINO ID %d (%s) MSGID %d (%s) DIRECTION %s CMD TYPE %s PORT NUM VAL %d (%s) RW %s DA %s VAL %d (%s)" % \
                           #(arduinoIdVal, arduinoId, msgIdVal, msgId, direction, cmdType, portNum, portNumVal, rw, da, valVal, val)
@@ -189,18 +190,18 @@ class arduinoconnect(object):
         self.reader    = self.pool.apply_async(serialFunction, [[self.messagesQ, self.responseQ]]) # read and write serial assync
         self.responses = {}
         #reader    = pool.apply_async(serialFunction, [[messagesQ, responseQ]]) # read and write serial assync    
-        print "finished passing\n\n"
+        if debug: print "finished passing\n\n"
     
     def close(self):
         print "closing"
         self.messagesQ.put(None)
 
-        print "JOINING"
+        if debug: print "JOINING"
         try:
             self.reader.get(timeout=5)
         except multiprocessing.TimeoutError:
             print "ERROR CLOSING THREAD. POSSIBLE LOSS OF DATA"
-        print "JOINED"
+        if debug: print "JOINED"
 
         print "waiting to send all messages"
         self.messagesQ.join()
@@ -216,25 +217,25 @@ class arduinoconnect(object):
 
 
     def getAnswer(self, query):
-        print "getting query {%s}" % query
+        if debug: print "getting query {%s}" % query
         if self.hasAnswer(query):
-            print "  already here"
+            if debug: print "  already here"
             return self.responses.pop(str(query))
         else:
-            print "  not here"
+            if debug: print "  not here"
             return None
     
     def hasAnswer(self, query):
         if not self.responseQ.empty():
-            print "response not empty"
+            if debug: print "response not empty"
             while not self.responseQ.empty():
-                print "  getting response"
+                if debug: print "  getting response"
                 q,a  = self.responseQ.get()
-                print "    {%s} > {%s}" % (q, a)
+                if debug: print "    {%s} > {%s}" % (q, a)
                 self.responses[str(q)] = a
                 self.responseQ.task_done()
         else:
-            print "response empty"
+            if debug: print "response empty"
             pass
 
         return self.responses.has_key(str(query))
@@ -246,15 +247,15 @@ class arduinoconnect(object):
     def parseLine(self, line):
         begin   = line.find(INCOMINGSTART, 0)
         parts   = []
-        print "FIRST",begin,'LINE',line.strip()
+        if debug: print "FIRST",begin,'LINE',line.strip()
         while begin != -1:
-            print "  BEGIN",begin
+            if debug: print "  BEGIN",begin
             end = line.find(INCOMINGEND, begin)
-            print "  END",end
+            if debug: print "  END",end
             if end != -1:
                 piece = line[begin+1:end]
                 begin = line.find(INCOMINGSTART, end)
-                print "    PIECE",piece
+                if debug: print "    PIECE",piece
                 parts.append(piece)
     
         print parts
@@ -275,7 +276,7 @@ class arduinoconnect(object):
         #TODO: skip if any is none
         message = arduinomessage( arduinoid, port, value, cmdType, rw, da )
 
-        print "passing",str(message),"\n\n"
+        if debug: print "passing",str(message),"\n\n"
         #print "INCOMING START",INCOMINGSTART
         #print "INCOMING END"  ,INCOMINGEND
 
@@ -290,7 +291,7 @@ def checkdb(response, queriesDb, queueObj):
         queriesDb.remove(query)
         queueObj.put([query, response])
     else:
-        print "RESPONSE TO NO QUERY"
+        if debug: print "RESPONSE TO NO QUERY"
 
 def gendb(msgSent, queriesDb):
     #print "  GENDB",str(msgSent)
@@ -301,7 +302,7 @@ def initPort():
 
     for i in range(9):
         if not tty is None:
-            print "found already"
+            if debug: print "found already"
             break
 
         for type in ['ACM', 'USB']:
@@ -321,12 +322,12 @@ def initPort():
         print "Serial port " + tty + " does not exists"
         exit(1)
     else:
-        print "Serial port " + tty + " exists"
+        if debug: print "Serial port " + tty + " exists"
 
 
     try:
         serR = serial.Serial(tty, baud)
-        print "Serial port " + tty + " open"
+        if debug: print "Serial port " + tty + " open"
     except serial.SerialException:
         print "Serial port " + tty + " closed"
         exit(1)
@@ -334,7 +335,7 @@ def initPort():
     while not serR.isOpen() or not serR.inWaiting() or not serR.readable() or not serR.writable():
         #print "sleeping"
         time.sleep(.1)
-        
+    
     return serR
 
 def serialFunction(args):
@@ -343,46 +344,76 @@ def serialFunction(args):
     serR           = initPort()
     continueLoop   = True
     msgandresponse = []
-    
+    availableNodes = []
+    waitinglist    = []
+    buffer         = ''
     try:
-        print "WAITING FOR LINE"
+        if debug: print "WAITING FOR LINE"
         try:
             while continueLoop:
-                if serR.inWaiting() > 0:
-                    while serR.inWaiting() > 0:
-                        print "reading line. size", serR.inWaiting()
-                        line  = serR.readline()
+                msgs    = []
+                hasNone = False
+                buffer = buffer + serR.read(serR.inWaiting())
+                #print "buffer '"+buffer+"'"
+
+                lines = []
+                if '\n' in buffer:
+                    #print "  inside"
+                    if debug: print "buffer '"+buffer+"'\n\n"
+                    lines = buffer.split('\n')
+                    buffer = buffer[buffer.rindex('\n')]
+                    if buffer in ['\n', '\r']: buffer = ''
+
+                if len(lines) > 0:
+                    while len(lines) > 0:
+                        #print "reading line. size", len(lines)
+                        line  = lines.pop(0)
                         lineP = line.strip()
-                        #print line
+                        if debug: print "  LINE '%s' (%d)\n" % (line, len(line))
+                        if len(line) == 1 and line in ['\n', '\r']: continue
+                        if len(line) == 0: continue
                         
                         if lineP[0] == INCOMINGSTART and lineP[-1] == INCOMINGEND:
                             
                             lineP = lineP.replace(INCOMINGSTART, '')
                             lineP = lineP.replace(INCOMINGEND  , '')
                             lineP = lineP.replace(CR           , '')
-                            print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
+                            if debug: print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
                             response = arduinomessage.fromString(lineP)
                             checkdb(response, msgandresponse, responseQ)
                             #responseQ.put(lineP)
                             #self.parseLine(line)
                             #print "READ\n"
+                            
+                        elif len(lineP) == 19 or line[0:18] == "SETUP ARDUINO ID: ":
+                            arduinoid = line[18]
+                            print "ADDING AVAILABLE NODE:",arduinoid
+                            availableNodes.append(arduinoid)
+                        
                         else:
-                            print "READ INVALID LINE",line
+                            #TODO: RETURN INVALID LINES
+                            if debug: print "READ INVALID LINE",line
                 elif not continueLoop:
                     break
                 
                 elif not messagesQ.empty() and continueLoop:
-                    print "has %d messages" % messagesQ.qsize()
-                    msgs    = []
-                    hasNone = False
+                    if debug: print "has %d messages to write" % messagesQ.qsize()
                     
                     while messagesQ.qsize() > 0 or not messagesQ.empty():
                         msg   = messagesQ.get()
-                        print "MSG",msg
+                        if debug: print "  MSG",msg
                         
                         if msg is not None:
                             msg2 = INCOMINGSTART + str(msg) + INCOMINGEND
-                            print "WRITE '" + str(msg) + "' > '" + msg2 + "'"
+                            
+                            if str(msg)[1] not in availableNodes:
+                                waitinglist.append([msg, msg2])
+                                messagesQ.task_done()
+                                if debug: print "arduino %s not ready (waiting list [%d])\n" % (str(msg)[0], len(waitinglist))
+                                continue
+
+                            if debug: print "WRITING ON SERIAL '" + str(msg) + "' > '" + msg2 + "'"
+                            
                             gendb(msg, msgandresponse)
                             
                             if len(msgs) == 0:
@@ -396,22 +427,46 @@ def serialFunction(args):
                             hasNone = True
 
                         messagesQ.task_done()
-                    
-                    for msg in msgs:
-                        serR.write(msg)
-                        print "WROTE",msg,"\n"
-                    
-                    if len(msgs) == 0:
-                        print "NOTHING TO WRITE"
-                        
-                    if hasNone:
-                        print "received NONE. quiting"
-                        #messagesQ.task_done()
-                        continueLoop = False
+
+                elif len(waitinglist) > 0:
+                    for pair in waitinglist:
+                        msg, msg2 = pair
+                        if str(msg)[0] in availableNodes:
+                            waitinglist.remove(pair)
+                            
+                            if debug: print "WRITING ON SERIAL DELAYED'" + str(msg) + "' > '" + msg2 + "'"
+                            
+                            gendb(msg, msgandresponse)
+                            
+                            if len(msgs) == 0:
+                                msgs.append(msg2)
+                            elif (len(msgs[-1]) + len(msg2)) <= MAXSIZE:
+                                msgs[-1] += msg2
+                            else:
+                                msgs.append(msg2)
+                                
+                        else:
+                            if debug: print "MESSAGE '%s [%s]' NOT READY TO ME SENT BECAUSE NODE %s NOT PRESENT [%s]" % (msg, msg2, str(msg)[0], ', '.join(availableNodes))
 
                 else:
                     #print "nothing to do"
                     pass
+                
+                msgPos = 1
+                for msg in msgs:
+                    serR.write(msg)
+                    print "WROTE ON SERIAL #%d '%s'\n" % (msgPos, msg)
+                    msgPos += 1
+                
+                #if len(msgs) == 0:
+                #    print "NOTHING TO WRITE"
+
+                if hasNone:
+                    print "received NONE. quiting"
+                    #messagesQ.task_done()
+                    continueLoop = False
+                    
+                time.sleep(waitbetweenloops)
         except KeyboardInterrupt:
             print "pressed ctrl+c"
             pass

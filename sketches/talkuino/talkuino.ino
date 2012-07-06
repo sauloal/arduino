@@ -420,7 +420,6 @@ void setup() {
   //Serial.begin(9600);
   Serial.begin(115200);
 
-  Serial.println("SETUP");
   //pinMode(13, OUTPUT);
 
   // set up the LCD's number of columns and rows: 
@@ -442,6 +441,9 @@ void setup() {
   functions[1]      = &SerialPrint64;
   maxVar            = MAXVAL - MINVAL;
   //Serial.println("SETUP2");
+  delay(500);
+  Serial.println("SETUP ARDUINO ID: " + String(char(MINVAL + ARDUINOID)) + "\n");
+  delay(500);
 }
 
 

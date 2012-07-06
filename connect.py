@@ -5,8 +5,8 @@ import os.path
 import csv
 
 #baud=9600
-baud=57600
-#baud=115200
+#baud=57600
+baud=115200
 tty=None
 
 
@@ -69,35 +69,60 @@ else:
 
 
 
-
+import time
 
 try:
 	serR = serial.Serial(tty, baud)
+	#serR.timeout = 0
 	print "Serial port " + tty + " open"
 
+	while not serR.isOpen() or not serR.readable() or not serR.writable():
+		#print "sleeping. waiting %d" % serR.inWaiting()
+		time.sleep(.1)
+
+	print "sleeping. waiting %d" % serR.inWaiting()
+
+	buffer = ''
 
 	if len(sys.argv) > 1:
 		message = " ".join(sys.argv[1:])
 		print "MESSAGE " + message
 		serR.write(message)
 	else:
-		print "READING"
+		#print "READING"
 		try:
 			while True:
 				#print "reading line"
-				line = serR.readline()
-				line = line.rstrip()
-				line = line.replace(STX, '')
-				line = line.replace(ETX, '')
-				print str(line)
-				#print "RFID NUM: " + str(line)
-				#for c in line:
-				#	print "C : " + str(c) + " " + str(ord(c))
+				#print "waiting %d" % serR.inWaiting()
+				buffer = buffer + serR.read(serR.inWaiting())
+				print "buffer '"+buffer+"'"
+				
+				if '\n' in buffer:
+					#print "  inside"
+					lines = buffer.split('\n')
+					buffer = buffer[buffer.rindex('\n')]
+					if buffer == '\n': buffer = ''
+					
+					#line = serR.read(serR.inWaiting())
+					for line in lines:
+						#print "  got line '"+line+"'"
+						line = line.rstrip()
+						line = line.replace(STX, '')
+						line = line.replace(ETX, '')
+						print str(line)
+						#print "RFID NUM: " + str(line)
+						#for c in line:
+						#	print "C : " + str(c) + " " + str(ord(c))
+				time.sleep(0.2)
 			print "False"
 
 		except serial.SerialException:
 			print "Serial port " + tty + " closed"
 			exit(1)
+		except KeyboardInterrupt:
+			print "pressed ctrl+c"
+			serR.close()
+			exit(0)
 
 except serial.SerialException:
 	print "Serial port " + tty + " closed"
