@@ -2,6 +2,7 @@
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkAdjustment" id="adjScale13">
+    <property name="lower">-0.01</property>
     <property name="upper">1024</property>
     <property name="step_increment">1</property>
   </object>
@@ -21,7 +22,7 @@
             <property name="pixbuf">megaadk_small.png</property>
           </object>
           <packing>
-            <property name="y">165</property>
+            <property name="y">169</property>
           </packing>
         </child>
         <child>
@@ -72,7 +73,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkScale" id="scale13">
+              <object class="GtkScale" id="SC13">
                 <property name="width_request">100</property>
                 <property name="height_request">75</property>
                 <property name="visible">True</property>
@@ -104,13 +105,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="spinbutton1">
+              <object class="GtkSpinButton" id="SP13">
                 <property name="width_request">100</property>
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="invisible_char">●</property>
                 <property name="adjustment">adjScale13</property>
+                <property name="numeric">True</property>
               </object>
               <packing>
                 <property name="y">50</property>

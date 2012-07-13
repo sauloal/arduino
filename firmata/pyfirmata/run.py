@@ -2,10 +2,10 @@
 import os,sys
 import time
 import pprint
-import pickle
 
 from   pyfirmata import ArduinoMega, util
 import pyfirmata
+from   pyfirmata.boards import BOARDS
 
 #http://python-gtk-3-tutorial.readthedocs.org/en/latest/objects.html
 
@@ -16,13 +16,27 @@ import pyfirmata
 #import gobject
 #import commands
 
-from gi.repository import Gtk
+from gi.repository import Gtk, GObject
 
 glade_file = "mega.glade"
 tty        = '/dev/ttyACM0'
+updateRate = 3000 #ms
+
+IOBLOCKED = None
+IOINPUT   = 'I'
+IOOUTPUT  = 'O'
+MEBLOCKED = None
+MEDIGITAL = 'D'
+MEANALOG  = 'A'
+MEPWM     = 'P'
+
+def doYourStuff(mach):
+	print "doing my stuff on",mach
+	return True
+	
 
 class AppUI(object):
-	def __init__(self):
+	def __init__(self, board):
 		self.builder = Gtk.Builder()
 		self.builder.add_from_file(glade_file)
 		self.builder.connect_signals(self)
@@ -31,6 +45,12 @@ class AppUI(object):
 		#print "OBJS",objs
 		#io = self.buider.get_object("IO13")
 		#print io.set_active_id("1")
+		
+		self.board = board
+		self.mach  = machine(self, board)
+		#pprint.pprint(mach)
+		
+		GObject.timeout_add(updateRate, doYourStuff, [self.mach])
 		
 		try:
 			window = self.builder.get_object("window1")
@@ -55,10 +75,10 @@ class AppUI(object):
 	def onScChange(self, widget):
 		name  = Gtk.Buildable.get_name(widget)
 		value = int(widget.get_value())
-		print "WIDGET",widget,
-		print "NAME"  ,name,
+		#print "WIDGET",widget,
+		#print "NAME"  ,name,
 		#print "ENUM"  ,enum,
-		print "VALUE" ,value,"\n"
+		#print "VALUE" ,value,"\n"
 		#scale13
 		scChange(self, name, value)
 
@@ -78,7 +98,6 @@ class AppUI(object):
 		#ME13
 		meChange(self, name, value)
 
-
 def scChange(gtk, name, value):
 	scId  = int(name[-2:])
 	io    = gtk.builder.get_object("IO%02d" % scId)
@@ -95,6 +114,75 @@ def ioChange(gtk, name, value):
 def meChange(gtk, name, value):
 	pass
 
+class port(object):
+	def __init__(self, portNum, portIO, portMethod, portDisplay):
+		self.num     = portNum
+		self.io      = portIO
+		self.method  = portMethod
+		self.value   = 0
+		self.display = portDisplay
+
+	def updateDisplay(self):
+		pass
+	
+	def __repr__(self):
+		return "<PORT OBJECT NUM '%d' IO '%s' METHOD '%s' VALUE '%d' DISPLAY '%s'>" % (self.num, self.io, self.method, self.value, self.display)
+
+class display(object):
+	def __init__(self, app, portNum):
+		self.app = app
+		self.sc  = app.builder.get_object("SC%02d" % portNum)
+		self.io  = app.builder.get_object("IO%02d" % portNum)
+		self.me  = app.builder.get_object("ME%02d" % portNum)
+		
+	def update(self, portIO, portMethod, value):
+		io.set_value(portIO)
+		me.set_value(portME)
+		sc.set_value(value)
+		
+	def __repr__(self):
+		return "<DISPLAY OBJECT IO '%s' ME '%s' SC '%s'>" % (self.io, self.me, self.sc)
+
+class machine(object):
+	def __init__(self, app, board, predef=None):
+		self.ports        = {
+								MEDIGITAL: [],
+								MEANALOG : [],
+								MEPWM    : []
+							}
+		self.app = app
+
+		#	arduino_mega' : {
+		#        'digital' : tuple(x for x in range(54)),
+		#        'analog' : tuple(x for x in range(16)),
+		#        'pwm' : tuple(x for x in range(2,14)),
+		#        'use_ports' : True,
+		#        'disabled' : (0, 1) # Rx, Tx, Crystal
+		#    }
+
+		digitals = board['digital' ]
+		analogs  = board['analog'  ]
+		pwms     = board['pwm'     ]
+		disabled = board['disabled']
+		
+		
+		for pair in [[digitals, MEDIGITAL],[analogs, MEANALOG],[pwms, MEPWM]]:
+			lib    = pair[0]
+			portMe = pair[1]
+			for portNum in lib:
+				portDisplay = display(app, portNum)
+				
+				while len(self.ports[portMe]) <= portNum:
+					self.ports[portMe].append(None)
+				
+				portIO = IOINPUT
+				
+				self.ports[portMe][portNum] = port(portNum, portIO, portMe, portDisplay)
+		#pprint.pprint(self.ports)
+				
+	
+	def __repr__(self):
+		return pprint.pformat(self.ports)
 
 def main():
 	print "opening"
@@ -117,9 +205,12 @@ def main():
 		#	board.digital[13].write(0)
 		#	time.sleep(2)
 
+	board = BOARDS['arduino_mega']
+
 	try:
-		app = AppUI()
+		app  = AppUI(board)
 		Gtk.main()
+		
 	except KeyboardInterrupt:
 		print "crtl+c"
 		Gtk.main_quit()

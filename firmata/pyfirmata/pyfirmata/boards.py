@@ -9,7 +9,7 @@ BOARDS = {
     'arduino_mega' : {
         'digital' : tuple(x for x in range(54)),
         'analog' : tuple(x for x in range(16)),
-        'pwm' : tuple(x for x in range(2,14)),
+        'pwm' : tuple(x for x in range(2,14) + range(44,46)),
         'use_ports' : True,
         'disabled' : (0, 1) # Rx, Tx, Crystal
     }
