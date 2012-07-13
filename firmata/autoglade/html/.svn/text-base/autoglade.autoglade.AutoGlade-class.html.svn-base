@@ -1,0 +1,2005 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>autoglade.autoglade.AutoGlade</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="autoglade.autoglade-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Autoglade</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;autoglade ::
+        <a href="autoglade.autoglade-module.html">Module&nbsp;autoglade</a> ::
+        Class&nbsp;AutoGlade
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="autoglade.autoglade.AutoGlade-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AutoGlade</h1><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade">source&nbsp;code</a></span><br /><br />
+<p>AutoGlade main class.</p>
+  This is the main AutoGlade class.
+  <h1 class="heading">Conventions</h1>
+    These are the conventions used to relate Glade files.<br /><br />
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">glade</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">root</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">autorun</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">autoinit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">autoinitSplit</span>=<span class="summary-sig-default">':'</span>,
+        <span class="summary-sig-arg">autodump</span>=<span class="summary-sig-default">'text'</span>)</span><br />
+      Constructor</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getitem__" class="summary-sig-name">__getitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      __getitem__</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getattr__" class="summary-sig-name">__getattr__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      __getattr__</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getattr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__call__"></a><span class="summary-sig-name">__call__</span>(<span class="summary-sig-arg">args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__call__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getTopLevelWidgetNames" class="summary-sig-name">__getTopLevelWidgetNames</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the top level widget names.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getTopLevelWidgetNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getSignalHandlers"></a><span class="summary-sig-name">__getSignalHandlers</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getSignalHandlers">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getSignalHandlerFromAGOKey" class="summary-sig-name">__getSignalHandlerFromAGOKey</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">agokey</span>)</span><br />
+      Get signal handler from Auto Glade Object key</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getSignalHandlerFromAGOKey">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__autoConnectAGO"></a><span class="summary-sig-name">__autoConnectAGO</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">agokey</span>,
+        <span class="summary-sig-arg">handler</span>=<span class="summary-sig-default">'auto'</span>,
+        <span class="summary-sig-arg">signal</span>=<span class="summary-sig-default">'auto'</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__autoConnectAGO">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__autoConnect"></a><span class="summary-sig-name">__autoConnect</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__autoConnect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getTopLevelWidgets" class="summary-sig-name">__getTopLevelWidgets</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the top level widgets parsing the glade XML file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getTopLevelWidgets">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__mapAutoInvokeWidgetNames" class="summary-sig-name">__mapAutoInvokeWidgetNames</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Map the autoInvoke names (widget:auto:method) to its plain form 
+      (widget).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__mapAutoInvokeWidgetNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__fixComboBoxNotShowingActiveItem" class="summary-sig-name">__fixComboBoxNotShowingActiveItem</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Fix a problem found with Combo Box widgets.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__fixComboBoxNotShowingActiveItem">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getAboutDialog"></a><span class="summary-sig-name">__getAboutDialog</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the about dialog from the internal list of top level widgets 
+      and set the <a href="autoglade.autoglade.AutoGladeObject-class.html" 
+      class="link">AutoGladeObject</a> accordingly.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getAboutDialog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getPreferencesDialog" class="summary-sig-name">__getPreferencesDialog</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the preferences dialog from the internal list of top level 
+      widgets and set the <a 
+      href="autoglade.autoglade.AutoGladeObject-class.html" 
+      class="link">AutoGladeObject</a> accordingly.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getPreferencesDialog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getStockItem"></a><span class="summary-sig-name">__getStockItem</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">agokey</span>,
+        <span class="summary-sig-arg">stock</span>,
+        <span class="summary-sig-arg">gtkClass</span>=<span class="summary-sig-default">gtk.Widget</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getStockItem">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getStockItems"></a><span class="summary-sig-name">__getStockItems</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get stock items.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getStockItems">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__findStockItem" class="summary-sig-name">__findStockItem</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">stock</span>,
+        <span class="summary-sig-arg">gtkClass</span>=<span class="summary-sig-default">gtk.Widget</span>)</span><br />
+      Find a stock item in the elements tree.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__findStockItem">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getGladeInterface"></a><span class="summary-sig-name">getGladeInterface</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.getGladeInterface">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDom"></a><span class="summary-sig-name">getDom</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.getDom">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTopLevelWidgets"></a><span class="summary-sig-name">getTopLevelWidgets</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.getTopLevelWidgets">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getSignalHandlers"></a><span class="summary-sig-name">getSignalHandlers</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.getSignalHandlers">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#getWidgetNames" class="summary-sig-name">getWidgetNames</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widgetClassFilter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">widgetCanonicalNames</span>=<span class="summary-sig-default">False</span>)</span><br />
+      List the widget names possible filtered.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.getWidgetNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#autoInit" class="summary-sig-name">autoInit</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">autoinit</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Default autoInit method, can be overriden by children.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoInit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_cancelbutton_clicked" class="summary-sig-name">on_cancelbutton_clicked</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>)</span><br />
+      Default handler for <b>Cancel</b> buttons <code>clicked</code> 
+      signal.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_cancelbutton_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_autosensitize"></a><span class="summary-sig-name">on_autosensitize</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">targetWidget</span>)</span><br />
+      Toggle the 'sensitive' property on a target widget</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autosensitize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_autoshow"></a><span class="summary-sig-name">on_autoshow</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">targetWidget</span>)</span><br />
+      Toggle the 'visible' property on a target widget</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autoshow">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_automenuitem_activate" class="summary-sig-name">on_automenuitem_activate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Default handler for menu items <code>activate</code> signal</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_automenuitem_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autobutton_clicked" class="summary-sig-name">on_autobutton_clicked</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      on_autobutton_clicked</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autobutton_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autotoolbutton_clicked" class="summary-sig-name">on_autotoolbutton_clicked</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>)</span><br />
+      on_autotoolbutton_clicked</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autotoolbutton_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#autoInvoke" class="summary-sig-name">autoInvoke</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Auto invoke the method codified in widget name</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoInvoke">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autodialog_response" class="summary-sig-name">on_autodialog_response</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">response</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Default handler for <code class="link">gtk.Dialog</code> 
+      <code>response</code> signal</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autodialog_response">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_autobuttonexpandall_clicked"></a><span class="summary-sig-name">on_autobuttonexpandall_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autobuttonexpandall_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_autobuttoncollapseall_clicked"></a><span class="summary-sig-name">on_autobuttoncollapseall_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autobuttoncollapseall_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#autoRun" class="summary-sig-name">autoRun</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      auto run the graphical user interface</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoRun">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoErrorDialog"></a><span class="summary-sig-name">autoErrorDialog</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ex</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoErrorDialog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoWarningDialog"></a><span class="summary-sig-name">autoWarningDialog</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">msg</span>,
+        <span class="summary-sig-arg">message_format</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoWarningDialog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoQuestionDialog"></a><span class="summary-sig-name">autoQuestionDialog</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">msg</span>,
+        <span class="summary-sig-arg">buttons</span>=<span class="summary-sig-default">gtk.BUTTONS_YES_NO</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoQuestionDialog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoInfoDialog"></a><span class="summary-sig-name">autoInfoDialog</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">msg</span>=<span class="summary-sig-default">&quot;No message&quot;</span>,
+        <span class="summary-sig-arg">message_format</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoInfoDialog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoAddTimeout"></a><span class="summary-sig-name">autoAddTimeout</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">msecs</span>=<span class="summary-sig-default">1000</span>,
+        <span class="summary-sig-arg">method</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoAddTimeout">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoProgressBar"></a><span class="summary-sig-name">autoProgressBar</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoProgressBar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="isInputClass"></a><span class="summary-sig-name">isInputClass</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widgetClass</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.isInputClass">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoDumpText"></a><span class="summary-sig-name">autoDumpText</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">var</span>,
+        <span class="summary-sig-arg">val</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoDumpText">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoDumpShell"></a><span class="summary-sig-name">autoDumpShell</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">var</span>,
+        <span class="summary-sig-arg">val</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoDumpShell">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoDumpValues"></a><span class="summary-sig-name">autoDumpValues</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoDumpValues">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoDialog"></a><span class="summary-sig-name">autoDialog</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoDialog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoHelp"></a><span class="summary-sig-name">autoHelp</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoHelp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoQuit"></a><span class="summary-sig-name">autoQuit</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoQuit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoAbout"></a><span class="summary-sig-name">autoAbout</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoAbout">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoNew"></a><span class="summary-sig-name">autoNew</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoNew">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoOpen"></a><span class="summary-sig-name">autoOpen</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoOpen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoSaveas"></a><span class="summary-sig-name">autoSaveas</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoSaveas">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoSave"></a><span class="summary-sig-name">autoSave</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoSave">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoCopy"></a><span class="summary-sig-name">autoCopy</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoCopy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoCut"></a><span class="summary-sig-name">autoCut</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoCut">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoPaste"></a><span class="summary-sig-name">autoPaste</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoPaste">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoDelete"></a><span class="summary-sig-name">autoDelete</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoDelete">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoPreferences"></a><span class="summary-sig-name">autoPreferences</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoPreferences">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="printval"></a><span class="summary-sig-name">printval</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.printval">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="new"></a><span class="summary-sig-name">new</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.new">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="open"></a><span class="summary-sig-name">open</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">widget</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.open">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="save"></a><span class="summary-sig-name">save</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">widget</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.save">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="abbreviations"></a><span class="summary-sig-name">abbreviations</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.abbreviations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+        <a name="DEBUG"></a><span class="summary-name">DEBUG</span> = <code title="False">False</code><br />
+      Set debugging output
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__reSetTreeviewCell"></a><span class="summary-name">__reSetTreeviewCell</span> = <code title="re.compile(AUTO_TREEVIEW_SET_CELL_RE)">re.compile(AUTO_TREEVIEW_SET_CELL_RE)</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__topLevelWidgetNames"></a><span class="summary-name">__topLevelWidgetNames</span> = <code title="[]">[]</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__mainTopLevelWidget"></a><span class="summary-name">__mainTopLevelWidget</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__autoGladeObjects"></a><span class="summary-name">__autoGladeObjects</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__topLevelWidgets"></a><span class="summary-name">__topLevelWidgets</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__signalHandlers"></a><span class="summary-name">__signalHandlers</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__autoDumpMap"></a><span class="summary-name">__autoDumpMap</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__gconf"></a><span class="summary-name">__gconf</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__dump"></a><span class="summary-name">__dump</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__autoArgs"></a><span class="summary-name">__autoArgs</span> = <code title="''">''</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__autoProperties"></a><span class="summary-name">__autoProperties</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__autoStockItems"></a><span class="summary-name">__autoStockItems</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cellText"></a><span class="summary-name">cellText</span> = <code title="gtk.CellRendererText()">gtk.CellRendererText()</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cellPixbuf"></a><span class="summary-name">cellPixbuf</span> = <code title="gtk.CellRendererPixbuf()">gtk.CellRendererPixbuf()</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cellToggle"></a><span class="summary-name">cellToggle</span> = <code title="gtk.CellRendererToggle()">gtk.CellRendererToggle()</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a name="__reAutoInvoke"></a><span class="summary-name">__reAutoInvoke</span> = <code title="re.compile(AUTO_INVOKE_RE)">re.compile(AUTO_INVOKE_RE)</code><br />
+      The regular expression to parse the Glade widget name
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">gtk.Widget</code></span>
+    </td><td class="summary">
+        <a name="__menuItemAbout"></a><span class="summary-name">__menuItemAbout</span><br />
+      Stock menu item about
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">gtk.Widget</code></span>
+    </td><td class="summary">
+        <a name="__menuItemPreferences"></a><span class="summary-name">__menuItemPreferences</span><br />
+      Stock menu item preferences
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">gtk.Widget</code></span>
+    </td><td class="summary">
+        <a name="__menuItemQuit"></a><span class="summary-name">__menuItemQuit</span><br />
+      Stock menu item quit
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">glade</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">root</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">autorun</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">autoinit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">autoinitSplit</span>=<span class="sig-default">':'</span>,
+        <span class="sig-arg">autodump</span>=<span class="sig-default">'text'</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Constructor</p>
+  Constructs the AutoGlade object based on the arguments passed.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>glade</code></strong> (str) - The glade filename, defaults to the name of the class. Default
+          <code>None</code></li>
+        <li><strong class="pname"><code>root</code></strong> (str) - The root widget name. Default <code>None</code>.</li>
+        <li><strong class="pname"><code>autorun</code></strong> (boolean) - Will autoglade auto run the GUI ?</li>
+        <li><strong class="pname"><code>autoinit</code></strong> (str) - Autoinit initialization string</li>
+        <li><strong class="pname"><code>autodump</code></strong> (str) - Autodump type output format (i.e.: text, shell)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(Indexing operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>__getitem__</p>
+  Provides <b>self['name'].method()</b> access. If the <code>key</code> 
+  starts with <code>on_</code> then the corresponding method is executed 
+  instead of returning the attribute value.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>key</code></strong> (str) - The key to search</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>if key starts with 'on_' returns the value of the execution of
+          <b>self.key</b>, if key matches 
+          <code>AUTO_TREEVIEW_SET_CELL_RE</code> (or whatever 
+          <code>self.__reSetTreeviewCell</code> has compiled in) then 
+          returns an instance of <a 
+          href="autoglade.autoglade.AutoTreeviewSetCell-class.html" 
+          class="link">AutoTreeviewSetCell</a> or returns the corresponding
+          widget if exists, otherwise raise an <a 
+          href="autoglade.autoglade.AutoGladeAttributeError-class.html" 
+          class="link">AutoGladeAttributeError</a>.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="autoglade.autoglade.AutoGladeAttributeError-class.html">AutoGladeAttributeError</a></strong></code> - If the key is not found</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getattr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getattr__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>)</span>
+    <br /><em class="fname">(Qualification operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getattr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>__getattr__</p>
+  Provides <b>self.name.method()</b> access
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> (<code class="link">str</code>) - Item name</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>Returns <a 
+          href="autoglade.autoglade.AutoGlade-class.html#__getitem__" 
+          class="link">__getitem__</a><code>(name)</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getTopLevelWidgetNames"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getTopLevelWidgetNames</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getTopLevelWidgetNames">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Get the top level widget names.</p>
+  Glade XML files have not been parsed yet.
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getSignalHandlerFromAGOKey"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getSignalHandlerFromAGOKey</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">agokey</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getSignalHandlerFromAGOKey">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Get signal handler from Auto Glade Object key</p>
+  <p>This method obtains the signal handler from the Auto Galde Object key 
+  in camel case, assuming the handler method named is formed by the last 
+  component of the camel case key, capitalized and with the prefix 'auto' 
+  prepended.</p>
+  Examples:
+<pre class="literalblock">
+       agokey = menuItemOpen}
+       method = autoOpen}
+
+       agokey = toolButtonSaveas # note the lowercase in as}
+       method = autoSaveas
+</pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>agokey</code></strong> (str) - The Auto Glade Object key</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>The signal handler method instance or None if there's no 
+          match</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getTopLevelWidgets"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getTopLevelWidgets</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getTopLevelWidgets">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get the top level widgets parsing the glade XML file. The widget trees
+  (one for every top level widget) are also created in this operation.
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__mapAutoInvokeWidgetNames"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__mapAutoInvokeWidgetNames</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__mapAutoInvokeWidgetNames">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Map the autoInvoke names (widget:auto:method) to its plain form 
+  (widget). Invoke 'auto:init' method if present. Connect 'auto:sensitize' 
+  signals. Connect signal for menu items (and tool buttons ?) if not 
+  connected
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__fixComboBoxNotShowingActiveItem"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__fixComboBoxNotShowingActiveItem</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__fixComboBoxNotShowingActiveItem">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Fix a problem found with Combo Box widgets.</p>
+  Is this a libglade bug ?
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getPreferencesDialog"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getPreferencesDialog</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__getPreferencesDialog">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Get the preferences dialog from the internal list of top level widgets
+  and set the <a href="autoglade.autoglade.AutoGladeObject-class.html" 
+  class="link">AutoGladeObject</a> accordingly.</p>
+  To find it, widget name is matched against 'preferences' ignoring 
+  case.
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__findStockItem"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__findStockItem</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">stock</span>,
+        <span class="sig-arg">gtkClass</span>=<span class="sig-default">gtk.Widget</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.__findStockItem">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Find a stock item in the elements tree.</p>
+  WARNING: Right now only find the first widget if more than one 
+  satisfies the conditions
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>stock</code></strong> (str) - The stock item to find</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getWidgetNames"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getWidgetNames</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widgetClassFilter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">widgetCanonicalNames</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.getWidgetNames">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>List the widget names possible filtered.</p>
+  This method was an idea suggested by Charles Edward Pax and 
+  Christopher Pax from Gladex project 
+  (http://www.openphysics.org/~gladex/)
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="autoInit"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">autoInit</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">autoinit</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoInit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Default autoInit method, can be overriden by children.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>autoinit</code></strong> (<code class="link">str</code>) - The string containing autoinit commands</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_cancelbutton_clicked"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_cancelbutton_clicked</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widget</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_cancelbutton_clicked">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Default handler for <b>Cancel</b> buttons <code>clicked</code> 
+  signal.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>widget</code></strong> (<code class="link">gtk.Widget</code>) - The widget receiving the signal</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_automenuitem_activate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_automenuitem_activate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widget</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_automenuitem_activate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Default handler for menu items <code>activate</code> signal</p>
+  <p>This is a handler method intended to be a simple menu item handler. 
+  The idea is to simplify handling menu items usually connected to dialog 
+  boxes. activate signal on the menu item object must point to this 
+  function and user data parameter of this signal must point to the object 
+  to call. In the case of a dialog, user data parameter is the dialog 
+  object which this method will run.</p>
+  This can also be used (and it's used by autoInvoke) in <code 
+  class="link">gtk.ToolButton</code> objects.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>widget</code></strong> (<code class="link">gtk.Widget</code>) - The widget receiving the signal</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_autobutton_clicked"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_autobutton_clicked</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widget</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autobutton_clicked">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  on_autobutton_clicked
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>widget</code></strong> (<code class="link">gtk.Widget</code>) - The widget receiving the signal</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_autotoolbutton_clicked"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_autotoolbutton_clicked</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widget</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autotoolbutton_clicked">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  on_autotoolbutton_clicked
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>widget</code></strong> (<code class="link">gtk.Widget</code>) - The widget receiving the signal</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="autoInvoke"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">autoInvoke</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widget</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoInvoke">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Auto invoke the method codified in widget name</p>
+  <p>Auto invoke the method codified and described in the Glade widget 
+  name. The pattern string is described by the regular expression in <a 
+  name="index-self___reAutoInvoke"></a><i 
+  class="indexterm">self.__reAutoInvoke</i> which typically is 
+  '(.*):auto:(.*)' or everything before ':auto:' is the standard widget 
+  name, and everything after is the method name or widget (in the case of 
+  <code class="link">gtk.Dialog</code>) to be invoked.</p>
+  The methods <code>name</code>Pre, <code>name</code> and 
+  <code>name</code>Post are invoked in order (if exist) and if and only if 
+  the predecesor returns <code>True</code>.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>widget</code></strong> (<code class="link">gtk.Widget</code>) - The widget receiving the signal</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_autodialog_response"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_autodialog_response</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widget</span>,
+        <span class="sig-arg">response</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.on_autodialog_response">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Default handler for <code class="link">gtk.Dialog</code> 
+  <code>response</code> signal</p>
+  <p>This is a handler method intended to be a simple dialog handler. 
+  response signal of widget must be connected to this method and the user 
+  data parameter must be left untouched (as of Glade 3.0 and libglade 
+  2).</p>
+  Note: Perhaps this method should set a Singleton object value to the 
+  response received
+  <h1 class="heading">gtk response values</h1>
+    These are the response values:
+<pre class="literalblock">
+       gtk.RESPONSE_NONE=-1
+       gtk.RESPONSE_REJECT=-2
+       gtk.RESPONSE_ACCEPT=-3
+       gtk.RESPONSE_DELETE_EVENT=-4
+       gtk.RESPONSE_OK=-5
+       gtk.RESPONSE_CANCEL=-6
+       gtk.RESPONSE_CLOSE=-7
+       gtk.RESPONSE_YES=-8
+       gtk.RESPONSE_NO=-9
+       gtk.RESPONSE_APPLY=-10
+       gtk.RESPONSE_HELP=-11
+</pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>widget</code></strong> (<code class="link">gtk.Widget</code>) - The widget receiving the signal</li>
+        <li><strong class="pname"><code>response</code></strong> (int) - The dialog response (i.e.: button pressed)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="autoRun"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">autoRun</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="autoglade.autoglade-pysrc.html#AutoGlade.autoRun">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>auto run the graphical user interface</p>
+  Runs the graphical user interface automatically. There ase some 
+  special cases contempled.
+  <ol start="1">
+    <li>
+      If there's no <a 
+      href="autoglade.autoglade.AutoGlade-class.html#__mainTopLevelWidget" 
+      class="link">__mainTopLevelWidget</a> then it does nothing
+    </li>
+    <li>
+      If the <a 
+      href="autoglade.autoglade.AutoGlade-class.html#__mainTopLevelWidget" 
+      class="link">__mainTopLevelWidget</a> is a <code 
+      class="link">gtk.Dialog</code> then the dialog box is run. Loops 
+      forever until one of the values of a valid response is received, then
+      return this value
+    </li>
+    <li>
+      if the <a 
+      href="autoglade.autoglade.AutoGlade-class.html#__mainTopLevelWidget" 
+      class="link">__mainTopLevelWidget</a> is not a <code 
+      class="link">gtk.Dialog</code> then the main GTK loop is entered
+    </li>
+  </ol>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="autoglade.autoglade-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Autoglade</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0beta1 on Fri Aug 15 00:10:49 2008
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

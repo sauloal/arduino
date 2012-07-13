@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>autoglade.autoglade</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Autoglade</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;autoglade ::
+        Module&nbsp;autoglade
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="autoglade.autoglade-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module autoglade</h1><span class="codelink"><a href="autoglade.autoglade-pysrc.html">source&nbsp;code</a></span><br /><br />
+$Id: autoglade.py 35 2008-08-14 13:52:40Z dtmilano $<br /><br />
+
+<hr />
+<div class="fields">      <p><strong>Version:</strong>
+        0.4
+      </p>
+      <p><strong>License:</strong>
+        Copyright (C) 2007 Diego Torres Milano &lt;diego@codtech.com&gt;
+        
+        
+        This program is free software; you can redistribute it and/or 
+        modify
+        it under the terms of the GNU General Public License as published 
+        by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+        
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+        
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 
+        02111-1307,
+        USA
+      </p>
+</div><!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade.AutoGladeAttributeError-class.html" class="summary-name">AutoGladeAttributeError</a><br />
+      AutoGladeAttributeError is an identificable AttributeError
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade.AutoGladeRuntimeError-class.html" class="summary-name">AutoGladeRuntimeError</a><br />
+      AutoGladeRuntimeError
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade.AutoGladeItemNotFoundException-class.html" class="summary-name">AutoGladeItemNotFoundException</a><br />
+      AutoGladeItemNotFoundException
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade.AutoGladeObject-class.html" class="summary-name">AutoGladeObject</a><br />
+      AutoGladeObject is an utility class that relates together the 
+        Glade widget, its name and the XML element in a particular 
+        autoglade instance.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade.AutoTreeviewSetCell-class.html" class="summary-name">AutoTreeviewSetCell</a><br />
+      AutoTreeviewSetCell helper class.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade.AutoGlade-class.html" class="summary-name">AutoGlade</a><br />
+      AutoGlade main class.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="FN"></a><span class="summary-sig-name">FN</span>()</span><br />
+      Get the function name from the previous (calling) frame</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#FN">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="warning"></a><span class="summary-sig-name">warning</span>(<span class="summary-sig-arg">str</span>,
+        <span class="summary-sig-arg">*cond</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#warning">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="debug"></a><span class="summary-sig-name">debug</span>(<span class="summary-sig-arg">str</span>,
+        <span class="summary-sig-arg">*cond</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#debug">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="treeview_toogle_expansion"></a><span class="summary-sig-name">treeview_toogle_expansion</span>(<span class="summary-sig-arg">treeview</span>,
+        <span class="summary-sig-arg">path</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="autoglade.autoglade-pysrc.html#treeview_toogle_expansion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__rev__"></a><span class="summary-name">__rev__</span> = <code title="'$Rev: 35 $'">'$Rev: 35 $'</code><br />
+      AutoGlade
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AUTO_DELIMITER"></a><span class="summary-name">AUTO_DELIMITER</span> = <code title="':'">':'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade-module.html#AUTO_INVOKE_RE" class="summary-name">AUTO_INVOKE_RE</a> = <code title="'(.*)'+ AUTO_DELIMITER+ 'auto'+ AUTO_DELIMITER+ '([^'+ AUTO_DELIMITER+\
+ ']*)('+ AUTO_DELIMITER+ '(.+))?'">'(.*)'+ AUTO_DELIMITER+ 'auto'+ AUTO_DELIMITE<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AUTO_INVOKE_WIDGET"></a><span class="summary-name">AUTO_INVOKE_WIDGET</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AUTO_INVOKE_METHOD"></a><span class="summary-name">AUTO_INVOKE_METHOD</span> = <code title="2">2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AUTO_INVOKE_HASARGS"></a><span class="summary-name">AUTO_INVOKE_HASARGS</span> = <code title="3">3</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AUTO_INVOKE_ARGS"></a><span class="summary-name">AUTO_INVOKE_ARGS</span> = <code title="4">4</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AUTO_TREEVIEW_SET_CELL_RE"></a><span class="summary-name">AUTO_TREEVIEW_SET_CELL_RE</span> = <code title="'setTreeview(.+)Cell(\d+)'">'setTreeview(.+)Cell(\d+)'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_POSTPONED"></a><span class="summary-name">AGO_POSTPONED</span> = <code title="-2">-2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_DIALOG_PREFERENCES"></a><span class="summary-name">AGO_DIALOG_PREFERENCES</span> = <code title="'dialogPreferences'">'dialogPreferences'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_BUTTON_PREFERENCES"></a><span class="summary-name">AGO_BUTTON_PREFERENCES</span> = <code title="'buttonPreferences'">'buttonPreferences'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_PREFERENCES"></a><span class="summary-name">AGO_MENU_ITEM_PREFERENCES</span> = <code title="'menuItemPreferences'">'menuItemPreferences'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_TOOL_BUTTON_PREFERENCES"></a><span class="summary-name">AGO_TOOL_BUTTON_PREFERENCES</span> = <code title="'toolButtonPreferences'">'toolButtonPreferences'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_BUTTON_NEW"></a><span class="summary-name">AGO_BUTTON_NEW</span> = <code title="'buttonNew'">'buttonNew'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_NEW"></a><span class="summary-name">AGO_MENU_ITEM_NEW</span> = <code title="'menuItemNew'">'menuItemNew'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_TOOL_BUTTON_NEW"></a><span class="summary-name">AGO_TOOL_BUTTON_NEW</span> = <code title="'toolButtonNew'">'toolButtonNew'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_BUTTON_OPEN"></a><span class="summary-name">AGO_BUTTON_OPEN</span> = <code title="'buttonOpen'">'buttonOpen'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_OPEN"></a><span class="summary-name">AGO_MENU_ITEM_OPEN</span> = <code title="'menuItemOpen'">'menuItemOpen'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_TOOL_BUTTON_OPEN"></a><span class="summary-name">AGO_TOOL_BUTTON_OPEN</span> = <code title="'toolButtonOpen'">'toolButtonOpen'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_BUTTON_SAVE"></a><span class="summary-name">AGO_BUTTON_SAVE</span> = <code title="'buttonSave'">'buttonSave'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_SAVE"></a><span class="summary-name">AGO_MENU_ITEM_SAVE</span> = <code title="'menuItemSave'">'menuItemSave'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_TOOL_BUTTON_SAVE"></a><span class="summary-name">AGO_TOOL_BUTTON_SAVE</span> = <code title="'toolButtonSave'">'toolButtonSave'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_SAVE_AS"></a><span class="summary-name">AGO_MENU_ITEM_SAVE_AS</span> = <code title="'menuItemSaveas'">'menuItemSaveas'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_COPY"></a><span class="summary-name">AGO_MENU_ITEM_COPY</span> = <code title="'menuItemCopy'">'menuItemCopy'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_CUT"></a><span class="summary-name">AGO_MENU_ITEM_CUT</span> = <code title="'menuItemCut'">'menuItemCut'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_PASTE"></a><span class="summary-name">AGO_MENU_ITEM_PASTE</span> = <code title="'menuItemPaste'">'menuItemPaste'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_DELETE"></a><span class="summary-name">AGO_MENU_ITEM_DELETE</span> = <code title="'menuItemDelete'">'menuItemDelete'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_BUTTON_QUIT"></a><span class="summary-name">AGO_BUTTON_QUIT</span> = <code title="'buttonQuit'">'buttonQuit'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_QUIT"></a><span class="summary-name">AGO_MENU_ITEM_QUIT</span> = <code title="'menuItemQuit'">'menuItemQuit'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_TOOL_BUTTON_QUIT"></a><span class="summary-name">AGO_TOOL_BUTTON_QUIT</span> = <code title="'toolButtonQuit'">'toolButtonQuit'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_DIALOG_ABOUT"></a><span class="summary-name">AGO_DIALOG_ABOUT</span> = <code title="'dialogAbout'">'dialogAbout'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_BUTTON_ABOUT"></a><span class="summary-name">AGO_BUTTON_ABOUT</span> = <code title="'buttonAbout'">'buttonAbout'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_MENU_ITEM_ABOUT"></a><span class="summary-name">AGO_MENU_ITEM_ABOUT</span> = <code title="'menuItemAbout'">'menuItemAbout'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AGO_TOOL_BUTTON_ABOUT"></a><span class="summary-name">AGO_TOOL_BUTTON_ABOUT</span> = <code title="'toolButtonAbout'">'toolButtonAbout'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade-module.html#AGOS" class="summary-name">AGOS</a> = <code title="[AGO_DIALOG_PREFERENCES, AGO_BUTTON_PREFERENCES, AGO_MENU_ITEM_PREFERE\
+NCES, AGO_TOOL_BUTTON_PREFERENCES, AGO_BUTTON_NEW, AGO_MENU_ITEM_NEW, \
+AGO_TOOL_BUTTON_NEW, AGO_BUTTON_OPEN, AGO_MENU_ITEM_OPEN, AGO_TOOL_BUT\
+TON_OPEN, AGO_BUTTON_SAVE, AGO_MENU_ITEM_SAVE, AGO_TOOL_BUTTON_SAVE, A\
+GO_MENU_ITEM_SAVE_AS, AGO_MENU_ITEM_COPY, AGO_MENU_ITEM_CUT, AGO_MENU_\
+ITEM_PASTE, AGO_MENU_ITEM_DELETE, AGO_BUTTON_QUIT, AGO_MENU_ITEM_QUIT,\
+ AGO_TOOL_BUTTON_QUIT, AGO_DIALOG_ABOUT, AGO_BUTTON_ABOUT, AGO_MENU_IT\
+EM_ABOUT, AGO_TOOL_BUTTON_ABOUT,]">[AGO_DIALOG_PREFERENCES, AGO_BUTTON_PREFERENCES, AGO_ME<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ASI_STOCK"></a><span class="summary-name">ASI_STOCK</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ASI_GTKCLASS"></a><span class="summary-name">ASI_GTKCLASS</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="prog"></a><span class="summary-name">prog</span> = <code title="os.path.basename(sys.argv [0])">os.path.basename(sys.argv [0])</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="version"></a><span class="summary-name">version</span> = <code title="'0.4'">'0.4'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="revision"></a><span class="summary-name">revision</span> = <code title="'$Rev: 35 $'">'$Rev: 35 $'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade-module.html#DEBUG" class="summary-name">DEBUG</a> = <code title="['__autoConnect', 'autoCopy', 'autoOpen', 'open', 'autoNew', 'autoSave\
+as', 'save']">['__autoConnect', 'autoCopy', 'autoOpen', 'open', 'aut<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="WARNING"></a><span class="summary-name">WARNING</span> = <code title="['__autoConnect']">['__autoConnect']</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade-module.html#colors" class="summary-name">colors</a> = <code title="{&quot;default&quot;: &quot;&quot;, &quot;blue&quot;: &quot;\x1b[01;34m&quot;, &quot;cyan&quot;: &quot;\x1b[01;36m&quot;, &quot;green&quot;:\
+ &quot;\x1b[01;32m&quot;, &quot;red&quot;: &quot;\x1b[01;05;37;41m&quot;, &quot;magenta&quot;: &quot;\x1b[01;35m&quot;, \
+&quot;sgr0&quot;: &quot;\x1b[m\x1b(B&quot;}">{&quot;default&quot;: &quot;&quot;, &quot;blue&quot;: &quot;\x1b[01;34m&quot;, &quot;cyan&quot;: &quot;\x1b[<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CYAN"></a><span class="summary-name">CYAN</span> = <code title="colors ['cyan']">colors ['cyan']</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="RED"></a><span class="summary-name">RED</span> = <code title="colors ['red']">colors ['red']</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="BLUE"></a><span class="summary-name">BLUE</span> = <code title="colors ['blue']">colors ['blue']</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="GREEN"></a><span class="summary-name">GREEN</span> = <code title="colors ['green']">colors ['green']</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MAGENTA"></a><span class="summary-name">MAGENTA</span> = <code title="colors ['magenta']">colors ['magenta']</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SGR0"></a><span class="summary-name">SGR0</span> = <code title="colors ['sgr0']">colors ['sgr0']</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade-module.html#EMPTY_GLADE" class="summary-name">EMPTY_GLADE</a> = <code title="&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!DOCTYPE glade-interface SYSTEM &quot;glade-2.0.dtd&quot;&gt;
+&lt;!--Generated with glade3 3.2.0 on Tue Sep 25 21:27:17 2007 by diego@b\
+ruce--&gt;
+&lt;glade-interface&gt;
+&lt;/glade-interface&gt;
+&quot;&quot;&quot;">&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalo<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="autoglade.autoglade-module.html#INPUT_CLASS" class="summary-name">INPUT_CLASS</a> = <code title="['GtkRadioButton', 'GtkCheckButton', 'GtkToggleButton', 'GtkEntry', 'G\
+tkHScale', 'GtkVScale', 'GtkSpinButton', 'GtkComboBox', 'GtkFileChoose\
+rButton', 'GtkFontButton', 'GtkColorButton', 'GtkCalendar']">['GtkRadioButton', 'GtkCheckButton', 'GtkToggleB<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="usage"></a><span class="summary-name">usage</span> = <code title="&quot;usage: autoglade [options] [file.glade]&quot;">&quot;usage: autoglade [options] [file.glade]&quot;</code>
+    </td>
+  </tr>
+</table>
+<p class="indent-wrapped-lines"><b>Imports:</b>
+  sys,
+  os,
+  re,
+  gobject,
+  gtk,
+  gconf,
+  warnings,
+  traceback,
+  optparse.OptionParser,
+  xml.dom.minidom
+</p><br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="AUTO_INVOKE_RE"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">AUTO_INVOKE_RE</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+'(.*)'+ AUTO_DELIMITER+ 'auto'+ AUTO_DELIMITER+ '([^'+ AUTO_DELIMITER+<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ ']*)('+ AUTO_DELIMITER+ '(.+))?'
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="AGOS"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">AGOS</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+[AGO_DIALOG_PREFERENCES, AGO_BUTTON_PREFERENCES, AGO_MENU_ITEM_PREFERE<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+NCES, AGO_TOOL_BUTTON_PREFERENCES, AGO_BUTTON_NEW, AGO_MENU_ITEM_NEW, <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+AGO_TOOL_BUTTON_NEW, AGO_BUTTON_OPEN, AGO_MENU_ITEM_OPEN, AGO_TOOL_BUT<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+TON_OPEN, AGO_BUTTON_SAVE, AGO_MENU_ITEM_SAVE, AGO_TOOL_BUTTON_SAVE, A<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+GO_MENU_ITEM_SAVE_AS, AGO_MENU_ITEM_COPY, AGO_MENU_ITEM_CUT, AGO_MENU_<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ITEM_PASTE, AGO_MENU_ITEM_DELETE, AGO_BUTTON_QUIT, AGO_MENU_ITEM_QUIT,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ AGO_TOOL_BUTTON_QUIT, AGO_DIALOG_ABOUT, AGO_BUTTON_ABOUT, AGO_MENU_IT<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+EM_ABOUT, AGO_TOOL_BUTTON_ABOUT,]
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="DEBUG"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">DEBUG</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+['__autoConnect', 'autoCopy', 'autoOpen', 'open', 'autoNew', 'autoSave<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+as', 'save']
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="colors"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">colors</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{&quot;default&quot;: &quot;&quot;, &quot;blue&quot;: &quot;\x1b[01;34m&quot;, &quot;cyan&quot;: &quot;\x1b[01;36m&quot;, &quot;green&quot;:<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ &quot;\x1b[01;32m&quot;, &quot;red&quot;: &quot;\x1b[01;05;37;41m&quot;, &quot;magenta&quot;: &quot;\x1b[01;35m&quot;, <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+&quot;sgr0&quot;: &quot;\x1b[m\x1b(B&quot;}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="EMPTY_GLADE"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">EMPTY_GLADE</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!DOCTYPE glade-interface SYSTEM &quot;glade-2.0.dtd&quot;&gt;
+&lt;!--Generated with glade3 3.2.0 on Tue Sep 25 21:27:17 2007 by diego@b<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ruce--&gt;
+&lt;glade-interface&gt;
+&lt;/glade-interface&gt;
+&quot;&quot;&quot;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="INPUT_CLASS"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">INPUT_CLASS</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+['GtkRadioButton', 'GtkCheckButton', 'GtkToggleButton', 'GtkEntry', 'G<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+tkHScale', 'GtkVScale', 'GtkSpinButton', 'GtkComboBox', 'GtkFileChoose<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+rButton', 'GtkFontButton', 'GtkColorButton', 'GtkCalendar']
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >Autoglade</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0beta1 on Fri Aug 15 00:10:49 2008
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

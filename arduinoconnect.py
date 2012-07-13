@@ -346,127 +346,144 @@ def serialFunction(args):
     msgandresponse = []
     availableNodes = []
     waitinglist    = []
+    msgs           = []
     buffer         = ''
+    foundACK       = True
+    
     try:
         if debug: print "WAITING FOR LINE"
         try:
             while continueLoop:
-                msgs    = []
-                hasNone = False
-                buffer = buffer + serR.read(serR.inWaiting())
-                #print "buffer '"+buffer+"'"
-
-                lines = []
-                if '\n' in buffer:
-                    #print "  inside"
-                    if debug: print "buffer '"+buffer+"'\n\n"
-                    lines = buffer.split('\n')
-                    buffer = buffer[buffer.rindex('\n')]
-                    if buffer in ['\n', '\r']: buffer = ''
-
-                if len(lines) > 0:
-                    while len(lines) > 0:
-                        #print "reading line. size", len(lines)
-                        line  = lines.pop(0)
-                        lineP = line.strip()
-                        if debug: print "  LINE '%s' (%d)\n" % (line, len(line))
-                        if len(line) == 1 and line in ['\n', '\r']: continue
-                        if len(line) == 0: continue
-                        
-                        if lineP[0] == INCOMINGSTART and lineP[-1] == INCOMINGEND:
-                            
-                            lineP = lineP.replace(INCOMINGSTART, '')
-                            lineP = lineP.replace(INCOMINGEND  , '')
-                            lineP = lineP.replace(CR           , '')
-                            if debug: print "READ  '"+line.strip()+"' > '"+lineP.strip()+"'"
-                            response = arduinomessage.fromString(lineP)
-                            checkdb(response, msgandresponse, responseQ)
-                            #responseQ.put(lineP)
-                            #self.parseLine(line)
-                            #print "READ\n"
-                            
-                        elif len(lineP) == 19 or line[0:18] == "SETUP ARDUINO ID: ":
-                            arduinoid = line[18]
-                            print "ADDING AVAILABLE NODE:",arduinoid
-                            availableNodes.append(arduinoid)
-                        
-                        else:
-                            #TODO: RETURN INVALID LINES
-                            if debug: print "READ INVALID LINE",line
-                elif not continueLoop:
-                    break
+                #print "\n\n"
+                currChar = serR.read(serR.inWaiting())
                 
-                elif not messagesQ.empty() and continueLoop:
-                    if debug: print "has %d messages to write" % messagesQ.qsize()
+                if currChar != '':
+                    print "CURRCHAR '"+currChar+"'"
                     
-                    while messagesQ.qsize() > 0 or not messagesQ.empty():
-                        msg   = messagesQ.get()
-                        if debug: print "  MSG",msg
-                        
-                        if msg is not None:
-                            msg2 = INCOMINGSTART + str(msg) + INCOMINGEND
+                    if not foundACK and '\x06' in currChar:
+                        print "GOT ACK. got: '%s'" % res
+                        foundACK = True
+                        currChar.replace('\x06', '')
+                        buffer   = buffer + currChar
+                        continue
+                    
+                    buffer   = buffer + currChar
+                    #print "buffer '"+buffer+"'"
+                    
+                    lines = []
+                    if '\n' in buffer:
+                        print "  inside"
+                        #if debug:
+                        #print "buffer B '" + buffer + "'"
+                        lines  = buffer[:buffer.rindex('\n')].split('\n')
+                        buffer = buffer[buffer.rindex('\n'):]
+                        #print "buffer A '" + buffer + "'"
+                        if buffer in ['\n', '\r']: buffer = ''
+    
+                    if len(lines) > 0:
+                        print "  len lines > 0 (%d)" % len(lines)
+                        while len(lines) > 0:
+                            print "  reading line. size %d" % len(lines)
+                            line  = lines.pop(0)
+                            lineP = line.strip()
+                            #if debug:
+                            print "  LINE '%s' (%d)\n" % (line, len(line))
+                            if len(lineP) == 1 and line in ['\n', '\r']: continue
+                            if len(lineP) == 0: continue
                             
-                            if str(msg)[1] not in availableNodes:
-                                waitinglist.append([msg, msg2])
-                                messagesQ.task_done()
-                                if debug: print "arduino %s not ready (waiting list [%d])\n" % (str(msg)[0], len(waitinglist))
-                                continue
-
-                            if debug: print "WRITING ON SERIAL '" + str(msg) + "' > '" + msg2 + "'"
-                            
-                            gendb(msg, msgandresponse)
-                            
-                            if len(msgs) == 0:
-                                msgs.append(msg2)
-                            elif (len(msgs[-1]) + len(msg2)) <= MAXSIZE:
-                                msgs[-1] += msg2
-                            else:
-                                msgs.append(msg2)
-                        else:
-                            print "MESSAGE IS NONE"
-                            hasNone = True
-
-                        messagesQ.task_done()
-
-                elif len(waitinglist) > 0:
-                    for pair in waitinglist:
-                        msg, msg2 = pair
-                        if str(msg)[0] in availableNodes:
-                            waitinglist.remove(pair)
-                            
-                            if debug: print "WRITING ON SERIAL DELAYED'" + str(msg) + "' > '" + msg2 + "'"
-                            
-                            gendb(msg, msgandresponse)
-                            
-                            if len(msgs) == 0:
-                                msgs.append(msg2)
-                            elif (len(msgs[-1]) + len(msg2)) <= MAXSIZE:
-                                msgs[-1] += msg2
-                            else:
-                                msgs.append(msg2)
+                            if lineP[0] == INCOMINGSTART and lineP[-1] == INCOMINGEND:
                                 
-                        else:
-                            if debug: print "MESSAGE '%s [%s]' NOT READY TO ME SENT BECAUSE NODE %s NOT PRESENT [%s]" % (msg, msg2, str(msg)[0], ', '.join(availableNodes))
-
-                else:
-                    #print "nothing to do"
-                    pass
-                
-                msgPos = 1
-                for msg in msgs:
-                    serR.write(msg)
-                    print "WROTE ON SERIAL #%d '%s'\n" % (msgPos, msg)
-                    msgPos += 1
-                
-                #if len(msgs) == 0:
-                #    print "NOTHING TO WRITE"
-
-                if hasNone:
-                    print "received NONE. quiting"
-                    #messagesQ.task_done()
-                    continueLoop = False
+                                lineP = lineP.replace(INCOMINGSTART, '')
+                                lineP = lineP.replace(INCOMINGEND  , '')
+                                lineP = lineP.replace(CR           , '')
+                                if debug: print "    READ  '%s' > '%s'" % (line.strip(), lineP.strip())
+                                response = arduinomessage.fromString(lineP)
+                                checkdb(response, msgandresponse, responseQ)
+                                #responseQ.put(lineP)
+                                #self.parseLine(line)
+                                #print "READ\n"
+                                
+                            elif len(lineP) == 19 and line[0:18] == "SETUP ARDUINO ID: ":
+                                arduinoid = line[18]
+                                print "    ADDING AVAILABLE NODE: '%s' FROM '%s'" % (arduinoid, lineP)
+                                availableNodes.append(arduinoid)
+                            
+                            else:
+                                #TODO: RETURN INVALID LINES
+                                #if debug:
+                                print "    READ INVALID LINE '%s'" %line
+                    elif not continueLoop:
+                        break
                     
-                time.sleep(waitbetweenloops)
+                    
+                else: #nothing coming in
+                    #print "NOTHING COMING IN"
+                    #print "buffer '"+buffer+"'"
+                    if not messagesQ.empty():
+                        #if debug:
+                        #print "has %d messages to write" % messagesQ.qsize()
+                        
+                        while messagesQ.qsize() > 0 or not messagesQ.empty():
+                            msg   = messagesQ.get()
+                            #if debug:
+                            print "  MSG",msg
+                            
+                            if msg is not None:
+                                msg2 = INCOMINGSTART + str(msg) + INCOMINGEND
+                                
+                                if str(msg)[0] not in availableNodes:
+                                    waitinglist.append([msg, msg2])
+                                    messagesQ.task_done()
+                                    #if debug:
+                                    #print "    arduino %s not ready (waiting list [%d]) %s \n" % (str(msg)[0], len(waitinglist), str(availableNodes))
+                                    continue
+    
+                                #if debug:
+                                #print "      WRITING ON SERIAL '" + str(msg) + "' > '" + msg2 + "'"
+                                
+                                gendb(msg, msgandresponse)
+                                msgs.append(msg2)
+                            else:
+                                #print "    MESSAGE IS NONE"
+                                continueLoop = False
+                            messagesQ.task_done()
+                    else:
+                        #print "queue empty"
+                        pass
+
+
+
+                    if foundACK:
+                        #print "  not waiting ACK"
+                        if len(waitinglist) > 0:
+                            #print "processing waiting list"
+                            for pair in waitinglist:
+                                msg, msg2 = pair
+                                if str(msg)[0] in availableNodes:
+                                    waitinglist.remove(pair)
+                                    
+                                    #if debug:
+                                    #print "WRITING ON SERIAL DELAYED'" + str(msg) + "' > '" + msg2 + "'"
+                                    
+                                    gendb(msg, msgandresponse)
+                                    msgs.append(msg2)
+                                    break
+                                else:
+                                    #if debug:
+                                    #print "MESSAGE '%s [%s]' NOT READY TO ME SENT BECAUSE NODE %s NOT PRESENT [%s]" % (msg, msg2, str(msg)[0], ', '.join(availableNodes))
+                                    pass
+                                    
+                        if len(msgs) > 0:
+                            #print "processing messages"
+                            for msg in msgs:
+                                serR.write(msg)
+                                foundACK = False
+                                print "WROTE ON SERIAL '%s'. waiting for ACK\n" % (msg)
+                        else:
+                            #print "NOTHING TO WRITE"
+                            pass
+                    
+                #time.sleep(waitbetweenloops)
         except KeyboardInterrupt:
             print "pressed ctrl+c"
             pass

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>src.autoglade</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th bgcolor="#70b0f0" class="navselect">&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          Autoglade
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        Package&nbsp;src ::
+        Module&nbsp;autoglade
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/src.autoglade-module.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="src.autoglade-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF MODULE DESCRIPTION =========== -->
+<h2 class="module">Module src.autoglade</h2>
+
+$Id: autoglade.py 39 2007-09-26 07:45:12Z diego $
+<hr/>
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="src.autoglade.AutoGlade-class.html"><code>AutoGlade</code></a></b></td>
+  <td>AutoGlade main class.</td></tr>
+<tr><td width="15%">
+  <b><a href="src.autoglade.AutoGladeObject-class.html"><code>AutoGladeObject</code></a></b></td>
+  <td>AutoGladeObject is an utility class thet relates together the Glade 
+widget, its name and the XML element in a particular autoglade 
+instance.</td></tr>
+<tr><td width="15%">
+  <b><a href="src.autoglade.AutoTreeviewSetCell-class.html"><code>AutoTreeviewSetCell</code></a></b></td>
+  <td>AutoTreeviewSetCell helper class.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF EXCEPTIONS =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Exceptions</th></tr>
+<tr><td width="15%">
+  <b><a href="src.autoglade.AutoGladeAttributeError-class.html"><code>AutoGladeAttributeError</code></a></b></td>
+  <td>AutoGladeAttributeError is an identificable AttributeError</td></tr>
+<tr><td width="15%">
+  <b><a href="src.autoglade.AutoGladeRuntimeError-class.html"><code>AutoGladeRuntimeError</code></a></b></td>
+  <td>AutoGladeRuntimeError</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Function Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="treeview_toogle_expansion"></a><span class="summary-sig"><span class="summary-sig-name">treeview_toogle_expansion</span>(<span class=summary-sig-arg>treeview</span>,
+          <span class=summary-sig-arg>path</span>)</span></code>
+</td></tr>
+</table><br />
+
+
+<!-- =========== START OF IMPORTS =========== -->
+<dl>
+  <dt><b>Imported modules:</b></dt>
+  <dd>
+    <code>gconf</code>,
+    <code>gtk</code>,
+    <code>os</code>,
+    <code>re</code>,
+    <code>sys</code>,
+    <code>warnings</code>,
+    <code>_xmlplus.dom.minidom</code>
+  </dd>
+  <dt><b>Imported classes:</b></dt>
+  <dd>
+    <code>OptionParser</code>
+  </dd>
+  <dt><b>Imported variables:</b></dt>
+  <dd>
+    <code>__version__</code>,
+    <code>AGO_POSTPONED</code>,
+    <code>AUTO_INVOKE_ARGS</code>,
+    <code>AUTO_INVOKE_HASARGS</code>,
+    <code>AUTO_INVOKE_METHOD</code>,
+    <code>AUTO_INVOKE_RE</code>,
+    <code>AUTO_INVOKE_WIDGET</code>,
+    <code>AUTO_TREEVIEW_SET_CELL_RE</code>,
+    <code>BLUE</code>,
+    <code>colors</code>,
+    <code>CYAN</code>,
+    <code>DEBUG</code>,
+    <code>EMPTY_GLADE</code>,
+    <code>GREEN</code>,
+    <code>MAGENTA</code>,
+    <code>prog</code>,
+    <code>RED</code>,
+    <code>revision</code>,
+    <code>SGR0</code>,
+    <code>usage</code>,
+    <code>version</code>
+  </dd>
+</dl>
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th bgcolor="#70b0f0" class="navselect">&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          Autoglade
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sun Sep 30 22:02:21 2007</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,49 @@
+#! /bin/sh
+
+usage()
+{
+	echo "usage: $PROGNAME image1 [image2...]" >&2
+	exit 1
+}
+
+GUI="/usr/share/doc/autoglade/example/tutorial/Image Convert/image-convert.glade"
+IMAGEFILETYPE=
+PROGNAME=$(basename $0)
+
+if [ "$#" -lt 1 ]
+then
+	usage
+fi
+
+for i in "$@"
+do
+	d=$(dirname $i)
+	b=$(basename $i)
+	bn=${b%.*}
+	ext=${b##*.}
+	if [ -z "$IMAGEFILETYPE" ]
+	then
+		case "$ext" in
+			gif|png)
+				cbeift="jpg"
+				;;
+
+			jpg|JPG)
+				cbeift="png"
+				;;
+
+			*)
+				cbeift="jpg"
+				;;
+		esac
+
+		DUMP=$(autoglade --autoinit='comboboxentryimagefiletype.set_text("'$cbeift'")' "$GUI")
+		if [ "$?" -ne 0 ]
+		then
+			exit 1
+		fi
+		IMAGEFILETYPE=$(echo "$DUMP" | sed 's/comboboxentryimagefiletype://')
+	fi
+	convert $i $d/${bn}.$IMAGEFILETYPE
+done
+

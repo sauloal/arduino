@@ -1,0 +1,114 @@
+autoglade (0.5-1ubuntu3) jaunty; urgency=low
+
+  * Changed package section
+
+ -- Diego Torres Milano <diego@condtech.com>  Mon, 27 Jul 2009 13:01:48 +0200
+
+autoglade (0.5-1ubuntu2) jaunty; urgency=low
+
+  * Bump to jaunty
+
+ -- Diego Torres Milano <diego@condtech.com>  Mon, 27 Jul 2009 12:55:44 +0200
+
+autoglade (0.5-1ubuntu1) hardy; urgency=low
+
+  * Added GtkProgressBar support
+  * Added progressbar test
+
+ -- Diego Torres Milano <diego@condtech.com>  Thu, 29 Jan 2009 14:45:19 +0100
+
+autoglade (0.4-3ubuntu1) hardy; urgency=low
+
+  * Added Autoeditor.
+  * Supported GtkFontButton.
+  * Added autoProperty
+  * 
+
+ -- Diego Torres Milano <diego@condtech.com>  Thu, 29 Jan 2009 14:45:19 +0100
+
+autoglade (0.4-2ubuntu3) hardy; urgency=low
+
+  * Changed rules (updated pycentral)
+
+ -- Diego Torres Milano <diego@diego-ubuntu>  Mon, 18 Aug 2008 13:53:10 +0200
+
+autoglade (0.4-2ubuntu2) hardy; urgency=low
+
+  * Rebuilt after cleanup
+
+ -- Diego Torres Milano <diego@diego-ubuntu>  Mon, 18 Aug 2008 12:46:35 +0200
+
+autoglade (0.4-2ubuntu1) hardy; urgency=low
+
+  * Ubuntu package
+
+ -- Diego Torres Milano <diego@bruce>  Sun, 17 Aug 2008 15:18:20 +0200
+
+autoglade (0.4-2) unstable; urgency=low
+
+  * Updated documentation
+
+ -- COD Technologies <packages@codtech.com>  Sun, 17 Aug 2008 15:11:48 +0200
+
+autoglade (0.4-1) unstable; urgency=low
+
+  * General refactor and cleanup.
+  * Most intended features for this release working as expected.
+  * Added cut/copy/paste/delete functionality
+  * Added save/open/save as functionality
+  * Added supported cases for auto:init:env (scales, radiobutton)
+
+ -- COD Technologies <packages@codtech.com>  Thu, 14 Aug 2008 23:18:49 +0200
+
+autoglade (0.3-9) unstable; urgency=low
+
+  * Added activatable to cellType
+  * Changed autoOpen
+
+ -- COD Technologies <packages@codtech.com>  Thu, 17 Jul 2008 22:33:34 +0200
+
+autoglade (0.3-8) unstable; urgency=low
+
+  * Added --root parameter
+  * No excepion raised when glade parameter is not set
+  * Changed autohandlers names to autoQuit and autoHelp to avoid collisions
+
+ -- COD Technologies <packages@codtech.com>  Thu, 18 Oct 2007 10:36:34 +0200
+
+autoglade (0.3-7) unstable; urgency=low
+
+  * Imported to SF's svn
+  * Added keywords
+
+ -- COD Technologies <packages@codtech.com>  Tue, 03 Oct 2007 00:00:00 +0200
+
+autoglade (0.3-6) unstable; urgency=low
+
+  * Fixed package import
+
+ -- COD Technologies <packages@codtech.com>  Tue, 02 Oct 2007 22:28:01 +0200
+
+autoglade (0.3-5) unstable; urgency=low
+
+  * Updated package components
+
+ -- COD Technologies <packages@codtech.com>  Tue, 02 Oct 2007 22:28:00 +0200
+
+autoglade (0.3-4) unstable; urgency=low
+
+  * Updated svn versions
+
+ -- COD Technologies <packages@codtech.com>  Tue, 02 Oct 2007 00:10:59 +0200
+
+autoglade (0.3-3) unstable; urgency=low
+
+  * Support for more widgets added
+  * Added examples
+
+ -- COD Technologies <packages@codtech.com>  Tue, 02 Oct 2007 00:10:58 +0200
+
+autoglade (0.3-2) unstable; urgency=low
+
+  * Lot of fixes and additions
+
+ -- COD Technologies <packages@codtech.com>  Wed, 26 Sep 2007 21:10:58 +0200

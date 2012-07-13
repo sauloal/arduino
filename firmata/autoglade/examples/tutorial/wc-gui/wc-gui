@@ -1,0 +1,29 @@
+#! /bin/bash
+
+AUTOGLADE=${AUTOGLADE:-autoglade}
+WCGUIDIR=/home/diego/work/src/workspace/autoglade-0.3/examples/tutorial/wc-gui
+
+usage()
+{
+	echo "usage: wc-gui file [file...]" >&2
+	exit 1
+}
+
+set +x
+if [ $# -lt 1 ]
+then
+	usage
+fi
+
+cd $WCGUIDIR
+DUMP=$( $AUTOGLADE wc-gui.glade )
+if [ $? -eq 0 ]
+then
+	eval $DUMP
+	OUT=$(eval wc $autoargs "$@")
+	OUT=$(echo "$OUT" | tr "\n" '\n')
+	# FIXME
+	# should be this way but not working yet
+	#$AUTOGLADE --debug --root='wc-result' wc-gui.glade
+	$AUTOGLADE --autoinit="aid(\"\"\"$OUT\"\"\")"
+fi

@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>autoglade.autoglade.AutoGlade</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="autoglade.autoglade-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          Autoglade
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        Package&nbsp;autoglade ::
+        <a href="autoglade.autoglade-module.html">Module&nbsp;autoglade</a> ::
+        Class&nbsp;AutoGlade
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/autoglade.autoglade.AutoGlade-class.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="autoglade.autoglade.AutoGlade-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class AutoGlade</h2>
+
+<hr/>
+
+<p>AutoGlade main class.</p>
+This is the main AutoGlade class.
+<h1 class="heading">Conventions</h1>
+  These are the conventions used to relate Glade files.
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>glade</span>,
+          <span class=summary-sig-arg>root</span>,
+          <span class=summary-sig-arg>autorun</span>,
+          <span class=summary-sig-arg>autoinit</span>,
+          <span class=summary-sig-arg>autodump</span>)</span></code>
+<br />
+Constructor</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__call__"></a><span class="summary-sig"><span class="summary-sig-name">__call__</span>(<span class=summary-sig-arg>args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getattr__" class="summary-sig-name"><code>__getattr__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>)</span></code>
+<br />
+__getattr__</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#__getitem__" class="summary-sig-name"><code>__getitem__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>)</span></code>
+<br />
+__getitem__</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="abbreviations"></a><span class="summary-sig"><span class="summary-sig-name">abbreviations</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoAddTimeout"></a><span class="summary-sig"><span class="summary-sig-name">autoAddTimeout</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>msecs</span>,
+          <span class=summary-sig-arg>method</span>,
+          <span class="summary-sig-vararg">*args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoDumpShell"></a><span class="summary-sig"><span class="summary-sig-name">autoDumpShell</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>var</span>,
+          <span class=summary-sig-arg>val</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoDumpText"></a><span class="summary-sig"><span class="summary-sig-name">autoDumpText</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>var</span>,
+          <span class=summary-sig-arg>val</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoDumpValues"></a><span class="summary-sig"><span class="summary-sig-name">autoDumpValues</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoErrorDialog"></a><span class="summary-sig"><span class="summary-sig-name">autoErrorDialog</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>ex</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoInfoDialog"></a><span class="summary-sig"><span class="summary-sig-name">autoInfoDialog</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>msg</span>,
+          <span class=summary-sig-arg>message_format</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#autoInit" class="summary-sig-name"><code>autoInit</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>autoinit</span>)</span></code>
+<br />
+Default autoInit method, can be overriden by children.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#autoInvoke" class="summary-sig-name"><code>autoInvoke</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class="summary-sig-vararg">*args</span>)</span></code>
+<br />
+Auto invoke the method codified in widget name</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoProgressBar"></a><span class="summary-sig"><span class="summary-sig-name">autoProgressBar</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoQuestionDialog"></a><span class="summary-sig"><span class="summary-sig-name">autoQuestionDialog</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>msg</span>,
+          <span class=summary-sig-arg>buttons</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#autoRun" class="summary-sig-name"><code>autoRun</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+auto run the graphical user interface</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="autoWarningDialog"></a><span class="summary-sig"><span class="summary-sig-name">autoWarningDialog</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>msg</span>,
+          <span class=summary-sig-arg>message_format</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getDom"></a><span class="summary-sig"><span class="summary-sig-name">getDom</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getGladeInterface"></a><span class="summary-sig"><span class="summary-sig-name">getGladeInterface</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getSignalHandlers"></a><span class="summary-sig"><span class="summary-sig-name">getSignalHandlers</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getTopLevelWidgets"></a><span class="summary-sig"><span class="summary-sig-name">getTopLevelWidgets</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="help"></a><span class="summary-sig"><span class="summary-sig-name">help</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="isInputClass"></a><span class="summary-sig"><span class="summary-sig-name">isInputClass</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widgetClass</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autobutton_clicked" class="summary-sig-name"><code>on_autobutton_clicked</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class="summary-sig-vararg">*args</span>)</span></code>
+<br />
+on_autobutton_clicked</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="on_autobuttoncollapseall_clicked"></a><span class="summary-sig"><span class="summary-sig-name">on_autobuttoncollapseall_clicked</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="on_autobuttonexpandall_clicked"></a><span class="summary-sig"><span class="summary-sig-name">on_autobuttonexpandall_clicked</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autodialog_response" class="summary-sig-name"><code>on_autodialog_response</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class=summary-sig-arg>response</span>,
+          <span class="summary-sig-vararg">*args</span>)</span></code>
+<br />
+Default handler for <code>gtk.Dialog</code> <code>response</code> 
+signal</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_automenuitem_activate" class="summary-sig-name"><code>on_automenuitem_activate</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class="summary-sig-vararg">*args</span>)</span></code>
+<br />
+Default handler for menu items <code>activate</code> signal</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autosensitize" class="summary-sig-name"><code>on_autosensitize</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class=summary-sig-arg>targetWidget</span>)</span></code>
+<br />
+Toggle the 'sensitive' property on a target widget</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autoshow" class="summary-sig-name"><code>on_autoshow</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class=summary-sig-arg>targetWidget</span>)</span></code>
+<br />
+Toggle the 'visible' property on a target widget</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_autotoolbutton_clicked" class="summary-sig-name"><code>on_autotoolbutton_clicked</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>)</span></code>
+<br />
+on_autotoolbutton_clicked</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#on_cancelbutton_clicked" class="summary-sig-name"><code>on_cancelbutton_clicked</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>)</span></code>
+<br />
+Default handler for <b>Cancel</b> buttons <code>clicked</code> 
+signal.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="quit"></a><span class="summary-sig"><span class="summary-sig-name">quit</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class="summary-sig-vararg">*args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="autoglade.autoglade.AutoGlade-class.html#VOID__getAboutDialogElement" class="summary-sig-name"><code>VOID__getAboutDialogElement</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+This method uses a value set by self.__getAboutDialogWidget</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="VOID_get_children"></a><span class="summary-sig"><span class="summary-sig-name">VOID_get_children</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="VOID_printWidgetTree"></a><span class="summary-sig"><span class="summary-sig-name">VOID_printWidgetTree</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__autoConnect"></a><span class="summary-sig"><span class="summary-sig-name">__autoConnect</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__findStockItem" class="summary-sig-name"><code>__findStockItem</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>stock</span>,
+          <span class=summary-sig-arg>gtkClass</span>)</span></code>
+<br />
+Find a stock item in the elements tree.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__fixComboBoxNotShowingActiveItem" class="summary-sig-name"><code>__fixComboBoxNotShowingActiveItem</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Fix a problem found with Combo Box widgets.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__getAboutDialog" class="summary-sig-name"><code>__getAboutDialog</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Get the about dialog from the internal list of top level widgets and 
+set the <a href="autoglade.autoglade.AutoGladeObject-class.html" 
+class="link"><code>AutoGladeObject</code></a> accordingly.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__getButtonAbout" class="summary-sig-name"><code>__getButtonAbout</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Set <code>self.__buttonAbout</code> value with the stock item 
+<code>gtk-about</code> if found.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__getMenuItemAbout" class="summary-sig-name"><code>__getMenuItemAbout</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Set <a 
+href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemAbout" 
+class="link"><code>self.__menuItemAbout</code></a> value with the stock 
+item <code>gtk-about</code> if found.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__getMenuItemQuit" class="summary-sig-name"><code>__getMenuItemQuit</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Set <a 
+href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemQuit" 
+class="link"><code>self.__menuItemQuit</code></a> value with the stock 
+item <code>gtk-quit</code> if found.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__getSignalHandlers"></a><span class="summary-sig"><span class="summary-sig-name">__getSignalHandlers</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__getTopLevelWidgetNames" class="summary-sig-name"><code>__getTopLevelWidgetNames</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Get the top level widget names.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__getTopLevelWidgets" class="summary-sig-name"><code>__getTopLevelWidgets</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Get the top level widgets parsing the glade XML file.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/autoglade.autoglade.AutoGlade-class.html#__mapAutoInvokeWidgetNames" class="summary-sig-name"><code>__mapAutoInvokeWidgetNames</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Map the autoInvoke names (widget:auto:method) to its plain form 
+(widget).</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>gtk.Widget</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemAbout"><code>__menuItemAbout</code></a></b>: Stock menu item about</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>gtk.Widget</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemQuit"><code>__menuItemQuit</code></a></b>: Stock menu item quit</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">str</font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__reAutoInvoke"><code>__reAutoInvoke</code></a></b>: The regular expression to parse the Glade widget name</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">bool</font></td>
+<td><b><a href="autoglade.autoglade.AutoGlade-class.html#DEBUG"><code>DEBUG</code></a></b>: Set debugging output</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>NoneType</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__aboutDialog"><code>_AutoGlade__aboutDialog</code></a></b> = <span title="None">None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__autoDumpMap"><code>_AutoGlade__autoDumpMap</code></a></b> = <span title="{}"><code>{}                             </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>NoneType</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__buttonAbout"><code>_AutoGlade__buttonAbout</code></a></b> = <span title="None">None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>NoneType</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__gconf"><code>_AutoGlade__gconf</code></a></b> = <span title="None">None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>NoneType</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__mainTopLevelWidget"><code>_AutoGlade__mainTopLevelWidget</code></a></b> = <span title="None">None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>NoneType</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemAbout"><code>_AutoGlade__menuItemAbout</code></a></b> = <span title="None">None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>NoneType</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemQuit"><code>_AutoGlade__menuItemQuit</code></a></b> = <span title="None">None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>SRE_Pattern</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__reAutoInvoke"><code>_AutoGlade__reAutoInvoke</code></a></b> = <span title="&lt;_sre.SRE_Pattern object at 0x86a1e10&gt;"><code><span class="re"><span class="re-group">(</span><span class="re-char">.</span><span class="re-op">*</span><span class="re-group">)</span>:auto:<span class="re-group">(</span><span class="re-group">[^</span>:<span class="re-group">]</span><span class="re-op">*</span><span class="re-group">)</span><span class="re-group">(</span>:<span class="re-group">(</span><span class="re-char">.</span><span class="re-op">+</span><span class="re-group">)</span><span class="re-group">)</span><span class="re-op">?</span></span>     </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>SRE_Pattern</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__reSetTreeviewCell"><code>_AutoGlade__reSetTreeviewCell</code></a></b> = <span title="&lt;_sre.SRE_Pattern object at 0x86a26c0&gt;"><code><span class="re">setTreeview<span class="re-group">(</span><span class="re-char">.</span><span class="re-op">+</span><span class="re-group">)</span>Cell<span class="re-group">(</span><span class="re-char">\d</span><span class="re-op">+</span><span class="re-group">)<span class="variable-ellipsis">...</span></code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__signalHandlers"><code>_AutoGlade__signalHandlers</code></a></b> = <span title="{}"><code>{}                          </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__topLevelWidgetNames"><code>_AutoGlade__topLevelWidgetNames</code></a></b> = <span title="[]"><code>[]                     </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="../private/autoglade.autoglade.AutoGlade-class.html#__topLevelWidgets"><code>_AutoGlade__topLevelWidgets</code></a></b> = <span title="{}"><code>{}                         </code>
+</span></td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>glade</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>root</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>autorun</span>=<span class=sig-default>True</span>,
+          <span class=sig-arg>autoinit</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>autodump</span>=<span class=sig-default>'text'</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+  <p>Constructor</p>
+  Constructs the AutoGlade object based on the arguments passed.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>glade</b></code> -
+         The glade filename, defaults to the name of the class. Default 
+        <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=str)</i>
+      <dd><code><b>root</b></code> -
+         The root widget name. Default <code>None</code>.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=str)</i>
+      <dd><code><b>autorun</b></code> -
+         Will autoglade auto run the GUI ?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=boolean)</i>
+      <dd><code><b>autoinit</b></code> -
+         Autoinit initialization string
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=str)</i>
+      <dd><code><b>autodump</b></code> -
+         Autodump type output format (i.e.: text, shell)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=str)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getattr__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getattr__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>)</span>
+    <br /><i>(Qualification operator)</i>
+  </h3>
+  <p>__getattr__</p>
+  Provides <b>self.name.method()</b> access
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>name</b></code> -
+         Item name
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        Returns <a 
+        href="autoglade.autoglade.AutoGlade-class.html#__getitem__" 
+        class="link"><code>__getitem__</code></a><code>(name)</code>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getitem__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getitem__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>)</span>
+    <br /><i>(Indexing operator)</i>
+  </h3>
+  <p>__getitem__</p>
+  Provides <b>self['name'].method()</b> access. If the 
+  <code>key</code> starts with <code>on_</code> then the corresponding 
+  method is executed instead of returning the attribute value.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         The key to search
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=str)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        if key starts with 'on_' returns the value of the execution of 
+        <b>self.key</b>, if key matches 
+        <code>AUTO_TREEVIEW_SET_CELL_RE</code> (or whatever 
+        <code>self.__reSetTreeviewCell</code> has compiled in) then 
+        returns an instance of <a 
+        href="autoglade.autoglade.AutoTreeviewSetCell-class.html" 
+        class="link"><code>AutoTreeviewSetCell</code></a> or returns the 
+        corresponding widget if exists, otherwise raise an <a 
+        href="autoglade.autoglade.AutoGladeAttributeError-class.html" 
+        class="link"><code>AutoGladeAttributeError</code></a>.
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>AutoGladeAttributeError</b></code> -
+        If the key is not found
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="autoInit"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">autoInit</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>autoinit</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  Default autoInit method, can be overriden by children.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>autoinit</b></code> -
+         The string containing autoinit commands
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="autoInvoke"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">autoInvoke</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>,
+          <span class="sig-vararg">*args</span>)</span>
+  </h3>
+  <p>Auto invoke the method codified in widget name</p>
+  <p>Auto invoke the method codified and described in the Glade widget 
+  name. The pattern string is described by the regular expression in <a 
+  name="index-self___reAutoInvoke"></a><i 
+  class="indexterm">self.__reAutoInvoke</i> which typically is 
+  '(.*):auto:(.*)' or everything before ':auto:' is the standard widget 
+  name, and everything after is the method name or widget (in the case of 
+  <code>gtk.Dialog</code>) to be invoked.</p>
+  The the methods <code>name</code>Pre, <code>name</code> amd 
+  <code>name</code>Post are invoked in order (if exist) and if and only 
+  if the predecesor returns <code>True</code>.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>widget</b></code> -
+         The widget receiving the signal
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>gtk.Widget</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="autoRun"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">autoRun</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>auto run the graphical user interface</p>
+  <p>Runs the graphical user interface automatically. There ase some 
+  special cases contempled.</p>
+  <p>#. If there's no <code>__mainTopLevelWidget</code> then it does 
+  nothing</p>
+  <p>#. If the <code>__mainTopLevelWidget</code> is a 
+  <code>gtk.Dialog</code> then the dialog box is run. Loops forever until 
+  one of the values of a valid response is received, then return this 
+  value</p>
+  # if the <code>__mainTolLvelWidget</code> is not a 
+  <code>gtk.Dialog</code> then the main GTK loop is entered
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="on_autobutton_clicked"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">on_autobutton_clicked</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>,
+          <span class="sig-vararg">*args</span>)</span>
+  </h3>
+  on_autobutton_clicked
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>widget</b></code> -
+         The widget receiving the signal
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>gtk.Widget</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="on_autodialog_response"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">on_autodialog_response</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>,
+          <span class=sig-arg>response</span>,
+          <span class="sig-vararg">*args</span>)</span>
+  </h3>
+  <p>Default handler for <code>gtk.Dialog</code> <code>response</code> 
+  signal</p>
+  <p>This is a handler method intended to be a simple dialog handler. 
+  response signal of widget must be connected to this method and the user 
+  data parameter must be left untouched (as of Glade 3.0 and libglade 
+  2).</p>
+  Note: Perhaps this method should set a Singleton object value to the 
+  response received
+  <h1 class="heading">gtk response values</h1>
+    <code> gtk.RESPONSE_NONE=-1 gtk.RESPONSE_REJECT=-2 
+    gtk.RESPONSE_ACCEPT=-3 gtk.RESPONSE_DELETE_EVENT=-4 
+    gtk.RESPONSE_OK=-5 gtk.RESPONSE_CANCEL=-6 gtk.RESPONSE_CLOSE=-7 
+    gtk.RESPONSE_YES=-8 gtk.RESPONSE_NO=-9 gtk.RESPONSE_APPLY=-10 
+    gtk.RESPONSE_HELP=-11 </code>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>widget</b></code> -
+         The widget receiving the signal
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>gtk.Widget</code>)</i>
+      <dd><code><b>response</b></code> -
+         The dialog response (i.e.: button pressed)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=int)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="on_automenuitem_activate"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">on_automenuitem_activate</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>,
+          <span class="sig-vararg">*args</span>)</span>
+  </h3>
+  <p>Default handler for menu items <code>activate</code> signal</p>
+  <p>This is a handler method intended to be a simple menu item handler. 
+  The idea is to simplify handling menu items usually connected to dialog 
+  boxes. activate signal on the menu item object must point to this 
+  function and user data parameter of this signal must point to the 
+  object to call. In the case of a dialog, user data parameter is the 
+  dialog object which this method will run.</p>
+  This can also be used (and it's used by autoInvoke) in 
+  <code>gtk.ToolButton</code> objects.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>widget</b></code> -
+         The widget receiving the signal
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>gtk.Widget</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="on_autosensitize"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">on_autosensitize</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>,
+          <span class=sig-arg>targetWidget</span>)</span>
+  </h3>
+  Toggle the 'sensitive' property on a target widget
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="on_autoshow"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">on_autoshow</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>,
+          <span class=sig-arg>targetWidget</span>)</span>
+  </h3>
+  Toggle the 'visible' property on a target widget
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="on_autotoolbutton_clicked"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">on_autotoolbutton_clicked</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>)</span>
+  </h3>
+  on_autotoolbutton_clicked
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>widget</b></code> -
+         The widget receiving the signal
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>gtk.Widget</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="on_cancelbutton_clicked"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">on_cancelbutton_clicked</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>widget</span>)</span>
+  </h3>
+  Default handler for <b>Cancel</b> buttons <code>clicked</code> 
+  signal.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>widget</b></code> -
+         The widget receiving the signal
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>gtk.Widget</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="VOID__getAboutDialogElement"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">VOID__getAboutDialogElement</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  This method uses a value set by self.__getAboutDialogWidget
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__findStockItem"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__findStockItem</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>stock</span>,
+          <span class=sig-arg>gtkClass</span>=<span class=sig-default>&lt;type&nbsp;'gtk.Widget'&gt;</span>)</span>
+  </h3>
+  Find a stock item in the elements tree.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>stock</b></code> -
+         The stock item to find
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=str)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__fixComboBoxNotShowingActiveItem"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__fixComboBoxNotShowingActiveItem</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Fix a problem found with Combo Box widgets.</p>
+  Is this a libglade bug ?
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getAboutDialog"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getAboutDialog</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Get the about dialog from the internal list of top level widgets and 
+  set the <a href="autoglade.autoglade.AutoGladeObject-class.html" 
+  class="link"><code>AutoGladeObject</code></a> accordingly.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getButtonAbout"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getButtonAbout</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Set <code>self.__buttonAbout</code> value with the stock item 
+  <code>gtk-about</code> if found.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getMenuItemAbout"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getMenuItemAbout</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Set <a 
+  href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemAbout" 
+  class="link"><code>self.__menuItemAbout</code></a> value with the stock 
+  item <code>gtk-about</code> if found.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getMenuItemQuit"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getMenuItemQuit</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Set <a 
+  href="../private/autoglade.autoglade.AutoGlade-class.html#__menuItemQuit" 
+  class="link"><code>self.__menuItemQuit</code></a> value with the stock 
+  item <code>gtk-quit</code> if found.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getTopLevelWidgetNames"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getTopLevelWidgetNames</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Get the top level widget names.</p>
+  Glade XML files have not been parsed yet.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getTopLevelWidgets"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getTopLevelWidgets</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Get the top level widgets parsing the glade XML file. The widget 
+  trees (one for every top level widget) are also created in this 
+  operation.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__mapAutoInvokeWidgetNames"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__mapAutoInvokeWidgetNames</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Map the autoInvoke names (widget:auto:method) to its plain form 
+  (widget). Invoke 'auto:init' method if present. Connect 
+  'auto:sensitize' signals. Connect signal for menu items (and tool 
+  buttons ?) if not connected
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="__menuItemAbout"></a>
+<h3>__menuItemAbout</h3>
+Stock menu item about
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>gtk.Widget</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="__menuItemQuit"></a>
+<h3>__menuItemQuit</h3>
+Stock menu item quit
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>gtk.Widget</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="__reAutoInvoke"></a>
+<h3>__reAutoInvoke</h3>
+The regular expression to parse the Glade widget name
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          str
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="DEBUG"></a>
+<h3>DEBUG</h3>
+Set debugging output
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          bool
+
+      </dd>
+<span title="True">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+True                                                                   </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__aboutDialog"></a>
+<h3>_AutoGlade__aboutDialog</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>NoneType</code>
+
+      </dd>
+<span title="None">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__autoDumpMap"></a>
+<h3>_AutoGlade__autoDumpMap</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>dict</code>
+
+      </dd>
+<span title="{}">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{}                                                                     </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__buttonAbout"></a>
+<h3>_AutoGlade__buttonAbout</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>NoneType</code>
+
+      </dd>
+<span title="None">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__gconf"></a>
+<h3>_AutoGlade__gconf</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>NoneType</code>
+
+      </dd>
+<span title="None">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__mainTopLevelWidget"></a>
+<h3>_AutoGlade__mainTopLevelWidget</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>NoneType</code>
+
+      </dd>
+<span title="None">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__menuItemAbout"></a>
+<h3>_AutoGlade__menuItemAbout</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>NoneType</code>
+
+      </dd>
+<span title="None">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__menuItemQuit"></a>
+<h3>_AutoGlade__menuItemQuit</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>NoneType</code>
+
+      </dd>
+<span title="None">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__reAutoInvoke"></a>
+<h3>_AutoGlade__reAutoInvoke</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>SRE_Pattern</code>
+
+      </dd>
+<span title="&lt;_sre.SRE_Pattern object at 0x86a1e10&gt;">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="re"><span class="re-group">(</span><span class="re-char">.</span><span class="re-op">*</span><span class="re-group">)</span>:auto:<span class="re-group">(</span><span class="re-group">[^</span>:<span class="re-group">]</span><span class="re-op">*</span><span class="re-group">)</span><span class="re-group">(</span>:<span class="re-group">(</span><span class="re-char">.</span><span class="re-op">+</span><span class="re-group">)</span><span class="re-group">)</span><span class="re-op">?</span></span>                                              </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__reSetTreeviewCell"></a>
+<h3>_AutoGlade__reSetTreeviewCell</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>SRE_Pattern</code>
+
+      </dd>
+<span title="&lt;_sre.SRE_Pattern object at 0x86a26c0&gt;">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="re">setTreeview<span class="re-group">(</span><span class="re-char">.</span><span class="re-op">+</span><span class="re-group">)</span>Cell<span class="re-group">(</span><span class="re-char">\d</span><span class="re-op">+</span><span class="re-group">)</span></span>                                               </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__signalHandlers"></a>
+<h3>_AutoGlade__signalHandlers</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>dict</code>
+
+      </dd>
+<span title="{}">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{}                                                                     </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__topLevelWidgetNames"></a>
+<h3>_AutoGlade__topLevelWidgetNames</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>list</code>
+
+      </dd>
+<span title="[]">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+[]                                                                     </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_AutoGlade__topLevelWidgets"></a>
+<h3>_AutoGlade__topLevelWidgets</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>dict</code>
+
+      </dd>
+<span title="{}">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{}                                                                     </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="autoglade.autoglade-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          Autoglade
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Tue Oct  2 22:07:38 2007</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

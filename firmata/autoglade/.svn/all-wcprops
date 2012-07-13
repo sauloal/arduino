@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svnroot/autoglade/!svn/ver/89/trunk
+END
+CHANGES.txt
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svnroot/autoglade/!svn/ver/2/trunk/CHANGES.txt
+END
+setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svnroot/autoglade/!svn/ver/42/trunk/setup.py
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/autoglade/!svn/ver/2/trunk/README.txt
+END
+epydoc.prj
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/autoglade/!svn/ver/2/trunk/epydoc.prj
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svnroot/autoglade/!svn/ver/12/trunk/Makefile
+END
+autoglade.spec
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/autoglade/!svn/ver/19/trunk/autoglade.spec
+END

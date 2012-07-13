@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkAdjustment" id="adjScale13">
+    <property name="upper">1024</property>
+    <property name="step_increment">1</property>
+  </object>
+  <object class="GtkWindow" id="window1">
+    <property name="can_focus">False</property>
+    <signal name="destroy" handler="on_window_destroy" swapped="no"/>
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkImage" id="image1">
+            <property name="width_request">680</property>
+            <property name="height_request">332</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">megaadk_small.png</property>
+          </object>
+          <packing>
+            <property name="y">165</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLayout" id="scaffold13">
+            <property name="width_request">100</property>
+            <property name="height_request">170</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="width">30</property>
+            <property name="height">30</property>
+            <child>
+              <object class="GtkComboBoxText" id="ME13">
+                <property name="width_request">100</property>
+                <property name="height_request">25</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="active">1</property>
+                <property name="entry_text_column">0</property>
+                <property name="id_column">1</property>
+                <property name="active_id">1</property>
+                <items>
+                  <item>A</item>
+                  <item>D</item>
+                  <item>P</item>
+                </items>
+                <signal name="changed" handler="onMEChange" swapped="no"/>
+              </object>
+              <packing>
+                <property name="y">25</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="IO13">
+                <property name="width_request">100</property>
+                <property name="height_request">25</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="active">1</property>
+                <items>
+                  <item>I</item>
+                  <item>O</item>
+                </items>
+                <signal name="changed" handler="onIoChange" swapped="no"/>
+              </object>
+            </child>
+            <child>
+              <object class="GtkScale" id="scale13">
+                <property name="width_request">100</property>
+                <property name="height_request">75</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">adjScale13</property>
+                <property name="inverted">True</property>
+                <property name="fill_level">1024</property>
+                <property name="round_digits">0</property>
+                <property name="digits">0</property>
+                <property name="draw_value">False</property>
+                <signal name="value-changed" handler="onScChange" swapped="no"/>
+              </object>
+              <packing>
+                <property name="y">75</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lbl13">
+                <property name="width_request">100</property>
+                <property name="height_request">25</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">13</property>
+                <property name="ellipsize">start</property>
+              </object>
+              <packing>
+                <property name="y">146</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="spinbutton1">
+                <property name="width_request">100</property>
+                <property name="height_request">25</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">●</property>
+                <property name="adjustment">adjScale13</property>
+              </object>
+              <packing>
+                <property name="y">50</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

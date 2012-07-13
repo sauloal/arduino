@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svnroot/autoglade/!svn/ver/89/trunk/tests/radio
+END
+radio2-bug.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/autoglade/!svn/ver/89/trunk/tests/radio/radio2-bug.py
+END
+radio.sh
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/autoglade/!svn/ver/89/trunk/tests/radio/radio.sh
+END
+radio.glade
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/autoglade/!svn/ver/65/trunk/tests/radio/radio.glade
+END
+radio2.sh
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/autoglade/!svn/ver/89/trunk/tests/radio/radio2.sh
+END
+radio2.glade
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/autoglade/!svn/ver/89/trunk/tests/radio/radio2.glade
+END

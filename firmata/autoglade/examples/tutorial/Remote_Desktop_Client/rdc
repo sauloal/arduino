@@ -1,0 +1,111 @@
+#! /bin/bash
+# Copyrigth (C) 2007 Diego Torres Milano. All rights reserved.
+
+addoption()
+{
+	local a="$1" v="$2"
+
+	if [ -n "$v" ]
+	then
+		eval vv="\$$v"
+		[ -n "$vv" ] && RDPOPTS="$RDPOPTS -$a '$vv'"
+	else
+		RDPOPTS="$RDPOPTS -$a"
+	fi
+}
+
+RDPOPTS=
+
+DUMP=$(autoglade rdc.glade)
+if [ "$?" -eq 0 ]
+then
+	echo "$DUMP" > /tmp/dump.txt
+	eval "$DUMP"
+	if [ "$preferences" = 'True' ]
+	then
+		computer="$computer2"
+	else
+		computer="$computer1"
+	fi
+
+	addoption u user
+	addoption p password
+	addoption d domain
+	addoption k keyboard
+
+	case "$screen" in
+		'Use default screen size')
+			:
+			;;
+
+		'Use specified screen size')
+			g=$(echo $screensize | sed 's/ //g; s/pixels//;')
+			addoption g g
+			;;
+
+		'Operate in full screen mode')
+			addoption f
+			;;
+	esac
+
+	case "$colordepth" in
+		'Use default color depth')
+			:
+			;;
+
+		'Use specified color depth')
+			c=$(echo $color | sed 's/[a-zA-Z() ]//g')
+			addoption a c
+			;;
+	esac
+
+	case "$sound" in
+		'On the local computer')
+			s='sound:local'
+			;;
+
+		'On the remote computer')
+			s='sound:remote'
+			;;
+
+		'Do not play')
+			s='sound:off'
+			;;
+	esac
+	addoption r s
+
+	if [ "$startprogram" = 'True' ]
+	then
+		addoption s program
+		addoption c folder
+	fi
+
+	case "$experience" in
+		'Lan')
+			addoption x l
+			;;
+
+		'Modem (28.8 Kbps)')
+			addoption x m
+			;;
+
+		'Broadband')
+			addoption x b
+			;;
+	esac
+
+	[ "$compression" = 'True' ] && addoption z
+	[ "$persistentbitmapcache" = 'True' ] && addoption P
+	[ "$forcebitmapupdates" = 'True' ] && addoption b
+
+	LOG=$(mktemp)
+	trap "rm -f $LOG" 0
+	echo rdesktop $RDPOPTS $computer 2\> $LOG
+	eval rdesktop $RDPOPTS $computer 2> $LOG
+	retval=$?
+	if [ "$retval" -ne 0 ]
+	then
+		autoglade --autoinit="autoErrorDialog('ERROR running rdesktop ($retval)')"
+		exit $retval
+	fi
+fi

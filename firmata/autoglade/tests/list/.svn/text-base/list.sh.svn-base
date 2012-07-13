@@ -1,0 +1,8 @@
+#! /bin/sh
+# $Id$
+
+# for example:
+# header is the first element
+export treeview1='("Fruits" "Apples" "Bananas" "Hedge aple" "Kiwifruits" "Melons" "Oranges" "Pineapples" "Strawberries" )'
+
+${AUTOGLADE:-autoglade} ${0%.sh}.glade

@@ -12,8 +12,13 @@ def main():
     arduino   = arduinoconnect.arduinoconnect()
 
     if True:
-        message1 = arduino.writeDigitalPort(arduinoid=arduinoId, port=portNum, value=val)
-        #print "SENDING MESSAGE 1",message1
+        while True:
+            message1 = arduino.writeDigitalPort(arduinoid=arduinoId, port=portNum, value=1)
+            print "SENDING MESSAGE 1",message1
+            time.sleep(2)
+            message5 = arduino.writeDigitalPort(arduinoid=arduinoId, port=portNum, value=0)
+            print "SENDING MESSAGE 5",message5
+            time.sleep(2)
         
         message2 = arduino.writeAnalogPort( arduinoid=arduinoId, port=portNum, value=val)
         #print "SENDING MESSAGE 2",message2

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>autoglade</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<h1 class="toc">Module autoglade</h1>
+<hr />
+  <h2 class="toc">Classes</h2>
+    <a target="mainFrame" href="autoglade.autoglade.AutoGlade-class.html"
+     >AutoGlade</a><br />    <a target="mainFrame" href="autoglade.autoglade.AutoGladeAttributeError-class.html"
+     >AutoGladeAttributeError</a><br />    <a target="mainFrame" href="autoglade.autoglade.AutoGladeItemNotFoundException-class.html"
+     >AutoGladeItemNotFoundException</a><br />    <a target="mainFrame" href="autoglade.autoglade.AutoGladeObject-class.html"
+     >AutoGladeObject</a><br />    <a target="mainFrame" href="autoglade.autoglade.AutoGladeRuntimeError-class.html"
+     >AutoGladeRuntimeError</a><br />    <a target="mainFrame" href="autoglade.autoglade.AutoTreeviewSetCell-class.html"
+     >AutoTreeviewSetCell</a><br />  <h2 class="toc">Functions</h2>
+    <a target="mainFrame" href="autoglade.autoglade-module.html#FN"
+     >FN</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#debug"
+     >debug</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#treeview_toogle_expansion"
+     >treeview_toogle_expansion</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#warning"
+     >warning</a><br />  <h2 class="toc">Variables</h2>
+    <a target="mainFrame" href="autoglade.autoglade-module.html#AGOS"
+     >AGOS</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_BUTTON_ABOUT"
+     >AGO_BUTTON_ABOUT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_BUTTON_NEW"
+     >AGO_BUTTON_NEW</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_BUTTON_OPEN"
+     >AGO_BUTTON_OPEN</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_BUTTON_PREFERENCES"
+     >AGO_BUTTON_PREFERENCES</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_BUTTON_QUIT"
+     >AGO_BUTTON_QUIT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_BUTTON_SAVE"
+     >AGO_BUTTON_SAVE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_DIALOG_ABOUT"
+     >AGO_DIALOG_ABOUT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_DIALOG_PREFERENCES"
+     >AGO_DIALOG_PREFERENCES</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_ABOUT"
+     >AGO_MENU_ITEM_ABOUT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_COPY"
+     >AGO_MENU_ITEM_COPY</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_CUT"
+     >AGO_MENU_ITEM_CUT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_DELETE"
+     >AGO_MENU_ITEM_DELETE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_NEW"
+     >AGO_MENU_ITEM_NEW</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_OPEN"
+     >AGO_MENU_ITEM_OPEN</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_PASTE"
+     >AGO_MENU_ITEM_PASTE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_PREFERENCES"
+     >AGO_MENU_ITEM_PREFERENCES</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_QUIT"
+     >AGO_MENU_ITEM_QUIT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_SAVE"
+     >AGO_MENU_ITEM_SAVE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_MENU_ITEM_SAVE_AS"
+     >AGO_MENU_ITEM_SAVE_AS</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_POSTPONED"
+     >AGO_POSTPONED</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_TOOL_BUTTON_ABOUT"
+     >AGO_TOOL_BUTTON_ABOUT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_TOOL_BUTTON_NEW"
+     >AGO_TOOL_BUTTON_NEW</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_TOOL_BUTTON_OPEN"
+     >AGO_TOOL_BUTTON_OPEN</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_TOOL_BUTTON_PREFERENCES"
+     >AGO_TOOL_BUTTON_PREFERENCES</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_TOOL_BUTTON_QUIT"
+     >AGO_TOOL_BUTTON_QUIT</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AGO_TOOL_BUTTON_SAVE"
+     >AGO_TOOL_BUTTON_SAVE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#ASI_GTKCLASS"
+     >ASI_GTKCLASS</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#ASI_STOCK"
+     >ASI_STOCK</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AUTO_DELIMITER"
+     >AUTO_DELIMITER</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AUTO_INVOKE_ARGS"
+     >AUTO_INVOKE_ARGS</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AUTO_INVOKE_HASARGS"
+     >AUTO_INVOKE_HASARGS</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AUTO_INVOKE_METHOD"
+     >AUTO_INVOKE_METHOD</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AUTO_INVOKE_RE"
+     >AUTO_INVOKE_RE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AUTO_INVOKE_WIDGET"
+     >AUTO_INVOKE_WIDGET</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#AUTO_TREEVIEW_SET_CELL_RE"
+     >AUTO_TREEVIEW_SET_CELL_RE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#BLUE"
+     >BLUE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#CYAN"
+     >CYAN</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#DEBUG"
+     >DEBUG</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#EMPTY_GLADE"
+     >EMPTY_GLADE</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#GREEN"
+     >GREEN</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#INPUT_CLASS"
+     >INPUT_CLASS</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#MAGENTA"
+     >MAGENTA</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#RED"
+     >RED</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#SGR0"
+     >SGR0</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#WARNING"
+     >WARNING</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#__rev__"
+     >__rev__</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#colors"
+     >colors</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#prog"
+     >prog</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#revision"
+     >revision</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#usage"
+     >usage</a><br />    <a target="mainFrame" href="autoglade.autoglade-module.html#version"
+     >version</a><br /><hr />
+<span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/autoglade/!svn/ver/55/trunk/examples/tutorial/Hello_World
+END
+hello_world.glade
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/autoglade/!svn/ver/20/trunk/examples/tutorial/Hello_World/hello_world.glade
+END
+hello_world_1.glade
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/autoglade/!svn/ver/55/trunk/examples/tutorial/Hello_World/hello_world_1.glade
+END
+hello_world_2.glade
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/autoglade/!svn/ver/55/trunk/examples/tutorial/Hello_World/hello_world_2.glade
+END
+hello_world_3.glade
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/autoglade/!svn/ver/55/trunk/examples/tutorial/Hello_World/hello_world_3.glade
+END
+image-missing.png
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/autoglade/!svn/ver/55/trunk/examples/tutorial/Hello_World/image-missing.png
+END

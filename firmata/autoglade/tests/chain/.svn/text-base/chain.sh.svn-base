@@ -1,0 +1,6 @@
+#! /bin/sh
+# $Id$
+
+export combobox1='Item 2'
+
+${AUTOGLADE:-autoglade} ${0%.sh}.glade

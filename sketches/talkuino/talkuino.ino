@@ -60,6 +60,8 @@ int                     currPos;
 int                     beginPos;
 int                     endPos;
 int                     maxVar;
+int                     startTime;
+boolean                 initialized;
 
 void LCDPrint64(char * input){
   #ifdef DEBUG
@@ -215,18 +217,31 @@ void portParser(int rndId, int port, int rw, int da, int value){
   int out   = 0;
   switch (rw) {
     case RWREAD:
+      pinMode(port, INPUT);
       switch (da) {
         case DADIGITAL:
           out = digitalRead(port);
+          if ( out == HIGH ) {
+            out = 1;
+          } else {
+            out = 0;
+          }
           break;
         case DAANALOG:
           out = analogRead(port);
           break;
       }// end switch da
     case RWWRITE:
+      pinMode(port, OUTPUT);
       switch (da) {
         case DADIGITAL:
-          digitalWrite(port, value);
+          if ( value > 0 ) {
+            Serial.println("SETTING PORT "+String(port)+" HIGH");
+            digitalWrite(port, HIGH);
+          } else {
+            Serial.println("SETTING PORT "+String(port)+" LOW");
+            digitalWrite(port, LOW);
+          }
           break;
         case DAANALOG:
           analogWrite(port, value);
@@ -444,12 +459,17 @@ void setup() {
   delay(500);
   Serial.println("SETUP ARDUINO ID: " + String(char(MINVAL + ARDUINOID)) + "\n");
   delay(500);
+  initialized = false;
+  startTime   = millis();
 }
 
 
 
 void loop(){
-// send data only when you receive data:
+  //int ledPin = 13;
+  //digitalWrite(ledPin, LOW);
+  //pinMode(ledPin, OUTPUT);
+  // send data only when you receive data:
   if (Serial.available() > 0) {
     // read the incoming byte:
     char incomingByte = Serial.read();
@@ -503,10 +523,12 @@ void loop(){
             Serial.println("     SENDING");
           #endif
           
+          initialized = true;
           parseVal(buffer, beginPos, endPos - 1);
           beginPos = -1;
           endPos   = -1;
           currPos  =  0;
+          Serial.println(char(6)); // ACK
         } else { // end beginpos != -1
           #ifdef DEBUG
             Serial.println("   END FOUND WITHOUT A BEGIN. ERROR. RESETING");
@@ -543,21 +565,23 @@ void loop(){
       } // end beginpoe != -1
     } // end else not begin or end
   } // end serial available
+  
+//  if ( ! initialized ) {
+//    Serial.println("NOT INITIALIZED YET");
+//    int elapsed = millis() - startTime;
+//    if ( elapsed > 10000 ) {
+//      Serial.println("DIDNT RECEIVE DATA BEFORE THRESHOLD. RESETING");
+//      Serial.println("TIME "+String(millis())+" elapsed "+String(elapsed)+" initialized "+String(initialized));
+//      //software_Reset();
+//    }
+//  } else {
+//    Serial.println("TIME "+String(millis())+" initialized "+String(initialized));
+//  }
 } // end loop
 
-//void loop() {
 
-//  processPorts();
-//  //pir();
-//  pir2();
-  
-//  SerialPrintLn("High");
-//  digitalWrite(13, HIGH);   // set the LED on
-//  delay(1000);     // wait for a second
-  
-//  processPorts();
-//  SerialPrintLn("Low");
-//  digitalWrite(13, LOW);    // set the LED off
-//  delay(1000);              // wait for a second
-//}
 
+void software_Reset() // Restarts program from beginning but does not reset the peripherals and registers
+{
+asm volatile ("  jmp 0");
+} 

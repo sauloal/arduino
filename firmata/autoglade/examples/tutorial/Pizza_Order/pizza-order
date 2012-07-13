@@ -1,0 +1,16 @@
+#! /bin/bash
+
+DUMP=$(autoglade $0.glade)
+if [ "$?" -eq 0 ]
+then
+	eval $DUMP
+	echo -n "Please place a pizza order of $quantity $pizza"
+	[ "$mozzarella" = 'True' ] && echo -n ' with extra mozzarella'
+	[ "$pepperoni" = 'True' ] && {
+		[ "$mozzarella" = 'True' ] && echo -n ' and' || echo -n ' with';
+		echo -n ' pepperoni'
+		}
+else
+	echo -n 'Order cancelled'
+fi
+echo '.'
