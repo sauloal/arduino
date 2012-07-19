@@ -18,7 +18,7 @@ class BoardBaseTest(unittest.TestCase):
     def setUp(self):
         # Test with the MockupSerial so no real connection is needed
         pyfirmata.pyfirmata.serial.Serial = mockup.MockupSerial
-        self.board = pyfirmata.Board('', BOARDS['arduino'])
+        self.board = pyfirmata.Board('', BOARDS['arduino_mega'])
         self.board._stored_data = [] # FIXME How can it be that a fresh instance sometimes still contains data?
 
 
@@ -261,8 +261,8 @@ class TestBoardLayout(BoardBaseTest):
                 pins.append(self.board.get_pin('d:%d:p' % pin.pin_number))
         for pin in pins:
             self.assertEqual(pin.mode, pyfirmata.PWM)
-            self.assertTrue(pin.pin_number in BOARDS['arduino']['pwm'])
-        self.assertTrue(len(pins) == len(BOARDS['arduino']['pwm']))
+            self.assertTrue(pin.pin_number in BOARDS['arduino_mega']['pwm'])
+        self.assertTrue(len(pins) == len(BOARDS['arduino_mega']['pwm']))
 
     def test_get_pin_digital(self):
         pin = self.board.get_pin('d:13:o')
@@ -319,8 +319,8 @@ class RegressionTests(BoardBaseTest):
         for i in range(4):
             mask |= 1 << i
         self.board._handle_digital_message(1, mask % 128, mask >> 7)
-        self.assertEqual(self.board.digital[8].value, True)
-        self.assertEqual(self.board.digital[9].value, None)
+        self.assertEqual(self.board.digital[ 8].value, True)
+        self.assertEqual(self.board.digital[ 9].value, None)
         self.assertEqual(self.board.digital[10].value, True)
         self.assertEqual(self.board.digital[11].value, None)
         self.assertEqual(self.board.digital[12].value, False)
@@ -328,10 +328,10 @@ class RegressionTests(BoardBaseTest):
 
 
 board_messages = unittest.TestLoader().loadTestsFromTestCase(TestBoardMessages)
-board_layout = unittest.TestLoader().loadTestsFromTestCase(TestBoardLayout)
-regression = unittest.TestLoader().loadTestsFromTestCase(RegressionTests)
-default = unittest.TestSuite([board_messages, board_layout, regression])
-mockup_suite = unittest.TestLoader().loadTestsFromTestCase(TestMockupBoardLayout)
+board_layout   = unittest.TestLoader().loadTestsFromTestCase(TestBoardLayout)
+regression     = unittest.TestLoader().loadTestsFromTestCase(RegressionTests)
+default        = unittest.TestSuite([board_messages, board_layout, regression])
+mockup_suite   = unittest.TestLoader().loadTestsFromTestCase(TestMockupBoardLayout)
 
 if __name__ == '__main__':
     from optparse import OptionParser

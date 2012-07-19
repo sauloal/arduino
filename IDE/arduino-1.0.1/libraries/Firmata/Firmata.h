@@ -13,6 +13,9 @@
 #ifndef Firmata_h
 #define Firmata_h
 
+#define ARDUINOIDALL 0x21
+#define ARDUINOID    0x22
+
 #include "Boards.h"  /* Hardware Abstraction Layer + Wiring/Arduino */
 
 /* Version numbers for the protocol.  The protocol is still changing, so these
@@ -138,6 +141,10 @@ private:
     stringCallbackFunction currentStringCallback;
     sysexCallbackFunction currentSysexCallback;
 
+#ifdef ARDUINOID
+    int requestedArduinoId;
+#endif
+    
 /* private methods ------------------------------ */
     void processSysexMessage(void);
 	void systemReset(void);

@@ -149,23 +149,31 @@ int FirmataClass::available(void)
 
 void FirmataClass::processSysexMessage(void)
 {
+  //sendString(STRING_DATA, "GOT FIRST LEVEL");
   switch(storedInputData[0]) { //first byte in buffer is command
   case REPORT_FIRMWARE:
     printFirmwareVersion();
     break;
   case STRING_DATA:
+    //sendString(STRING_DATA, "GOT SECOND LEVEL");
     if(currentStringCallback) {
+      //sendString(STRING_DATA, "HAS CALL BACK");
       byte bufferLength = (sysexBytesRead - 1) / 2;
       char *buffer = (char*)malloc(bufferLength * sizeof(char));
       byte i = 1;
       byte j = 0;
       while(j < bufferLength) {
-        buffer[j] = (char)storedInputData[i];
+        //sendString(STRING_DATA, "CHAR  " + (char)storedInputData[i]  );
+        buffer[j]  = (char)storedInputData[i];
         i++;
+        //sendString(STRING_DATA, "CHAR+ " + (char)storedInputData[i]  );
         buffer[j] += (char)(storedInputData[i] << 7);
         i++;
+        //sendString(STRING_DATA, "CHARF " + (char)buffer[j]           );
         j++;
       }
+      //sendString(STRING_DATA, "BUFFER ");
+      //sendString(STRING_DATA, buffer);
       (*currentStringCallback)(buffer);
     }
     break;
@@ -177,9 +185,10 @@ void FirmataClass::processSysexMessage(void)
 
 void FirmataClass::processInput(void)
 {
+  //sendString(STRING_DATA, "processing input");
   int inputData = FirmataSerial.read(); // this is 'int' to handle -1 when no data
   int command;
-    
+  
   // TODO make sure it handles -1 properly
 
   if (parsingSysex) {
@@ -200,15 +209,15 @@ void FirmataClass::processInput(void)
       switch(executeMultiByteCommand) {
       case ANALOG_MESSAGE:
         if(currentAnalogCallback) {
-          (*currentAnalogCallback)(multiByteChannel,
-                                   (storedInputData[0] << 7)
+          (*currentAnalogCallback)(  multiByteChannel,
+                                   ( storedInputData[0] << 7)
                                    + storedInputData[1]);
         }
         break;
       case DIGITAL_MESSAGE:
         if(currentDigitalCallback) {
-          (*currentDigitalCallback)(multiByteChannel,
-                                    (storedInputData[0] << 7)
+          (*currentDigitalCallback)(  multiByteChannel,
+                                    ( storedInputData[0] << 7)
                                     + storedInputData[1]);
         }
         break;
@@ -229,36 +238,50 @@ void FirmataClass::processInput(void)
     }	
   } else {
     // remove channel info from command byte if less than 0xF0
-    if(inputData < 0xF0) {
-      command = inputData & 0xF0;
-      multiByteChannel = inputData & 0x0F;
+    
+#ifdef ARDUINOID
+    if (( requestedArduinoId == ARDUINOID ) || ( requestedArduinoId == ARDUINOIDALL )) {
+      requestedArduinoId = 0;
+#endif
+
+      if(inputData < 0xF0) {
+        command          = inputData & 0xF0;
+        multiByteChannel = inputData & 0x0F;
+      } else {
+        command          = inputData;
+        // commands in the 0xF* range don't use channel data
+      }
+      
+      switch (command) {
+        case ANALOG_MESSAGE:
+        case DIGITAL_MESSAGE:
+        case SET_PIN_MODE:
+          waitForData             = 2; // two data bytes needed
+          executeMultiByteCommand = command;
+          break;
+        case REPORT_ANALOG:
+        case REPORT_DIGITAL:
+          waitForData             = 1; // two data bytes needed
+          executeMultiByteCommand = command;
+          break;
+        case START_SYSEX:
+          parsingSysex   = true;
+          sysexBytesRead = 0;
+          break;
+        case SYSTEM_RESET:
+          systemReset();
+          break;
+        case REPORT_VERSION:
+          Firmata.printVersion();
+          break;
+      }
+      
+#ifdef ARDUINOID
     } else {
-      command = inputData;
-      // commands in the 0xF* range don't use channel data
+      requestedArduinoId = inputData;
     }
-    switch (command) {
-    case ANALOG_MESSAGE:
-    case DIGITAL_MESSAGE:
-    case SET_PIN_MODE:
-      waitForData = 2; // two data bytes needed
-      executeMultiByteCommand = command;
-      break;
-    case REPORT_ANALOG:
-    case REPORT_DIGITAL:
-      waitForData = 1; // two data bytes needed
-      executeMultiByteCommand = command;
-      break;
-    case START_SYSEX:
-      parsingSysex = true;
-      sysexBytesRead = 0;
-      break;
-    case SYSTEM_RESET:
-      systemReset();
-      break;
-    case REPORT_VERSION:
-      Firmata.printVersion();
-      break;
-    }
+#endif
+
   }
 }
 
@@ -336,11 +359,11 @@ void FirmataClass::sendString(const char* string)
 void FirmataClass::attach(byte command, callbackFunction newFunction)
 {
   switch(command) {
-  case ANALOG_MESSAGE: currentAnalogCallback = newFunction; break;
-  case DIGITAL_MESSAGE: currentDigitalCallback = newFunction; break;
-  case REPORT_ANALOG: currentReportAnalogCallback = newFunction; break;
-  case REPORT_DIGITAL: currentReportDigitalCallback = newFunction; break;
-  case SET_PIN_MODE: currentPinModeCallback = newFunction; break;
+  case ANALOG_MESSAGE:  currentAnalogCallback        = newFunction; break;
+  case DIGITAL_MESSAGE: currentDigitalCallback       = newFunction; break;
+  case REPORT_ANALOG:   currentReportAnalogCallback  = newFunction; break;
+  case REPORT_DIGITAL:  currentReportDigitalCallback = newFunction; break;
+  case SET_PIN_MODE:    currentPinModeCallback       = newFunction; break;
   }
 }
 

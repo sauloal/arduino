@@ -2,46 +2,59 @@ import serial
 import inspect
 import time
 import itertools
-from util import two_byte_iter_to_str, to_two_bytes
+from util import two_byte_iter_to_str, to_two_bytes, str_to_two_byte_iter, two_byte_iter_to_str
+
+ARDUINOIDALL       = 0x21
 
 # Message command bytes - straight from Firmata.h
-DIGITAL_MESSAGE = 0x90      # send data for a digital pin
-ANALOG_MESSAGE = 0xE0       # send data for an analog pin (or PWM)
-DIGITAL_PULSE = 0x91        # SysEx command to send a digital pulse
+DIGITAL_MESSAGE    = 0x90 # send data for a digital pin
+ANALOG_MESSAGE     = 0xE0 # send data for an analog pin (or PWM)
+DIGITAL_PULSE      = 0x91 # SysEx command to send a digital pulse
 
-# PULSE_MESSAGE = 0xA0      # proposed pulseIn/Out msg (SysEx)
-# SHIFTOUT_MESSAGE = 0xB0   # proposed shiftOut msg (SysEx)
-REPORT_ANALOG = 0xC0        # enable analog input by pin #
-REPORT_DIGITAL = 0xD0       # enable digital input by port pair
-START_SYSEX = 0xF0          # start a MIDI SysEx msg
-SET_PIN_MODE = 0xF4         # set a pin to INPUT/OUTPUT/PWM/etc
-END_SYSEX = 0xF7            # end a MIDI SysEx msg
-REPORT_VERSION = 0xF9       # report firmware version
-SYSTEM_RESET = 0xFF         # reset from MIDI
-QUERY_FIRMWARE = 0x79       # query the firmware name
+# PULSE_MESSAGE    = 0xA0 # proposed pulseIn/Out msg (SysEx)
+# SHIFTOUT_MESSAGE = 0xB0 # proposed shiftOut msg (SysEx)
+REPORT_ANALOG      = 0xC0 # enable analog input by pin #
+REPORT_DIGITAL     = 0xD0 # enable digital input by port pair
+START_SYSEX        = 0xF0 # start a MIDI SysEx msg
+SET_PIN_MODE       = 0xF4 # set a pin to INPUT/OUTPUT/PWM/etc
+END_SYSEX          = 0xF7 # end a MIDI SysEx msg
+REPORT_VERSION     = 0xF9 # report firmware version
+SYSTEM_RESET       = 0xFF # reset from MIDI
+QUERY_FIRMWARE     = 0x79 # query the firmware name
 
 # extended command set using sysex (0-127/0x00-0x7F)
 # 0x00-0x0F reserved for user-defined commands */
-SERVO_CONFIG = 0x70         # set max angle, minPulse, maxPulse, freq
-STRING_DATA = 0x71          # a string message with 14-bits per char
-SHIFT_DATA = 0x75           # a bitstream to/from a shift register
-I2C_REQUEST = 0x76          # send an I2C read/write request
-I2C_REPLY = 0x77            # a reply to an I2C read request
-I2C_CONFIG = 0x78           # config I2C settings such as delay times and power pins
-REPORT_FIRMWARE = 0x79      # report name and version of the firmware
-SAMPLING_INTERVAL = 0x7A    # set the poll rate of the main loop
-SYSEX_NON_REALTIME = 0x7E   # MIDI Reserved for non-realtime messages
-SYSEX_REALTIME = 0x7F       # MIDI Reserved for realtime messages
+#2.2 NOT IMPLEMENTED
+#define RESERVED_COMMAND        0x00 // 2nd SysEx data byte is a chip-specific command (AVR, PIC, TI, etc).
+#define ANALOG_MAPPING_QUERY    0x69 // ask for mapping of analog to pin numbers
+#define ANALOG_MAPPING_RESPONSE 0x6A // reply with mapping info
+#define CAPABILITY_QUERY        0x6B // ask for supported modes and resolution of all pins
+#define CAPABILITY_RESPONSE     0x6C // reply with supported modes and resolution
+#define PIN_STATE_QUERY         0x6D // ask for a pin's current mode and value
+#define PIN_STATE_RESPONSE      0x6E // reply with a pin's current mode and value
+#define EXTENDED_ANALOG         0x6F // analog write (PWM, Servo, etc) to any pin
+
+
+SERVO_CONFIG       = 0x70 # set max angle, minPulse, maxPulse, freq
+STRING_DATA        = 0x71 # a string message with 14-bits per char
+SHIFT_DATA         = 0x75 # a bitstream to/from a shift register
+I2C_REQUEST        = 0x76 # send an I2C read/write request
+I2C_REPLY          = 0x77 # a reply to an I2C read request
+I2C_CONFIG         = 0x78 # config I2C settings such as delay times and power pins
+REPORT_FIRMWARE    = 0x79 # report name and version of the firmware
+SAMPLING_INTERVAL  = 0x7A # set the poll rate of the main loop
+SYSEX_NON_REALTIME = 0x7E # MIDI Reserved for non-realtime messages
+SYSEX_REALTIME     = 0x7F # MIDI Reserved for realtime messages
 
 
 # Pin modes.
 # except from UNAVAILABLE taken from Firmata.h
-UNAVAILABLE = -1 
-INPUT = 0          # as defined in wiring.h
-OUTPUT = 1         # as defined in wiring.h
-ANALOG = 2         # analog pin in analogInput mode
-PWM = 3            # digital pin in PWM output mode
-SERVO = 4          # digital pin in SERVO mode
+UNAVAILABLE        = -1
+INPUT              =  0 # as defined in wiring.h
+OUTPUT             =  1 # as defined in wiring.h
+ANALOG             =  2 # analog pin in analogInput mode
+PWM                =  3 # digital pin in PWM output mode
+SERVO              =  4 # digital pin in SERVO mode
 
 # Pin types
 DIGITAL = OUTPUT   # same as OUTPUT below
@@ -60,34 +73,37 @@ class Board(object):
     """
     Base class for any board
     """
-    firmata_version = None
-    firmware = None
-    firmware_version = None
+    firmata_version   = None
+    firmware          = None
+    firmware_version  = None
     _command_handlers = {}
-    _command = None
-    _stored_data = []
-    _parsing_sysex = False
+    _command          = None
+    _stored_data      = []
+    _parsing_sysex    = False
     
-    def __init__(self, port, layout, baudrate=57600, name=None):
+    def __init__(self, port, layout, baudrate=57600, name=None, target=None):
         self.sp = serial.Serial(port, baudrate)
         # Allow 5 secs for Arduino's auto-reset to happen
         # Alas, Firmata blinks it's version before printing it to serial
         # For 2.3, even 5 seconds might not be enough.
         # TODO Find a more reliable way to wait until the board is ready
         self.pass_time(5)
-        self.name = name
+        self.name   = name
         if not self.name:
             self.name = port
+        self.target = target
+            
+        self.layout = layout
         self.setup_layout(layout)
         # Iterate over the first messages to get firmware data
         while self.bytes_available():
             self.iterate()
         # TODO Test whether we got a firmware name and version, otherwise there 
         # probably isn't any Firmata installed
-        
+
     def __str__(self):
         return "Board %s on %s" % (self.name, self.sp.port)
-        
+
     def __del__(self):
         ''' 
         The connection with the a board can get messed up when a script is
@@ -95,7 +111,7 @@ class Board(object):
         connection). Therefore also do it here and hope it helps.
         '''
         self.exit()
-        
+
     def send_as_two_bytes(self, val):
         self.sp.write(chr(val % 128) + chr(val >> 7))
 
@@ -110,7 +126,7 @@ class Board(object):
         for i in board_layout['analog']:
             self.analog.append(Pin(self, i))
 
-        self.digital = []
+        self.digital       = []
         self.digital_ports = []
         for i in xrange(0, len(board_layout['digital']), 8):
             num_pins = len(board_layout['digital'][i:i+8])
@@ -130,29 +146,33 @@ class Board(object):
             self.digital[i].mode = UNAVAILABLE
 
         # Create a dictionary of 'taken' pins. Used by the get_pin method
-        self.taken = { 'analog' : dict(map(lambda p: (p.pin_number, False), self.analog)),
-                       'digital' : dict(map(lambda p: (p.pin_number, False), self.digital)) }
+        self.taken = { 'analog' : dict(map(lambda p: (p.pin_number, False), self.analog )),
+                       'digital': dict(map(lambda p: (p.pin_number, False), self.digital))}
 
         # Setup default handlers for standard incoming commands
-        self.add_cmd_handler(ANALOG_MESSAGE, self._handle_analog_message)
+        self.add_cmd_handler(ANALOG_MESSAGE , self._handle_analog_message )
         self.add_cmd_handler(DIGITAL_MESSAGE, self._handle_digital_message)
-        self.add_cmd_handler(REPORT_VERSION, self._handle_report_version)
+        self.add_cmd_handler(REPORT_VERSION , self._handle_report_version )
         self.add_cmd_handler(REPORT_FIRMWARE, self._handle_report_firmware)
+        self.add_cmd_handler(STRING_DATA    , self._handle_string_data)
+        self.add_cmd_handler(START_SYSEX    , self._handle_sysex)
     
     def add_cmd_handler(self, cmd, func):
         """ 
         Adds a command handler for a command.
         """
         len_args = len(inspect.getargspec(func)[0])
+        
         def add_meta(f):
             def decorator(*args, **kwargs):
                 f(*args, **kwargs)
             decorator.bytes_needed = len_args - 1 # exclude self
-            decorator.__name__ = f.__name__
+            decorator.__name__     = f.__name__
             return decorator
+        
         func = add_meta(func)
         self._command_handlers[cmd] = func
-        
+
     def get_pin(self, pin_def):
         """
         Returns the activated pin given by the pin definition.
@@ -188,7 +208,7 @@ class Board(object):
         else:
             pin.enable_reporting()
         return pin
-        
+
     def pass_time(self, t):
         """ 
         Non-blocking time-out for ``t`` seconds.
@@ -196,7 +216,7 @@ class Board(object):
         cont = time.time() + t
         while time.time() < cont:
             time.sleep(0)
-            
+
     def send_sysex(self, sysex_cmd, data=[]):
         """
         Sends a SysEx msg.
@@ -205,19 +225,28 @@ class Board(object):
         :arg data: A list of 7-bit bytes of arbitrary data (bytes may be 
             already converted to chr's)
         """
+        if self.target is not None:
+            print "print to target",self.target,chr(34 + self.target)
+            self.sp.write(chr(34 + self.target))
+        else:
+            print "print to all targets",33,chr(33)
+            self.sp.write(chr(33))
+            
         self.sp.write(chr(START_SYSEX))
-        self.sp.write(chr(sysex_cmd))
+        self.sp.write(chr(sysex_cmd  ))
         for byte in data:
+            #print "sending byte",byte,ord(byte)
             try:
                 byte = chr(byte)
             except TypeError:
+                #print "  byte already a char"
                 pass # byte is already a chr
             except ValueError:
                 raise ValueError('Sysex data can be 7-bit bytes only. '
                     'Consider using utils.to_two_bytes for bigger bytes.')
             self.sp.write(byte)
         self.sp.write(chr(END_SYSEX))
-        
+
     def bytes_available(self):
         return self.sp.inWaiting()
 
@@ -227,12 +256,12 @@ class Board(object):
         This method should be called in a main loop, or in an
         :class:`Iterator` instance to keep this boards pin values up to date
         """
-        byte = self.sp.read()
+        byte          = self.sp.read()
         if not byte:
             return
-        data = ord(byte)
+        data          = ord(byte)
         received_data = []
-        handler = None
+        handler       = None
         if data < START_SYSEX:
             # These commands can have 'channel data' like a pin nummber appended.
             try:
@@ -263,14 +292,14 @@ class Board(object):
             handler(*received_data)
         except ValueError:
             pass
-            
+
     def get_firmata_version(self):
         """
         Returns a version tuple (major, mino) for the firmata firmware on the
         board.
         """
         return self.firmata_version
-        
+
     def servo_config(self, pin, min_pulse=544, max_pulse=2400, angle=0):
         """
         Configure a pin as servo with min_pulse, max_pulse and first angle.
@@ -286,7 +315,7 @@ class Board(object):
         # don't set pin.mode as that calls this method
         self.digital[pin]._mode = SERVO
         self.digital[pin].write(angle)
-        
+
     def exit(self):
         """ Call this to exit cleanly. """
         # First detach all servo's, otherwise it somehow doesn't want to close...
@@ -296,7 +325,7 @@ class Board(object):
                 pin.mode = OUTPUT
         if hasattr(self, 'sp'):
             self.sp.close()
-        
+
     # Command handlers
     def _handle_analog_message(self, pin_nr, lsb, msb):
         value = round(float((msb << 7) + lsb) / 1023, 4)
@@ -320,45 +349,125 @@ class Board(object):
 
     def _handle_report_version(self, major, minor):
         self.firmata_version = (major, minor)
-        
+
     def _handle_report_firmware(self, *data):
-        major = data[0]
-        minor = data[1]
+        major                 = data[0]
+        minor                 = data[1]
         self.firmware_version = (major, minor)
-        self.firmware = two_byte_iter_to_str(data[2:])
+        self.firmware         = two_byte_iter_to_str(data[2:])
+
+    def _handle_string_data(self, *data):
+        #print "STRING DATA LENGTH %d DATA %s" % (len(data), data)
+        print two_byte_iter_to_str(data)
+
+    def _handle_sysex(self, length, data):
+        #print "STRING DATA LENGTH %d DATA %s" % (length, data)
+        pass
+
+    def string_write(self, string):
+        while len(string) > 0:
+            last   = len(string)
+            if last > 14:
+                last = 14
+            piece  = string[0:last]
+            string = string[14:]
+            self.string_write_piece(piece)
+
+    def string_write_piece(self, string):
+        """Sending a string to device"""
+        #print "sending",string
+        #stringRes = str_to_two_byte_iter(string)
+        #stringRes = list(str_to_two_byte_iter(string))
+        stringRes = list(self._string_to_two_7_bit(string)) + ['\x00', '\x00']
+        #stringRes = list(string)
+        #print "sending bytes",stringRes
+        self.send_sysex(STRING_DATA, stringRes)
+        #print "sent"
+    
+    def _string_to_two_7_bit(self, string):
+        res = []
+        
+        for c in string:
+            res.extend(self._char_value_as_two_7_bit(c))
+            
+        return res
+    
+    def _char_value_as_two_7_bit(self, value):
+        res = []
+        
+        if isinstance(value, str):
+            value = ord(value)
+            res.append(chr(value      & 0b01111111)) # LSB
+            res.append(chr(value >> 7 & 0b01111111)) # MSB
+            
+        return res
+
+    #def sendString(self, msg):
+        #print "msg",msg
+        #self.send_sysex(STRING_DATA, data=list(msg))
+        
+        #self.sp.write(chr(START_SYSEX))
+        #self.sp.write(chr(STRING_DATA))
+        #msgc = str_to_two_byte_iter(msg)
+        #for c in msgc:
+        #    self.sp.write(c)
+        #    print "c",c
+        #self.sp.write(chr(END_SYSEX))
+        
+        #print "sent"
+        
+        #while( True ):
+        #    while (self.sp.inWaiting()):
+        #        w = self.sp.inWaiting()
+        #        print self.sp.read(w)
+        #    time.sleep(.5)
+        
+        #for byte in data:
+        #    try:
+        #        byte = chr(byte)
+        #    except TypeError:
+        #        pass # byte is already a chr
+        #    except ValueError:
+        #        raise ValueError('Sysex data can be 7-bit bytes only. '
+        #            'Consider using utils.to_two_bytes for bigger bytes.')
+        #    self.sp.write(byte)
+        #    print "sending byte",byte
+        #self.sp.write(chr(END_SYSEX))
+        
+
 
 class Port(object):
     """ An 8-bit port on the board """
-    def __init__(self, board, port_number, num_pins=8):
-        self.board = board
+    def __init__(self, board, port_number, num_pins=8, reporting=False):
+        self.board       = board
         self.port_number = port_number
-        self.reporting = False
+        self.reporting   = reporting
         
         self.pins = []
         for i in range(num_pins):
             pin_nr = i + self.port_number * 8
             self.pins.append(Pin(self.board, pin_nr, type=DIGITAL, port=self))
-            
+
     def __str__(self):
         return "Digital Port %i on %s" % (self.port_number, self.board)
-        
+
     def enable_reporting(self):
         """ Enable reporting of values for the whole port """
         self.reporting = True
-        msg = chr(REPORT_DIGITAL + self.port_number)
+        msg  = chr(REPORT_DIGITAL + self.port_number)
         msg += chr(1)
         self.board.sp.write(msg)
         for pin in self.pins:
             if pin.mode == INPUT:
                 pin.reporting = True # TODO Shouldn't this happen at the pin?
-        
+
     def disable_reporting(self):
         """ Disable the reporting of the port """
         self.reporting = False
-        msg = chr(REPORT_DIGITAL + self.port_number)
+        msg  = chr(REPORT_DIGITAL + self.port_number)
         msg += chr(0)
         self.board.sp.write(msg)
-                
+
     def write(self):
         """Set the output pins of the port to the correct state"""
         mask = 0
@@ -367,11 +476,11 @@ class Port(object):
                 if pin.value == 1:
                     pin_nr = pin.pin_number - self.port_number * 8
                     mask |= 1 << pin_nr
-        msg = chr(DIGITAL_MESSAGE + self.port_number)
+        msg  = chr(DIGITAL_MESSAGE + self.port_number)
         msg += chr(mask % 128)
         msg += chr(mask >> 7)
         self.board.sp.write(msg)
-        
+
     def _update(self, mask):
         """
         Update the values for the pins marked as input with the mask.
@@ -385,14 +494,14 @@ class Port(object):
 class Pin(object):
     """ A Pin representation """
     def __init__(self, board, pin_number, type=ANALOG, port=None):
-        self.board = board
-        self.pin_number = pin_number
-        self.type = type
-        self.port = port
+        self.board       = board
+        self.pin_number  = pin_number
+        self.type        = type
+        self.port        = port
         self.PWM_CAPABLE = False
-        self._mode = (type == DIGITAL and OUTPUT or INPUT)
-        self.reporting = False
-        self.value = None
+        self._mode       = (type == DIGITAL and OUTPUT or INPUT)
+        self.reporting   = False
+        self.value       = None
         
     def __str__(self):
         type = {ANALOG : 'Analog', DIGITAL : 'Digital'}[self.type]
@@ -416,10 +525,11 @@ class Pin(object):
         
         # Set mode with SET_PIN_MODE message
         self._mode = mode
-        command = chr(SET_PIN_MODE)
+        command  = chr(SET_PIN_MODE)
         command += chr(self.pin_number)
         command += chr(mode)
         self.board.sp.write(command)
+        
         if mode == INPUT:
             self.enable_reporting()
         

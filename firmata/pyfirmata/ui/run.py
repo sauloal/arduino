@@ -145,6 +145,7 @@ def ioChange(gtk, name, value):
 	meVal      = me.get_active_text()
 	print "IO  CHANGE %s V %s ID %s IO %s ME %s" % (name, value, portNumStr, ioVal, meVal)
 
+
 def meChange(gtk, name, value):
 	portNum    = int(name[-2:])
 	portNumStr = "%02d" % portNum
@@ -349,10 +350,10 @@ class machine(object):
 							}
 		self.app = app
 
-		digitals = board['digital' ]
-		analogs  = board['analog'  ]
-		pwms     = board['pwm'     ]
-		disabled = board['disabled']
+		digitals = board.layout['digital' ]
+		analogs  = board.layout['analog'  ]
+		pwms     = board.layout['pwm'     ]
+		disabled = board.layout['disabled']
 		
 		
 		for pair in [[digitals, MEDIGITAL],[analogs, MEANALOG],[pwms, MEPWM]]:
@@ -396,18 +397,38 @@ class machine(object):
 
 def main():
 	print "opening"
+	#board = BOARDS['arduino_mega']
+
 	if os.path.exists(tty):
-		board = ArduinoMega(tty, baudrate=115200)
+		board = ArduinoMega(tty, baudrate=57600)#, target=0)
+		#time.sleep(3)
 		
-		print "VERSION",board.get_firmata_version()
-		
-		# Prints some details to STDOUT
-		print "pyFirmata version:\t%s"     % pyfirmata.__version__
-		print "Hardware:\t\t%s"            % board.__str__()
+		#print "VERSION",board.get_firmata_version()
+		## Prints some details to STDOUT
+		#print "pyFirmata version:  %s"      % str(pyfirmata.__version__ )
+		#print "Hardware:           %s"      % str(board                 )
+		#print "Firmata version:    %s"      % str(board.firmata_version )
+		#print "Firmware:           %s"      % str(board.firmware        )
+		#print "Firmware version:   %s"      % str(board.firmware_version)
+		#time.sleep(3)
+		board.string_write("1234567890123567890")#from python. please echo")
+		#board.string_write("abcdefghijklmn")#from python. please echo")
 		#print "Firmata firmware name:  %s" % board.get_firmware()
 		#print "Firmata firmware:\t%i.%i"   % (board.get_firmata_version()[0], board.get_firmata_version()[1])
+		#time.sleep(10)
 		
-		#while True:
+		try:
+			while True:
+				while board.sp.inWaiting() > 0:
+					board.iterate()
+				#print "sleeping"
+				time.sleep(.5)
+		except KeyboardInterrupt:
+			sys.exit(0)
+		except:
+			sys.exit(1)
+		
+		#print "out"
 		#	print "on"
 		#	board.digital[13].write(1)
 		#	time.sleep(1)
@@ -415,16 +436,15 @@ def main():
 		#	board.digital[13].write(0)
 		#	time.sleep(2)
 
-	board = BOARDS['arduino_mega']
 
-	try:
-		app  = AppUI(board)
-		Gtk.main()
-		
-	except KeyboardInterrupt:
-		print "crtl+c"
-		Gtk.main_quit()
-		sys.exit(0)
+		#try:
+		#	app  = AppUI(board)
+		#	Gtk.main()
+		#	
+		#except KeyboardInterrupt:
+		#	print "crtl+c"
+		#	Gtk.main_quit()
+		#	sys.exit(0)
 
 
 if __name__ == '__main__': main()

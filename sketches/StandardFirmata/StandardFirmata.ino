@@ -32,6 +32,7 @@
 #include <Servo.h>
 #include <Wire.h>
 #include <Firmata.h>
+#include <String.h>
 
 // move the following defines to Firmata.h?
 #define I2C_WRITE B00000000
@@ -149,22 +150,71 @@ void checkDigitalInputs(void)
   /* Using non-looping code allows constants to be given to readPort().
    * The compiler will apply substantial optimizations if the inputs
    * to readPort() are compile-time constants. */
-  if (TOTAL_PORTS > 0 && reportPINs[0]) outputPort(0, readPort(0, portConfigInputs[0]), false);
-  if (TOTAL_PORTS > 1 && reportPINs[1]) outputPort(1, readPort(1, portConfigInputs[1]), false);
-  if (TOTAL_PORTS > 2 && reportPINs[2]) outputPort(2, readPort(2, portConfigInputs[2]), false);
-  if (TOTAL_PORTS > 3 && reportPINs[3]) outputPort(3, readPort(3, portConfigInputs[3]), false);
-  if (TOTAL_PORTS > 4 && reportPINs[4]) outputPort(4, readPort(4, portConfigInputs[4]), false);
-  if (TOTAL_PORTS > 5 && reportPINs[5]) outputPort(5, readPort(5, portConfigInputs[5]), false);
-  if (TOTAL_PORTS > 6 && reportPINs[6]) outputPort(6, readPort(6, portConfigInputs[6]), false);
-  if (TOTAL_PORTS > 7 && reportPINs[7]) outputPort(7, readPort(7, portConfigInputs[7]), false);
-  if (TOTAL_PORTS > 8 && reportPINs[8]) outputPort(8, readPort(8, portConfigInputs[8]), false);
-  if (TOTAL_PORTS > 9 && reportPINs[9]) outputPort(9, readPort(9, portConfigInputs[9]), false);
+  if (TOTAL_PORTS >  0 && reportPINs[ 0]) outputPort( 0, readPort( 0, portConfigInputs[ 0]), false);
+  if (TOTAL_PORTS >  1 && reportPINs[ 1]) outputPort( 1, readPort( 1, portConfigInputs[ 1]), false);
+  if (TOTAL_PORTS >  2 && reportPINs[ 2]) outputPort( 2, readPort( 2, portConfigInputs[ 2]), false);
+  if (TOTAL_PORTS >  3 && reportPINs[ 3]) outputPort( 3, readPort( 3, portConfigInputs[ 3]), false);
+  if (TOTAL_PORTS >  4 && reportPINs[ 4]) outputPort( 4, readPort( 4, portConfigInputs[ 4]), false);
+  if (TOTAL_PORTS >  5 && reportPINs[ 5]) outputPort( 5, readPort( 5, portConfigInputs[ 5]), false);
+  if (TOTAL_PORTS >  6 && reportPINs[ 6]) outputPort( 6, readPort( 6, portConfigInputs[ 6]), false);
+  if (TOTAL_PORTS >  7 && reportPINs[ 7]) outputPort( 7, readPort( 7, portConfigInputs[ 7]), false);
+  if (TOTAL_PORTS >  8 && reportPINs[ 8]) outputPort( 8, readPort( 8, portConfigInputs[ 8]), false);
+  if (TOTAL_PORTS >  9 && reportPINs[ 9]) outputPort( 9, readPort( 9, portConfigInputs[ 9]), false);
   if (TOTAL_PORTS > 10 && reportPINs[10]) outputPort(10, readPort(10, portConfigInputs[10]), false);
   if (TOTAL_PORTS > 11 && reportPINs[11]) outputPort(11, readPort(11, portConfigInputs[11]), false);
   if (TOTAL_PORTS > 12 && reportPINs[12]) outputPort(12, readPort(12, portConfigInputs[12]), false);
   if (TOTAL_PORTS > 13 && reportPINs[13]) outputPort(13, readPort(13, portConfigInputs[13]), false);
+  
   if (TOTAL_PORTS > 14 && reportPINs[14]) outputPort(14, readPort(14, portConfigInputs[14]), false);
   if (TOTAL_PORTS > 15 && reportPINs[15]) outputPort(15, readPort(15, portConfigInputs[15]), false);
+  if (TOTAL_PORTS > 16 && reportPINs[16]) outputPort(16, readPort(16, portConfigInputs[16]), false);
+  if (TOTAL_PORTS > 17 && reportPINs[17]) outputPort(17, readPort(17, portConfigInputs[17]), false);
+  if (TOTAL_PORTS > 18 && reportPINs[18]) outputPort(18, readPort(18, portConfigInputs[18]), false);
+  if (TOTAL_PORTS > 19 && reportPINs[19]) outputPort(19, readPort(19, portConfigInputs[19]), false);
+  
+  if (TOTAL_PORTS > 20 && reportPINs[20]) outputPort(20, readPort(20, portConfigInputs[20]), false);
+  if (TOTAL_PORTS > 21 && reportPINs[21]) outputPort(21, readPort(21, portConfigInputs[21]), false);
+  if (TOTAL_PORTS > 22 && reportPINs[22]) outputPort(22, readPort(22, portConfigInputs[22]), false);
+  if (TOTAL_PORTS > 23 && reportPINs[23]) outputPort(23, readPort(23, portConfigInputs[23]), false);
+  if (TOTAL_PORTS > 24 && reportPINs[24]) outputPort(24, readPort(24, portConfigInputs[24]), false);
+  if (TOTAL_PORTS > 25 && reportPINs[25]) outputPort(25, readPort(25, portConfigInputs[25]), false);
+  if (TOTAL_PORTS > 26 && reportPINs[26]) outputPort(26, readPort(26, portConfigInputs[26]), false);
+  if (TOTAL_PORTS > 27 && reportPINs[27]) outputPort(27, readPort(27, portConfigInputs[27]), false);
+  if (TOTAL_PORTS > 28 && reportPINs[28]) outputPort(28, readPort(28, portConfigInputs[28]), false);
+  if (TOTAL_PORTS > 29 && reportPINs[29]) outputPort(29, readPort(29, portConfigInputs[29]), false);
+  
+  if (TOTAL_PORTS > 30 && reportPINs[30]) outputPort(30, readPort(30, portConfigInputs[30]), false);
+  if (TOTAL_PORTS > 31 && reportPINs[31]) outputPort(31, readPort(31, portConfigInputs[31]), false);
+  if (TOTAL_PORTS > 32 && reportPINs[32]) outputPort(32, readPort(32, portConfigInputs[32]), false);
+  if (TOTAL_PORTS > 33 && reportPINs[33]) outputPort(33, readPort(33, portConfigInputs[33]), false);
+  if (TOTAL_PORTS > 34 && reportPINs[34]) outputPort(34, readPort(34, portConfigInputs[34]), false);
+  if (TOTAL_PORTS > 35 && reportPINs[35]) outputPort(35, readPort(35, portConfigInputs[35]), false);
+  if (TOTAL_PORTS > 36 && reportPINs[36]) outputPort(36, readPort(36, portConfigInputs[36]), false);
+  if (TOTAL_PORTS > 37 && reportPINs[37]) outputPort(37, readPort(37, portConfigInputs[37]), false);
+  if (TOTAL_PORTS > 38 && reportPINs[38]) outputPort(38, readPort(38, portConfigInputs[38]), false);
+  if (TOTAL_PORTS > 39 && reportPINs[39]) outputPort(39, readPort(39, portConfigInputs[39]), false);
+
+  if (TOTAL_PORTS > 40 && reportPINs[40]) outputPort(40, readPort(40, portConfigInputs[40]), false);
+  if (TOTAL_PORTS > 41 && reportPINs[41]) outputPort(41, readPort(41, portConfigInputs[41]), false);
+  if (TOTAL_PORTS > 42 && reportPINs[42]) outputPort(42, readPort(42, portConfigInputs[42]), false);
+  if (TOTAL_PORTS > 43 && reportPINs[43]) outputPort(43, readPort(43, portConfigInputs[43]), false);
+  if (TOTAL_PORTS > 44 && reportPINs[44]) outputPort(44, readPort(44, portConfigInputs[44]), false);
+  if (TOTAL_PORTS > 45 && reportPINs[45]) outputPort(45, readPort(45, portConfigInputs[45]), false);
+  if (TOTAL_PORTS > 46 && reportPINs[46]) outputPort(46, readPort(46, portConfigInputs[46]), false);
+  if (TOTAL_PORTS > 47 && reportPINs[47]) outputPort(47, readPort(47, portConfigInputs[47]), false);
+  if (TOTAL_PORTS > 48 && reportPINs[48]) outputPort(48, readPort(48, portConfigInputs[48]), false);
+  if (TOTAL_PORTS > 49 && reportPINs[49]) outputPort(49, readPort(49, portConfigInputs[49]), false);
+  
+  if (TOTAL_PORTS > 50 && reportPINs[50]) outputPort(50, readPort(50, portConfigInputs[50]), false);
+  if (TOTAL_PORTS > 51 && reportPINs[51]) outputPort(51, readPort(51, portConfigInputs[51]), false);
+  if (TOTAL_PORTS > 52 && reportPINs[52]) outputPort(52, readPort(52, portConfigInputs[52]), false);
+  if (TOTAL_PORTS > 53 && reportPINs[53]) outputPort(53, readPort(53, portConfigInputs[53]), false);
+  if (TOTAL_PORTS > 54 && reportPINs[54]) outputPort(54, readPort(54, portConfigInputs[54]), false);
+  if (TOTAL_PORTS > 55 && reportPINs[55]) outputPort(55, readPort(55, portConfigInputs[55]), false);
+//  if (TOTAL_PORTS > 56 && reportPINs[56]) outputPort(56, readPort(56, portConfigInputs[56]), false);
+//  if (TOTAL_PORTS > 57 && reportPINs[57]) outputPort(57, readPort(57, portConfigInputs[57]), false);
+//  if (TOTAL_PORTS > 58 && reportPINs[58]) outputPort(58, readPort(58, portConfigInputs[58]), false);
+//  if (TOTAL_PORTS > 59 && reportPINs[59]) outputPort(59, readPort(59, portConfigInputs[59]), false);
 }
 
 // -----------------------------------------------------------------------------
@@ -328,6 +378,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
   byte slaveRegister;
   byte data;
   unsigned int delayTime; 
+  Firmata.sendString("SYSEXCALLBACK");
   
   switch(command) {
   case I2C_REQUEST:
@@ -374,12 +425,12 @@ void sysexCallback(byte command, byte argc, byte *argv)
         break;
       }
       queryIndex++;
-      query[queryIndex].addr = slaveAddress;
-      query[queryIndex].reg = argv[2] + (argv[3] << 7);
+      query[queryIndex].addr  = slaveAddress;
+      query[queryIndex].reg   = argv[2] + (argv[3] << 7);
       query[queryIndex].bytes = argv[4] + (argv[5] << 7);
       break;
     case I2C_STOP_READING:
-	  byte queryIndexToSkip;      
+      byte queryIndexToSkip;      
       // if read continuous mode is enabled for only 1 i2c device, disable
       // read continuous reporting for that device
       if (queryIndex <= 0) {
@@ -397,8 +448,8 @@ void sysexCallback(byte command, byte argc, byte *argv)
         
         for (byte i = queryIndexToSkip; i<queryIndex + 1; i++) {
           if (i < MAX_QUERIES) {
-            query[i].addr = query[i+1].addr;
-            query[i].reg = query[i+1].addr;
+            query[i].addr  = query[i+1].addr;
+            query[i].reg   = query[i+1].addr;
             query[i].bytes = query[i+1].bytes; 
           }
         }
@@ -407,7 +458,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
       break;
     default:
       break;
-    }
+    }// end ic2 switch mode
     break;
   case I2C_CONFIG:
     delayTime = (argv[0] + (argv[1] << 7));
@@ -424,15 +475,15 @@ void sysexCallback(byte command, byte argc, byte *argv)
   case SERVO_CONFIG:
     if(argc > 4) {
       // these vars are here for clarity, they'll optimized away by the compiler
-      byte pin = argv[0];
-      int minPulse = argv[1] + (argv[2] << 7);
-      int maxPulse = argv[3] + (argv[4] << 7);
+      byte pin      = argv[0];
+      int  minPulse = argv[1] + (argv[2] << 7);
+      int  maxPulse = argv[3] + (argv[4] << 7);
 
       if (IS_PIN_SERVO(pin)) {
         if (servos[PIN_TO_SERVO(pin)].attached())
           servos[PIN_TO_SERVO(pin)].detach();
-        servos[PIN_TO_SERVO(pin)].attach(PIN_TO_DIGITAL(pin), minPulse, maxPulse);
-        setPinModeCallback(pin, SERVO);
+          servos[PIN_TO_SERVO(pin)].attach(PIN_TO_DIGITAL(pin), minPulse, maxPulse);
+          setPinModeCallback(pin, SERVO);
       }
     }
     break;
@@ -440,7 +491,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
     if (argc > 1) {
       samplingInterval = argv[0] + (argv[1] << 7);
       if (samplingInterval < MINIMUM_SAMPLING_INTERVAL) {
-        samplingInterval = MINIMUM_SAMPLING_INTERVAL;
+          samplingInterval = MINIMUM_SAMPLING_INTERVAL;
       }      
     } else {
       //Firmata.sendString("Not enough data");
@@ -507,7 +558,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
     }
     Serial.write(END_SYSEX);
     break;
-  }
+  } // end switch command
 }
 
 void enableI2CPins()
@@ -578,20 +629,32 @@ void systemResetCallback()
   */
 }
 
+void stringCallBack(char *myString){
+//  Firmata.sendString("STRING_DATA OUT START");
+  Firmata.sendString(myString);
+//  Firmata.sendString("STRING_DATA OUT END");
+//  Serial.write("STRING_DATA");
+//  Serial.write(myString);
+//  myString = NULL;
+}
+
 void setup() 
 {
   Firmata.setFirmwareVersion(FIRMATA_MAJOR_VERSION, FIRMATA_MINOR_VERSION);
 
-  Firmata.attach(ANALOG_MESSAGE, analogWriteCallback);
-  Firmata.attach(DIGITAL_MESSAGE, digitalWriteCallback);
-  Firmata.attach(REPORT_ANALOG, reportAnalogCallback);
-  Firmata.attach(REPORT_DIGITAL, reportDigitalCallback);
-  Firmata.attach(SET_PIN_MODE, setPinModeCallback);
-  Firmata.attach(START_SYSEX, sysexCallback);
-  Firmata.attach(SYSTEM_RESET, systemResetCallback);
+  Firmata.attach(ANALOG_MESSAGE,  analogWriteCallback  );
+  Firmata.attach(DIGITAL_MESSAGE, digitalWriteCallback );
+  Firmata.attach(REPORT_ANALOG,   reportAnalogCallback );
+  Firmata.attach(REPORT_DIGITAL,  reportDigitalCallback);
+  Firmata.attach(SET_PIN_MODE,    setPinModeCallback   );
+  Firmata.attach(START_SYSEX,     sysexCallback        );
+  Firmata.attach(SYSTEM_RESET,    systemResetCallback  );
+  Firmata.attach(STRING_DATA,     stringCallBack       );
 
   Firmata.begin(57600);
   systemResetCallback();  // reset to default config
+  Firmata.sendString("BEGAN FIRMATA");
+  //Serial.write("BEGAN SERIAL");
 }
 
 /*==============================================================================
@@ -608,6 +671,7 @@ void loop()
   /* SERIALREAD - processing incoming messagse as soon as possible, while still
    * checking digital inputs.  */
   while(Firmata.available())
+    //Firmata.sendString("LOOP AVAILABLE");
     Firmata.processInput();
 
   /* SEND FTDI WRITE BUFFER - make sure that the FTDI buffer doesn't go over
@@ -616,6 +680,11 @@ void loop()
 
   currentMillis = millis();
   if (currentMillis - previousMillis > samplingInterval) {
+    //int timeLen = String(currentMillis).length();
+    //char currMillisStr[timeLen];
+    //String(currentMillis).toCharArray(currMillisStr, timeLen);
+    //Firmata.sendString("SAMPLING");
+    //Firmata.sendString(currMillisStr);
     previousMillis += samplingInterval;
     /* ANALOGREAD - do all analogReads() at the configured sampling interval */
     for(pin=0; pin<TOTAL_PINS; pin++) {
@@ -633,4 +702,5 @@ void loop()
       }
     }
   }
+  
 }
