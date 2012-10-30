@@ -1,3 +1,16 @@
+<<<<<<< HEAD
 *.zip
 *~
 *.pyc
+=======
+*/.DS_Store
+examples/bitlashdemo/applet
+examples/*/applet
+examples/bitlashdemo/.DS_Store
+examples/bitlashclock/applet
+examples/bitlashclock/.DS_Store
+examples/.DS_Store
+bitlash.o
+.DS_Store
+Bitlash/
+>>>>>>> a6d29416f7abf21e3d3ca60f8f5f42f8d1a5c462
